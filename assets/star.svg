@@ -7,43 +7,43 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="6.5905604mm"
-   height="6.3135986mm"
-   viewBox="0 0 6.5905604 6.3135986"
-   version="1.1"
-   id="svg8"
+   sodipodi:docname="star.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="star.svg">
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 6.5905604 6.3135986"
+   height="6.3135986mm"
+   width="6.5905604mm">
   <defs
      id="defs2" />
   <sodipodi:namedview
-     fit-margin-bottom="0"
-     fit-margin-right="0"
-     fit-margin-left="0"
-     fit-margin-top="0"
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="8"
-     inkscape:cx="15.771164"
-     inkscape:cy="-24.094925"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     inkscape:document-rotation="0"
-     showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
+     inkscape:window-maximized="1"
      inkscape:window-y="-9"
-     inkscape:window-maximized="1">
+     inkscape:window-x="-9"
+     inkscape:window-height="1001"
+     inkscape:window-width="1920"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="3.905075"
+     inkscape:cx="12.146164"
+     inkscape:zoom="8"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
-       originy="-883.04638"
-       originx="-373.80007"
+       type="xygrid"
        id="grid860"
-       type="xygrid" />
+       originx="-373.80007"
+       originy="-883.04638" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -53,19 +53,19 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-134.80412,-175.73793)"
-     inkscape:label="Calque 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Calque 1"
+     transform="translate(-134.80412,-175.73793)">
     <path
-       sodipodi:nodetypes="cccccccccccc"
-       id="path864"
+       style="fill:#4a9fff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.404;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
        d="m 136.13838,181.72637 c -0.41397,-0.0845 0.0613,-1.39308 0.36202,-2.29069 -0.65775,-0.52877 -1.69694,-1.09209 -1.39639,-1.58677 0.24463,-0.35866 1.15733,-0.14354 2.0141,-0.20056 0.23736,-0.7129 0.51749,-1.72555 0.98265,-1.65548 0.44903,-0.0324 0.6975,0.95689 0.95467,1.65516 0.81197,0.0121 1.89995,-0.12697 2.03027,0.19085 0.33278,0.57584 -0.73567,0.97836 -1.39031,1.50721 0.29801,0.89761 0.65614,2.31255 0.23493,2.35901 -0.25798,0.37038 -1.13473,-0.62456 -1.84363,-1.1957 -0.7218,0.57996 -1.6442,1.56641 -1.94827,1.21689 z"
-       style="fill:#4a9fff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.504;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
+       id="path864"
+       sodipodi:nodetypes="cccccccccccc" />
   </g>
 </svg>
