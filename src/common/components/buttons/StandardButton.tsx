@@ -21,11 +21,20 @@ export default function StandardButton({
             paddingTop: 15,
             paddingBottom: 15,
             backgroundColor: "rgb(243 244 246)",
-            borderRadius: 10,
+            borderRadius: 20,
           },
         ]}
       >
-        <Text style={[style.textMd, { fontFamily: "arial" }]}>{children}</Text>
+        <Text
+          style={[
+            style.textMd,
+            {
+              fontFamily: "arial",
+            },
+          ]}
+        >
+          {children}
+        </Text>
       </View>
     </Pressable>
   );
