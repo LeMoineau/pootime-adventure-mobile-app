@@ -4,7 +4,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { NavigationContainer } from "@react-navigation/native";
 import CustomTabBar from "../common/components/navigation/CustomTabBar";
 import { SafeAreaView } from "react-native";
-import Background from "../common/components/misc/Background";
+import Background from "../common/components/misc/AnimatedBackground";
 
 const Tab = createMaterialTopTabNavigator();
 

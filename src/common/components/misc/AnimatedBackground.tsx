@@ -1,8 +1,22 @@
-import { Animated, Easing, Image, ImageBackground } from "react-native";
+import {
+  Animated,
+  Easing,
+  Image,
+  ImageBackground,
+  ImageSourcePropType,
+} from "react-native";
 import { style } from "../../services/style-utils";
 import { useEffect, useState } from "react";
 
-export default function Background() {
+export default function AnimatedBackground({
+  imageSrc,
+  bgColor,
+  duration,
+}: {
+  imageSrc: ImageSourcePropType;
+  bgColor: string;
+  duration?: number;
+}) {
   const [translateValue] = useState(new Animated.Value(0));
 
   const [imageWidth, setImageWidth] = useState(0);
@@ -10,7 +24,7 @@ export default function Background() {
 
   useEffect(() => {
     Image.getSize(
-      require("./../../../../assets/poobg.svg"),
+      imageSrc.toString(),
       (width, height) => {
         setImageWidth(width);
         setImageHeight(height);
@@ -21,7 +35,7 @@ export default function Background() {
     Animated.loop(
       Animated.timing(translateValue, {
         toValue: 1,
-        duration: 2000,
+        duration: duration ?? 2000,
         useNativeDriver: false,
         easing: Easing.linear,
       })
@@ -39,7 +53,7 @@ export default function Background() {
           top: 0,
           left: 0,
           zIndex: -10,
-          backgroundColor: "#FFE5A3",
+          backgroundColor: bgColor,
           borderLeftWidth: 1,
           borderRightWidth: 1,
           width: document.body.clientWidth + imageWidth,
@@ -62,9 +76,9 @@ export default function Background() {
       ]}
     >
       <ImageBackground
-        source={require("./../../../../assets/poobg.svg")}
+        source={imageSrc}
         resizeMode="repeat"
-        style={{ flex: 1, opacity: 0.5 }}
+        style={{ flex: 1, opacity: 0.2 }}
       ></ImageBackground>
     </Animated.View>
   );

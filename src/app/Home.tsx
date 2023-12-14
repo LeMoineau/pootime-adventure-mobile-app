@@ -2,13 +2,16 @@ import { SafeAreaView, Text, View } from "react-native";
 import { style } from "../common/services/style-utils";
 import PooCreature from "../common/components/misc/PooCreature";
 import SmileExpression from "../common/components/icons/expressions/SmileExpression";
-import Background from "../common/components/misc/Background";
+import AnimatedBackground from "../common/components/misc/AnimatedBackground";
 import StandardButton from "../common/components/buttons/StandardButton";
 
 export default function Home() {
   return (
     <SafeAreaView style={[style.wFull, style.hFull]}>
-      <Background></Background>
+      <AnimatedBackground
+        imageSrc={require("./../../assets/poobg.svg")}
+        bgColor="#FFE5A3"
+      ></AnimatedBackground>
       <View
         style={[
           style.wFull,
