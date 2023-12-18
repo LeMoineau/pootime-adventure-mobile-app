@@ -1,12 +1,43 @@
-import { Image, ImageSourcePropType, Text, View } from "react-native";
+import {
+  Animated,
+  Easing,
+  Image,
+  ImageSourcePropType,
+  Text,
+  View,
+} from "react-native";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
-import { style } from "../../services/style-utils";
+import { style } from "../../utils/style-utils";
+import React, { useEffect } from "react";
+import { colors } from "../../utils/color-utils";
 
 export default function NumberField({
   value,
-  appendIcon,
+  appendImage,
+  appendElement,
   ...props
-}: { value: number; appendIcon?: ImageSourcePropType } & ViewProps) {
+}: {
+  value: number;
+  appendImage?: ImageSourcePropType;
+  appendElement?: React.ReactNode;
+} & ViewProps) {
+  const scaleValue = new Animated.Value(0);
+
+  useEffect(() => {
+    Animated.sequence([
+      Animated.timing(scaleValue, {
+        toValue: 1,
+        useNativeDriver: false,
+        duration: 200,
+      }),
+      Animated.timing(scaleValue, {
+        toValue: 0,
+        useNativeDriver: false,
+        duration: 200,
+      }),
+    ]).start();
+  }, [value]);
+
   return (
     <View {...props}>
       <View style={[{ marginRight: 25 }]}>
@@ -18,30 +49,45 @@ export default function NumberField({
             style.itemsCenter,
             {
               minWidth: 90,
+              width: 90,
               backgroundColor: "white",
               paddingRight: 17,
-              height: 35,
+              paddingLeft: 15,
+              height: 36,
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
+              borderTopRightRadius: 10,
+              borderBottomRightRadius: 10,
             },
           ]}
         >
-          <Text
+          <Animated.Text
             style={[
               style.wFull,
               style.textMd,
               {
                 fontWeight: "600",
                 textAlign: "right",
-                color: "black",
+                color: scaleValue.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [colors.black, colors.green[600]],
+                }),
+                transform: [
+                  {
+                    scale: scaleValue.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [1, 1.1],
+                    }),
+                  },
+                ],
               },
             ]}
           >
             {value}
-          </Text>
-          {appendIcon && (
+          </Animated.Text>
+          {appendImage && (
             <Image
-              source={appendIcon}
+              source={appendImage}
               style={[
                 {
                   position: "absolute",
@@ -53,6 +99,21 @@ export default function NumberField({
               ]}
               resizeMode="contain"
             ></Image>
+          )}
+          {appendElement && (
+            <View
+              style={[
+                {
+                  position: "absolute",
+                  top: -2,
+                  right: -25,
+                  width: 40,
+                  height: 40,
+                },
+              ]}
+            >
+              {appendElement}
+            </View>
           )}
         </View>
       </View>

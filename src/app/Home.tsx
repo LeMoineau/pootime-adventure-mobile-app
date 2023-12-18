@@ -1,16 +1,27 @@
-import { SafeAreaView, Text, View } from "react-native";
-import { style } from "../common/services/style-utils";
+import { SafeAreaView, Text, View, useWindowDimensions } from "react-native";
+import { style } from "../common/utils/style-utils";
 import PooCreature from "../common/components/misc/PooCreature";
 import SmileExpression from "../common/components/icons/expressions/SmileExpression";
 import AnimatedBackground from "../common/components/misc/AnimatedBackground";
 import StandardButton from "../common/components/buttons/StandardButton";
 import NumberField from "../common/components/fields/NumberField";
+import ProgressBar from "../common/components/fields/ProgressBar";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
+import PooCreatureButton from "../common/components/poo-creature/PooCreatureManager";
+import PooCoinIcon from "../common/components/icons/pooCoin";
+import StarIcon from "../common/components/icons/star";
+import { useResourcesStore } from "../common/stores/resources.store";
+import { useShallow } from "zustand/react/shallow";
 
 export default function Home() {
+  const { width, height } = useWindowDimensions();
+  const { stars, pooCoins } = useResourcesStore(
+    useShallow((state) => ({ stars: state.stars, pooCoins: state.pooCoins }))
+  );
   return (
     <SafeAreaView style={[style.wFull, style.hFull]}>
       <AnimatedBackground
-        imageSrc={require("./../../assets/poobg.svg")}
+        imageUri="https://bigstones.fr/pootime-adventure/poobg.png"
         bgColor="#FFE5A3"
       ></AnimatedBackground>
       <View
@@ -25,41 +36,23 @@ export default function Home() {
       >
         <View
           style={[
-            style.wFull,
             style.flexRow,
             style.justifyCenter,
             style.itemsCenter,
-            { position: "absolute", top: 10, left: 0 },
+            { width: width, position: "absolute", top: 20, left: 0 },
           ]}
         >
           <NumberField
-            value={500}
-            appendIcon={require("./../../assets/star.svg")}
+            value={stars}
+            appendElement={<StarIcon size={40}></StarIcon>}
             style={{ marginHorizontal: 10 }}
           ></NumberField>
           <NumberField
-            value={500}
-            appendIcon={require("./../../assets/poocoin.svg")}
+            value={pooCoins}
+            appendElement={<PooCoinIcon size={40}></PooCoinIcon>}
           ></NumberField>
         </View>
-        <PooCreature
-          width={(document.body.clientWidth * 1.7) / 3}
-          bodyColor="#e5e3b3"
-          expression={<SmileExpression></SmileExpression>}
-        ></PooCreature>
-        <View
-          style={[
-            style.wFull,
-            style.flexRow,
-            style.justifyCenter,
-            style.itemsCenter,
-            { position: "absolute", bottom: 50, left: 0 },
-          ]}
-        >
-          <StandardButton onPress={() => console.log("coucou")}>
-            coucou
-          </StandardButton>
-        </View>
+        <PooCreatureButton></PooCreatureButton>
       </View>
     </SafeAreaView>
   );

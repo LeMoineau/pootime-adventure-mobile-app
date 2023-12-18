@@ -1,6 +1,6 @@
 import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 import { Animated, View, TouchableOpacity, Image } from "react-native";
-import { style } from "../../services/style-utils";
+import { style } from "../../utils/style-utils";
 
 export default function CustomTabBar({
   state,
@@ -11,15 +11,22 @@ export default function CustomTabBar({
   const navInfos = [
     {
       title: "Fight",
-      image: require("./../../../../assets/poofight.svg"),
+      image: {
+        uri: "https://bigstones.fr/pootime-adventure/poofight.png",
+      },
+      //   image: require("./../../../../assets/poofight.svg"),
     },
     {
       title: "Home",
-      image: require("./../../../../assets/poohome.svg"),
+      image: {
+        uri: "https://bigstones.fr/pootime-adventure/poohome.png",
+      },
     },
     {
       title: "Edit",
-      image: require("./../../../../assets/pooedit.svg"),
+      image: {
+        uri: "https://bigstones.fr/pootime-adventure/pooedit.png",
+      },
     },
   ];
   return (
@@ -28,7 +35,7 @@ export default function CustomTabBar({
         style.flexRow,
         style.justifyCenter,
         style.itemsCenter,
-        { height: 100, backgroundColor: "#FFE5A3" },
+        { height: 70, backgroundColor: "#FFE5A3" },
       ]}
     >
       {state.routes.map((route, index) => {
@@ -69,22 +76,23 @@ export default function CustomTabBar({
         });
         const width = position.interpolate({
           inputRange,
-          outputRange: inputRange.map((i) => (i === index ? 1.5 : 1)),
+          outputRange: inputRange.map((i) => (i === index ? 1 : 1)),
         });
         const bgColor = position.interpolate({
           inputRange,
           outputRange: inputRange.map((i) =>
-            i === index ? "rgba(52, 152, 219, 0.9)" : "rgba(0, 0, 0, 0.2)"
+            i === index ? "#4a9fff" : "rgba(0, 0, 0, 0.2)"
           ),
         });
 
         return (
           <Animated.View
+            key={index}
             style={[
               style.wFull,
               style.hFull,
               {
-                flex: width,
+                flex: 1,
                 backgroundColor: bgColor,
                 borderColor: "rgba(255, 255, 255, 0.4)",
                 borderLeftWidth: 1,
@@ -110,19 +118,44 @@ export default function CustomTabBar({
             >
               <Animated.Image
                 source={navInfos[index].image}
-                style={[{ height: 50, width: "100%", opacity: imageOpacity }]}
+                style={[
+                  {
+                    height: 50,
+                    width: "100%",
+                    opacity: imageOpacity,
+                    transform: [
+                      {
+                        scale: position.interpolate({
+                          inputRange,
+                          outputRange: inputRange.map((i) =>
+                            i === index ? 1.1 : 0.8
+                          ),
+                        }),
+                      },
+                    ],
+                  },
+                ]}
                 resizeMode="contain"
               ></Animated.Image>
               <Animated.Text
                 style={{
-                  height: textHeight,
-                  opacity: textOpacity,
                   textTransform: "uppercase",
                   textShadowColor: "black",
                   textShadowRadius: 5,
                   color: "white",
                   fontWeight: "bold",
-                  marginTop: 3,
+                  marginTop: 5,
+                  marginBottom: 5,
+                  transform: [
+                    {
+                      scale: position.interpolate({
+                        inputRange,
+                        outputRange: inputRange.map((i) =>
+                          i === index ? 1 : 0
+                        ),
+                      }),
+                    },
+                  ],
                 }}
               >
                 {navInfos[index].title}

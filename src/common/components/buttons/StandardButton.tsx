@@ -1,13 +1,18 @@
 import React from "react";
 import { Pressable, PressableProps, Text, View } from "react-native";
-import { style } from "../../services/style-utils";
+import { style } from "../../utils/style-utils";
+import { colors } from "../../utils/color-utils";
 
 export default function StandardButton({
   children,
+  textColor,
+  bgColor,
   onClick,
   ...props
 }: {
   children: string | React.ReactNode;
+  textColor?: string;
+  bgColor?: string;
   onClick?: () => void;
 } & PressableProps) {
   return (
@@ -15,24 +20,16 @@ export default function StandardButton({
       <View
         style={[
           style.shadowMd,
+          style.rounded,
+          style.border,
           {
-            paddingLeft: 30,
-            paddingRight: 30,
-            paddingTop: 15,
-            paddingBottom: 15,
-            backgroundColor: "rgb(243 244 246)",
-            borderRadius: 20,
+            paddingHorizontal: 30,
+            paddingVertical: 15,
+            backgroundColor: bgColor ?? colors.gray[100],
           },
         ]}
       >
-        <Text
-          style={[
-            style.textMd,
-            {
-              fontFamily: "arial",
-            },
-          ]}
-        >
+        <Text style={[style.textMd, { color: textColor ?? colors.black }]}>
           {children}
         </Text>
       </View>

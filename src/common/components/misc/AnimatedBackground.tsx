@@ -1,22 +1,27 @@
 import {
   Animated,
+  Dimensions,
   Easing,
   Image,
   ImageBackground,
   ImageSourcePropType,
+  View,
+  useWindowDimensions,
 } from "react-native";
-import { style } from "../../services/style-utils";
+import { style } from "../../utils/style-utils";
 import { useEffect, useState } from "react";
 
 export default function AnimatedBackground({
-  imageSrc,
+  imageUri,
   bgColor,
   duration,
 }: {
-  imageSrc: ImageSourcePropType;
+  imageUri: string;
   bgColor: string;
   duration?: number;
 }) {
+  const { width, height } = useWindowDimensions();
+
   const [translateValue] = useState(new Animated.Value(0));
 
   const [imageWidth, setImageWidth] = useState(0);
@@ -24,10 +29,11 @@ export default function AnimatedBackground({
 
   useEffect(() => {
     Image.getSize(
-      imageSrc.toString(),
+      imageUri,
       (width, height) => {
         setImageWidth(width);
         setImageHeight(height);
+        console.log(width, height);
       },
       (err) => console.error(err)
     );
@@ -42,22 +48,41 @@ export default function AnimatedBackground({
     ).start();
   }, []);
 
+  const images = [
+    <Image
+      source={{ uri: imageUri }}
+      style={{
+        width: width + imageWidth,
+        height: height + imageHeight,
+        opacity: 0.2,
+      }}
+      resizeMode="repeat"
+    ></Image>,
+  ];
+  // for (let i = 0; i < width / imageWidth + 1; i++) {
+  //   for (let j = 0; j < height / imageHeight + 1; j++) {
+  //     images.push(
+  //       <Image
+  //         source={{ uri: imageUri }}
+  //         width={imageWidth}
+  //         height={imageHeight}
+  //         style={{ opacity: 0.2 }}
+  //       ></Image>
+  //     );
+  //   }
+  // }
+
   return (
     <Animated.View
       style={[
-        style.wFull,
-        style.hFull,
         {
           position: "absolute",
-          flex: 1,
           top: 0,
           left: 0,
           zIndex: -10,
           backgroundColor: bgColor,
-          borderLeftWidth: 1,
-          borderRightWidth: 1,
-          width: document.body.clientWidth + imageWidth,
-          height: document.body.clientHeight + imageHeight,
+          width: width + imageWidth,
+          height: height + imageHeight,
           transform: [
             {
               translateX: translateValue.interpolate({
@@ -75,11 +100,27 @@ export default function AnimatedBackground({
         },
       ]}
     >
-      <ImageBackground
-        source={imageSrc}
+      <Image
+        source={{ uri: imageUri }}
+        style={{
+          width: width + imageWidth,
+          height: height + imageHeight,
+          opacity: 0.2,
+        }}
         resizeMode="repeat"
-        style={{ flex: 1, opacity: 0.2 }}
-      ></ImageBackground>
+      ></Image>
+      <View
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          borderWidth: 1,
+          borderStyle: "solid",
+          borderColor: "red",
+          width: imageWidth,
+          height: imageHeight,
+        }}
+      ></View>
     </Animated.View>
   );
 }

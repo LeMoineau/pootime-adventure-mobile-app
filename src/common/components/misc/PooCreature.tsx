@@ -1,21 +1,22 @@
-import { View } from "react-native";
+import { View, ViewProps } from "react-native";
 import PooHead from "../icons/poo/PooHead";
 import React from "react";
 import PooFace from "../icons/poo/PooFace";
 import PooBody from "../icons/poo/PooBody";
-import { style } from "../../services/style-utils";
+import { style } from "../../utils/style-utils";
 
 export default function PooCreature({
   expression,
   bodyColor,
   width,
   height,
+  ...props
 }: {
   expression: React.ReactNode;
   bodyColor: string;
   width?: number;
   height?: number;
-}) {
+} & ViewProps) {
   const defaultWidth = 61.936;
   const defaultHeight = 90.068;
   return (
@@ -31,6 +32,7 @@ export default function PooCreature({
             (width ? (defaultHeight * width) / defaultWidth : defaultWidth),
         },
       ]}
+      {...props}
     >
       <PooBody fillColor={bodyColor}></PooBody>
       <PooHead style={[{ position: "absolute", top: 0, left: 0 }]}></PooHead>
