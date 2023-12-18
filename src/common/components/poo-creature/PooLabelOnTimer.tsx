@@ -6,6 +6,8 @@ import { useState } from "react";
 import usePooCurve from "../../hooks/use-poo-curve";
 import { useResourcesStore } from "../../stores/resources.store";
 import { useShallow } from "zustand/react/shallow";
+import useStorage from "../../hooks/use-storage";
+import { StorageKeys } from "../../utils/storage-keys";
 
 export default function PooLabelOnTimer({
   scaleValue,
@@ -21,7 +23,8 @@ export default function PooLabelOnTimer({
   const { starEarn, pooCoinEarn } = usePooCurve({
     elapsedTime: elapsedTimePooing,
   });
-  const { earnStar, earnPooCoin } = useResourcesStore();
+  const { stars, pooCoins, earnStar, earnPooCoin } = useResourcesStore();
+  const { saveJson } = useStorage();
 
   return (
     <>
@@ -67,7 +70,7 @@ export default function PooLabelOnTimer({
           isPlaying={isPooing}
           onStop={(t) => {
             stopPooing && stopPooing(t);
-            setElapsedTimePooing(60 * 60);
+            setElapsedTimePooing(5 * 60);
             toggleShowRewardModal(true);
           }}
         ></TimerField>
@@ -88,9 +91,13 @@ export default function PooLabelOnTimer({
         visible={showRewardModal}
         starEarn={starEarn}
         pooCoinEarn={pooCoinEarn}
-        onRequestClose={() => {
+        onRequestClose={async () => {
           earnStar(starEarn);
           earnPooCoin(pooCoinEarn);
+          await saveJson(StorageKeys.RESOURCES, {
+            stars: stars + starEarn,
+            pooCoins: pooCoins + pooCoinEarn,
+          });
           toggleShowRewardModal(false);
         }}
       ></RewardModal>

@@ -33,7 +33,6 @@ export default function AnimatedBackground({
       (width, height) => {
         setImageWidth(width);
         setImageHeight(height);
-        console.log(width, height);
       },
       (err) => console.error(err)
     );
