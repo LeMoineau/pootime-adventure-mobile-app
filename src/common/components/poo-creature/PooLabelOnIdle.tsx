@@ -1,12 +1,15 @@
 import { Animated, Text } from "react-native";
 import { style } from "../../utils/style-utils";
 import ProgressBar from "../fields/ProgressBar";
+import { usePooCreatureStore } from "../../stores/poo-creature.store";
 
 export default function PooLabelOnIdle({
   scaleValue,
 }: {
   scaleValue: Animated.Value;
 }) {
+  const { name } = usePooCreatureStore();
+
   return (
     <>
       <Animated.View
@@ -40,7 +43,7 @@ export default function PooLabelOnIdle({
             },
           ]}
         >
-          Mr. PooPoo
+          {name}
         </Text>
         <ProgressBar
           max={20}

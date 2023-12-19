@@ -1,22 +1,20 @@
-import { useEffect, useState } from "react";
-import { Modal, ModalProps, Pressable, Text, View } from "react-native";
+import { Modal, ModalProps, Text, View } from "react-native";
 import { style } from "../../utils/style-utils";
 import StandardButton from "../buttons/StandardButton";
 import { colors } from "../../utils/color-utils";
 import StarIcon from "../icons/star";
 import PooCoinIcon from "../icons/pooCoin";
-import usePooCurve from "../../hooks/use-poo-curve";
+import { usePooCreatureStore } from "../../stores/poo-creature.store";
 
 export default function RewardModal({
-  isVisible,
   starEarn,
   pooCoinEarn,
   ...props
 }: {
-  isVisible?: boolean;
   starEarn: number;
   pooCoinEarn: number;
 } & ModalProps) {
+  const { name } = usePooCreatureStore();
   return (
     <Modal animationType="slide" transparent {...props}>
       <View
@@ -49,8 +47,8 @@ export default function RewardModal({
             Vous avez posé une belle pêche !
           </Text>
           <Text style={[style.textSm, style.textCenter]}>
-            Voici ce que <Text style={[style.textBold]}>Mr. Poopoo</Text> a
-            trouvé pendant ce temps là !
+            Voici ce que <Text style={[style.textBold]}>{name}</Text> a trouvé
+            pendant ce temps là !
           </Text>
           <View
             style={[

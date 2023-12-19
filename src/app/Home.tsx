@@ -1,23 +1,10 @@
-import { SafeAreaView, Text, View, useWindowDimensions } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import { style } from "../common/utils/style-utils";
-import PooCreature from "../common/components/misc/PooCreature";
-import SmileExpression from "../common/components/icons/expressions/SmileExpression";
 import AnimatedBackground from "../common/components/misc/AnimatedBackground";
-import StandardButton from "../common/components/buttons/StandardButton";
-import NumberField from "../common/components/fields/NumberField";
-import ProgressBar from "../common/components/fields/ProgressBar";
-import { AnimatedCircularProgress } from "react-native-circular-progress";
 import PooCreatureButton from "../common/components/poo-creature/PooCreatureManager";
-import PooCoinIcon from "../common/components/icons/pooCoin";
-import StarIcon from "../common/components/icons/star";
-import { useResourcesStore } from "../common/stores/resources.store";
-import { useShallow } from "zustand/react/shallow";
+import HomeTopBar from "../common/components/navigation/HomeTopBar";
 
 export default function Home() {
-  const { width, height } = useWindowDimensions();
-  const { stars, pooCoins } = useResourcesStore(
-    useShallow((state) => ({ stars: state.stars, pooCoins: state.pooCoins }))
-  );
   return (
     <SafeAreaView style={[style.wFull, style.hFull]}>
       <AnimatedBackground
@@ -34,24 +21,7 @@ export default function Home() {
           { padding: 20 },
         ]}
       >
-        <View
-          style={[
-            style.flexRow,
-            style.justifyCenter,
-            style.itemsCenter,
-            { width: width, position: "absolute", top: 20, left: 0 },
-          ]}
-        >
-          <NumberField
-            value={stars}
-            appendElement={<StarIcon size={40}></StarIcon>}
-            style={{ marginHorizontal: 10 }}
-          ></NumberField>
-          <NumberField
-            value={pooCoins}
-            appendElement={<PooCoinIcon size={40}></PooCoinIcon>}
-          ></NumberField>
-        </View>
+        <HomeTopBar></HomeTopBar>
         <PooCreatureButton></PooCreatureButton>
       </View>
     </SafeAreaView>

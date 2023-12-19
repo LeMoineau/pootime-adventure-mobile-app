@@ -16,6 +16,9 @@ export const style = StyleSheet.create({
   itemsCenter: {
     alignItems: "center",
   },
+  flexWrap: {
+    flexWrap: "wrap",
+  },
   wFull: {
     width: "100%",
   },
@@ -51,6 +54,9 @@ export const style = StyleSheet.create({
   },
   roundedSm: {
     borderRadius: 5,
+  },
+  roundedFull: {
+    borderRadius: 9999,
   },
   overflowHidden: {
     overflow: "hidden",

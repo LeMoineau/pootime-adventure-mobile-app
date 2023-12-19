@@ -23,8 +23,7 @@ export default function PooLabelOnTimer({
   const { starEarn, pooCoinEarn } = usePooCurve({
     elapsedTime: elapsedTimePooing,
   });
-  const { stars, pooCoins, earnStar, earnPooCoin } = useResourcesStore();
-  const { saveJson } = useStorage();
+  const { earnStar, earnPooCoin } = useResourcesStore();
 
   return (
     <>
@@ -70,7 +69,7 @@ export default function PooLabelOnTimer({
           isPlaying={isPooing}
           onStop={(t) => {
             stopPooing && stopPooing(t);
-            setElapsedTimePooing(5 * 60);
+            setElapsedTimePooing(t);
             toggleShowRewardModal(true);
           }}
         ></TimerField>
@@ -92,12 +91,8 @@ export default function PooLabelOnTimer({
         starEarn={starEarn}
         pooCoinEarn={pooCoinEarn}
         onRequestClose={async () => {
-          earnStar(starEarn);
-          earnPooCoin(pooCoinEarn);
-          await saveJson(StorageKeys.RESOURCES, {
-            stars: stars + starEarn,
-            pooCoins: pooCoins + pooCoinEarn,
-          });
+          await earnStar(1);
+          await earnPooCoin(100);
           toggleShowRewardModal(false);
         }}
       ></RewardModal>

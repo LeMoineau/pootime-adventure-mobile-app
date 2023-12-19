@@ -1,21 +1,16 @@
 import {
   Animated,
-  Text,
   TouchableWithoutFeedback,
   View,
   useWindowDimensions,
 } from "react-native";
-import ProgressBar from "../fields/ProgressBar";
 import PooCreature from "../misc/PooCreature";
 import SmileExpression from "../icons/expressions/SmileExpression";
 import { style } from "../../utils/style-utils";
-import { useEffect, useRef, useState } from "react";
-import TimerField from "../fields/TimerField";
+import { useEffect, useState } from "react";
 import ClockCircularProgress from "../fields/ClockCircularProgress";
-import useTimer from "../../hooks/use-timer";
 import PooLabelOnTimer from "./PooLabelOnTimer";
 import PooLabelOnIdle from "./PooLabelOnIdle";
-import RewardModal from "../modals/RewardModal";
 
 export default function PooCreatureButton() {
   const { width } = useWindowDimensions();
@@ -45,10 +40,7 @@ export default function PooCreatureButton() {
   return (
     <>
       <TouchableWithoutFeedback
-        onPressOut={() => {
-          setIsPlaying(!isPlaying);
-        }}
-        onPress={() => {}}
+        onPress={() => setIsPlaying(!isPlaying)}
         onLongPress={() => {}}
       >
         <View

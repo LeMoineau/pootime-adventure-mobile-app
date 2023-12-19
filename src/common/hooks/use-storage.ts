@@ -22,6 +22,21 @@ const useStorage = () => {
     await saveString(key, JSON.stringify(value));
   };
 
+  const saveItemInJson = async (
+    key: string,
+    keyJson: string,
+    value: string | number | boolean | JSONObject
+  ) => {
+    let json = await getJson(key);
+    if (!json) {
+      json = {};
+    }
+    if (json) {
+      json[keyJson] = value;
+      await saveJson(key, json);
+    }
+  };
+
   const getString = async (key: string): Promise<string | null> => {
     try {
       return await AsyncStorage.getItem(key);
@@ -51,6 +66,7 @@ const useStorage = () => {
     saveNumber,
     saveBoolean,
     saveJson,
+    saveItemInJson,
     getString,
     getNumber,
     getBoolean,

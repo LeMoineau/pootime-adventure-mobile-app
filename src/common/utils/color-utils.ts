@@ -1,4 +1,5 @@
 export const colors = {
+  baseBodyColor: "#e5e3b3",
   transparent: "transparent",
   black: "#000",
   white: "#fff",
