@@ -10,4 +10,8 @@ export namespace MathUtils {
     }
     return 1;
   }
+
+  export function calculateExpNeedForNextLevel(currentLevel: number): number {
+    return Math.round(1.5 + currentLevel * 1.2);
+  }
 }

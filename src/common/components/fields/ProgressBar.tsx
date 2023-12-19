@@ -1,6 +1,15 @@
 import { DimensionValue, Text, View } from "react-native";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { style } from "../../utils/style-utils";
+import { colors } from "../../utils/color-utils";
+
+export interface ProgressBarProps {
+  width?: DimensionValue;
+  height?: number;
+  progressColor?: string;
+  showProgressText?: boolean;
+  appendText?: string;
+}
 
 export default function ProgressBar({
   max,
@@ -11,15 +20,7 @@ export default function ProgressBar({
   showProgressText,
   appendText,
   ...props
-}: {
-  max: number;
-  current: number;
-  width?: DimensionValue;
-  height?: number;
-  progressColor?: string;
-  showProgressText?: boolean;
-  appendText?: string;
-} & ViewProps) {
+}: { max: number; current: number } & ProgressBarProps & ViewProps) {
   return (
     <View {...props}>
       <View
@@ -56,12 +57,13 @@ export default function ProgressBar({
               style.justifyCenter,
               style.itemsCenter,
               style.textShadowMd,
+              style.textBold,
               {
                 position: "absolute",
                 top: 0,
                 left: 0,
                 textAlign: "center",
-                color: "white",
+                color: colors.white,
               },
             ]}
           >{`${current}/${max}`}</Text>

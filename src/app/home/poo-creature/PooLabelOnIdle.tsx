@@ -2,6 +2,7 @@ import { Animated, Text } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import ProgressBar from "../../../common/components/fields/ProgressBar";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
+import LevelProgressBar from "../../../common/components/fields/LevelProgressBar";
 
 export default function PooLabelOnIdle({
   scaleValue,
@@ -45,12 +46,7 @@ export default function PooLabelOnIdle({
         >
           {name}
         </Text>
-        <ProgressBar
-          max={20}
-          current={17}
-          appendText="5"
-          height={20}
-        ></ProgressBar>
+        <LevelProgressBar height={20}></LevelProgressBar>
       </Animated.View>
     </>
   );

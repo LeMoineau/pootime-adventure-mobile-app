@@ -5,6 +5,7 @@ import { useResourcesStore } from "../../../common/stores/resources.store";
 import { useShallow } from "zustand/react/shallow";
 import StarIcon from "../../../common/components/icons/star";
 import ProgressBar from "../../../common/components/fields/ProgressBar";
+import LevelProgressBar from "../../../common/components/fields/LevelProgressBar";
 
 export default function FightTopBar() {
   const { width } = useWindowDimensions();
@@ -27,15 +28,12 @@ export default function FightTopBar() {
         },
       ]}
     >
-      <ProgressBar
-        max={20}
-        current={17}
-        appendText="5"
+      <LevelProgressBar
         height={35}
         width={"100%"}
         style={{ flex: 1, marginRight: 20 }}
         showProgressText
-      ></ProgressBar>
+      ></LevelProgressBar>
       <NumberField
         value={stars}
         appendElement={<StarIcon size={40}></StarIcon>}

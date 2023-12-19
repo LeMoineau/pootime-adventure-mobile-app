@@ -54,6 +54,22 @@ export const usePooCreatureStatsStore = create<Store>((set, get) => {
     const gain = MathUtils.calculateGainStat(stat, get()[stat]);
     set((state) => ({ [stat]: state[stat] + gain }));
     await saveItemInJson(StorageKeys.POO_CREATURE_STATS, stat, get()[stat]);
+    await incrExp();
+  };
+
+  const incrExp = async () => {
+    let currentExp = get().currentExp + 1;
+    if (currentExp >= MathUtils.calculateExpNeedForNextLevel(get().level)) {
+      set((state) => ({ level: state.level + 1, currentExp: 0 }));
+    } else {
+      set({ currentExp: currentExp });
+    }
+    await saveItemInJson(StorageKeys.POO_CREATURE_STATS, "level", get().level);
+    await saveItemInJson(
+      StorageKeys.POO_CREATURE_STATS,
+      "currentExp",
+      get().currentExp
+    );
   };
 
   return {
