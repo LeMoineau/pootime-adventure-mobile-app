@@ -5,10 +5,12 @@ import PlusIcon from "../../../common/components/icons/plus";
 
 export default function StatsField({
   label,
+  value,
   upgradeAvailable,
   onUpgrade,
 }: {
   label: string;
+  value: string | number;
   upgradeAvailable?: boolean;
   onUpgrade?: () => void;
 }) {
@@ -38,8 +40,11 @@ export default function StatsField({
           },
         ]}
       >
-        <Text style={[style.textBold, style.textMd, {}]}>15</Text>
+        <Text style={[style.textBold, style.textMd, {}]}>{value}</Text>
         <Pressable
+          onPress={() => {
+            upgradeAvailable && onUpgrade && onUpgrade();
+          }}
           style={[
             style.rounded,
             style.border,

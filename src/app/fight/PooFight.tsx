@@ -6,11 +6,11 @@ import FightTopBar from "./navigation/FightTopBar";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
 import StatsTab from "./tabs/StatsTab";
 import StatsIcons from "../../common/components/icons/stats";
-import PooUltiIcon from "../../common/components/icons/PooUlti";
+import PooUltiIcon from "../../common/components/icons/pooUlti";
 
 export default function PooFight() {
   return (
-    <SafeAreaView style={[style.wFull, style.hFull]}>
+    <SafeAreaView style={{ flex: 1 }}>
       <AnimatedBackground
         imageUri="https://bigstones.fr/pootime-adventure/poobg.png"
         bgColor="#FFE5A3"

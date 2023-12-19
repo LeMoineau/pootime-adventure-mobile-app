@@ -35,7 +35,9 @@ export default function CustomTabBar({
         style.flexRow,
         style.justifyCenter,
         style.itemsCenter,
-        { height: 70, backgroundColor: "#FFE5A3" },
+        {
+          backgroundColor: "#FFE5A3",
+        },
       ]}
     >
       {state.routes.map((route, index) => {

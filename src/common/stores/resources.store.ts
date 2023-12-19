@@ -26,7 +26,6 @@ export const useResourcesStore = create<Store>((set, get) => {
   getJson(StorageKeys.RESOURCES).then((json) => {
     if (json) {
       const resources = json as DataInStorage.Resources;
-      console.log(resources);
       set({
         stars: resources.stars,
         pooCoins: resources.pooCoins,
