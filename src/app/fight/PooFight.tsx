@@ -1,16 +1,14 @@
 import { SafeAreaView, View } from "react-native";
 import AnimatedBackground from "../../common/components/misc/AnimatedBackground";
 import { style } from "../../common/utils/style-utils";
-import EditorTopBar from "./navigation/EditorTopBar";
 import PooCreature from "../../common/components/misc/PooCreature";
+import FightTopBar from "./navigation/FightTopBar";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
-import PooBodyEditIcon from "../../common/components/icons/pooBodyEdit";
-import BodyEditorView from "./body-editor/BodyEditorView";
-import PooHeadEditIcon from "../../common/components/icons/pooHeadEdit";
-import PooFaceEditIcon from "../../common/components/icons/pooFaceEdit";
-import FaceEditorView from "./face-editor/FaceEditorView";
+import StatsTab from "./tabs/StatsTab";
+import StatsIcons from "../../common/components/icons/stats";
+import PooUltiIcon from "../../common/components/icons/PooUlti";
 
-export default function PooEditor() {
+export default function PooFight() {
   return (
     <SafeAreaView style={[style.wFull, style.hFull]}>
       <AnimatedBackground
@@ -26,21 +24,17 @@ export default function PooEditor() {
           { paddingTop: 80 },
         ]}
       >
-        <EditorTopBar></EditorTopBar>
+        <FightTopBar></FightTopBar>
         <PooCreature width={150}></PooCreature>
         <RoundedScrollView
           tabs={[
             {
-              icon: <PooBodyEditIcon size={35}></PooBodyEditIcon>,
-              content: <BodyEditorView></BodyEditorView>,
+              icon: <StatsIcons size={35}></StatsIcons>,
+              content: <StatsTab></StatsTab>,
             },
             {
-              icon: <PooHeadEditIcon size={35}></PooHeadEditIcon>,
+              icon: <PooUltiIcon size={35}></PooUltiIcon>,
               content: <></>,
-            },
-            {
-              icon: <PooFaceEditIcon size={35}></PooFaceEditIcon>,
-              content: <FaceEditorView></FaceEditorView>,
             },
           ]}
         ></RoundedScrollView>

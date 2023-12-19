@@ -1,13 +1,11 @@
 import { View, useWindowDimensions } from "react-native";
-import { style } from "../../utils/style-utils";
-import InputField from "../fields/InputField";
-import NumberField from "../fields/NumberField";
-import PooCoinIcon from "../icons/pooCoin";
-import PenIcon from "../icons/pen";
-import { StorageKeys } from "../../utils/storage-keys";
-import { useResourcesStore } from "../../stores/resources.store";
-import { usePooCreatureStore } from "../../stores/poo-creature.store";
-import useStorage from "../../hooks/use-storage";
+import { style } from "../../../common/utils/style-utils";
+import InputField from "../../../common/components/fields/InputField";
+import NumberField from "../../../common/components/fields/NumberField";
+import PooCoinIcon from "../../../common/components/icons/pooCoin";
+import PenIcon from "../../../common/components/icons/pen";
+import { useResourcesStore } from "../../../common/stores/resources.store";
+import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { useShallow } from "zustand/react/shallow";
 
 export default function EditorTopBar() {
@@ -15,7 +13,7 @@ export default function EditorTopBar() {
   const { pooCoins } = useResourcesStore(
     useShallow((state) => ({ stars: state.stars, pooCoins: state.pooCoins }))
   );
-  const { name, setName } = usePooCreatureStore();
+  const { name, setName } = usePooCreatureStyleStore();
 
   return (
     <View

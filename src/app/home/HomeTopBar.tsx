@@ -1,9 +1,9 @@
 import { View, useWindowDimensions } from "react-native";
-import { style } from "../../utils/style-utils";
-import NumberField from "../fields/NumberField";
-import StarIcon from "../icons/star";
-import PooCoinIcon from "../icons/pooCoin";
-import { useResourcesStore } from "../../stores/resources.store";
+import { style } from "../../common/utils/style-utils";
+import NumberField from "../../common/components/fields/NumberField";
+import StarIcon from "../../common/components/icons/star";
+import PooCoinIcon from "../../common/components/icons/pooCoin";
+import { useResourcesStore } from "../../common/stores/resources.store";
 import { useShallow } from "zustand/react/shallow";
 
 export default function HomeTopBar() {

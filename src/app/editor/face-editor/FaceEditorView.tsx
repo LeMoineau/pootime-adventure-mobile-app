@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import EditorColorSelector from "../body-editor/ColorSelector";
 import { style } from "../../../common/utils/style-utils";
-import { usePooCreatureStore } from "../../../common/stores/poo-creature.store";
+import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { ItemInStore } from "../../../common/types/itemInStore";
 import { useState } from "react";
 import ConfirmModal from "../../../common/components/modals/ConfirmModal";
@@ -13,7 +13,7 @@ import FaceSelector from "./FaceSelector";
 import { DefaultValues } from "../../../common/types/defaultValues";
 
 export default function FaceEditorView() {
-  const { setExpression } = usePooCreatureStore();
+  const { setExpression } = usePooCreatureStyleStore();
   const { spendPooCoin } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{

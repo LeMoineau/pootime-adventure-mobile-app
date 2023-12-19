@@ -13,7 +13,7 @@ type Store = {
   setExpression: (newExpression: string) => Promise<void>;
 };
 
-export const usePooCreatureStore = create<Store>((set) => {
+export const usePooCreatureStyleStore = create<Store>((set) => {
   const { getJson, saveItemInJson, saveJson } = useStorage();
 
   getJson(StorageKeys.POO_CREATURE_STYLE).then(async (json) => {

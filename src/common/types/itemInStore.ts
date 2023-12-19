@@ -42,5 +42,9 @@ export namespace ItemInStore {
     "https://bigstones.fr/pootime-adventure/expressions/reallyangry.png",
     "https://bigstones.fr/pootime-adventure/expressions/suspicious.png",
     "https://bigstones.fr/pootime-adventure/expressions/winkle.png",
+    {
+      uri: "https://bigstones.fr/pootime-adventure/expressions/monster.png",
+      price: 1000,
+    },
   ];
 }

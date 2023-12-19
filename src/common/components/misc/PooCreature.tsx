@@ -4,21 +4,21 @@ import React from "react";
 import PooFace from "../icons/poo/PooFace";
 import PooBody from "../icons/poo/PooBody";
 import { style } from "../../utils/style-utils";
+import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 
 export default function PooCreature({
-  expression,
-  bodyColor,
   width,
   height,
   ...props
 }: {
-  expression: string;
-  bodyColor: string;
   width?: number;
   height?: number;
 } & ViewProps) {
   const defaultWidth = 61.936;
   const defaultHeight = 90.068;
+
+  const { bodyColor, expression } = usePooCreatureStyleStore();
+
   return (
     <View
       style={[

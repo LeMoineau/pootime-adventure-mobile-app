@@ -40,7 +40,9 @@ export default function NumberField({
 
   return (
     <View {...props}>
-      <View style={[{ marginRight: 25 }]}>
+      <View
+        style={[{ marginRight: appendElement ? 25 : appendImage ? 25 : 0 }]}
+      >
         <View
           style={[
             style.shadowMd,

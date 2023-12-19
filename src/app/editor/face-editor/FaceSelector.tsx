@@ -1,5 +1,5 @@
 import PooCoinIcon from "../../../common/components/icons/pooCoin";
-import { usePooCreatureStore } from "../../../common/stores/poo-creature.store";
+import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { colors } from "../../../common/utils/color-utils";
 import { style } from "../../../common/utils/style-utils";
 import { Image, Pressable, Text, View } from "react-native";
@@ -13,7 +13,7 @@ export default function FaceSelector({
   uri: string;
   onRequestSelect?: (uri: string, price?: number) => void;
 } & EditSelectorProps) {
-  const { bodyColor } = usePooCreatureStore();
+  const { bodyColor } = usePooCreatureStyleStore();
   return (
     <EditSelector
       {...props}

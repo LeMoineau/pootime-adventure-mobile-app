@@ -1,14 +1,14 @@
 import { Animated, Text } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import ProgressBar from "../../../common/components/fields/ProgressBar";
-import { usePooCreatureStore } from "../../../common/stores/poo-creature.store";
+import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 
 export default function PooLabelOnIdle({
   scaleValue,
 }: {
   scaleValue: Animated.Value;
 }) {
-  const { name } = usePooCreatureStore();
+  const { name } = usePooCreatureStyleStore();
 
   return (
     <>

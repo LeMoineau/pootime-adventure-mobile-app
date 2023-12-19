@@ -4,6 +4,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { NavigationContainer } from "@react-navigation/native";
 import CustomTabBar from "../common/components/navigation/CustomTabBar";
 import PooEditor from "./editor/PooEditor";
+import PooFight from "./fight/PooFight";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -12,10 +13,10 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         tabBarPosition="bottom"
-        initialRouteName="Editor"
+        initialRouteName="Battle"
         tabBar={(props) => <CustomTabBar {...props} />}
       >
-        <Tab.Screen name="Battle" component={Home} />
+        <Tab.Screen name="Battle" component={PooFight} />
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Editor" component={PooEditor} />
       </Tab.Navigator>

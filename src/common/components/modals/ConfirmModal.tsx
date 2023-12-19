@@ -4,7 +4,7 @@ import StandardButton from "../buttons/StandardButton";
 import { colors } from "../../utils/color-utils";
 import StarIcon from "../icons/star";
 import PooCoinIcon from "../icons/pooCoin";
-import { usePooCreatureStore } from "../../stores/poo-creature.store";
+import { usePooCreatureStore } from "../../stores/poo-creature-style.store";
 import React from "react";
 
 export default function ConfirmModal({

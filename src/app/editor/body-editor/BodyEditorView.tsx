@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import ColorSelector from "./ColorSelector";
 import { style } from "../../../common/utils/style-utils";
-import { usePooCreatureStore } from "../../../common/stores/poo-creature.store";
+import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { ItemInStore } from "../../../common/types/itemInStore";
 import { useState } from "react";
 import ConfirmModal from "../../../common/components/modals/ConfirmModal";
@@ -11,7 +11,7 @@ import PooCoinIcon from "../../../common/components/icons/pooCoin";
 import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
 
 export default function BodyEditorView() {
-  const { setBodyColor } = usePooCreatureStore();
+  const { setBodyColor } = usePooCreatureStyleStore();
   const { spendPooCoin } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{

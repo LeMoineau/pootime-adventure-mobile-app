@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { DimensionValue, Text, View } from "react-native";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { style } from "../../utils/style-utils";
 
@@ -14,7 +14,7 @@ export default function ProgressBar({
 }: {
   max: number;
   current: number;
-  width?: number;
+  width?: DimensionValue;
   height?: number;
   progressColor?: string;
   showProgressText?: boolean;
@@ -24,10 +24,10 @@ export default function ProgressBar({
     <View {...props}>
       <View
         style={[
-          style.rounded,
+          style.roundedFull,
           style.overflowHidden,
           style.shadowMd,
-          { width: width ?? 150, height: height ?? 15, marginLeft: 15 },
+          { width: width ?? 150, height: height ?? 15 },
         ]}
       >
         <View
@@ -37,7 +37,7 @@ export default function ProgressBar({
           style={[
             style.wFull,
             style.hFull,
-            style.rounded,
+            style.roundedFull,
             {
               position: "absolute",
               top: 0,

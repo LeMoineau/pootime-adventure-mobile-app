@@ -4,7 +4,7 @@ import StandardButton from "../buttons/StandardButton";
 import { colors } from "../../utils/color-utils";
 import StarIcon from "../icons/star";
 import PooCoinIcon from "../icons/pooCoin";
-import { usePooCreatureStore } from "../../stores/poo-creature.store";
+import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 
 export default function RewardModal({
   starEarn,
@@ -14,7 +14,7 @@ export default function RewardModal({
   starEarn: number;
   pooCoinEarn: number;
 } & ModalProps) {
-  const { name } = usePooCreatureStore();
+  const { name } = usePooCreatureStyleStore();
   return (
     <Modal animationType="slide" transparent {...props}>
       <View

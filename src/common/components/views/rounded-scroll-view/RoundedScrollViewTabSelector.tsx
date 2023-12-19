@@ -1,8 +1,8 @@
-import { colors } from "../../../common/utils/color-utils";
+import { colors } from "../../../utils/color-utils";
 import React from "react";
 import { Pressable } from "react-native";
 
-export default function EditorTabSelectorButton({
+export default function RoundedScrollViewTabSelector({
   tabSelected,
   tabAssign,
   onPress,

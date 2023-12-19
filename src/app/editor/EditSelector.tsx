@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import { colors } from "../../common/utils/color-utils";
 import PooCoinIcon from "../../common/components/icons/pooCoin";
