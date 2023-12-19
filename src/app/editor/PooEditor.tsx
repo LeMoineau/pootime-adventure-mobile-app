@@ -1,38 +1,13 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-  useWindowDimensions,
-} from "react-native";
+import { SafeAreaView, View } from "react-native";
 import AnimatedBackground from "../../common/components/misc/AnimatedBackground";
 import { style } from "../../common/utils/style-utils";
-import NumberField from "../../common/components/fields/NumberField";
-import StarIcon from "../../common/components/icons/star";
-import PooCoinIcon from "../../common/components/icons/pooCoin";
-import PooCreatureButton from "../../common/components/poo-creature/PooCreatureManager";
-import { useResourcesStore } from "../../common/stores/resources.store";
-import { useShallow } from "zustand/react/shallow";
-import InputField from "../../common/components/fields/InputField";
 import { usePooCreatureStore } from "../../common/stores/poo-creature.store";
-import PenIcon from "../../common/components/icons/pen";
-import useStorage from "../../common/hooks/use-storage";
-import { StorageKeys } from "../../common/utils/storage-keys";
 import EditorTopBar from "../../common/components/navigation/EditorTopBar";
 import PooCreature from "../../common/components/misc/PooCreature";
-import SmileExpression from "../../common/components/icons/expressions/SmileExpression";
-import { colors } from "../../common/utils/color-utils";
-import PooBody from "../../common/components/icons/poo/PooBody";
-import PooFace from "../../common/components/icons/poo/PooFace";
-import PooHead from "../../common/components/icons/poo/PooHead";
-import PooBodyEditIcon from "../../common/components/icons/pooBodyEdit";
-import PooHeadEditIcon from "../../common/components/icons/pooHeadEdit";
-import PooFaceEditIcon from "../../common/components/icons/pooFaceEdit";
 import EditorScrollView from "./EditorScrollView";
-import FaceEditorView from "./face-editor/FaceEditorView";
 
 export default function PooEditor() {
-  const { bodyColor } = usePooCreatureStore();
+  const { bodyColor, expression } = usePooCreatureStore();
   return (
     <SafeAreaView style={[style.wFull, style.hFull]}>
       <AnimatedBackground
@@ -51,9 +26,7 @@ export default function PooEditor() {
         <EditorTopBar></EditorTopBar>
         <PooCreature
           bodyColor={bodyColor}
-          expression={
-            "https://bigstones.fr/pootime-adventure/expressions/siffle.png"
-          }
+          expression={expression}
           width={150}
         ></PooCreature>
         <EditorScrollView></EditorScrollView>

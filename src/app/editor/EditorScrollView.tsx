@@ -1,11 +1,11 @@
 import { useState } from "react";
-import PooBodyEditIcon from "./../../common/components/icons/pooBodyEdit";
-import PooFaceEditIcon from "./../../common/components/icons/pooFaceEdit";
-import PooHeadEditIcon from "./../../common/components/icons/pooHeadEdit";
-import { colors } from "./../../common/utils/color-utils";
-import { style } from "./../../common/utils/style-utils";
+import PooBodyEditIcon from "../../common/components/icons/pooBodyEdit";
+import PooFaceEditIcon from "../../common/components/icons/pooFaceEdit";
+import PooHeadEditIcon from "../../common/components/icons/pooHeadEdit";
+import { colors } from "../../common/utils/color-utils";
+import { style } from "../../common/utils/style-utils";
 import { Pressable, ScrollView, View } from "react-native";
-import EditorTabSelectorButton from "./EditorTabSelectorButton";
+import EditorTabSelectorButton from "./navigation/EditorTabSelectorButton";
 import BodyEditorView from "./body-editor/BodyEditorView";
 import FaceEditorView from "./face-editor/FaceEditorView";
 

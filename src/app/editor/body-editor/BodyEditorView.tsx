@@ -67,9 +67,9 @@ export default function BodyEditorView() {
         visible={showConfirmModal}
         onRequestClose={() => setShowConfirmModal(false)}
         onConfirm={async () => {
-          spendPooCoin(currentTrade.price, () => {
-            setBodyColor(currentTrade.color);
-            unlockBodyColors(currentTrade.color);
+          spendPooCoin(currentTrade.price, async () => {
+            await setBodyColor(currentTrade.color);
+            await unlockBodyColors(currentTrade.color);
           });
           setCurrentTrade({ color: colors.baseBodyColor, price: 0 });
         }}

@@ -1,13 +1,13 @@
 import { Animated, Text } from "react-native";
-import { style } from "../../utils/style-utils";
-import TimerField from "../fields/TimerField";
-import RewardModal from "../modals/RewardModal";
+import { style } from "../../../common/utils/style-utils";
+import TimerField from "../../../common/components/fields/TimerField";
+import RewardModal from "../../../common/components/modals/RewardModal";
 import { useState } from "react";
-import usePooCurve from "../../hooks/use-poo-curve";
-import { useResourcesStore } from "../../stores/resources.store";
+import usePooCurve from "../../../common/hooks/use-poo-curve";
+import { useResourcesStore } from "../../../common/stores/resources.store";
 import { useShallow } from "zustand/react/shallow";
-import useStorage from "../../hooks/use-storage";
-import { StorageKeys } from "../../utils/storage-keys";
+import useStorage from "../../../common/hooks/use-storage";
+import { StorageKeys } from "../../../common/utils/storage-keys";
 
 export default function PooLabelOnTimer({
   scaleValue,
@@ -91,8 +91,8 @@ export default function PooLabelOnTimer({
         starEarn={starEarn}
         pooCoinEarn={pooCoinEarn}
         onRequestClose={async () => {
-          await earnStar(1);
-          await earnPooCoin(100);
+          await earnStar(5);
+          await earnPooCoin(1000);
           toggleShowRewardModal(false);
         }}
       ></RewardModal>

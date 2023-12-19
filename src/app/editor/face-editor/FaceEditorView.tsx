@@ -10,16 +10,17 @@ import { useResourcesStore } from "../../../common/stores/resources.store";
 import PooCoinIcon from "../../../common/components/icons/pooCoin";
 import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
 import FaceSelector from "./FaceSelector";
+import { DefaultValues } from "../../../common/types/defaultValues";
 
 export default function FaceEditorView() {
-  const { setBodyColor } = usePooCreatureStore();
+  const { setExpression } = usePooCreatureStore();
   const { spendPooCoin } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{
-    color: string;
+    expression: string;
     price: number;
-  }>({ color: colors.baseBodyColor, price: 0 });
-  const { bodyColorsUnlocked, unlockBodyColors } = useItemsUnlockedStore();
+  }>({ expression: DefaultValues.PooFace, price: 0 });
+  const { expressionUnlocked, unlockExpression } = useItemsUnlockedStore();
 
   return (
     <>
@@ -34,15 +35,35 @@ export default function FaceEditorView() {
       >
         {ItemInStore.expressions.map((item, index) => {
           if (typeof item === "string") {
-            return <FaceSelector uri={item} key={index}></FaceSelector>;
-          } else if (bodyColorsUnlocked.includes(item.uri)) {
-            return <></>;
+            return (
+              <FaceSelector
+                uri={item}
+                key={index}
+                onRequestSelect={async (u) => {
+                  await setExpression(u);
+                }}
+              ></FaceSelector>
+            );
+          } else if (expressionUnlocked.includes(item.uri)) {
+            return (
+              <FaceSelector
+                uri={item.uri}
+                key={index}
+                onRequestSelect={async (u) => {
+                  await setExpression(u);
+                }}
+              ></FaceSelector>
+            );
           } else {
             return (
               <FaceSelector
                 uri={item.uri}
                 price={item.price}
                 key={index}
+                onRequestSelect={(e, p) => {
+                  p && setCurrentTrade({ expression: e, price: p });
+                  setShowConfirmModal(true);
+                }}
               ></FaceSelector>
             );
           }
@@ -52,11 +73,11 @@ export default function FaceEditorView() {
         visible={showConfirmModal}
         onRequestClose={() => setShowConfirmModal(false)}
         onConfirm={async () => {
-          spendPooCoin(currentTrade.price, () => {
-            setBodyColor(currentTrade.color);
-            unlockBodyColors(currentTrade.color);
+          spendPooCoin(currentTrade.price, async () => {
+            await setExpression(currentTrade.expression);
+            await unlockExpression(currentTrade.expression);
           });
-          setCurrentTrade({ color: colors.baseBodyColor, price: 0 });
+          setCurrentTrade({ expression: DefaultValues.PooFace, price: 0 });
         }}
       >
         <View
@@ -69,12 +90,8 @@ export default function FaceEditorView() {
         >
           <Text>Voulez-vous dépenser {currentTrade.price} </Text>
           <PooCoinIcon></PooCoinIcon>
-          <Text> pour la couleur </Text>
-          <EditorColorSelector
-            color={currentTrade.color}
-            size={25}
-          ></EditorColorSelector>
-          <Text>({currentTrade.color})</Text>
+          <Text> pour le visage </Text>
+          <FaceSelector uri={currentTrade.expression} size={40}></FaceSelector>
         </View>
       </ConfirmModal>
     </>

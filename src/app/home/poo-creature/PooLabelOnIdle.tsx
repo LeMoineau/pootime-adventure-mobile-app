@@ -1,7 +1,7 @@
 import { Animated, Text } from "react-native";
-import { style } from "../../utils/style-utils";
-import ProgressBar from "../fields/ProgressBar";
-import { usePooCreatureStore } from "../../stores/poo-creature.store";
+import { style } from "../../../common/utils/style-utils";
+import ProgressBar from "../../../common/components/fields/ProgressBar";
+import { usePooCreatureStore } from "../../../common/stores/poo-creature.store";
 
 export default function PooLabelOnIdle({
   scaleValue,

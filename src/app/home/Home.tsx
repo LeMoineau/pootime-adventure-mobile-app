@@ -1,8 +1,8 @@
 import { SafeAreaView, View } from "react-native";
-import { style } from "../common/utils/style-utils";
-import AnimatedBackground from "../common/components/misc/AnimatedBackground";
-import PooCreatureButton from "../common/components/poo-creature/PooCreatureManager";
-import HomeTopBar from "../common/components/navigation/HomeTopBar";
+import { style } from "../../common/utils/style-utils";
+import AnimatedBackground from "../../common/components/misc/AnimatedBackground";
+import PooCreatureButton from "./poo-creature/PooCreatureManager";
+import HomeTopBar from "../../common/components/navigation/HomeTopBar";
 
 export default function Home() {
   return (

@@ -37,6 +37,25 @@ const useStorage = () => {
     }
   };
 
+  const addItemInObjectInJson = async (
+    key: string,
+    keyObject: string,
+    keyItem: string,
+    valueItem: string | number | boolean | JSONObject
+  ) => {
+    const json = await getJson(key);
+    if (json) {
+      if (!Object.keys(json).includes(keyObject)) {
+        await saveItemInJson(key, keyObject, {});
+      }
+      await saveItemInJson(
+        key,
+        keyObject,
+        Object.assign(json[keyObject], { [keyItem]: valueItem })
+      );
+    }
+  };
+
   const getString = async (key: string): Promise<string | null> => {
     try {
       return await AsyncStorage.getItem(key);
@@ -67,6 +86,7 @@ const useStorage = () => {
     saveBoolean,
     saveJson,
     saveItemInJson,
+    addItemInObjectInJson,
     getString,
     getNumber,
     getBoolean,

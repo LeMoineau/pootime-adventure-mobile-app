@@ -35,5 +35,12 @@ export namespace ItemInStore {
     },
     "https://bigstones.fr/pootime-adventure/expressions/gossip.png",
     "https://bigstones.fr/pootime-adventure/expressions/boring.png",
+    "https://bigstones.fr/pootime-adventure/expressions/afraid.png",
+    "https://bigstones.fr/pootime-adventure/expressions/bigeyes.png",
+    "https://bigstones.fr/pootime-adventure/expressions/bigsmile.png",
+    "https://bigstones.fr/pootime-adventure/expressions/happy.png",
+    "https://bigstones.fr/pootime-adventure/expressions/reallyangry.png",
+    "https://bigstones.fr/pootime-adventure/expressions/suspicious.png",
+    "https://bigstones.fr/pootime-adventure/expressions/winkle.png",
   ];
 }

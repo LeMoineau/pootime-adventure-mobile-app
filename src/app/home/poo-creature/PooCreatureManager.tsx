@@ -4,18 +4,21 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import PooCreature from "../misc/PooCreature";
-import SmileExpression from "../icons/expressions/SmileExpression";
-import { style } from "../../utils/style-utils";
+import PooCreature from "../../../common/components/misc/PooCreature";
+import SmileExpression from "../../../common/components/icons/expressions/SmileExpression";
+import { style } from "../../../common/utils/style-utils";
 import { useEffect, useState } from "react";
-import ClockCircularProgress from "../fields/ClockCircularProgress";
+import ClockCircularProgress from "../../../common/components/fields/ClockCircularProgress";
 import PooLabelOnTimer from "./PooLabelOnTimer";
 import PooLabelOnIdle from "./PooLabelOnIdle";
+import { usePooCreatureStore } from "../../../common/stores/poo-creature.store";
+import { DefaultValues } from "../../../common/types/defaultValues";
 
 export default function PooCreatureButton() {
   const { width } = useWindowDimensions();
   const [isPlaying, setIsPlaying] = useState(false);
   const scaleValue = new Animated.Value(0);
+  const { bodyColor, expression } = usePooCreatureStore();
 
   const showTimerAnim = Animated.spring(scaleValue, {
     toValue: 1,
@@ -66,10 +69,8 @@ export default function PooCreatureButton() {
           >
             <PooCreature
               width={(width * 1.7) / 3}
-              bodyColor="#e5e3b3"
-              expression={
-                "https://bigstones.fr/pootime-adventure/expressions/siffle.png"
-              }
+              bodyColor={bodyColor}
+              expression={expression}
             ></PooCreature>
           </Animated.View>
           <Animated.View

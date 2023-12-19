@@ -1,5 +1,5 @@
 import * as React from "react";
-import Home from "./Home";
+import Home from "./home/Home";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import CustomTabBar from "../common/components/navigation/CustomTabBar";
