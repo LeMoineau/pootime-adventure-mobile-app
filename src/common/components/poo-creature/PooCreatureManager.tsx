@@ -67,7 +67,9 @@ export default function PooCreatureButton() {
             <PooCreature
               width={(width * 1.7) / 3}
               bodyColor="#e5e3b3"
-              expression={<SmileExpression></SmileExpression>}
+              expression={
+                "https://bigstones.fr/pootime-adventure/expressions/siffle.png"
+              }
             ></PooCreature>
           </Animated.View>
           <Animated.View

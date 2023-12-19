@@ -6,7 +6,8 @@ import { colors } from "./../../common/utils/color-utils";
 import { style } from "./../../common/utils/style-utils";
 import { Pressable, ScrollView, View } from "react-native";
 import EditorTabSelectorButton from "./EditorTabSelectorButton";
-import BodyEditorView from "./BodyEditorView";
+import BodyEditorView from "./body-editor/BodyEditorView";
+import FaceEditorView from "./face-editor/FaceEditorView";
 
 export default function EditorScrollView() {
   const [tabSelected, setTabSelected] = useState<number>(0);
@@ -58,6 +59,7 @@ export default function EditorScrollView() {
         ></EditorTabSelectorButton>
       </View>
       {tabSelected === 0 && <BodyEditorView></BodyEditorView>}
+      {tabSelected === 2 && <FaceEditorView></FaceEditorView>}
     </ScrollView>
   );
 }

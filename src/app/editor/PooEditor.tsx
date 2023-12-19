@@ -29,6 +29,7 @@ import PooBodyEditIcon from "../../common/components/icons/pooBodyEdit";
 import PooHeadEditIcon from "../../common/components/icons/pooHeadEdit";
 import PooFaceEditIcon from "../../common/components/icons/pooFaceEdit";
 import EditorScrollView from "./EditorScrollView";
+import FaceEditorView from "./face-editor/FaceEditorView";
 
 export default function PooEditor() {
   const { bodyColor } = usePooCreatureStore();
@@ -50,7 +51,9 @@ export default function PooEditor() {
         <EditorTopBar></EditorTopBar>
         <PooCreature
           bodyColor={bodyColor}
-          expression={<SmileExpression></SmileExpression>}
+          expression={
+            "https://bigstones.fr/pootime-adventure/expressions/siffle.png"
+          }
           width={150}
         ></PooCreature>
         <EditorScrollView></EditorScrollView>

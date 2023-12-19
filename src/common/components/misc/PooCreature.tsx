@@ -1,4 +1,4 @@
-import { View, ViewProps } from "react-native";
+import { Image, View, ViewProps } from "react-native";
 import PooHead from "../icons/poo/PooHead";
 import React from "react";
 import PooFace from "../icons/poo/PooFace";
@@ -12,7 +12,7 @@ export default function PooCreature({
   height,
   ...props
 }: {
-  expression: React.ReactNode;
+  expression: string;
   bodyColor: string;
   width?: number;
   height?: number;
@@ -47,7 +47,10 @@ export default function PooCreature({
           { position: "absolute", top: 0, left: 0 },
         ]}
       >
-        {expression}
+        <Image
+          source={{ uri: expression }}
+          style={{ width: "100%", height: "100%" }}
+        ></Image>
       </View>
     </View>
   );

@@ -1,16 +1,14 @@
 import { Text, View } from "react-native";
-import EditorColorSelector from "./EditorColorSelector";
-import { style } from "./../../common/utils/style-utils";
-import { usePooCreatureStore } from "../../common/stores/poo-creature.store";
-import { bodyColors } from "../../common/types/bodyColors";
+import ColorSelector from "./ColorSelector";
+import { style } from "../../../common/utils/style-utils";
+import { usePooCreatureStore } from "../../../common/stores/poo-creature.store";
+import { ItemInStore } from "../../../common/types/itemInStore";
 import { useState } from "react";
-import ConfirmModal from "../../common/components/modals/ConfirmModal";
-import { colors } from "../../common/utils/color-utils";
-import { useResourcesStore } from "../../common/stores/resources.store";
-import PooCoinIcon from "../../common/components/icons/pooCoin";
-import useStorage from "../../common/hooks/use-storage";
-import { StorageKeys } from "../../common/utils/storage-keys";
-import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store";
+import ConfirmModal from "../../../common/components/modals/ConfirmModal";
+import { colors } from "../../../common/utils/color-utils";
+import { useResourcesStore } from "../../../common/stores/resources.store";
+import PooCoinIcon from "../../../common/components/icons/pooCoin";
+import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
 
 export default function BodyEditorView() {
   const { setBodyColor } = usePooCreatureStore();
@@ -33,26 +31,26 @@ export default function BodyEditorView() {
           { flexWrap: "wrap", padding: 10 },
         ]}
       >
-        {bodyColors.map((item, index) => {
+        {ItemInStore.bodyColors.map((item, index) => {
           if (typeof item === "string") {
             return (
-              <EditorColorSelector
+              <ColorSelector
                 color={item}
                 key={index}
                 onRequestSelect={setBodyColor}
-              ></EditorColorSelector>
+              ></ColorSelector>
             );
           } else if (bodyColorsUnlocked.includes(item.color)) {
             return (
-              <EditorColorSelector
+              <ColorSelector
                 color={item.color}
                 key={index}
                 onRequestSelect={setBodyColor}
-              ></EditorColorSelector>
+              ></ColorSelector>
             );
           } else {
             return (
-              <EditorColorSelector
+              <ColorSelector
                 color={item.color}
                 price={item.price}
                 key={index}
@@ -60,7 +58,7 @@ export default function BodyEditorView() {
                   p && setCurrentTrade({ color: c, price: p });
                   setShowConfirmModal(true);
                 }}
-              ></EditorColorSelector>
+              ></ColorSelector>
             );
           }
         })}
@@ -87,10 +85,7 @@ export default function BodyEditorView() {
           <Text>Voulez-vous dépenser {currentTrade.price} </Text>
           <PooCoinIcon></PooCoinIcon>
           <Text> pour la couleur </Text>
-          <EditorColorSelector
-            color={currentTrade.color}
-            size={25}
-          ></EditorColorSelector>
+          <ColorSelector color={currentTrade.color} size={25}></ColorSelector>
           <Text>({currentTrade.color})</Text>
         </View>
       </ConfirmModal>
