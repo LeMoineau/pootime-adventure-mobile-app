@@ -17,6 +17,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   const { getJson, addItemInObjectInJson, saveJson } = useStorage();
 
   getJson(StorageKeys.ITEMS_UNLOCKED).then(async (json) => {
+    await saveDefaultValues();
     if (json) {
       loadUnlockedItems(json as DataInStorage.ItemsUnlocked);
     } else {
