@@ -10,23 +10,16 @@ export default function StatsTips() {
         style.flexWrap,
         style.justifyCenter,
         style.itemsCenter,
-        { width: "100%" },
+        { width: "100%", marginTop: 10 },
       ]}
     >
-      <Text
-        style={[
-          style.textBold,
-          style.textMd,
-          style.textCenter,
-          { width: "100%", marginTop: 10 },
-        ]}
-      >
-        Tips :
+      <Text style={[style.textBold, style.textSm, style.textCenter]}>
+        Tips :{" "}
       </Text>
-      <Text style={[style.textMd]}>Vous avez besoin de</Text>
-      <Text style={[style.textBold, style.textMd]}> 1 </Text>
+      <Text style={[style.textSm]}>Vous avez besoin de</Text>
+      <Text style={[style.textBold, style.textSm]}> 1 </Text>
       <StarIcon></StarIcon>
-      <Text style={[style.textMd]}> pour améliorer une statistique !</Text>
+      <Text style={[style.textSm]}> pour améliorer une statistique !</Text>
     </View>
   );
 }

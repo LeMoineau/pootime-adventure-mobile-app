@@ -26,88 +26,96 @@ export default function UltiView({
   const { stars } = useResourcesStore();
 
   return (
-    <View
-      style={[
-        style.borderBottom,
-        style.flexRow,
-        style.itemsCenter,
-        {
-          flex: 1,
-          justifyContent: "space-between",
-          paddingVertical: 20,
-          paddingHorizontal: 10,
-        },
-      ]}
-    >
-      <View>{icon}</View>
-      <View style={{ flex: 1, paddingHorizontal: 20 }}>
-        <Text style={[style.textBold, {}]}>{title}</Text>
-        <Text>{desc}</Text>
-        <View
-          style={[
-            style.wFull,
-            style.flexRow,
-            style.flexWrap,
-            style.border,
-            style.roundedSm,
-            { marginTop: 10, backgroundColor: colors.gray[50], padding: 5 },
-          ]}
-        >
-          {Object.keys(details).map((key, index) => {
-            return (
-              <View key={index} style={[{ width: "50%" }]}>
-                <Text>
-                  {key} {details[key]}
-                </Text>
-              </View>
-            );
-          })}
-        </View>
-      </View>
-      <Pressable
-        onPress={() => onPress(title)}
+    <Pressable onPress={() => onPress(title)}>
+      <View
         style={[
-          style.hFull,
-          style.flexRow,
-          style.justifyCenter,
-          style.itemsCenter,
-          style.rounded,
-          style.shadowMd,
+          style.borderBottom,
           {
-            backgroundColor: !unlocked
-              ? stars >= price
-                ? colors.teal[400]
-                : colors.gray[400]
-              : selected
-              ? colors.teal[400]
-              : colors.white,
-            paddingHorizontal: 10,
-            minWidth: 50,
+            paddingVertical: 20,
+            paddingHorizontal: 20,
+            backgroundColor: selected ? colors.blue[400] : colors.white,
           },
         ]}
       >
-        {!unlocked ? (
-          <>
-            <Text
-              style={[style.textBold, style.textMd, { color: colors.white }]}
-            >
-              {price}{" "}
-            </Text>
-            <StarIcon></StarIcon>
-          </>
-        ) : (
-          <>
+        <View
+          style={[
+            style.flexRow,
+            style.itemsCenter,
+            {
+              flex: 1,
+              justifyContent: "space-between",
+            },
+          ]}
+        >
+          <View style={[style.flexCol, style.justifyCenter, style.itemsCenter]}>
+            <View>{icon}</View>
+          </View>
+          <View style={{ flex: 1, paddingLeft: 20 }}>
             <Text
               style={[
                 style.textBold,
                 { color: selected ? colors.white : colors.black },
               ]}
             >
-              {selected ? "Selected" : "Select"}
+              {title}
             </Text>
-          </>
-        )}
-      </Pressable>
-    </View>
+            <Text
+              style={[
+                style.textSm,
+                {
+                  textAlign: "justify",
+                  color: selected ? colors.white : colors.black,
+                },
+              ]}
+            >
+              {desc}
+            </Text>
+            <View
+              style={[
+                style.wFull,
+                style.flexRow,
+                style.flexWrap,
+                style.border,
+                style.roundedSm,
+                { marginTop: 10, backgroundColor: colors.gray[50], padding: 5 },
+              ]}
+            >
+              {Object.keys(details).map((key, index) => {
+                return (
+                  <View key={index} style={[{ width: "50%" }]}>
+                    <Text>
+                      {key} {details[key]}
+                    </Text>
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+        </View>
+      </View>
+      {!unlocked && (
+        <View
+          style={[
+            style.wFull,
+            style.hFull,
+            style.flexRow,
+            style.justifyCenter,
+            style.itemsCenter,
+            {
+              position: "absolute",
+              top: 0,
+              left: 0,
+              padding: 20,
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+            },
+          ]}
+        >
+          <Text style={[style.textBold, style.textMd, { color: colors.white }]}>
+            Unlock for {price}{" "}
+          </Text>
+          <StarIcon></StarIcon>
+        </View>
+      )}
+    </Pressable>
   );
 }
