@@ -1,4 +1,4 @@
-import { Image, ImageProps } from "react-native";
+import { Image, ImageProps, ImageSourcePropType } from "react-native";
 
 export default function IconFromImage({
   uri,
@@ -6,17 +6,18 @@ export default function IconFromImage({
   width,
   height,
   ...props
-}: {
-  uri: string;
-  size?: number;
-  width?: number;
-  height?: number;
-} & ImageProps) {
+}: Omit<
+  {
+    uri: string;
+    size?: number;
+    width?: number;
+    height?: number;
+  } & ImageProps,
+  "source"
+>) {
   return (
     <Image
-      source={{
-        uri: uri,
-      }}
+      source={{ uri: uri }}
       style={{ width: size ?? width ?? 50, height: size ?? height ?? 35 }}
       resizeMode="contain"
       {...props}

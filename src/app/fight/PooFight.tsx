@@ -8,6 +8,7 @@ import StatsTab from "./tabs/StatsTab";
 import StatsIcons from "../../common/components/icons/stats";
 import PooUltiIcon from "../../common/components/icons/pooUlti";
 import UltiTab from "./tabs/UltiTab";
+import IconFromImage from "../../common/components/icons/IconFromImage";
 
 export default function PooFight() {
   return (
@@ -40,13 +41,7 @@ export default function PooFight() {
             },
             {
               icon: (
-                <Image
-                  source={{
-                    uri: "https://bigstones.fr/pootime-adventure/poofight.png",
-                  }}
-                  style={{ width: 50, height: 35 }}
-                  resizeMode="contain"
-                ></Image>
+                <IconFromImage uri="https://bigstones.fr/pootime-adventure/poofight.png"></IconFromImage>
               ),
               content: <></>,
             },
