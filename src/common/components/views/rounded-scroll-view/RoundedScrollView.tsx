@@ -14,7 +14,7 @@ export default function RoundedScrollView({
   const [tabSelected, setTabSelected] = useState<number>(defaultTab ?? 0);
 
   return (
-    <ScrollView
+    <View
       style={[
         style.wFull,
         style.shadowMd,
@@ -53,10 +53,10 @@ export default function RoundedScrollView({
       {tabs.map((tab, index) => {
         return (
           tabSelected === index && (
-            <View key={`tab-${index}`}>{tab.content}</View>
+            <ScrollView key={`tab-${index}`}>{tab.content}</ScrollView>
           )
         );
       })}
-    </ScrollView>
+    </View>
   );
 }

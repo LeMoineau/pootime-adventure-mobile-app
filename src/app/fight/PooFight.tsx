@@ -10,6 +10,7 @@ import PooUltiIcon from "../../common/components/icons/pooUlti";
 import UltiTab from "./tabs/UltiTab";
 import IconFromImage from "../../common/components/icons/IconFromImage";
 import BattleTab from "./tabs/BattleTab";
+import StandardButton from "../../common/components/buttons/StandardButton";
 
 export default function PooFight() {
   return (
@@ -29,6 +30,7 @@ export default function PooFight() {
       >
         <FightTopBar></FightTopBar>
         <PooCreature width={150}></PooCreature>
+        <StandardButton>Battle</StandardButton>
         <RoundedScrollView
           defaultTab={2}
           tabs={[

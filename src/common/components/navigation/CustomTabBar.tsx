@@ -35,6 +35,7 @@ export default function CustomTabBar({
         style.justifyCenter,
         style.itemsCenter,
         {
+          width: "100%",
           height: 70,
           backgroundColor: "#FFE5A3",
         },
