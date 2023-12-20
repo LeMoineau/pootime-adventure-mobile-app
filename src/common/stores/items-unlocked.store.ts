@@ -7,8 +7,10 @@ import { DataInStorage } from "../types/dataInStorage";
 type Store = {
   bodyColorsUnlocked: string[];
   expressionUnlocked: string[];
+  ultiUnlocked: string[];
   unlockBodyColors: (color: string) => Promise<void>;
   unlockExpression: (expression: string) => Promise<void>;
+  unlockUlti: (ulti: string) => Promise<void>;
 };
 
 export const useItemsUnlockedStore = create<Store>((set, get) => {
@@ -26,6 +28,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     set({
       bodyColorsUnlocked: Object.keys(itemsUnlocked.bodyColors),
       expressionUnlocked: Object.keys(itemsUnlocked.expressions),
+      ultiUnlocked: Object.keys(itemsUnlocked.ultis),
     });
   };
 
@@ -33,6 +36,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     await saveJson(StorageKeys.ITEMS_UNLOCKED, {
       bodyColors: {},
       expressions: {},
+      ultis: {},
     } as DataInStorage.ItemsUnlocked);
   };
 
@@ -72,10 +76,27 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     );
   };
 
+  const unlockUlti = async (ulti: string) => {
+    if (get().ultiUnlocked.includes(ulti)) {
+      return;
+    }
+    set((state) => ({
+      ultiUnlocked: ArrayUtils.pushAndReturn(state.ultiUnlocked, ulti),
+    }));
+    await addItemInObjectInJson(
+      StorageKeys.ITEMS_UNLOCKED,
+      "ultis",
+      ulti,
+      true
+    );
+  };
+
   return {
     bodyColorsUnlocked: [],
     expressionUnlocked: [],
+    ultiUnlocked: [],
     unlockBodyColors,
     unlockExpression,
+    unlockUlti,
   };
 });

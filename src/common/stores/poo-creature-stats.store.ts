@@ -17,16 +17,15 @@ type Store = {
   resMana: number;
   recupMana: number;
   incrStat: (stat: StatType) => Promise<void>;
+  ultiSelected: string | null;
+  selectUlti: (ulti: string) => Promise<void>;
 };
 
 export const usePooCreatureStatsStore = create<Store>((set, get) => {
   const { getJson, saveItemInJson, saveJson } = useStorage();
 
   getJson(StorageKeys.POO_CREATURE_STATS).then(async (json) => {
-    await saveDefaultValues();
-
     if (json) {
-      console.log(json as JSONObject);
       loadSavedValues(json as DataInStorage.PooCreatureStats);
     } else {
       await saveDefaultValues();
@@ -43,6 +42,7 @@ export const usePooCreatureStatsStore = create<Store>((set, get) => {
       mana: stats.mana,
       resMana: stats.resMana,
       recupMana: stats.recupMana,
+      ultiSelected: stats.ultiSelected,
     });
   };
 
@@ -74,8 +74,15 @@ export const usePooCreatureStatsStore = create<Store>((set, get) => {
     );
   };
 
+  const selectUlti = async (ulti: string) => {
+    set({ ultiSelected: ulti });
+    await saveItemInJson(StorageKeys.POO_CREATURE_STATS, "ultiSelected", ulti);
+    console.log(await getJson(StorageKeys.POO_CREATURE_STATS));
+  };
+
   return {
     ...(DefaultValues.PooCreatureStats as Store),
     incrStat,
+    selectUlti,
   };
 });

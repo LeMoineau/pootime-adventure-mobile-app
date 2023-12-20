@@ -20,10 +20,12 @@ export namespace DataInStorage {
     mana: number;
     resMana: number;
     recupMana: number;
+    ultiSelected: string;
   }
 
   export interface ItemsUnlocked {
     bodyColors: { [color: string]: boolean };
     expressions: { [expression: string]: boolean };
+    ultis: { [ulti: string]: boolean };
   }
 }

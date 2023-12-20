@@ -1,4 +1,5 @@
 import { colors } from "../utils/color-utils";
+import { UltiType } from "./UltiType";
 
 export namespace ItemInStore {
   export const bodyColors: (string | { color: string; price: number })[] = [
@@ -45,6 +46,23 @@ export namespace ItemInStore {
     {
       uri: "https://bigstones.fr/pootime-adventure/expressions/monster.png",
       price: 1000,
+    },
+  ];
+
+  export const ultis: UltiType[] = [
+    {
+      title: "Porte Entrouverte",
+      desc: "Laisse vicieusement la porte entrouverte pour laisser s'échapper les mauvaises odeurs",
+      icon: "https://bigstones.fr/pootime-adventure/ulti/entrouporte.png",
+      details: { mana: 5, attaque: 20 },
+      price: 5,
+    },
+    {
+      title: "Hypnose Youtube",
+      desc: "Lance une vidéo Youtube et hypnose l'adversaire",
+      icon: "https://bigstones.fr/pootime-adventure/ulti/hypnoyt.png",
+      details: { mana: 20, stun: "2s" },
+      price: 40,
     },
   ];
 }

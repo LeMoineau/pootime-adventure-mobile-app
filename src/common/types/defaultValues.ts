@@ -23,6 +23,7 @@ export namespace DefaultValues {
     mana: Mana,
     resMana: ResMana,
     recupMana: RecupMana,
+    ultiSelected: "",
   };
   export const LevelMax = 20;
   export const ColorCurveSaturation = 100;
