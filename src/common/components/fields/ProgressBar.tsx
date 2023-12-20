@@ -49,24 +49,31 @@ export default function ProgressBar({
           ]}
         ></View>
         {showProgressText && (
-          <Text
+          <View
             style={[
               style.wFull,
               style.hFull,
               style.flexCol,
               style.justifyCenter,
               style.itemsCenter,
-              style.textShadowMd,
-              style.textBold,
               {
                 position: "absolute",
                 top: 0,
                 left: 0,
-                textAlign: "center",
-                color: colors.white,
               },
             ]}
-          >{`${current}/${max}`}</Text>
+          >
+            <Text
+              style={[
+                style.textShadowMd,
+                style.textBold,
+                {
+                  textAlign: "center",
+                  color: colors.white,
+                },
+              ]}
+            >{`${current}/${max}`}</Text>
+          </View>
         )}
       </View>
       {appendText && (

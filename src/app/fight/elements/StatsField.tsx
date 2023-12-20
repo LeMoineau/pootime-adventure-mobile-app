@@ -32,15 +32,23 @@ export default function StatsField({
           style.roundedFull,
           style.shadowMd,
           style.border,
+          style.flexRow,
+          style.justifyCenter,
+          style.itemsCenter,
           {
             flex: 1,
+            justifyContent: "space-between",
             backgroundColor: colors.gray[50],
             paddingVertical: 10,
             paddingHorizontal: 15,
           },
         ]}
       >
-        <Text style={[style.textBold, style.textMd, {}]}>{value}</Text>
+        <Text
+          style={[style.textBold, style.textMd, { flex: 1, paddingRight: 10 }]}
+        >
+          {value}
+        </Text>
         <Pressable
           onPress={() => {
             upgradeAvailable && onUpgrade && onUpgrade();
@@ -48,17 +56,12 @@ export default function StatsField({
           style={[
             style.rounded,
             style.border,
-            style.shadowMd,
             style.flexCol,
             style.justifyCenter,
             style.itemsCenter,
             {
-              position: "absolute",
-              right: 15,
-              top: "50%",
               width: 35,
               height: 35,
-              transform: [{ translateY: -17 }],
               backgroundColor: upgradeAvailable
                 ? colors.orange[400]
                 : colors.gray[200],

@@ -14,7 +14,6 @@ export default function CustomTabBar({
       image: {
         uri: "https://bigstones.fr/pootime-adventure/poofight.png",
       },
-      //   image: require("./../../../../assets/poofight.svg"),
     },
     {
       title: "Home",
@@ -36,6 +35,7 @@ export default function CustomTabBar({
         style.justifyCenter,
         style.itemsCenter,
         {
+          height: 70,
           backgroundColor: "#FFE5A3",
         },
       ]}

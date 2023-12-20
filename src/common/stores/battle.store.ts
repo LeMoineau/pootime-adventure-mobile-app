@@ -1,18 +1,21 @@
 import { create } from "zustand";
-import useStorage from "../hooks/use-storage";
-import { StorageKeys } from "../utils/storage-keys";
-import { ArrayUtils } from "../utils/array-utils";
-import { DataInStorage } from "../types/dataInStorage";
 import { Socket, io } from "socket.io-client";
+import { Config } from "../config/env";
 
 type Store = {
-  socket: Socket;
+  socket: Socket | null;
+  connect: () => void;
 };
 
 export const useBattleStore = create<Store>((set, get) => {
-  const { getJson, addItemInObjectInJson, saveJson } = useStorage();
+  const connect = () => {
+    set({
+      socket: io(Config.BATTLE_SERVER_URL!),
+    });
+  };
 
   return {
-    socket: io("http://localhost:3000"),
+    socket: null,
+    connect,
   };
 });

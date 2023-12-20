@@ -6,16 +6,16 @@ export default function BattleTab() {
   const { socket } = useBattleStore();
 
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log("connected!");
-    });
+    // socket.on("connect", () => {
+    //   console.log("connected!");
+    // });
   });
 
   return (
     <View>
       <Pressable
         onPress={() => {
-          socket.emit("coucou");
+          //   socket.emit("coucou");
         }}
       >
         <Text>coucou</Text>

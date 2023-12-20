@@ -3,6 +3,7 @@ import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
 import { ArrayUtils } from "../utils/array-utils";
 import { DataInStorage } from "../types/dataInStorage";
+import { DefaultValues } from "../types/defaultValues";
 
 type Store = {
   bodyColorsUnlocked: string[];
@@ -17,7 +18,6 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   const { getJson, addItemInObjectInJson, saveJson } = useStorage();
 
   getJson(StorageKeys.ITEMS_UNLOCKED).then(async (json) => {
-    await saveDefaultValues();
     if (json) {
       loadUnlockedItems(json as DataInStorage.ItemsUnlocked);
     } else {
@@ -26,6 +26,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   });
 
   const loadUnlockedItems = (itemsUnlocked: DataInStorage.ItemsUnlocked) => {
+    console.log(itemsUnlocked);
     set({
       bodyColorsUnlocked: Object.keys(itemsUnlocked.bodyColors),
       expressionUnlocked: Object.keys(itemsUnlocked.expressions),
