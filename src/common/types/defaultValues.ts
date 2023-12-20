@@ -24,4 +24,8 @@ export namespace DefaultValues {
     resMana: ResMana,
     recupMana: RecupMana,
   };
+  export const LevelMax = 20;
+  export const ColorCurveSaturation = 100;
+  export const ColorCurveLightnesse = 69;
+  export const PooHeadColor = "#c8a000";
 }

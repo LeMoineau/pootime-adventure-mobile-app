@@ -5,6 +5,8 @@ import PooFace from "../icons/poo/PooFace";
 import PooBody from "../icons/poo/PooBody";
 import { style } from "../../utils/style-utils";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
+import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
+import { MathUtils } from "../../utils/math-utils";
 
 export default function PooCreature({
   width,
@@ -18,6 +20,7 @@ export default function PooCreature({
   const defaultHeight = 90.068;
 
   const { bodyColor, expression } = usePooCreatureStyleStore();
+  const { level } = usePooCreatureStatsStore();
 
   return (
     <View
@@ -35,7 +38,10 @@ export default function PooCreature({
       {...props}
     >
       <PooBody fillColor={bodyColor}></PooBody>
-      <PooHead style={[{ position: "absolute", top: 0, left: 0 }]}></PooHead>
+      <PooHead
+        fillColor={MathUtils.calculateHeadColorFromLevel(level)}
+        style={[{ position: "absolute", top: 0, left: 0 }]}
+      ></PooHead>
       <PooFace
         fillColor={bodyColor}
         style={[{ position: "absolute", top: 0, left: 0 }]}

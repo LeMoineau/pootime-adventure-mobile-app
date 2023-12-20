@@ -73,4 +73,24 @@ export const style = StyleSheet.create({
     borderStyle: "solid",
     borderColor: colors.gray[200],
   },
+  borderTop: {
+    borderTopWidth: 1,
+    borderTopStyle: "solid",
+    borderTopColor: colors.gray[200],
+  },
+  borderBottom: {
+    borderBottomWidth: 1,
+    borderBottomStyle: "solid",
+    borderBottomColor: colors.gray[200],
+  },
+  borderLeft: {
+    borderLeftWidth: 1,
+    borderLeftStyle: "solid",
+    borderLeftColor: colors.gray[200],
+  },
+  borderRight: {
+    borderRightWidth: 1,
+    borderRightStyle: "solid",
+    borderRightColor: colors.gray[200],
+  },
 });

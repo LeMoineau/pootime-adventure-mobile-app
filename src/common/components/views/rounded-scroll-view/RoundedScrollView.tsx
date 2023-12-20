@@ -6,10 +6,12 @@ import RoundedScrollViewTabSelector from "./RoundedScrollViewTabSelector";
 
 export default function RoundedScrollView({
   tabs,
+  defaultTab,
 }: {
   tabs: { icon: React.ReactNode; content: React.ReactNode }[];
+  defaultTab?: number;
 }) {
-  const [tabSelected, setTabSelected] = useState<number>(0);
+  const [tabSelected, setTabSelected] = useState<number>(defaultTab ?? 0);
 
   return (
     <ScrollView

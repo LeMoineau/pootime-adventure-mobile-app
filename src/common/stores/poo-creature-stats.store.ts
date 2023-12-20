@@ -23,6 +23,8 @@ export const usePooCreatureStatsStore = create<Store>((set, get) => {
   const { getJson, saveItemInJson, saveJson } = useStorage();
 
   getJson(StorageKeys.POO_CREATURE_STATS).then(async (json) => {
+    await saveDefaultValues();
+
     if (json) {
       console.log(json as JSONObject);
       loadSavedValues(json as DataInStorage.PooCreatureStats);
