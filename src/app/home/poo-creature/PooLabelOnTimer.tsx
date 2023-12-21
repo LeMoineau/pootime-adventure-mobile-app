@@ -35,14 +35,15 @@ export default function PooLabelOnTimer({
           style.itemsCenter,
           style.shadowMd,
           {
-            position: "absolute",
-            top: 0,
-            left: 0,
             opacity: scaleValue,
             backgroundColor: "white",
             borderRadius: 100,
             marginTop: 25,
             paddingVertical: 10,
+            marginBottom: scaleValue.interpolate({
+              inputRange: [0, 1],
+              outputRange: [-50, 0],
+            }),
           },
         ]}
       >

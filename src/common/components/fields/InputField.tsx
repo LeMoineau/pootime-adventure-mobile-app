@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextInput, View } from "react-native";
+import { StyleProp, TextInput, View } from "react-native";
 import { style } from "../../utils/style-utils";
 import { colors } from "../../utils/color-utils";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
@@ -9,12 +9,16 @@ export default function InputField({
   placeholder,
   defaultValue,
   appendIcon,
+  paddingVertical,
+  paddingHorizontal,
   ...props
 }: {
   onChange?: (value: string) => void;
   placeholder?: string;
   defaultValue?: string;
   appendIcon?: React.ReactNode;
+  paddingVertical?: number;
+  paddingHorizontal?: number;
 } & ViewProps) {
   const [value, setValue] = useState(defaultValue ?? "");
   return (
@@ -25,11 +29,13 @@ export default function InputField({
           style.roundedFull,
           style.shadowMd,
           style.textMd,
+          style.border,
           {
-            height: 35,
+            height: paddingVertical ? "auto" : 35,
             fontWeight: "600",
             backgroundColor: colors.white,
-            paddingHorizontal: 15,
+            paddingHorizontal: paddingHorizontal ?? 15,
+            paddingVertical: paddingVertical ?? 0,
           },
         ]}
         onChangeText={(val) => {

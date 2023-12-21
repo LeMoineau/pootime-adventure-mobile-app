@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { style } from "../../utils/style-utils";
 import { useEffect, useState } from "react";
+import PooCoinIcon from "../icons/pooCoin";
 
 export default function AnimatedBackground({
   imageUri,
@@ -47,26 +48,11 @@ export default function AnimatedBackground({
     ).start();
   }, []);
 
-  const images = [
-    <Image
-      source={{ uri: imageUri }}
-      style={{
-        width: width + imageWidth,
-        height: height + imageHeight,
-        opacity: 0.2,
-      }}
-      resizeMode="repeat"
-    ></Image>,
-  ];
+  const images = [];
   // for (let i = 0; i < width / imageWidth + 1; i++) {
   //   for (let j = 0; j < height / imageHeight + 1; j++) {
   //     images.push(
-  //       <Image
-  //         source={{ uri: imageUri }}
-  //         width={imageWidth}
-  //         height={imageHeight}
-  //         style={{ opacity: 0.2 }}
-  //       ></Image>
+  //       <PooCoinIcon width={imageWidth} height={imageHeight}></PooCoinIcon>
   //     );
   //   }
   // }
@@ -108,6 +94,12 @@ export default function AnimatedBackground({
         }}
         resizeMode="repeat"
       ></Image>
+      {/* <View style={[style.flexRow, style.flexWrap, style.wFull, style.hFull]}>
+        {images.map((i, index) => {
+          return <View key={index}>{i}</View>;
+        })}
+      </View> */}
+
       <View
         style={{
           position: "absolute",

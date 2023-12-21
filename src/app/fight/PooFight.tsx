@@ -11,6 +11,8 @@ import UltiTab from "./tabs/UltiTab";
 import IconFromImage from "../../common/components/icons/IconFromImage";
 import BattleTab from "./tabs/BattleTab";
 import StandardButton from "../../common/components/buttons/StandardButton";
+import { colors } from "../../common/utils/color-utils";
+import FightButton from "../home/elements/FightButton";
 
 export default function PooFight() {
   return (
@@ -30,9 +32,8 @@ export default function PooFight() {
       >
         <FightTopBar></FightTopBar>
         <PooCreature width={150}></PooCreature>
-        <StandardButton>Battle</StandardButton>
         <RoundedScrollView
-          defaultTab={2}
+          defaultTab={0}
           tabs={[
             {
               icon: <StatsIcons size={35}></StatsIcons>,
@@ -41,12 +42,6 @@ export default function PooFight() {
             {
               icon: <PooUltiIcon size={35}></PooUltiIcon>,
               content: <UltiTab></UltiTab>,
-            },
-            {
-              icon: (
-                <IconFromImage uri="https://bigstones.fr/pootime-adventure/poofight.png"></IconFromImage>
-              ),
-              content: <BattleTab></BattleTab>,
             },
           ]}
         ></RoundedScrollView>

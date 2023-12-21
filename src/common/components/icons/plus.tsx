@@ -3,8 +3,9 @@ import Svg, { SvgProps, Path } from "react-native-svg";
 /* SVGR has dropped some elements not supported by react-native-svg: title */
 export default function PlusIcon({
   size,
+  strokeColor,
   ...props
-}: { size?: number } & SvgProps) {
+}: { size?: number; strokeColor?: string } & SvgProps) {
   return (
     <Svg
       width={size ?? 800}
@@ -14,7 +15,7 @@ export default function PlusIcon({
       {...props}
     >
       <Path
-        stroke="#000"
+        stroke={strokeColor ?? "#000"}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}
