@@ -11,10 +11,12 @@ import { MathUtils } from "../../utils/math-utils";
 export default function PooCreature({
   width,
   height,
+  behind,
   ...props
 }: {
   width?: number;
   height?: number;
+  behind?: boolean;
 } & ViewProps) {
   const defaultWidth = 61.936;
   const defaultHeight = 90.068;
@@ -40,24 +42,35 @@ export default function PooCreature({
       <PooBody fillColor={bodyColor}></PooBody>
       <PooHead
         fillColor={MathUtils.calculateHeadColorFromLevel(level)}
-        style={[{ position: "absolute", top: 0, left: 0 }]}
-      ></PooHead>
-      <PooFace
-        fillColor={bodyColor}
-        style={[{ position: "absolute", top: 0, left: 0 }]}
-      ></PooFace>
-      <View
         style={[
-          style.wFull,
-          style.hFull,
-          { position: "absolute", top: 0, left: 0 },
+          {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            transform: [{ rotateY: behind ? "180deg" : "0deg" }],
+          },
         ]}
-      >
-        <Image
-          source={{ uri: expression }}
-          style={{ width: "100%", height: "100%" }}
-        ></Image>
-      </View>
+      ></PooHead>
+      {!behind && (
+        <>
+          <PooFace
+            fillColor={bodyColor}
+            style={[{ position: "absolute", top: 0, left: 0 }]}
+          ></PooFace>
+          <View
+            style={[
+              style.wFull,
+              style.hFull,
+              { position: "absolute", top: 0, left: 0 },
+            ]}
+          >
+            <Image
+              source={{ uri: expression }}
+              style={{ width: "100%", height: "100%" }}
+            ></Image>
+          </View>
+        </>
+      )}
     </View>
   );
 }
