@@ -25,6 +25,7 @@ export namespace DataInStorage {
 
   export interface ItemsUnlocked {
     bodyColors: { [color: string]: boolean };
+    heads: { [head: string]: boolean };
     expressions: { [expression: string]: boolean };
     ultis: { [ulti: string]: boolean };
   }

@@ -28,6 +28,14 @@ export namespace ItemInStore {
     colors.black,
   ];
 
+  export const heads: (string | { name: string; price: number })[] = [
+    "classic",
+    {
+      name: "flower",
+      price: 500,
+    },
+  ];
+
   export const expressions: (string | { uri: string; price: number })[] = [
     "https://bigstones.fr/pootime-adventure/expressions/smile.png",
     {

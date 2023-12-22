@@ -9,6 +9,7 @@ import BodyEditorView from "./body-editor/BodyEditorView";
 import PooHeadEditIcon from "../../common/components/icons/pooHeadEdit";
 import PooFaceEditIcon from "../../common/components/icons/pooFaceEdit";
 import FaceEditorView from "./face-editor/FaceEditorView";
+import HeadEditorView from "./head-editor/HeadEditorView";
 
 export default function PooEditor() {
   return (
@@ -36,7 +37,7 @@ export default function PooEditor() {
             },
             {
               icon: <PooHeadEditIcon size={35}></PooHeadEditIcon>,
-              content: <></>,
+              content: <HeadEditorView></HeadEditorView>,
             },
             {
               icon: <PooFaceEditIcon size={35}></PooFaceEditIcon>,

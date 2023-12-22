@@ -4,6 +4,7 @@ import { JSONObject } from "./JSONObject";
 export namespace DefaultValues {
   export const PooCreatureName = "Mr. Poopoo";
   export const PooCreatureBodyColor = colors.baseBodyColor;
+  export const PooHead = "classic";
   export const PooFace =
     "https://bigstones.fr/pootime-adventure/expressions/smile.png";
   export const Level = 1;

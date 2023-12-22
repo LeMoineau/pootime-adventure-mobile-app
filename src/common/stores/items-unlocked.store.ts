@@ -7,9 +7,11 @@ import { DefaultValues } from "../types/defaultValues";
 
 type Store = {
   bodyColorsUnlocked: string[];
+  headsUnlocked: string[];
   expressionUnlocked: string[];
   ultiUnlocked: string[];
   unlockBodyColors: (color: string) => Promise<void>;
+  unlockHead: (head: string) => Promise<void>;
   unlockExpression: (expression: string) => Promise<void>;
   unlockUlti: (ulti: string) => Promise<void>;
 };
@@ -29,6 +31,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     console.log(itemsUnlocked);
     set({
       bodyColorsUnlocked: Object.keys(itemsUnlocked.bodyColors),
+      headsUnlocked: Object.keys(itemsUnlocked.heads),
       expressionUnlocked: Object.keys(itemsUnlocked.expressions),
       ultiUnlocked: Object.keys(itemsUnlocked.ultis),
     });
@@ -37,6 +40,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   const saveDefaultValues = async () => {
     await saveJson(StorageKeys.ITEMS_UNLOCKED, {
       bodyColors: {},
+      heads: {},
       expressions: {},
       ultis: {},
     } as DataInStorage.ItemsUnlocked);
@@ -56,6 +60,21 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
       StorageKeys.ITEMS_UNLOCKED,
       "bodyColors",
       color,
+      true
+    );
+  };
+
+  const unlockHead = async (head: string) => {
+    if (get().headsUnlocked.includes(head)) {
+      return;
+    }
+    set((state) => ({
+      headsUnlocked: ArrayUtils.pushAndReturn(state.headsUnlocked, head),
+    }));
+    await addItemInObjectInJson(
+      StorageKeys.ITEMS_UNLOCKED,
+      "heads",
+      head,
       true
     );
   };
@@ -95,9 +114,11 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
 
   return {
     bodyColorsUnlocked: [],
+    headsUnlocked: [],
     expressionUnlocked: [],
     ultiUnlocked: [],
     unlockBodyColors,
+    unlockHead,
     unlockExpression,
     unlockUlti,
   };

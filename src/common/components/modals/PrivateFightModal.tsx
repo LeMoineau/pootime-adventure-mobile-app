@@ -6,8 +6,12 @@ import { useBattleStore } from "../../stores/battle.store";
 import PlusIcon from "../icons/plus";
 import InputField from "../fields/InputField";
 import PillButton from "../buttons/PillButton";
+import { Room } from "../../types/Room";
 
-export default function PrivateFightModal({ ...props }: {} & ModalProps) {
+export default function PrivateFightModal({
+  openRoom,
+  ...props
+}: { openRoom: (room: Room) => void } & ModalProps) {
   const [roomId, setRoomId] = useState("");
   const [ownRoomId, setOwnRoomId] = useState("");
   const {
@@ -25,10 +29,12 @@ export default function PrivateFightModal({ ...props }: {} & ModalProps) {
 
   whenPlayerJoinYourRoom((room) => {
     console.log(room, "player join");
+    openRoom(room);
   });
 
   whenFindTheRoom((room) => {
     console.log(room, "you join");
+    openRoom(room);
   });
 
   return (

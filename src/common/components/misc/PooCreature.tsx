@@ -1,5 +1,5 @@
 import { Image, View, ViewProps } from "react-native";
-import PooHead from "../icons/poo/PooHead";
+import PooHead from "../icons/head/PooHead";
 import React from "react";
 import PooFace from "../icons/poo/PooFace";
 import PooBody from "../icons/poo/PooBody";
@@ -7,6 +7,7 @@ import { style } from "../../utils/style-utils";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { MathUtils } from "../../utils/math-utils";
+import { PooHeads } from "../../types/PooHeads";
 
 export default function PooCreature({
   width,
@@ -21,7 +22,7 @@ export default function PooCreature({
   const defaultWidth = 61.936;
   const defaultHeight = 90.068;
 
-  const { bodyColor, expression } = usePooCreatureStyleStore();
+  const { bodyColor, head, expression } = usePooCreatureStyleStore();
   const { level } = usePooCreatureStatsStore();
 
   return (
@@ -40,7 +41,18 @@ export default function PooCreature({
       {...props}
     >
       <PooBody fillColor={bodyColor}></PooBody>
-      <PooHead
+      {PooHeads[head]({
+        fillColor: MathUtils.calculateHeadColorFromLevel(level),
+        style: [
+          {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            transform: [{ rotateY: behind ? "180deg" : "0deg" }],
+          },
+        ],
+      })}
+      {/* <PooHead
         fillColor={MathUtils.calculateHeadColorFromLevel(level)}
         style={[
           {
@@ -50,7 +62,7 @@ export default function PooCreature({
             transform: [{ rotateY: behind ? "180deg" : "0deg" }],
           },
         ]}
-      ></PooHead>
+      ></PooHead> */}
       {!behind && (
         <>
           <PooFace

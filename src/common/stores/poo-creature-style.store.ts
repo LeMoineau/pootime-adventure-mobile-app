@@ -7,9 +7,11 @@ import { DefaultValues } from "../types/defaultValues";
 type Store = {
   name: string;
   bodyColor: string;
+  head: string;
   expression: string;
   setName: (newname: string) => Promise<void>;
   setBodyColor: (newColor: string) => Promise<void>;
+  setHead: (newHead: string) => Promise<void>;
   setExpression: (newExpression: string) => Promise<void>;
 };
 
@@ -28,6 +30,7 @@ export const usePooCreatureStyleStore = create<Store>((set) => {
     set({
       name: style.name,
       bodyColor: style.bodyColor,
+      head: style.head,
       expression: style.expression,
     });
   };
@@ -36,6 +39,7 @@ export const usePooCreatureStyleStore = create<Store>((set) => {
     await saveJson(StorageKeys.POO_CREATURE_STYLE, {
       name: DefaultValues.PooCreatureName,
       bodyColor: DefaultValues.PooCreatureBodyColor,
+      head: DefaultValues.PooHead,
       expression: DefaultValues.PooFace,
     } as DataInStorage.PooCreatureStyle);
   };
@@ -50,6 +54,11 @@ export const usePooCreatureStyleStore = create<Store>((set) => {
     await saveItemInJson(StorageKeys.POO_CREATURE_STYLE, "bodyColor", newColor);
   };
 
+  const setHead = async (newHead: string) => {
+    set({ head: newHead });
+    await saveItemInJson(StorageKeys.POO_CREATURE_STYLE, "head", newHead);
+  };
+
   const setExpression = async (newExpression: string) => {
     set({ expression: newExpression });
     await saveItemInJson(
@@ -62,9 +71,11 @@ export const usePooCreatureStyleStore = create<Store>((set) => {
   return {
     name: DefaultValues.PooCreatureName,
     bodyColor: DefaultValues.PooCreatureBodyColor,
+    head: DefaultValues.PooHead,
     expression: DefaultValues.PooFace,
     setName,
     setBodyColor,
+    setHead,
     setExpression,
   };
 });
