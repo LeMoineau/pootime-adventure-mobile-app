@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
-import { DataInStorage } from "../types/dataInStorage";
+import { DataInStorage } from "../types/DataInStorage";
+import { DefaultValues } from "../config/DefaultValues";
 
 type Store = {
   stars: number;
@@ -32,8 +33,8 @@ export const useResourcesStore = create<Store>((set, get) => {
       });
     } else {
       saveJson(StorageKeys.RESOURCES, {
-        stars: 0,
-        pooCoins: 0,
+        stars: DefaultValues.Star,
+        pooCoins: DefaultValues.PooCoins,
       } as DataInStorage.Resources);
     }
   });

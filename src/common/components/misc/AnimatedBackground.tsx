@@ -100,7 +100,7 @@ export default function AnimatedBackground({
         })}
       </View> */}
 
-      <View
+      {/* <View
         style={{
           position: "absolute",
           top: 0,
@@ -111,7 +111,7 @@ export default function AnimatedBackground({
           width: imageWidth,
           height: imageHeight,
         }}
-      ></View>
+      ></View> */}
     </Animated.View>
   );
 }

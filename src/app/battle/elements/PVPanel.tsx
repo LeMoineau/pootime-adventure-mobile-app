@@ -3,7 +3,17 @@ import ProgressBar from "../../../common/components/fields/ProgressBar";
 import { colors } from "../../../common/utils/color-utils";
 import { style } from "../../../common/utils/style-utils";
 
-export default function PVPanel({ right }: { right?: boolean }) {
+export default function PVPanel({
+  pooName,
+  pvMax,
+  currentPv,
+  right,
+}: {
+  pooName: string;
+  pvMax: number;
+  currentPv: number;
+  right?: boolean;
+}) {
   return (
     <View
       style={[
@@ -26,7 +36,7 @@ export default function PVPanel({ right }: { right?: boolean }) {
           },
         ]}
       >
-        Mr. Popo
+        {pooName}
       </Text>
       <ProgressBar
         width={"100%"}
@@ -34,8 +44,8 @@ export default function PVPanel({ right }: { right?: boolean }) {
           flex: 1,
           transform: [{ rotateY: right ? "180deg" : "0deg" }],
         }}
-        max={20}
-        current={12}
+        max={pvMax}
+        current={currentPv < 0 ? 0 : currentPv}
         progressColor={colors.green[500]}
       ></ProgressBar>
     </View>

@@ -2,8 +2,8 @@ import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
 import { ArrayUtils } from "../utils/array-utils";
-import { DataInStorage } from "../types/dataInStorage";
-import { DefaultValues } from "../types/defaultValues";
+import { DataInStorage } from "../types/DataInStorage";
+import { DefaultValues } from "../config/DefaultValues";
 
 type Store = {
   bodyColorsUnlocked: string[];
@@ -18,6 +18,14 @@ type Store = {
 
 export const useItemsUnlockedStore = create<Store>((set, get) => {
   const { getJson, addItemInObjectInJson, saveJson } = useStorage();
+  const saveDefaultValues = async () => {
+    await saveJson(StorageKeys.ITEMS_UNLOCKED, {
+      bodyColors: {},
+      heads: {},
+      expressions: {},
+      ultis: {},
+    } as DataInStorage.ItemsUnlocked);
+  };
 
   getJson(StorageKeys.ITEMS_UNLOCKED).then(async (json) => {
     if (json) {
@@ -28,22 +36,12 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   });
 
   const loadUnlockedItems = (itemsUnlocked: DataInStorage.ItemsUnlocked) => {
-    console.log(itemsUnlocked);
     set({
       bodyColorsUnlocked: Object.keys(itemsUnlocked.bodyColors),
       headsUnlocked: Object.keys(itemsUnlocked.heads),
       expressionUnlocked: Object.keys(itemsUnlocked.expressions),
       ultiUnlocked: Object.keys(itemsUnlocked.ultis),
     });
-  };
-
-  const saveDefaultValues = async () => {
-    await saveJson(StorageKeys.ITEMS_UNLOCKED, {
-      bodyColors: {},
-      heads: {},
-      expressions: {},
-      ultis: {},
-    } as DataInStorage.ItemsUnlocked);
   };
 
   const unlockBodyColors = async (color: string) => {

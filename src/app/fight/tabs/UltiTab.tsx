@@ -1,11 +1,12 @@
 import { View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import { ItemInStore } from "../../../common/types/itemInStore";
+import { ItemInStore } from "../../../common/types/ItemInStore";
 import UltiView from "../elements/UltiView";
 import IconFromImage from "../../../common/components/icons/IconFromImage";
 import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
+import { Ultis } from "../../../common/types/Ultis";
 
 export default function UltiTab() {
   const { spendStar } = useResourcesStore();
@@ -14,25 +15,26 @@ export default function UltiTab() {
 
   return (
     <View style={[style.flexCol]}>
-      {ItemInStore.ultis.map((u, index) => {
+      {ItemInStore.ultis.map((item, index) => {
+        const ulti = Ultis[item.name];
         return (
           <UltiView
             key={index}
-            title={u.title}
-            desc={u.desc}
-            icon={<IconFromImage uri={u.icon} size={70}></IconFromImage>}
-            details={u.details}
-            price={u.price}
-            unlocked={ultiUnlocked.includes(u.title)}
-            selected={ultiSelected === u.title}
+            title={ulti.title}
+            desc={ulti.desc}
+            icon={<IconFromImage uri={ulti.icon} size={70}></IconFromImage>}
+            details={ulti.details}
+            price={item.price}
+            unlocked={ultiUnlocked.includes(item.name)}
+            selected={ultiSelected === item.name}
             onPress={async () => {
-              if (!ultiUnlocked.includes(u.title)) {
-                await spendStar(u.price, async () => {
-                  await unlockUlti(u.title);
-                  await selectUlti(u.title);
+              if (!ultiUnlocked.includes(item.name)) {
+                await spendStar(item.price, async () => {
+                  await unlockUlti(item.name);
+                  await selectUlti(item.name);
                 });
               } else {
-                await selectUlti(u.title);
+                await selectUlti(item.name);
               }
             }}
           ></UltiView>

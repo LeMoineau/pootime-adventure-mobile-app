@@ -19,7 +19,7 @@ export default function PillButton({
   styleView?: StyleProp<ViewStyle>;
 } & PressableProps) {
   return (
-    <Pressable style={stylePressable} {...props}>
+    <Pressable style={[stylePressable]} {...props}>
       <View style={[style.roundedFull, style.border, styleView]}>
         {children}
       </View>

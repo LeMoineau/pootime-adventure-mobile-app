@@ -1,19 +1,19 @@
 import { View } from "react-native";
-import FightButton from "./elements/FightButton";
-import PrivateFightModal from "../../common/components/modals/PrivateFightModal";
-import BattleArenaModal from "../../common/components/modals/BattleArenaModal";
+import FightButton from "./FightButton";
+import PrivateFightModal from "../../../common/components/modals/PrivateFightModal";
+import BattleArenaModal from "../../../common/components/modals/BattleArenaModal";
 import { useState } from "react";
-import { style } from "../../common/utils/style-utils";
-import { colors } from "../../common/utils/color-utils";
-import { Room } from "../../common/types/Room";
-import { useBattleStore } from "../../common/stores/battle.store";
+import { style } from "../../../common/utils/style-utils";
+import { colors } from "../../../common/utils/color-utils";
+import { useBattleStore } from "../../../common/stores/battle.store";
+import { ServerTypes } from "../../../common/types/ServerTypes";
 
-export default function BattleHome() {
+export default function BattleModals() {
   const [showPrivateModal, setShowPrivateModal] = useState(false);
   const [showBattleModal, setShowBattleModal] = useState(false);
   const [showBattleArena, setShowBattleArena] = useState(false);
 
-  const [room, setRoom] = useState<Room | null>(null);
+  const [room, setRoom] = useState<ServerTypes.Room | null>(null);
 
   const { connect, disconnect } = useBattleStore();
   return (
@@ -49,19 +49,16 @@ export default function BattleHome() {
       {room && (
         <BattleArenaModal
           visible={showBattleArena}
-          onRequestClose={() => {
+          onBattleFinish={() => {
             setShowBattleArena(false);
+            disconnect();
+            setTimeout(() => {
+              setRoom(null);
+            }, 500);
           }}
           room={room}
         ></BattleArenaModal>
       )}
-      <BattleArenaModal
-        visible={false}
-        onRequestClose={() => {
-          setShowBattleArena(false);
-        }}
-        room={{} as Room}
-      ></BattleArenaModal>
     </>
   );
 }

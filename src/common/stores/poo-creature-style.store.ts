@@ -1,10 +1,10 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
-import { DataInStorage } from "../types/dataInStorage";
-import { DefaultValues } from "../types/defaultValues";
+import { DefaultValues } from "../config/DefaultValues";
+import { DataInStorage } from "../types/DataInStorage";
 
-type Store = {
+export type PooCreatureStyleStore = {
   name: string;
   bodyColor: string;
   head: string;
@@ -15,8 +15,17 @@ type Store = {
   setExpression: (newExpression: string) => Promise<void>;
 };
 
-export const usePooCreatureStyleStore = create<Store>((set) => {
+export const usePooCreatureStyleStore = create<PooCreatureStyleStore>((set) => {
   const { getJson, saveItemInJson, saveJson } = useStorage();
+
+  const saveDefaultValues = async () => {
+    await saveJson(StorageKeys.POO_CREATURE_STYLE, {
+      name: DefaultValues.PooCreatureName,
+      bodyColor: DefaultValues.PooCreatureBodyColor,
+      head: DefaultValues.PooHead,
+      expression: DefaultValues.PooFace,
+    } as DataInStorage.PooCreatureStyle);
+  };
 
   getJson(StorageKeys.POO_CREATURE_STYLE).then(async (json) => {
     if (json) {
@@ -33,15 +42,6 @@ export const usePooCreatureStyleStore = create<Store>((set) => {
       head: style.head,
       expression: style.expression,
     });
-  };
-
-  const saveDefaultValues = async () => {
-    await saveJson(StorageKeys.POO_CREATURE_STYLE, {
-      name: DefaultValues.PooCreatureName,
-      bodyColor: DefaultValues.PooCreatureBodyColor,
-      head: DefaultValues.PooHead,
-      expression: DefaultValues.PooFace,
-    } as DataInStorage.PooCreatureStyle);
   };
 
   const setName = async (newName: string) => {

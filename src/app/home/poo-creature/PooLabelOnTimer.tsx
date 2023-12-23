@@ -8,6 +8,7 @@ import { useResourcesStore } from "../../../common/stores/resources.store";
 import { useShallow } from "zustand/react/shallow";
 import useStorage from "../../../common/hooks/use-storage";
 import { StorageKeys } from "../../../common/utils/storage-keys";
+import PooingRewardModal from "../../../common/components/modals/PooingRewardModal";
 
 export default function PooLabelOnTimer({
   scaleValue,
@@ -87,16 +88,16 @@ export default function PooLabelOnTimer({
           Tap to stop and earn your rewards
         </Text>
       </Animated.View>
-      <RewardModal
+      <PooingRewardModal
         visible={showRewardModal}
         starEarn={starEarn}
         pooCoinEarn={pooCoinEarn}
         onRequestClose={async () => {
-          await earnStar(5);
-          await earnPooCoin(1000);
+          await earnStar(starEarn);
+          await earnPooCoin(pooCoinEarn);
           toggleShowRewardModal(false);
         }}
-      ></RewardModal>
+      ></PooingRewardModal>
     </>
   );
 }

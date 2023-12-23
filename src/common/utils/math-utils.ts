@@ -1,5 +1,5 @@
-import { StatType } from "../types/Stats";
-import { DefaultValues } from "../types/defaultValues";
+import { StatType } from "../types/StatType";
+import { DefaultValues } from "../config/DefaultValues";
 
 export namespace MathUtils {
   export function calculateGainStat(

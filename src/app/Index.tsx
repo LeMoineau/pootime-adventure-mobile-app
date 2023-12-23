@@ -6,25 +6,32 @@ import CustomTabBar from "../common/components/navigation/CustomTabBar";
 import PooEditor from "./editor/PooEditor";
 import PooFight from "./fight/PooFight";
 import { View, useWindowDimensions } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { style } from "../common/utils/style-utils";
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function App() {
   const { width, height } = useWindowDimensions();
   return (
-    <NavigationContainer>
-      <View style={[{ flex: 1, height: height, width: width }]}>
-        <Tab.Navigator
-          tabBarPosition="bottom"
-          initialRouteName="Home"
-          pagerStyle={[{ flex: 1 }]}
-          tabBar={(props) => <CustomTabBar {...props} />}
+    <>
+      <NavigationContainer>
+        <StatusBar hidden />
+        <View
+          style={[style.flexCol, { flex: 1, height: height, width: width }]}
         >
-          <Tab.Screen name="Battle" component={PooFight} />
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Editor" component={PooEditor} />
-        </Tab.Navigator>
-      </View>
-    </NavigationContainer>
+          <Tab.Navigator
+            tabBarPosition="bottom"
+            initialRouteName="Home"
+            pagerStyle={[{ flex: 1 }]}
+            tabBar={(props) => <CustomTabBar {...props} />}
+          >
+            <Tab.Screen name="Battle" component={PooFight} />
+            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Editor" component={PooEditor} />
+          </Tab.Navigator>
+        </View>
+      </NavigationContainer>
+    </>
   );
 }

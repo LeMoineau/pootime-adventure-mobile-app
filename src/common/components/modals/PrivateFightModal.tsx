@@ -6,12 +6,12 @@ import { useBattleStore } from "../../stores/battle.store";
 import PlusIcon from "../icons/plus";
 import InputField from "../fields/InputField";
 import PillButton from "../buttons/PillButton";
-import { Room } from "../../types/Room";
+import { ServerTypes } from "../../types/ServerTypes";
 
 export default function PrivateFightModal({
   openRoom,
   ...props
-}: { openRoom: (room: Room) => void } & ModalProps) {
+}: { openRoom: (room: ServerTypes.Room) => void } & ModalProps) {
   const [roomId, setRoomId] = useState("");
   const [ownRoomId, setOwnRoomId] = useState("");
   const {
@@ -23,18 +23,17 @@ export default function PrivateFightModal({
   } = useBattleStore();
 
   whenRoomCreated((room) => {
-    console.log(room, "room created");
     setOwnRoomId(room.id);
   });
 
   whenPlayerJoinYourRoom((room) => {
-    console.log(room, "player join");
     openRoom(room);
+    setOwnRoomId("");
   });
 
   whenFindTheRoom((room) => {
-    console.log(room, "you join");
     openRoom(room);
+    setRoomId("");
   });
 
   return (

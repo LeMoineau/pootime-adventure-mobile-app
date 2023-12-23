@@ -1,14 +1,14 @@
 import { Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
-import { ItemInStore } from "../../../common/types/itemInStore";
+import { ItemInStore } from "../../../common/types/ItemInStore";
 import { useState } from "react";
 import ConfirmModal from "../../../common/components/modals/ConfirmModal";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import PooCoinIcon from "../../../common/components/icons/pooCoin";
 import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
 import HeadSelector from "./HeadSelector";
-import { DefaultValues } from "../../../common/types/defaultValues";
+import { DefaultValues } from "../../../common/config/DefaultValues";
 
 export default function HeadEditorView() {
   const { setHead } = usePooCreatureStyleStore();

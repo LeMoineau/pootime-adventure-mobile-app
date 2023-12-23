@@ -1,9 +1,9 @@
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import AnimatedBackground from "../../common/components/misc/AnimatedBackground";
 import PooCreatureManager from "./poo-creature/PooCreatureManager";
 import HomeTopBar from "./navigation/HomeTopBar";
-import BattleHome from "./BattleHome";
+import BattleModals from "./elements/BattleModals";
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ export default function Home() {
       >
         <HomeTopBar></HomeTopBar>
         <PooCreatureManager></PooCreatureManager>
-        <BattleHome></BattleHome>
+        <BattleModals></BattleModals>
       </View>
     </SafeAreaView>
   );

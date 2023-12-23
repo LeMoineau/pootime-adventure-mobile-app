@@ -4,17 +4,17 @@ import StandardButton from "../buttons/StandardButton";
 import { colors } from "../../utils/color-utils";
 import StarIcon from "../icons/star";
 import PooCoinIcon from "../icons/pooCoin";
-import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 
 export default function RewardModal({
+  children,
   starEarn,
   pooCoinEarn,
   ...props
 }: {
+  children?: React.ReactNode;
   starEarn: number;
   pooCoinEarn: number;
 } & ModalProps) {
-  const { name } = usePooCreatureStyleStore();
   return (
     <Modal animationType="slide" transparent {...props}>
       <View
@@ -34,22 +34,7 @@ export default function RewardModal({
             { padding: 20, backgroundColor: "white" },
           ]}
         >
-          <Text
-            style={[
-              style.textXl,
-              style.textBold,
-              { marginTop: 10, marginBottom: 20, color: colors.violet[500] },
-            ]}
-          >
-            Congratulation 🎉
-          </Text>
-          <Text style={[style.textSm, style.textCenter]}>
-            Vous avez posé une belle pêche !
-          </Text>
-          <Text style={[style.textSm, style.textCenter]}>
-            Voici ce que <Text style={[style.textBold]}>{name}</Text> a trouvé
-            pendant ce temps là !
-          </Text>
+          {children}
           <View
             style={[
               style.wFull,
