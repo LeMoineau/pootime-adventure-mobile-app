@@ -18,6 +18,7 @@ type Store = {
   ) => void;
   hit: () => void;
   spell: (ulti: UltiDetails) => void;
+  joinTheQueue: () => void;
   whenPlayerJoinYourRoom: (callback: (room: ServerTypes.Room) => void) => void;
   whenFindTheRoom: (callback: (room: ServerTypes.Room) => void) => void;
   whenRoomCreated: (callback: (room: ServerTypes.Room) => void) => void;
@@ -72,6 +73,10 @@ export const useBattleStore = create<Store>((set, get) => {
     get().socket?.emit(SocketEvents.SPELL, ulti);
   };
 
+  const joinTheQueue = () => {
+    get().socket?.emit(SocketEvents.JOIN_THE_QUEUE);
+  };
+
   const whenPlayerJoinYourRoom = (
     callback: (room: ServerTypes.Room) => void
   ) => {
@@ -116,6 +121,7 @@ export const useBattleStore = create<Store>((set, get) => {
     sendPlayerInfos,
     hit,
     spell,
+    joinTheQueue,
     whenPlayerJoinYourRoom,
     whenFindTheRoom,
     whenRoomCreated,

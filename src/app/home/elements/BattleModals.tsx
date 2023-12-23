@@ -7,6 +7,7 @@ import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 import { useBattleStore } from "../../../common/stores/battle.store";
 import { ServerTypes } from "../../../common/types/ServerTypes";
+import WaitForFightModal from "../../../common/components/modals/WaitForFightModal";
 
 export default function BattleModals() {
   const [showPrivateModal, setShowPrivateModal] = useState(false);
@@ -15,14 +16,18 @@ export default function BattleModals() {
 
   const [room, setRoom] = useState<ServerTypes.Room | null>(null);
 
-  const { connect, disconnect } = useBattleStore();
+  const { connect, disconnect, joinTheQueue } = useBattleStore();
   return (
     <>
       <View style={[style.flexRow]}>
         <FightButton
           textContent="Battle!"
           color={colors.yellow}
-          onPress={() => {}}
+          onPress={() => {
+            connect();
+            setShowBattleModal(true);
+            joinTheQueue();
+          }}
         ></FightButton>
         <View style={{ width: 10 }}></View>
         <FightButton
@@ -34,6 +39,18 @@ export default function BattleModals() {
           }}
         ></FightButton>
       </View>
+      <WaitForFightModal
+        visible={showBattleModal}
+        onRequestClose={() => {
+          disconnect();
+          setShowBattleModal(false);
+        }}
+        openRoom={(room) => {
+          setRoom(room);
+          setShowBattleModal(false);
+          setShowBattleArena(true);
+        }}
+      ></WaitForFightModal>
       <PrivateFightModal
         visible={showPrivateModal}
         onRequestClose={() => {
