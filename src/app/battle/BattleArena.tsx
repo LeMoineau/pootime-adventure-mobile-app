@@ -155,7 +155,15 @@ export default function BattleArena({
             },
           ]}
         >
-          <PooCreature width={180}></PooCreature>
+          {advStyle && advStats && (
+            <PooCreature
+              bodyColorProps={advStyle.bodyColor}
+              expressionProps={advStyle.expression}
+              headProps={advStyle.head}
+              levelProps={advStats.level}
+              width={180}
+            ></PooCreature>
+          )}
         </View>
         <View
           style={[

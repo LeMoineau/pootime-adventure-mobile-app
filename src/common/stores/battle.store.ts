@@ -35,8 +35,10 @@ type Store = {
 export const useBattleStore = create<Store>((set, get) => {
   const connect = () => {
     var io = require("socket.io-client/dist/socket.io");
+    // "https://pootime-adventure-battle-server.onrender.com/"
+    console.log("http://localhost:3000");
     set({
-      socket: io("https://pootime-adventure-battle-server.onrender.com/", {
+      socket: io("http://localhost:3000", {
         transports: ["websocket"],
       }),
     });

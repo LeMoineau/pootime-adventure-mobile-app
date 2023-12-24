@@ -13,11 +13,19 @@ export default function PooCreature({
   width,
   height,
   behind,
+  bodyColorProps,
+  headProps,
+  expressionProps,
+  levelProps,
   ...props
 }: {
   width?: number;
   height?: number;
   behind?: boolean;
+  bodyColorProps?: string;
+  headProps?: string;
+  expressionProps?: string;
+  levelProps?: number;
 } & ViewProps) {
   const defaultWidth = 61.936;
   const defaultHeight = 90.068;
@@ -40,9 +48,9 @@ export default function PooCreature({
       ]}
       {...props}
     >
-      <PooBody fillColor={bodyColor}></PooBody>
-      {PooHeads[head]({
-        fillColor: MathUtils.calculateHeadColorFromLevel(level),
+      <PooBody fillColor={bodyColorProps ?? bodyColor}></PooBody>
+      {PooHeads[headProps ?? head]({
+        fillColor: MathUtils.calculateHeadColorFromLevel(levelProps ?? level),
         style: [
           {
             position: "absolute",
@@ -55,7 +63,7 @@ export default function PooCreature({
       {!behind && (
         <>
           <PooFace
-            fillColor={bodyColor}
+            fillColor={bodyColorProps ?? bodyColor}
             style={[{ position: "absolute", top: 0, left: 0 }]}
           ></PooFace>
           <View
@@ -66,7 +74,7 @@ export default function PooCreature({
             ]}
           >
             <Image
-              source={{ uri: expression }}
+              source={{ uri: expressionProps ?? expression }}
               style={{ width: "100%", height: "100%" }}
             ></Image>
           </View>
