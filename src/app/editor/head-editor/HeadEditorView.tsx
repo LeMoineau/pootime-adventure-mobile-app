@@ -48,6 +48,7 @@ export default function HeadEditorView() {
                 name={item.name}
                 key={index}
                 onRequestSelect={async (h) => {
+                  console.log("coucou");
                   await setHead(h);
                 }}
               ></HeadSelector>

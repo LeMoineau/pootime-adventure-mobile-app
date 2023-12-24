@@ -41,17 +41,17 @@ export default function PooCreature({
       {...props}
     >
       <PooBody fillColor={bodyColor}></PooBody>
-      <PooHead
-        fillColor={MathUtils.calculateHeadColorFromLevel(level)}
-        style={[
+      {PooHeads[head]({
+        fillColor: MathUtils.calculateHeadColorFromLevel(level),
+        style: [
           {
             position: "absolute",
             top: 0,
             left: 0,
             transform: [{ rotateY: behind ? "180deg" : "0deg" }],
           },
-        ]}
-      ></PooHead>
+        ],
+      })}
       {!behind && (
         <>
           <PooFace
