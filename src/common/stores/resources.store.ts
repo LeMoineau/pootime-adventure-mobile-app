@@ -78,8 +78,8 @@ export const useResourcesStore = create<Store>((set, get) => {
   };
 
   return {
-    stars: 0,
-    pooCoins: 0,
+    stars: DefaultValues.Star,
+    pooCoins: DefaultValues.PooCoins,
     earnStar,
     earnPooCoin,
     spendStar,

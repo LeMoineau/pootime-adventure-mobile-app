@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Socket, io } from "socket.io-client";
+import { Socket } from "socket.io-client";
 import { Config } from "../config/env";
 import { ServerTypes } from "../types/ServerTypes";
 import { SocketEvents } from "../types/SocketEvents";
@@ -34,8 +34,11 @@ type Store = {
 
 export const useBattleStore = create<Store>((set, get) => {
   const connect = () => {
+    var io = require("socket.io-client/dist/socket.io");
     set({
-      socket: io(Config.BATTLE_SERVER_URL!, { transports: ["websocket"] }),
+      socket: io("https://pootime-adventure-battle-server.onrender.com/", {
+        transports: ["websocket"],
+      }),
     });
   };
 

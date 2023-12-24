@@ -23,7 +23,8 @@
       "package": "fr.pierrot.pootimeadventure"
     },
     "web": {
-      "favicon": "./assets/icon.png"
+      "favicon": "./assets/icon.png",
+      "bundler": "metro"
     },
     "extra": {
       "eas": {
