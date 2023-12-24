@@ -44,7 +44,7 @@ export default function ProgressBar({
               top: 0,
               left: 0,
               width: `${(current / max) * 100}%`,
-              backgroundColor: progressColor ?? "#4a9fff",
+              backgroundColor: progressColor ?? colors.baseProgressColor,
             },
           ]}
         ></View>
@@ -90,7 +90,7 @@ export default function ProgressBar({
               top: height ? -5 : -7,
               minWidth: height ? height + 10 : 30,
               height: height ? height + 10 : 30,
-              backgroundColor: progressColor ?? "#4a9fff",
+              backgroundColor: progressColor ?? colors.baseProgressColor,
               paddingHorizontal: 5,
             },
           ]}

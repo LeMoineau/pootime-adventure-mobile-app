@@ -7,11 +7,13 @@ export default function PVPanel({
   pooName,
   pvMax,
   currentPv,
+  level,
   right,
 }: {
   pooName: string;
   pvMax: number;
   currentPv: number;
+  level: number;
   right?: boolean;
 }) {
   return (
@@ -25,19 +27,44 @@ export default function PVPanel({
         },
       ]}
     >
-      <Text
+      <View
         style={[
-          style.textBold,
-          style.textMd,
+          style.itemsCenter,
+          style.overflowHidden,
           {
-            color: colors.white,
-            textAlign: right ? "right" : "left",
+            flexDirection: right ? "row-reverse" : "row",
+            maxHeight: 30,
             marginBottom: 5,
+            justifyContent: "space-between",
           },
         ]}
       >
-        {pooName}
-      </Text>
+        <Text
+          style={[
+            style.textBold,
+            style.textMd,
+            {
+              color: colors.white,
+            },
+          ]}
+        >
+          {pooName.substring(0, 15)}
+        </Text>
+        <Text
+          style={[
+            style.roundedSm,
+            style.textBold,
+            {
+              backgroundColor: colors.baseProgressColor,
+              paddingHorizontal: 10,
+              paddingVertical: 5,
+              color: colors.white,
+            },
+          ]}
+        >
+          Lv.{level}
+        </Text>
+      </View>
       <ProgressBar
         width={"100%"}
         style={{

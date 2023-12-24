@@ -135,11 +135,13 @@ export default function BattleArena({
                 pooName={pooCreatureStyleStore.name}
                 pvMax={pooCreatureStatsStore.pv}
                 currentPv={ownState?.currentPv ?? pooCreatureStatsStore.pv}
+                level={pooCreatureStatsStore.level}
               ></PVPanel>
               <PVPanel
                 pooName={advStyle.name}
                 pvMax={advStats.pv}
                 currentPv={advState?.currentPv ?? advStats.pv}
+                level={advStats.level}
                 right
               ></PVPanel>
             </>
