@@ -1,10 +1,9 @@
 import { Image, Pressable, Text, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import { colors } from "../../common/utils/color-utils";
-import AnimatedBackground from "../../common/components/misc/AnimatedBackground";
 import PooCreature from "../../common/components/misc/PooCreature";
 import PVPanel from "./elements/PVPanel";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { useBattleStore } from "../../common/stores/battle.store";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { ServerTypes } from "../../common/types/ServerTypes";
@@ -112,10 +111,6 @@ export default function BattleArena({
           { flex: 1, padding: 20, backgroundColor: colors.white },
         ]}
       >
-        <AnimatedBackground
-          imageUri="https://bigstones.fr/pootime-adventure/poofight.png"
-          bgColor={colors.blue[500]}
-        ></AnimatedBackground>
         <View
           style={[
             style.flexRow,

@@ -1,5 +1,4 @@
 import { SafeAreaView, View } from "react-native";
-import AnimatedBackground from "../../common/components/misc/AnimatedBackground";
 import { style } from "../../common/utils/style-utils";
 import EditorTopBar from "./navigation/EditorTopBar";
 import PooCreature from "../../common/components/misc/PooCreature";
@@ -14,10 +13,6 @@ import HeadEditorView from "./head-editor/HeadEditorView";
 export default function PooEditor() {
   return (
     <SafeAreaView style={[style.wFull, style.hFull]}>
-      <AnimatedBackground
-        imageUri="https://bigstones.fr/pootime-adventure/poobg.png"
-        bgColor="#FFE5A3"
-      ></AnimatedBackground>
       <View
         style={[
           style.wFull,
