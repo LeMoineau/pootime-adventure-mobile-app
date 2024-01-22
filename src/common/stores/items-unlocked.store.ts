@@ -2,7 +2,7 @@ import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
 import { ArrayUtils } from "../utils/array-utils";
-import { DataInStorage } from "../types/DataInStorage";
+import { DataInStorage } from "../types/dataInStorage";
 import { DefaultValues } from "../config/DefaultValues";
 
 type Store = {

@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import { ItemInStore } from "../../../common/types/ItemInStore";
+import { ItemInStore } from "../../../common/types/itemInStore";
 import UltiView from "../elements/UltiView";
 import IconFromImage from "../../../common/components/icons/IconFromImage";
 import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";

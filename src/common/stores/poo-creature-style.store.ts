@@ -2,7 +2,7 @@ import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
 import { DefaultValues } from "../config/DefaultValues";
-import { DataInStorage } from "../types/DataInStorage";
+import { DataInStorage } from "../types/dataInStorage";
 
 export type PooCreatureStyleStore = {
   name: string;
