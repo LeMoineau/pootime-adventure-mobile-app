@@ -1,9 +1,9 @@
 import { create } from "zustand";
 import { Socket } from "socket.io-client";
-import { Config } from "../config/env";
 import { ServerTypes } from "../types/ServerTypes";
 import { SocketEvents } from "../types/SocketEvents";
-import { UltiDetails, UltiType } from "../types/Ultis";
+import { UltiDetails } from "../types/Ultis";
+import { getConfig } from "../config/env";
 
 type Store = {
   socket: Socket | null;
@@ -34,6 +34,7 @@ type Store = {
 
 export const useBattleStore = create<Store>((set, get) => {
   const connect = () => {
+    console.log(getConfig().BATTLE_SERVER_URL);
     var io = require("socket.io-client/dist/socket.io");
     // "https://pootime-adventure-battle-server.onrender.com/"
     set({
