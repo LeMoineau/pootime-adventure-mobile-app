@@ -22,7 +22,7 @@ export default function HeadEditorView() {
     price: number;
     resource?: Resources;
   }>({ name: DefaultValues.PooHead, price: 0 });
-  const { headsUnlocked, unlockHead } = useItemsUnlockedStore();
+  const { heads, unlockHead } = useItemsUnlockedStore();
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function HeadEditorView() {
                 }}
               ></HeadSelector>
             );
-          } else if (headsUnlocked.includes(item.name)) {
+          } else if (heads.includes(item.name)) {
             return (
               <HeadSelector
                 name={item.name}

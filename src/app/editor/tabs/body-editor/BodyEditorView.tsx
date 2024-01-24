@@ -18,7 +18,7 @@ export default function BodyEditorView() {
     color: string;
     price: number;
   }>({ color: colors.baseBodyColor, price: 0 });
-  const { bodyColorsUnlocked, unlockBodyColors } = useItemsUnlockedStore();
+  const { bodyColors, unlockBodyColors } = useItemsUnlockedStore();
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function BodyEditorView() {
                 onRequestSelect={setBodyColor}
               ></ColorSelector>
             );
-          } else if (bodyColorsUnlocked.includes(item.color)) {
+          } else if (bodyColors.includes(item.color)) {
             return (
               <ColorSelector
                 color={item.color}

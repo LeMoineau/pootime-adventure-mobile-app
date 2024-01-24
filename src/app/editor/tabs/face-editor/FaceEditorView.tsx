@@ -21,7 +21,7 @@ export default function FaceEditorView() {
     price: number;
     resource?: Resources;
   }>({ expression: DefaultValues.PooFace, price: 0 });
-  const { expressionUnlocked, unlockExpression } = useItemsUnlockedStore();
+  const { expressions, unlockExpression } = useItemsUnlockedStore();
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function FaceEditorView() {
                 }}
               ></FaceSelector>
             );
-          } else if (expressionUnlocked.includes(item.uri)) {
+          } else if (expressions.includes(item.uri)) {
             return (
               <FaceSelector
                 uri={item.uri}
