@@ -9,14 +9,17 @@ import PooCoinIcon from "../../../common/components/icons/pooCoin";
 import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
 import HeadSelector from "./HeadSelector";
 import { DefaultValues } from "../../../common/config/DefaultValues";
+import { Resources } from "../../../common/types/Resources";
+import WoolIcon from "../../../common/components/icons/sheep/wool";
 
 export default function HeadEditorView() {
   const { setHead } = usePooCreatureStyleStore();
-  const { spendPooCoin } = useResourcesStore();
+  const { spend } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{
     name: string;
     price: number;
+    resource?: Resources;
   }>({ name: DefaultValues.PooHead, price: 0 });
   const { headsUnlocked, unlockHead } = useItemsUnlockedStore();
 
@@ -57,9 +60,10 @@ export default function HeadEditorView() {
               <HeadSelector
                 name={item.name}
                 price={item.price}
+                resource={item.resource}
                 key={index}
-                onRequestSelect={(e, p) => {
-                  p && setCurrentTrade({ name: e, price: p });
+                onRequestSelect={(name, price, resource) => {
+                  price && setCurrentTrade({ name, price, resource });
                   setShowConfirmModal(true);
                 }}
               ></HeadSelector>
@@ -71,10 +75,14 @@ export default function HeadEditorView() {
         visible={showConfirmModal}
         onRequestClose={() => setShowConfirmModal(false)}
         onConfirm={async () => {
-          spendPooCoin(currentTrade.price, async () => {
-            await setHead(currentTrade.name);
-            await unlockHead(currentTrade.name);
-          });
+          spend(
+            currentTrade.resource ?? "pooCoins",
+            currentTrade.price,
+            async () => {
+              await setHead(currentTrade.name);
+              await unlockHead(currentTrade.name);
+            }
+          );
           setCurrentTrade({ name: DefaultValues.PooHead, price: 0 });
         }}
       >
@@ -87,7 +95,15 @@ export default function HeadEditorView() {
           ]}
         >
           <Text>Voulez-vous dépenser {currentTrade.price} </Text>
-          <PooCoinIcon></PooCoinIcon>
+          {currentTrade.resource ? (
+            currentTrade.resource === "wool" ? (
+              <WoolIcon size={25}></WoolIcon>
+            ) : (
+              <PooCoinIcon></PooCoinIcon>
+            )
+          ) : (
+            <PooCoinIcon></PooCoinIcon>
+          )}
           <Text> pour le visage </Text>
           <HeadSelector name={currentTrade.name} size={40}></HeadSelector>
         </View>

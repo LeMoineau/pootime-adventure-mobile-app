@@ -5,6 +5,7 @@ export namespace DataInStorage {
   export interface Resources {
     stars: number;
     pooCoins: number;
+    wool: number;
   }
 
   export interface PooCreatureStyle extends Style {}

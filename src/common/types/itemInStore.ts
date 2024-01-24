@@ -1,4 +1,5 @@
 import { colors } from "../utils/color-utils";
+import { Resources } from "./Resources";
 
 export namespace ItemInStore {
   export const bodyColors: (string | { color: string; price: number })[] = [
@@ -26,11 +27,19 @@ export namespace ItemInStore {
     { color: colors.transparent, price: 100 },
   ];
 
-  export const heads: (string | { name: string; price: number })[] = [
+  export const heads: (
+    | string
+    | { name: string; price: number; resource?: Resources }
+  )[] = [
     "classic",
     {
       name: "flower",
       price: 500,
+    },
+    {
+      name: "sheep",
+      price: 500,
+      resource: "wool",
     },
   ];
 

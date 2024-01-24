@@ -33,20 +33,30 @@ type Store = {
 export const useResourcesStore = create<Store>((set, get) => {
   const { getJson, saveJson, saveItemInJson } = useStorage();
 
-  getJson(StorageKeys.RESOURCES).then((json) => {
+  getJson(StorageKeys.RESOURCES).then(async (json) => {
     if (json) {
-      const resources = json as DataInStorage.Resources;
-      set({
-        stars: resources.stars,
-        pooCoins: resources.pooCoins,
-      });
+      loadSavedValues(json as DataInStorage.Resources);
     } else {
-      saveJson(StorageKeys.RESOURCES, {
-        stars: DefaultValues.Star,
-        pooCoins: DefaultValues.PooCoins,
-      } as DataInStorage.Resources);
+      await saveDefaultValues();
     }
   });
+
+  const loadSavedValues = (json: DataInStorage.Resources) => {
+    const resources = json as DataInStorage.Resources;
+    set({
+      stars: resources.stars,
+      pooCoins: resources.pooCoins,
+      wool: resources.wool,
+    });
+  };
+
+  const saveDefaultValues = async () => {
+    await saveJson(StorageKeys.RESOURCES, {
+      stars: DefaultValues.Star,
+      pooCoins: DefaultValues.PooCoins,
+      wool: DefaultValues.Wool,
+    } as DataInStorage.Resources);
+  };
 
   const earn = async (resource: Resources, val: number) => {
     set((state) => ({ [resource]: state[resource] + val }));

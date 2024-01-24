@@ -28,6 +28,8 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   };
 
   getJson(StorageKeys.ITEMS_UNLOCKED).then(async (json) => {
+    await saveDefaultValues();
+    return;
     if (json) {
       loadUnlockedItems(json as DataInStorage.ItemsUnlocked);
     } else {

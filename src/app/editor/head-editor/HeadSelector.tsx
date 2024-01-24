@@ -1,12 +1,9 @@
-import PooCoinIcon from "../../../common/components/icons/pooCoin";
-import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { colors } from "../../../common/utils/color-utils";
-import { style } from "../../../common/utils/style-utils";
-import { Image, Pressable, Text, View } from "react-native";
 import EditSelector, { EditSelectorProps } from "../EditSelector";
 import { PooHeads } from "../../../common/types/PooHeads";
 import { MathUtils } from "../../../common/utils/math-utils";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
+import { Resources } from "../../../common/types/Resources";
 
 export default function HeadSelector({
   name,
@@ -14,14 +11,20 @@ export default function HeadSelector({
   ...props
 }: {
   name: string;
-  onRequestSelect?: (name: string, price?: number) => void;
+  onRequestSelect?: (
+    name: string,
+    price?: number,
+    resource?: Resources
+  ) => void;
 } & EditSelectorProps) {
   const { level } = usePooCreatureStatsStore();
   return (
     <EditSelector
       {...props}
       bgColor={colors.white}
-      onPress={() => onRequestSelect && onRequestSelect(name, props.price)}
+      onPress={() =>
+        onRequestSelect && onRequestSelect(name, props.price, props.resource)
+      }
     >
       {PooHeads[name]({
         fillColor: MathUtils.calculateHeadColorFromLevel(level),
