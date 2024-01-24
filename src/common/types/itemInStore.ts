@@ -99,7 +99,11 @@ export namespace ItemInStore {
     },
     {
       name: "hypnoyt",
-      price: 40,
+      price: 10,
+    },
+    {
+      name: "gremlins",
+      price: 15,
     },
   ];
 }

@@ -43,7 +43,7 @@ const useSheepJumpStore = create<Store>((set, get) => {
     setTimeout(() => {
       set({ battleBegin: true });
       _intervalId = setInterval(() => {
-        sheepHit();
+        //sheepHit();
       }, get().sheep!.freqAttaque);
     }, 3000);
   };
@@ -54,6 +54,7 @@ const useSheepJumpStore = create<Store>((set, get) => {
         get().currentSheepState!,
         get().currentPlayerState!
       );
+    console.log(newSheepState, newPlayerState);
     set({
       currentSheepState: newSheepState,
       currentPlayerState: newPlayerState,

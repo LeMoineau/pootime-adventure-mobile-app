@@ -2,6 +2,7 @@ export interface UltiDetails {
   mana: number;
   damage?: number;
   stun?: number;
+  rage?: number;
 }
 
 export interface UltiType {
@@ -23,5 +24,11 @@ export const Ultis: { [name: string]: UltiType } = {
     desc: "Lance une vidéo Youtube et hypnose l'adversaire",
     icon: "https://bigstones.fr/pootime-adventure/ulti/hypnoyt.png",
     details: { mana: 20, damage: 80 },
+  },
+  gremlins: {
+    title: "Gremlins",
+    desc: "Eveil le côté sombre de la nuit pour enchainer des griffures mortelles",
+    icon: "https://bigstones.fr/pootime-adventure/ulti/gremlins.png",
+    details: { mana: 50, rage: 5 },
   },
 };

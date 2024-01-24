@@ -33,10 +33,18 @@ export namespace SheepJumpUtils {
     newSheepState: SheepJumpTypes.SheepState;
     newPlayerState: SheepJumpTypes.PlayerState;
   } {
+    if (playerState.rage) {
+      playerState.rage -= 1;
+      if (playerState.rage <= 0) {
+        delete playerState["rage"];
+      }
+    }
     return {
       newSheepState: {
         ...sheepState,
-        currentPv: sheepState.currentPv - playerState.attaque,
+        currentPv:
+          sheepState.currentPv -
+          (playerState.rage ? playerState.attaque * 2 : playerState.attaque),
       },
       newPlayerState: {
         ...playerState,
@@ -53,6 +61,9 @@ export namespace SheepJumpUtils {
     newSheepState: SheepJumpTypes.SheepState;
     newPlayerState: SheepJumpTypes.PlayerState;
   } {
+    if (ulti.rage) {
+      playerState.rage = ulti.rage;
+    }
     return {
       newSheepState: {
         ...sheepState,
