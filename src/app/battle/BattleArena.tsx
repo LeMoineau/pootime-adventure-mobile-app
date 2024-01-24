@@ -88,7 +88,6 @@ export default function BattleArena({
 
     whenBattleFinish((battleEnding) => {
       updateBattleEnding(battleEnding);
-      console.log(battleEnding);
     });
 
     sendPlayerInfos(

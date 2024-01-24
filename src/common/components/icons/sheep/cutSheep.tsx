@@ -1,9 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, G, Path } from "react-native-svg";
 export function CutSheepIcon({
+  woolColor,
   ratio,
   ...props
-}: { ratio?: number } & SvgProps) {
+}: { woolColor?: string; ratio?: number } & SvgProps) {
   return (
     <Svg
       width={ratio ? 415.601 * ratio : 415.601}
@@ -15,7 +16,7 @@ export function CutSheepIcon({
         <Path
           d="M-140.726 738.895c-6.259.045-10.664-4.792-6.051-6.545-4.87-3.757.363-1.276.041-3.659-.498-3.692-2.238-12.51 5.27-3.01 3.42-6.34 5.042-2.41 6.174 4.322 6.242.046.795 15.376-5.434 8.892z"
           opacity={1}
-          fill={"#fff"}
+          fill={woolColor ?? "#fff"}
           fillOpacity={1}
           fillRule={"evenodd"}
           stroke={"#000"}
@@ -124,7 +125,7 @@ export function CutSheepIcon({
         />
         <Path
           d="M341.975 233.53h.674M356.742 233.728l.914.148M343.033 237.526c4.81 9.776 9.799 7.319 14.863-.197z"
-          fill={"#fff"}
+          fill={woolColor ?? "#fff"}
           fillOpacity={1}
           fillRule={"evenodd"}
           stroke={"#000"}
@@ -195,7 +196,7 @@ export function CutSheepIcon({
         <Path
           d="M-79.369 680.481c1.716-5.77-.57-8.304-9.78-5.24 1.328-9.163-21.68-15.833-19.212 9.17-4.815.714-2.804 4.354-1.31 7.772 27.543 21.115 23.848-1.855 30.302-11.702z"
           opacity={1}
-          fill={"#fff"}
+          fill={woolColor ?? "#fff"}
           fillOpacity={1}
           fillRule={"evenodd"}
           stroke={"#000"}
@@ -292,7 +293,7 @@ export function CutSheepIcon({
         <Path
           d="M-97.476 706.405c-9.328 1.908-9.886 4.693-1.752 8.346.041 5.55 5.754 3.158 9.844 3.038 4.464-1.211 2.204-3.372-.706-5.625 2.295-2.169 1.409-3.892-.685-5.447z"
           opacity={1}
-          fill={"#fff"}
+          fill={woolColor ?? "#fff"}
           fillOpacity={1}
           fillRule={"evenodd"}
           stroke={"#000"}
@@ -306,7 +307,7 @@ export function CutSheepIcon({
         <Path
           d="M-73.261 688.198a.463.463 0 0 1-.458.469.463.463 0 0 1-.468-.457.463.463 0 0 1 .457-.469.463.463 0 0 1 .469.457"
           opacity={1}
-          fill={"#fff"}
+          fill={woolColor ?? "#fff"}
           fillOpacity={1}
           fillRule={"evenodd"}
           stroke={"#000"}
@@ -320,7 +321,7 @@ export function CutSheepIcon({
         <Path
           d="M-58.211 695.766c1.975-2.16 4.2-3.823 6.922-4.49"
           opacity={1}
-          fill={"#fff"}
+          fill={woolColor ?? "#fff"}
           fillOpacity={1}
           fillRule={"evenodd"}
           stroke={"#000"}

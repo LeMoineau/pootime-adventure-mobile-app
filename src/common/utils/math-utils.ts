@@ -36,4 +36,8 @@ export namespace MathUtils {
     colors.unshift(DefaultValues.PooHeadColor);
     return colors;
   }
+
+  export function getRandomInt(max: number, min?: number) {
+    return (min ?? 0) + Math.floor(Math.random() * (min ? max - min + 1 : max));
+  }
 }

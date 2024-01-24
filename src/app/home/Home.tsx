@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, View } from "react-native";
+import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import PooCreatureHandler from "./poo-creature/PooCreatureHandler";
 import HomeTopBar from "./navigation/HomeTopBar";

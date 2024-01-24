@@ -20,6 +20,8 @@ type Store = {
 };
 
 const useSheepJumpStore = create<Store>((set, get) => {
+  let _intervalId: NodeJS.Timeout | undefined = undefined;
+
   const startSheepJump = (playerStats: PooCreatureStats) => {
     set({
       sheep: SheepJumpUtils.generateSheep(playerStats.level),
@@ -37,6 +39,9 @@ const useSheepJumpStore = create<Store>((set, get) => {
       },
       showSheepJumpModal: true,
     });
+    _intervalId = setInterval(() => {
+      sheepHit();
+    }, get().sheep!.freqAttaque);
   };
 
   const hitSheep = () => {
@@ -85,10 +90,16 @@ const useSheepJumpStore = create<Store>((set, get) => {
       get().currentPlayerState!.currentPv <= 0
     ) {
       set({
-        battleFinish: true,
         winner: get().currentPlayerState!.currentPv <= 0 ? "sheep" : "player",
-        earnings: SheepJumpUtils.calculatePlayerEarnings(),
       });
+      set({
+        earnings: SheepJumpUtils.calculatePlayerEarnings(
+          get().winner!,
+          get().sheep!.level
+        ),
+        battleFinish: true,
+      });
+      _intervalId && clearInterval(_intervalId);
     }
   };
 

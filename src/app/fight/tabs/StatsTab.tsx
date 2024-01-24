@@ -53,8 +53,7 @@ export default function StatsTab() {
       label: "Récup. Mana",
       value: recupMana,
       onPress: async () => {
-        console.log("couocu");
-        await await incrStat("recupMana");
+        await incrStat("recupMana");
       },
     },
   ];

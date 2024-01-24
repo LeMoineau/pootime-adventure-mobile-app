@@ -8,7 +8,6 @@ import { CutSheepIcon } from "../icons/sheep/cutSheep";
 import RewardModal from "./RewardModal";
 import { style } from "../../utils/style-utils";
 import { colors } from "../../utils/color-utils";
-import { SheepJumpUtils } from "../../utils/sheep-jump-utils";
 import { useResourcesStore } from "../../stores/resources.store";
 
 export default function SheepJumpModal({ ...props }: {} & ModalProps) {
@@ -50,10 +49,10 @@ export default function SheepJumpModal({ ...props }: {} & ModalProps) {
             currentMana: currentPlayerState.currentMana,
           }}
           advNode={
-            battleFinish ? (
-              <CutSheepIcon ratio={0.5}></CutSheepIcon>
+            battleFinish && winner === "player" ? (
+              <CutSheepIcon woolColor={sheep.color} ratio={0.5}></CutSheepIcon>
             ) : (
-              <SheepIcon ratio={0.5}></SheepIcon>
+              <SheepIcon woolColor={sheep.color} ratio={0.5}></SheepIcon>
             )
           }
         ></Arena>

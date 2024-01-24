@@ -72,7 +72,7 @@ export default function RewardModal({
                 <StarIcon size={30}></StarIcon>
               </View>
             )}
-            {pooCoinEarn && (
+            {pooCoinEarn !== undefined ? (
               <View
                 style={[
                   style.flexRow,
@@ -91,8 +91,10 @@ export default function RewardModal({
                 </Text>
                 <PooCoinIcon size={30}></PooCoinIcon>
               </View>
+            ) : (
+              <></>
             )}
-            {woolEarn && (
+            {woolEarn !== undefined ? (
               <View
                 style={[
                   style.flexRow,
@@ -111,6 +113,8 @@ export default function RewardModal({
                 </Text>
                 <WoolIcon size={30}></WoolIcon>
               </View>
+            ) : (
+              <></>
             )}
           </View>
           <StandardButton

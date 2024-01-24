@@ -13,6 +13,7 @@ import UltiButton from "../../../app/battle/elements/UltiButton";
 import { UltiDetails, Ultis } from "../../types/Ultis";
 import ReadyGoText from "../../../app/battle/elements/ReadyGoText";
 import { colors } from "../../utils/color-utils";
+import { DefaultValues } from "../../config/DefaultValues";
 
 export default function Arena({
   onHit,
@@ -75,13 +76,27 @@ export default function Arena({
             {battleLoaded && (
               <>
                 <PVPanel
-                  pooName={playerData.name}
+                  pooName={
+                    playerData.name.length > DefaultValues.MaxNameCharacters
+                      ? playerData.name.substring(
+                          0,
+                          DefaultValues.MaxNameCharacters
+                        ) + "."
+                      : playerData.name
+                  }
                   pvMax={playerData.pv}
                   currentPv={playerData.currentPv ?? 0}
                   level={playerData.level}
                 ></PVPanel>
                 <PVPanel
-                  pooName={advData.name}
+                  pooName={
+                    advData.name.length > DefaultValues.MaxNameCharacters
+                      ? advData.name.substring(
+                          0,
+                          DefaultValues.MaxNameCharacters
+                        ) + "."
+                      : advData.name
+                  }
                   pvMax={advData.pv}
                   currentPv={advData.currentPv ?? 0}
                   level={advData.level}

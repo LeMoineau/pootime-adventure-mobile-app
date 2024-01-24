@@ -40,4 +40,7 @@ export namespace DefaultValues {
   export const Star = 5;
   export const PooCoins = 250;
   export const Wool = 0;
+
+  //UI
+  export const MaxNameCharacters = 10;
 }

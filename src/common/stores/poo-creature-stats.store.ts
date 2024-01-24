@@ -85,7 +85,6 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
         "ultiSelected",
         ulti
       );
-      console.log(await getJson(StorageKeys.POO_CREATURE_STATS));
     };
 
     return {

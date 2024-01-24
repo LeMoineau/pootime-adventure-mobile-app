@@ -1,16 +1,29 @@
 import { SheepJumpTypes } from "../types/SheepJumpTypes";
 import { UltiDetails } from "../types/Ultis";
+import { MathUtils } from "./math-utils";
 
 export namespace SheepJumpUtils {
   export function generateSheep(level: number): SheepJumpTypes.Sheep {
+    const specificSheepRoll = MathUtils.getRandomInt(100);
+    if (specificSheepRoll === 0) {
+      return SheepJumpTypes.Audrey;
+    }
+    const roll = MathUtils.getRandomInt(5);
+    const freqAttaqueRoll = MathUtils.getRandomInt(3);
+    const sheepLevel = level + roll;
     return {
-      name: "Sheep",
-      color: "",
-      level: level,
-      pv: 200,
-      attaque: 5,
-      freqAttaque: 1000,
+      name: getRandomSheepName(),
+      color: SheepJumpTypes.SheepWoolPalette.hexValueAt((sheepLevel / 40) % 1),
+      level: sheepLevel,
+      pv: sheepLevel * 50,
+      attaque: sheepLevel * 2,
+      freqAttaque: 500 + 500 * freqAttaqueRoll,
     };
+  }
+
+  export function getRandomSheepName(): string {
+    const index = MathUtils.getRandomInt(SheepJumpTypes.SheepNames.length);
+    return SheepJumpTypes.SheepNames[index];
   }
 
   export function calculateNewStatesFromHit(
@@ -72,15 +85,16 @@ export namespace SheepJumpUtils {
     };
   }
 
-  export function calculatePlayerEarnings(): {
-    stars: number;
+  export function calculatePlayerEarnings(
+    winner: "player" | "sheep",
+    sheepLevel: number
+  ): {
     pooCoins: number;
     wool: number;
   } {
     return {
-      stars: 1,
-      pooCoins: 1,
-      wool: 100,
+      pooCoins: winner === "player" ? 10 + sheepLevel * 5 : 0,
+      wool: winner === "player" ? 50 + sheepLevel * 10 : 0,
     };
   }
 }
