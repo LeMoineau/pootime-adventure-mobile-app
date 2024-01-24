@@ -1,26 +1,39 @@
 import { SafeAreaView, Text, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import PooCreatureManager from "./poo-creature/PooCreatureManager";
+import PooCreatureHandler from "./poo-creature/PooCreatureHandler";
 import HomeTopBar from "./navigation/HomeTopBar";
-import BattleModals from "./elements/BattleModals";
+import BattleHandler from "./elements/BattleHandler";
+import CustomPage from "../../common/components/navigation/CustomPage";
+import SheepJumpHandler from "./elements/SheepJumpHandler";
 
 export default function Home() {
   return (
-    <SafeAreaView style={[style.wFull, style.hFull]}>
+    <CustomPage>
       <View
         style={[
           style.wFull,
           style.hFull,
           style.flexCol,
-          style.justifyCenter,
+          style.justifyBetween,
           style.itemsCenter,
-          { padding: 20 },
+          { paddingHorizontal: 20, paddingVertical: 10 },
         ]}
       >
         <HomeTopBar></HomeTopBar>
-        <PooCreatureManager></PooCreatureManager>
-        <BattleModals></BattleModals>
+        <View
+          style={[
+            style.flexCol,
+            style.justifyCenter,
+            style.itemsCenter,
+            style.wFull,
+            { flex: 1 },
+          ]}
+        >
+          <PooCreatureHandler></PooCreatureHandler>
+          <BattleHandler></BattleHandler>
+          <SheepJumpHandler></SheepJumpHandler>
+        </View>
       </View>
-    </SafeAreaView>
+    </CustomPage>
   );
 }

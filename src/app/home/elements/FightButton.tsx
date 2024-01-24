@@ -1,7 +1,6 @@
 import { Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
-import RightArrow from "../../../common/components/icons/rightArrow";
 
 export default function FightButton({
   textContent,
@@ -13,7 +12,7 @@ export default function FightButton({
   onPress?: () => void;
 }) {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} style={[{ flexGrow: 1 }]}>
       <View
         style={[
           style.rounded,

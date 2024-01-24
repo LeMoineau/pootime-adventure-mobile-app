@@ -39,4 +39,5 @@ export namespace DefaultValues {
   //Resources
   export const Star = 5;
   export const PooCoins = 250;
+  export const Wool = 0;
 }

@@ -3,10 +3,19 @@ import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
 import { DataInStorage } from "../types/dataInStorage";
 import { DefaultValues } from "../config/DefaultValues";
+import { Resources } from "../types/Resources";
 
 type Store = {
   stars: number;
   pooCoins: number;
+  wool: number;
+  earn: (resource: Resources, val: number) => Promise<void>;
+  spend: (
+    resource: Resources,
+    val: number,
+    onSuccess?: (newVal: number) => void,
+    onFailed?: (val: number) => void
+  ) => Promise<void>;
   earnStar: (val: number) => Promise<void>;
   earnPooCoin: (val: number) => Promise<void>;
   spendStar: (
@@ -38,6 +47,26 @@ export const useResourcesStore = create<Store>((set, get) => {
       } as DataInStorage.Resources);
     }
   });
+
+  const earn = async (resource: Resources, val: number) => {
+    set((state) => ({ [resource]: state[resource] + val }));
+    await saveItemInJson(StorageKeys.RESOURCES, resource, get()[resource]);
+  };
+
+  const spend = async (
+    resource: Resources,
+    val: number,
+    onSuccess?: (newVal: number) => void,
+    onFailed?: (val: number) => void
+  ) => {
+    if (get()[resource] >= val) {
+      set((state) => ({ [resource]: state[resource] - val }));
+      await saveItemInJson(StorageKeys.RESOURCES, resource, get()[resource]);
+      onSuccess && onSuccess(get()[resource]);
+    } else {
+      onFailed && onFailed(get()[resource]);
+    }
+  };
 
   const earnStar = async (val: number) => {
     set((state) => ({ stars: state.stars + val }));
@@ -80,9 +109,12 @@ export const useResourcesStore = create<Store>((set, get) => {
   return {
     stars: DefaultValues.Star,
     pooCoins: DefaultValues.PooCoins,
+    wool: DefaultValues.Wool,
     earnStar,
     earnPooCoin,
     spendStar,
     spendPooCoin,
+    earn,
+    spend,
   };
 });

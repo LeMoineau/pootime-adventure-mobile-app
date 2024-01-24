@@ -11,8 +11,8 @@ import ClockCircularProgress from "../../../common/components/fields/ClockCircul
 import PooLabelOnTimer from "./PooLabelOnTimer";
 import PooLabelOnIdle from "./PooLabelOnIdle";
 
-export default function PooCreatureButton() {
-  const { width } = useWindowDimensions();
+export default function PooCreatureHandler() {
+  const { width, height } = useWindowDimensions();
   const [isPlaying, setIsPlaying] = useState(false);
   const scaleValue = new Animated.Value(0);
 
@@ -48,7 +48,6 @@ export default function PooCreatureButton() {
             style.flexCol,
             style.justifyCenter,
             style.itemsCenter,
-            { padding: 20 },
           ]}
         >
           <Animated.View
@@ -63,15 +62,21 @@ export default function PooCreatureButton() {
               ],
             }}
           >
-            <PooCreature width={(width * 1.7) / 3}></PooCreature>
+            <PooCreature height={height * 0.35}></PooCreature>
           </Animated.View>
           <Animated.View
             style={[
+              style.wFull,
+              style.flexCol,
+              style.justifyCenter,
+              style.itemsCenter,
               style.wFull,
               {
                 position: "absolute",
                 top: 0,
                 left: 0,
+                height: height * 0.35,
+
                 transform: [
                   {
                     scale: scaleValue,
@@ -82,7 +87,7 @@ export default function PooCreatureButton() {
             ]}
           >
             <ClockCircularProgress
-              size={width - 40}
+              size={height * 0.35}
               isPlaying={isPlaying}
             ></ClockCircularProgress>
           </Animated.View>

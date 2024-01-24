@@ -7,12 +7,11 @@ import PenIcon from "../../../common/components/icons/pen";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { useShallow } from "zustand/react/shallow";
+import WoolIcon from "../../../common/components/icons/sheep/wool";
 
 export default function EditorTopBar() {
   const { width } = useWindowDimensions();
-  const { pooCoins } = useResourcesStore(
-    useShallow((state) => ({ stars: state.stars, pooCoins: state.pooCoins }))
-  );
+  const { pooCoins, wool } = useResourcesStore();
   const { name, setName } = usePooCreatureStyleStore();
 
   return (
@@ -20,8 +19,8 @@ export default function EditorTopBar() {
       style={[
         style.flexRow,
         style.justifyCenter,
-        style.itemsCenter,
         {
+          alignItems: "flex-start",
           width: width,
           position: "absolute",
           top: 20,
@@ -39,10 +38,17 @@ export default function EditorTopBar() {
         }}
         appendIcon={<PenIcon size={20}></PenIcon>}
       ></InputField>
-      <NumberField
-        value={pooCoins}
-        appendElement={<PooCoinIcon size={40}></PooCoinIcon>}
-      ></NumberField>
+      <View>
+        <NumberField
+          value={pooCoins}
+          appendElement={<PooCoinIcon size={40}></PooCoinIcon>}
+        ></NumberField>
+        <NumberField
+          value={wool}
+          style={[{ marginTop: 5 }]}
+          appendElement={<WoolIcon ratio={0.35}></WoolIcon>}
+        ></NumberField>
+      </View>
     </View>
   );
 }

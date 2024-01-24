@@ -9,7 +9,7 @@ import { useBattleStore } from "../../../common/stores/battle.store";
 import { ServerTypes } from "../../../common/types/ServerTypes";
 import WaitForFightModal from "../../../common/components/modals/WaitForFightModal";
 
-export default function BattleModals() {
+export default function BattleHandler() {
   const [showPrivateModal, setShowPrivateModal] = useState(false);
   const [showBattleModal, setShowBattleModal] = useState(false);
   const [showBattleArena, setShowBattleArena] = useState(false);
@@ -19,7 +19,14 @@ export default function BattleModals() {
   const { connect, disconnect, joinTheQueue } = useBattleStore();
   return (
     <>
-      <View style={[style.flexRow]}>
+      <View
+        style={[
+          style.flexRow,
+          style.justifyBetween,
+          style.wFull,
+          { marginTop: 15 },
+        ]}
+      >
         <FightButton
           textContent="Battle!"
           color={colors.yellow}
@@ -29,7 +36,7 @@ export default function BattleModals() {
             joinTheQueue();
           }}
         ></FightButton>
-        <View style={{ width: 10 }}></View>
+        <View style={{ width: 15 }}></View>
         <FightButton
           textContent="Private"
           color={colors.blue}

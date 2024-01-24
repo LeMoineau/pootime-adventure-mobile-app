@@ -18,7 +18,7 @@ export default function HomeTopBar() {
         style.flexRow,
         style.justifyCenter,
         style.itemsCenter,
-        { width: width, position: "absolute", top: 20, left: 0 },
+        { width: width, paddingTop: 10 },
       ]}
     >
       <NumberField

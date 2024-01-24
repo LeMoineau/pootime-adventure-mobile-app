@@ -9,10 +9,11 @@ import PooHeadEditIcon from "../../common/components/icons/pooHeadEdit";
 import PooFaceEditIcon from "../../common/components/icons/pooFaceEdit";
 import FaceEditorView from "./face-editor/FaceEditorView";
 import HeadEditorView from "./head-editor/HeadEditorView";
+import CustomPage from "../../common/components/navigation/CustomPage";
 
 export default function PooEditor() {
   return (
-    <SafeAreaView style={[style.wFull, style.hFull]}>
+    <CustomPage>
       <View
         style={[
           style.wFull,
@@ -41,6 +42,6 @@ export default function PooEditor() {
           ]}
         ></RoundedScrollView>
       </View>
-    </SafeAreaView>
+    </CustomPage>
   );
 }

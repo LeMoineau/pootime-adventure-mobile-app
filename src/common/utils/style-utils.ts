@@ -13,6 +13,9 @@ export const style = StyleSheet.create({
   justifyCenter: {
     justifyContent: "center",
   },
+  justifyBetween: {
+    justifyContent: "space-between",
+  },
   itemsCenter: {
     alignItems: "center",
   },

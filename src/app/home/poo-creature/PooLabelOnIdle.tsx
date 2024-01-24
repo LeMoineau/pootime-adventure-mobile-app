@@ -35,7 +35,7 @@ export default function PooLabelOnIdle({
             style.textLg,
             style.overflowHidden,
             {
-              marginTop: 15,
+              marginTop: 5,
               marginBottom: 5,
               fontWeight: "bold",
               textAlign: "center",

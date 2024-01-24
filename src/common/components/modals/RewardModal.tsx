@@ -4,16 +4,19 @@ import StandardButton from "../buttons/StandardButton";
 import { colors } from "../../utils/color-utils";
 import StarIcon from "../icons/star";
 import PooCoinIcon from "../icons/pooCoin";
+import WoolIcon from "../icons/sheep/wool";
 
 export default function RewardModal({
   children,
   starEarn,
   pooCoinEarn,
+  woolEarn,
   ...props
 }: {
   children?: React.ReactNode;
-  starEarn: number;
-  pooCoinEarn: number;
+  starEarn?: number;
+  pooCoinEarn?: number;
+  woolEarn?: number;
 } & ModalProps) {
   return (
     <Modal animationType="slide" transparent {...props}>
@@ -49,42 +52,66 @@ export default function RewardModal({
               },
             ]}
           >
-            <View
-              style={[
-                style.flexRow,
-                style.justifyCenter,
-                style.itemsCenter,
-                { flex: 1 },
-              ]}
-            >
-              <Text
+            {starEarn && (
+              <View
                 style={[
-                  style.textMd,
-                  { marginRight: 5, color: colors.blue[500] },
+                  style.flexRow,
+                  style.justifyCenter,
+                  style.itemsCenter,
+                  { flex: 1 },
                 ]}
               >
-                {starEarn}
-              </Text>
-              <StarIcon size={30}></StarIcon>
-            </View>
-            <View
-              style={[
-                style.flexRow,
-                style.justifyCenter,
-                style.itemsCenter,
-                { flex: 1 },
-              ]}
-            >
-              <Text
+                <Text
+                  style={[
+                    style.textMd,
+                    { marginRight: 5, color: colors.blue[500] },
+                  ]}
+                >
+                  {starEarn}
+                </Text>
+                <StarIcon size={30}></StarIcon>
+              </View>
+            )}
+            {pooCoinEarn && (
+              <View
                 style={[
-                  style.textMd,
-                  { marginRight: 5, color: colors.yellow[500] },
+                  style.flexRow,
+                  style.justifyCenter,
+                  style.itemsCenter,
+                  { flex: 1 },
                 ]}
               >
-                {pooCoinEarn}
-              </Text>
-              <PooCoinIcon size={30}></PooCoinIcon>
-            </View>
+                <Text
+                  style={[
+                    style.textMd,
+                    { marginRight: 5, color: colors.yellow[500] },
+                  ]}
+                >
+                  {pooCoinEarn}
+                </Text>
+                <PooCoinIcon size={30}></PooCoinIcon>
+              </View>
+            )}
+            {woolEarn && (
+              <View
+                style={[
+                  style.flexRow,
+                  style.justifyCenter,
+                  style.itemsCenter,
+                  { flex: 1 },
+                ]}
+              >
+                <Text
+                  style={[
+                    style.textMd,
+                    { marginRight: 5, color: colors.pink[400] },
+                  ]}
+                >
+                  {woolEarn}
+                </Text>
+                <WoolIcon size={30}></WoolIcon>
+              </View>
+            )}
           </View>
           <StandardButton
             style={{ paddingTop: 10 }}

@@ -39,7 +39,7 @@ export default function PooLabelOnTimer({
             opacity: scaleValue,
             backgroundColor: "white",
             borderRadius: 100,
-            marginTop: 25,
+            marginTop: 15,
             paddingVertical: 10,
             marginBottom: scaleValue.interpolate({
               inputRange: [0, 1],

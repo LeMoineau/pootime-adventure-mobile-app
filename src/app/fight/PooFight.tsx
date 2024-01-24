@@ -7,10 +7,11 @@ import StatsTab from "./tabs/StatsTab";
 import StatsIcons from "../../common/components/icons/stats";
 import PooUltiIcon from "../../common/components/icons/pooUlti";
 import UltiTab from "./tabs/UltiTab";
+import CustomPage from "../../common/components/navigation/CustomPage";
 
 export default function PooFight() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <CustomPage>
       <View
         style={[
           style.wFull,
@@ -36,6 +37,6 @@ export default function PooFight() {
           ]}
         ></RoundedScrollView>
       </View>
-    </SafeAreaView>
+    </CustomPage>
   );
 }
