@@ -1,20 +1,14 @@
-import { Image, Pressable, Text, View } from "react-native";
-import { style } from "../../common/utils/style-utils";
-import { colors } from "../../common/utils/color-utils";
 import PooCreature from "../../common/components/misc/PooCreature";
-import PVPanel from "./elements/PVPanel";
 import { useEffect, useState } from "react";
 import { useBattleStore } from "../../common/stores/battle.store";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { ServerTypes } from "../../common/types/ServerTypes";
 import { ServerUtils } from "../../common/utils/server-utils";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
-import ReadyGoText from "./elements/ReadyGoText";
-import UltiButton from "./elements/UltiButton";
-import { Ultis } from "../../common/types/Ultis";
 import { useImmer } from "use-immer";
 import BattleFinishRewardModal from "../../common/components/modals/BattleFinishRewardModal";
 import { useResourcesStore } from "../../common/stores/resources.store";
+import Arena from "../../common/components/misc/Arena";
 
 export default function BattleArena({
   room,
@@ -35,7 +29,7 @@ export default function BattleArena({
   } = useBattleStore();
   const pooCreatureStatsStore = usePooCreatureStatsStore();
   const pooCreatureStyleStore = usePooCreatureStyleStore();
-  const { earnStar, earnPooCoin } = useResourcesStore();
+  const { earn } = useResourcesStore();
 
   const [advStyle, setAdvStyle] = useState<ServerTypes.PlayerStyle>();
   const [advStats, setAdvStats] = useState<ServerTypes.PlayerStats>();
@@ -54,6 +48,9 @@ export default function BattleArena({
   useEffect(() => {
     whenRoomReady((r) => {
       for (let p of r.players) {
+        if (r.battleState[p] === undefined) {
+          continue;
+        }
         if (p !== getSocketId()) {
           setAdvStyle(r.battleState[p].style);
           setAdvStats(r.battleState[p].stats);
@@ -97,61 +94,31 @@ export default function BattleArena({
   }, [room]);
 
   return (
-    <Pressable
-      style={{ flex: 1 }}
-      onPressIn={() => {
-        battleBegin && hit();
-      }}
-    >
-      <View
-        style={[
-          style.justifyCenter,
-          style.itemsCenter,
-          { flex: 1, padding: 20, backgroundColor: colors.white },
-        ]}
-      >
-        <View
-          style={[
-            style.flexRow,
-            style.itemsCenter,
-            style.wFull,
-            {
-              justifyContent: "space-between",
-              position: "absolute",
-              top: 30,
-              left: 0,
-            },
-          ]}
-        >
-          {advStyle && advStats && (
-            <>
-              <PVPanel
-                pooName={pooCreatureStyleStore.name}
-                pvMax={pooCreatureStatsStore.pv}
-                currentPv={ownState?.currentPv ?? pooCreatureStatsStore.pv}
-                level={pooCreatureStatsStore.level}
-              ></PVPanel>
-              <PVPanel
-                pooName={advStyle.name}
-                pvMax={advStats.pv}
-                currentPv={advState?.currentPv ?? advStats.pv}
-                level={advStats.level}
-                right
-              ></PVPanel>
-            </>
-          )}
-        </View>
-        <View
-          style={[
-            {
-              position: "absolute",
-              bottom: "50%",
-              right: 30,
-              marginBottom: 20,
-            },
-          ]}
-        >
-          {advStyle && advStats && (
+    <>
+      <Arena
+        battleBegin={battleBegin}
+        advData={
+          advState &&
+          advStyle &&
+          advStats && {
+            level: advStats?.level,
+            name: advStyle?.name,
+            pv: advStats?.pv,
+            currentPv: advState?.currentPv,
+          }
+        }
+        playerData={
+          ownState && {
+            level: pooCreatureStatsStore.level,
+            name: pooCreatureStyleStore.name,
+            pv: pooCreatureStatsStore.pv,
+            currentPv: ownState?.currentPv,
+            currentMana: ownState?.currentMana,
+          }
+        }
+        advNode={
+          advStyle &&
+          advStats && (
             <PooCreature
               bodyColorProps={advStyle.bodyColor}
               expressionProps={advStyle.expression}
@@ -159,32 +126,18 @@ export default function BattleArena({
               levelProps={advStats.level}
               width={180}
             ></PooCreature>
-          )}
-        </View>
-        <View
-          style={[
-            { position: "absolute", top: "50%", left: 30, marginTop: 20 },
-          ]}
-        >
-          <PooCreature behind width={230}></PooCreature>
-        </View>
-        {pooCreatureStatsStore.ultiSelected && (
-          <UltiButton
-            ultiSelected={Ultis[pooCreatureStatsStore.ultiSelected]}
-            currentMana={ownState?.currentMana ?? 0}
-            onPress={(u) => {
-              battleBegin &&
-                ownState?.currentMana &&
-                ownState?.currentMana >= u.details.mana &&
-                spell(u.details);
-            }}
-          ></UltiButton>
-        )}
-        <ReadyGoText
-          battleReady={advStyle !== undefined && advStats !== undefined}
-          battleBegin={battleBegin}
-        ></ReadyGoText>
-      </View>
+          )
+        }
+        onHit={() => {
+          battleBegin && hit();
+        }}
+        onSpell={(u) => {
+          battleBegin &&
+            ownState?.currentMana &&
+            ownState?.currentMana >= u.mana &&
+            spell(u);
+        }}
+      ></Arena>
       {battleEnding && (
         <BattleFinishRewardModal
           visible={battleEnding !== undefined}
@@ -192,8 +145,11 @@ export default function BattleArena({
           pooCoinEarn={battleEnding[getSocketId()].rewards.pooCoins}
           winner={battleEnding[getSocketId()].victoryState === "winner"}
           onRequestClose={async () => {
-            await earnStar(battleEnding[getSocketId()].rewards.stars);
-            await earnPooCoin(battleEnding[getSocketId()].rewards.pooCoins);
+            await earn("stars", battleEnding[getSocketId()].rewards.stars);
+            await earn(
+              "pooCoins",
+              battleEnding[getSocketId()].rewards.pooCoins
+            );
             setBattleBegin(false);
             updateBattleEnding(undefined);
             setAdvStyle(undefined);
@@ -204,6 +160,6 @@ export default function BattleArena({
           }}
         ></BattleFinishRewardModal>
       )}
-    </Pressable>
+    </>
   );
 }

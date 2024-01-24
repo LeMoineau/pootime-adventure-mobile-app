@@ -34,7 +34,6 @@ type Store = {
 
 export const useBattleStore = create<Store>((set, get) => {
   const connect = () => {
-    console.log(getConfig().BATTLE_SERVER_URL);
     var io = require("socket.io-client/dist/socket.io");
     // "https://pootime-adventure-battle-server.onrender.com/"
     set({

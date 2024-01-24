@@ -15,6 +15,7 @@ export default function SheepJumpModal({ ...props }: {} & ModalProps) {
     sheep,
     currentSheepState,
     currentPlayerState,
+    battleBegin,
     battleFinish,
     winner,
     earnings,
@@ -33,8 +34,7 @@ export default function SheepJumpModal({ ...props }: {} & ModalProps) {
           bgColor={colors.pink[300]}
           onHit={hitSheep}
           onSpell={spellSheep}
-          battleLoaded={true}
-          battleBegin={true}
+          battleBegin={battleBegin}
           advData={{
             name: sheep.name,
             level: sheep.level,

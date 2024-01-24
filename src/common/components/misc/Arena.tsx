@@ -18,7 +18,6 @@ import { DefaultValues } from "../../config/DefaultValues";
 export default function Arena({
   onHit,
   onSpell,
-  battleLoaded,
   battleBegin,
   advData,
   advNode,
@@ -28,22 +27,25 @@ export default function Arena({
 }: {
   onHit?: (event: GestureResponderEvent) => void;
   onSpell?: (ulti: UltiDetails) => void;
-  battleLoaded?: boolean;
   battleBegin?: boolean;
-  advData: {
-    name: string;
-    level: number;
-    pv: number;
-    currentPv: number;
-  };
+  advData:
+    | {
+        name: string;
+        level: number;
+        pv: number;
+        currentPv: number;
+      }
+    | undefined;
   advNode: React.ReactNode;
-  playerData: {
-    name: string;
-    level: number;
-    pv: number;
-    currentPv: number;
-    currentMana: number;
-  };
+  playerData:
+    | {
+        name: string;
+        level: number;
+        pv: number;
+        currentPv: number;
+        currentMana: number;
+      }
+    | undefined;
   playerNode?: React.ReactNode;
   bgColor?: string;
 }) {
@@ -51,7 +53,12 @@ export default function Arena({
   const { ultiSelected } = usePooCreatureStatsStore();
 
   return (
-    <Pressable style={[{ flex: 1 }]} onTouchStart={onHit}>
+    <Pressable
+      style={[{ flex: 1 }]}
+      onTouchStart={(evt) => {
+        battleBegin && onHit && onHit(evt);
+      }}
+    >
       <CustomPage bgColor={bgColor ?? colors.blue[500]}>
         <View
           style={[
@@ -73,7 +80,7 @@ export default function Arena({
               },
             ]}
           >
-            {battleLoaded && (
+            {playerData && advData && (
               <>
                 <PVPanel
                   pooName={
@@ -115,7 +122,7 @@ export default function Arena({
               },
             ]}
           >
-            {battleLoaded && advNode}
+            {advNode}
           </View>
           <View
             style={[
@@ -124,7 +131,7 @@ export default function Arena({
           >
             {playerNode ?? <PooCreature behind width={230}></PooCreature>}
           </View>
-          {ultiSelected && (
+          {playerData && ultiSelected && (
             <UltiButton
               ultiSelected={Ultis[ultiSelected]}
               currentMana={playerData.currentMana ?? 0}
@@ -138,8 +145,8 @@ export default function Arena({
             ></UltiButton>
           )}
           <ReadyGoText
-            battleReady={battleLoaded ?? true}
-            battleBegin={battleBegin ?? true}
+            battleReady={playerData !== undefined && advData !== undefined}
+            battleBegin={battleBegin === undefined ? true : battleBegin}
           ></ReadyGoText>
         </View>
       </CustomPage>

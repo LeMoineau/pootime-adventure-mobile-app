@@ -52,7 +52,7 @@ export default function RewardModal({
               },
             ]}
           >
-            {starEarn && (
+            {starEarn !== undefined ? (
               <View
                 style={[
                   style.flexRow,
@@ -71,6 +71,8 @@ export default function RewardModal({
                 </Text>
                 <StarIcon size={30}></StarIcon>
               </View>
+            ) : (
+              <></>
             )}
             {pooCoinEarn !== undefined ? (
               <View
