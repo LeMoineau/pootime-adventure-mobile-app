@@ -30,6 +30,7 @@ export default function ResourceConverterButton({
   return (
     <>
       <Pressable
+        style={[{ marginHorizontal: 10 }]}
         onPress={() => {
           onPress && onPress(from, to, price, nbGive);
           setShowConfirmModal(true);

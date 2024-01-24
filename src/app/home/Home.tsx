@@ -6,14 +6,8 @@ import BattleHandler from "./elements/BattleHandler";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import SheepJumpHandler from "./elements/SheepJumpHandler";
 import EventsModalHandler from "./elements/EventsModalHandler";
-import { useResourcesStore } from "../../common/stores/resources.store";
-import { useEffect } from "react";
 
 export default function Home() {
-  const { earn } = useResourcesStore();
-  useEffect(() => {
-    earn("wool", 99999);
-  }, []);
   return (
     <CustomPage>
       <View

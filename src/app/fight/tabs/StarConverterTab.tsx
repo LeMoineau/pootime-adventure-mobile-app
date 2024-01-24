@@ -7,7 +7,14 @@ import { useResourcesStore } from "../../../common/stores/resources.store";
 
 export default function StarConverterTab() {
   return (
-    <View style={[style.flexRow, style.flexWrap, { padding: 20 }]}>
+    <View
+      style={[
+        style.flexRow,
+        style.flexWrap,
+        style.justifyCenter,
+        { padding: 20 },
+      ]}
+    >
       <ResourceConverterButton
         from="pooCoins"
         to="stars"

@@ -4,12 +4,25 @@ import ResourceConverterButton from "../../../common/components/buttons/Resource
 
 export default function PooCoinsConverterTab() {
   return (
-    <View style={[style.flexRow, style.flexWrap, { padding: 20 }]}>
+    <View
+      style={[
+        style.flexRow,
+        style.justifyCenter,
+        style.flexWrap,
+        { padding: 20 },
+      ]}
+    >
       <ResourceConverterButton
         from="wool"
         to="pooCoins"
         price={250}
         nbGive={100}
+      ></ResourceConverterButton>
+      <ResourceConverterButton
+        from="wool"
+        to="pooCoins"
+        price={2500}
+        nbGive={1000}
       ></ResourceConverterButton>
     </View>
   );

@@ -1,14 +1,10 @@
 import { Animated, Text } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import TimerField from "../../../common/components/fields/TimerField";
-import RewardModal from "../../../common/components/modals/RewardModal";
 import { useState } from "react";
-import usePooCurve from "../../../common/hooks/use-poo-curve";
 import { useResourcesStore } from "../../../common/stores/resources.store";
-import { useShallow } from "zustand/react/shallow";
-import useStorage from "../../../common/hooks/use-storage";
-import { StorageKeys } from "../../../common/utils/storage-keys";
 import PooingRewardModal from "../../../common/components/modals/PooingRewardModal";
+import { CurveUtils } from "../../../common/utils/curve-utils";
 
 export default function PooLabelOnTimer({
   scaleValue,
@@ -19,12 +15,16 @@ export default function PooLabelOnTimer({
   isPooing: boolean;
   stopPooing?: (elapsedTime: number) => void;
 }) {
+  const { earn } = useResourcesStore();
+
   const [showRewardModal, toggleShowRewardModal] = useState(false);
-  const [elapsedTimePooing, setElapsedTimePooing] = useState(0);
-  const { starEarn, pooCoinEarn } = usePooCurve({
-    elapsedTime: elapsedTimePooing,
-  });
-  const { earnStar, earnPooCoin } = useResourcesStore();
+  const [rewards, setRewards] = useState<
+    | {
+        star: number;
+        pooCoins: number;
+      }
+    | undefined
+  >(undefined);
 
   return (
     <>
@@ -71,7 +71,7 @@ export default function PooLabelOnTimer({
           isPlaying={isPooing}
           onStop={(t) => {
             stopPooing && stopPooing(t);
-            setElapsedTimePooing(t);
+            setRewards(CurveUtils.calculateRewardsPooing(t));
             toggleShowRewardModal(true);
           }}
         ></TimerField>
@@ -88,16 +88,18 @@ export default function PooLabelOnTimer({
           Tap to stop and earn your rewards
         </Text>
       </Animated.View>
-      <PooingRewardModal
-        visible={showRewardModal}
-        starEarn={starEarn}
-        pooCoinEarn={pooCoinEarn}
-        onRequestClose={async () => {
-          await earnStar(starEarn);
-          await earnPooCoin(pooCoinEarn);
-          toggleShowRewardModal(false);
-        }}
-      ></PooingRewardModal>
+      {rewards && (
+        <PooingRewardModal
+          visible={showRewardModal}
+          starEarn={rewards.star}
+          pooCoinEarn={rewards.pooCoins}
+          onRequestClose={async () => {
+            await earn("stars", rewards.star);
+            await earn("pooCoins", rewards.pooCoins);
+            toggleShowRewardModal(false);
+          }}
+        ></PooingRewardModal>
+      )}
     </>
   );
 }
