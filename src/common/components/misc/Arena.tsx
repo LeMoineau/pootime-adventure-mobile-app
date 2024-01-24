@@ -85,10 +85,10 @@ export default function Arena({
                 <PVPanel
                   pooName={
                     playerData.name.length > DefaultValues.MaxNameCharacters
-                      ? playerData.name.substring(
+                      ? `${playerData.name.substring(
                           0,
                           DefaultValues.MaxNameCharacters
-                        ) + "."
+                        )}.`
                       : playerData.name
                   }
                   pvMax={playerData.pv}
@@ -98,10 +98,10 @@ export default function Arena({
                 <PVPanel
                   pooName={
                     advData.name.length > DefaultValues.MaxNameCharacters
-                      ? advData.name.substring(
+                      ? `${advData.name.substring(
                           0,
                           DefaultValues.MaxNameCharacters
-                        ) + "."
+                        )}.`
                       : advData.name
                   }
                   pvMax={advData.pv}

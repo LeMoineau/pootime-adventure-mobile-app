@@ -18,7 +18,7 @@ export default function BodyEditorView() {
     color: string;
     price: number;
   }>({ color: colors.baseBodyColor, price: 0 });
-  const { bodyColors, unlockBodyColors } = useItemsUnlockedStore();
+  const { bodyColors, unlock } = useItemsUnlockedStore();
 
   return (
     <>
@@ -69,7 +69,7 @@ export default function BodyEditorView() {
         onConfirm={async () => {
           spendPooCoin(currentTrade.price, async () => {
             await setBodyColor(currentTrade.color);
-            await unlockBodyColors(currentTrade.color);
+            await unlock("bodyColors", currentTrade.color);
           });
           setCurrentTrade({ color: colors.baseBodyColor, price: 0 });
         }}

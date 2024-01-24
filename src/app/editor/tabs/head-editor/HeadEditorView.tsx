@@ -22,7 +22,7 @@ export default function HeadEditorView() {
     price: number;
     resource?: Resources;
   }>({ name: DefaultValues.PooHead, price: 0 });
-  const { heads, unlockHead } = useItemsUnlockedStore();
+  const { heads, unlock } = useItemsUnlockedStore();
 
   return (
     <>
@@ -81,7 +81,7 @@ export default function HeadEditorView() {
             currentTrade.price,
             async () => {
               await setHead(currentTrade.name);
-              await unlockHead(currentTrade.name);
+              await unlock("heads", currentTrade.name);
             }
           );
           setCurrentTrade({ name: DefaultValues.PooHead, price: 0 });

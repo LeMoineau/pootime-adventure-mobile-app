@@ -1,6 +1,5 @@
 import { Animated, Text } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import ProgressBar from "../../../common/components/fields/ProgressBar";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import LevelProgressBar from "../../../common/components/fields/LevelProgressBar";
 

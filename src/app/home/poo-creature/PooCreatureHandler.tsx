@@ -12,7 +12,7 @@ import PooLabelOnTimer from "./PooLabelOnTimer";
 import PooLabelOnIdle from "./PooLabelOnIdle";
 
 export default function PooCreatureHandler() {
-  const { width, height } = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const [isPlaying, setIsPlaying] = useState(false);
   const scaleValue = new Animated.Value(0);
 

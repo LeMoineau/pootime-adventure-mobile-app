@@ -21,7 +21,7 @@ export default function FaceEditorView() {
     price: number;
     resource?: Resources;
   }>({ expression: DefaultValues.PooFace, price: 0 });
-  const { expressions, unlockExpression } = useItemsUnlockedStore();
+  const { expressions, unlock } = useItemsUnlockedStore();
 
   return (
     <>
@@ -80,7 +80,7 @@ export default function FaceEditorView() {
             currentTrade.price,
             async () => {
               await setExpression(currentTrade.expression);
-              await unlockExpression(currentTrade.expression);
+              await unlock("expressions", currentTrade.expression);
             }
           );
           setCurrentTrade({ expression: DefaultValues.PooFace, price: 0 });

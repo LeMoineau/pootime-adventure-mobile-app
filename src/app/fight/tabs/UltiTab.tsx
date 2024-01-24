@@ -10,7 +10,7 @@ import { Ultis } from "../../../common/types/Ultis";
 
 export default function UltiTab() {
   const { spendStar } = useResourcesStore();
-  const { ultis, unlockUlti } = useItemsUnlockedStore();
+  const { ultis, unlock } = useItemsUnlockedStore();
   const { ultiSelected, selectUlti } = usePooCreatureStatsStore();
 
   return (
@@ -30,7 +30,7 @@ export default function UltiTab() {
             onPress={async () => {
               if (!ultis.includes(item.name)) {
                 await spendStar(item.price, async () => {
-                  await unlockUlti(item.name);
+                  await unlock("ultis", item.name);
                   await selectUlti(item.name);
                 });
               } else {

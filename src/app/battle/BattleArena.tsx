@@ -1,14 +1,11 @@
 import PooCreature from "../../common/components/misc/PooCreature";
-import { useEffect, useState } from "react";
-import { useBattleStore } from "../../common/stores/battle.store";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { ServerTypes } from "../../common/types/ServerTypes";
-import { ServerUtils } from "../../common/utils/server-utils";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
-import { useImmer } from "use-immer";
 import BattleFinishRewardModal from "../../common/components/modals/BattleFinishRewardModal";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import Arena from "../../common/components/misc/Arena";
+import useOnlineBattle from "../../common/hooks/use-online-battle";
 
 export default function BattleArena({
   room,
@@ -18,80 +15,20 @@ export default function BattleArena({
   onBattleFinish: () => void;
 }) {
   const {
-    getSocketId,
-    sendPlayerInfos,
+    socketId,
+    battleBegin,
+    battleEnding,
+    advState,
+    advStyle,
+    advStats,
+    ownState,
     hit,
     spell,
-    whenRoomReady,
-    whenBattleBegin,
-    whenBattleStateUpdated,
-    whenBattleFinish,
-  } = useBattleStore();
-  const pooCreatureStatsStore = usePooCreatureStatsStore();
-  const pooCreatureStyleStore = usePooCreatureStyleStore();
+    reset,
+  } = useOnlineBattle({ room });
+  const { level, pv } = usePooCreatureStatsStore();
+  const { name } = usePooCreatureStyleStore();
   const { earn } = useResourcesStore();
-
-  const [advStyle, setAdvStyle] = useState<ServerTypes.PlayerStyle>();
-  const [advStats, setAdvStats] = useState<ServerTypes.PlayerStats>();
-  const [battleBegin, setBattleBegin] = useState<boolean>(false);
-  const [battleEnding, updateBattleEnding] = useImmer<
-    ServerTypes.BattleEnding | undefined
-  >(undefined);
-
-  const [advState, updateAdvState] = useImmer<
-    ServerTypes.PlayerState | undefined
-  >(undefined);
-  const [ownState, updateOwnState] = useImmer<
-    ServerTypes.PlayerState | undefined
-  >(undefined);
-
-  useEffect(() => {
-    whenRoomReady((r) => {
-      for (let p of r.players) {
-        if (r.battleState[p] === undefined) {
-          continue;
-        }
-        if (p !== getSocketId()) {
-          setAdvStyle(r.battleState[p].style);
-          setAdvStats(r.battleState[p].stats);
-          updateAdvState(r.battleState[p].currentState);
-        } else {
-          updateOwnState(r.battleState[p].currentState);
-        }
-      }
-    });
-
-    whenBattleBegin(() => {
-      setBattleBegin(true);
-    });
-
-    whenBattleStateUpdated((updates) => {
-      for (let u of updates) {
-        u.target === getSocketId()
-          ? updateOwnState((state) => {
-              for (let k of Object.keys(u.update)) {
-                state![k] = u.update[k];
-              }
-              return state;
-            })
-          : updateAdvState((state) => {
-              for (let k of Object.keys(u.update)) {
-                state![k] = u.update[k];
-              }
-              return state;
-            });
-      }
-    });
-
-    whenBattleFinish((battleEnding) => {
-      updateBattleEnding(battleEnding);
-    });
-
-    sendPlayerInfos(
-      ServerUtils.generatePlayerStyle(pooCreatureStyleStore),
-      ServerUtils.generatePlayerStats(pooCreatureStatsStore)
-    );
-  }, [room]);
 
   return (
     <>
@@ -109,9 +46,9 @@ export default function BattleArena({
         }
         playerData={
           ownState && {
-            level: pooCreatureStatsStore.level,
-            name: pooCreatureStyleStore.name,
-            pv: pooCreatureStatsStore.pv,
+            level: level,
+            name: name,
+            pv: pv,
             currentPv: ownState?.currentPv,
             currentMana: ownState?.currentMana,
           }
@@ -141,21 +78,13 @@ export default function BattleArena({
       {battleEnding && (
         <BattleFinishRewardModal
           visible={battleEnding !== undefined}
-          starEarn={battleEnding[getSocketId()].rewards.stars}
-          pooCoinEarn={battleEnding[getSocketId()].rewards.pooCoins}
-          winner={battleEnding[getSocketId()].victoryState === "winner"}
+          starEarn={battleEnding[socketId].rewards.stars}
+          pooCoinEarn={battleEnding[socketId].rewards.pooCoins}
+          winner={battleEnding[socketId].victoryState === "winner"}
           onRequestClose={async () => {
-            await earn("stars", battleEnding[getSocketId()].rewards.stars);
-            await earn(
-              "pooCoins",
-              battleEnding[getSocketId()].rewards.pooCoins
-            );
-            setBattleBegin(false);
-            updateBattleEnding(undefined);
-            setAdvStyle(undefined);
-            setAdvStats(undefined);
-            updateAdvState(undefined);
-            updateOwnState(undefined);
+            await earn("stars", battleEnding[socketId].rewards.stars);
+            await earn("pooCoins", battleEnding[socketId].rewards.pooCoins);
+            reset();
             onBattleFinish();
           }}
         ></BattleFinishRewardModal>
