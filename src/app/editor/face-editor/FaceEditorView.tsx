@@ -9,14 +9,17 @@ import PooCoinIcon from "../../../common/components/icons/pooCoin";
 import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
 import FaceSelector from "./FaceSelector";
 import { DefaultValues } from "../../../common/config/DefaultValues";
+import { Resources } from "../../../common/types/Resources";
+import WoolIcon from "../../../common/components/icons/sheep/wool";
 
 export default function FaceEditorView() {
   const { setExpression } = usePooCreatureStyleStore();
-  const { spendPooCoin } = useResourcesStore();
+  const { spend } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{
     expression: string;
     price: number;
+    resource?: Resources;
   }>({ expression: DefaultValues.PooFace, price: 0 });
   const { expressionUnlocked, unlockExpression } = useItemsUnlockedStore();
 
@@ -57,9 +60,10 @@ export default function FaceEditorView() {
               <FaceSelector
                 uri={item.uri}
                 price={item.price}
+                resource={item.resource}
                 key={index}
-                onRequestSelect={(e, p) => {
-                  p && setCurrentTrade({ expression: e, price: p });
+                onRequestSelect={(expression, price, resource) => {
+                  price && setCurrentTrade({ expression, price, resource });
                   setShowConfirmModal(true);
                 }}
               ></FaceSelector>
@@ -71,10 +75,14 @@ export default function FaceEditorView() {
         visible={showConfirmModal}
         onRequestClose={() => setShowConfirmModal(false)}
         onConfirm={async () => {
-          spendPooCoin(currentTrade.price, async () => {
-            await setExpression(currentTrade.expression);
-            await unlockExpression(currentTrade.expression);
-          });
+          spend(
+            currentTrade.resource ?? "pooCoins",
+            currentTrade.price,
+            async () => {
+              await setExpression(currentTrade.expression);
+              await unlockExpression(currentTrade.expression);
+            }
+          );
           setCurrentTrade({ expression: DefaultValues.PooFace, price: 0 });
         }}
       >
@@ -87,7 +95,15 @@ export default function FaceEditorView() {
           ]}
         >
           <Text>Voulez-vous dépenser {currentTrade.price} </Text>
-          <PooCoinIcon></PooCoinIcon>
+          {currentTrade.resource ? (
+            currentTrade.resource === "wool" ? (
+              <WoolIcon size={25}></WoolIcon>
+            ) : (
+              <PooCoinIcon></PooCoinIcon>
+            )
+          ) : (
+            <PooCoinIcon></PooCoinIcon>
+          )}
           <Text> pour le visage </Text>
           <FaceSelector uri={currentTrade.expression} size={40}></FaceSelector>
         </View>

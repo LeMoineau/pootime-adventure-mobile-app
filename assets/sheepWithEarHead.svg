@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="400"
+   inkscape:export-xdpi="400"
+   inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\ulti\entrouporte.png"
+   width="16.387306mm"
+   height="23.830374mm"
+   viewBox="0 0 16.387307 23.830374"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="sheepWithEarHead.svg">
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       lpeversion="1"
+       is_visible="true"
+       id="path-effect1824"
+       effect="bspline" />
+  </defs>
+  <sodipodi:namedview
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.12"
+     inkscape:cx="53.342014"
+     inkscape:cy="33.996459"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       originy="-89.230671"
+       originx="681.40054"
+       id="grid860"
+       type="xygrid" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(681.40049,-89.230688)"
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:nodetypes="ccccccccccc"
+       id="path1832"
+       d="m -670.06808,102.31288 c 0.29546,0.91039 2.40969,-0.0673 1.83035,-1.25844 2.06707,-0.14305 1.15614,-2.583083 0.51843,-2.865243 0.50375,0.592641 2.38547,-1.947346 -0.0288,-2.791988 1.99458,-2.905001 -3.65322,-4.569388 -4.19149,-2.614185 -0.0971,-2.709161 -6.72995,-1.578308 -5.42523,1.259803 -2.07026,-0.993012 -3.88362,3.970072 -1.14897,4.633646 -1.81839,1.262853 -0.0619,3.976797 1.51361,3.180707 0.27204,0.69562 2.01977,1.76331 3.30977,0.45569 1.02542,1.60469 3.54885,0.81497 3.62231,1e-5 z"
+       style="fill:#e5ffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
+    <path
+       sodipodi:nodetypes="ccc"
+       id="path1871"
+       d="m -676.37614,96.666732 c -0.64785,-0.535487 -3.1262,-0.197352 -2.50304,-2.594394 2.40846,-1.206711 2.0761,1.092155 3.43483,1.42509"
+       style="fill:#e59cd4;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
+    <path
+       style="fill:#e59cd4;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
+       d="m -669.46449,96.778967 c 0.64785,-0.535487 3.1262,-0.197352 2.50304,-2.594394 -2.40846,-1.206711 -2.0761,1.092155 -3.43483,1.42509"
+       id="path1871-5"
+       sodipodi:nodetypes="ccc" />
+  </g>
+</svg>

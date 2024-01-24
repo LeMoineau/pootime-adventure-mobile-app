@@ -37,13 +37,26 @@ export namespace ItemInStore {
       price: 500,
     },
     {
-      name: "sheep",
+      name: "sheepWithEar",
       price: 500,
+      resource: "wool",
+    },
+    {
+      name: "sheep",
+      price: 1000,
+      resource: "wool",
+    },
+    {
+      name: "sheepQueen",
+      price: 2500,
       resource: "wool",
     },
   ];
 
-  export const expressions: (string | { uri: string; price: number })[] = [
+  export const expressions: (
+    | string
+    | { uri: string; price: number; resource?: Resources }
+  )[] = [
     "https://bigstones.fr/pootime-adventure/expressions/smile.png",
 
     "https://bigstones.fr/pootime-adventure/expressions/gossip.png",
@@ -66,6 +79,16 @@ export namespace ItemInStore {
     {
       uri: "https://bigstones.fr/pootime-adventure/expressions/monster.png",
       price: 1000,
+    },
+    {
+      uri: "https://bigstones.fr/pootime-adventure/expressions/losesheep.png",
+      price: 200,
+      resource: "wool",
+    },
+    {
+      uri: "https://bigstones.fr/pootime-adventure/expressions/proudsheep.png",
+      price: 1000,
+      resource: "wool",
     },
   ];
 
