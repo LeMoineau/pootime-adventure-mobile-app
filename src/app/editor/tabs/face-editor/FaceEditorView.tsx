@@ -1,16 +1,16 @@
 import { Text, View } from "react-native";
-import { style } from "../../../common/utils/style-utils";
-import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
-import { ItemInStore } from "../../../common/types/itemInStore";
+import { style } from "../../../../common/utils/style-utils";
+import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
+import { ItemInStore } from "../../../../common/types/itemInStore";
 import { useState } from "react";
-import ConfirmModal from "../../../common/components/modals/ConfirmModal";
-import { useResourcesStore } from "../../../common/stores/resources.store";
-import PooCoinIcon from "../../../common/components/icons/pooCoin";
-import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
+import ConfirmModal from "../../../../common/components/modals/ConfirmModal";
+import { useResourcesStore } from "../../../../common/stores/resources.store";
+import PooCoinIcon from "../../../../common/components/icons/pooCoin";
+import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
 import FaceSelector from "./FaceSelector";
-import { DefaultValues } from "../../../common/config/DefaultValues";
-import { Resources } from "../../../common/types/Resources";
-import WoolIcon from "../../../common/components/icons/sheep/wool";
+import { DefaultValues } from "../../../../common/config/DefaultValues";
+import { Resources } from "../../../../common/types/Resources";
+import WoolIcon from "../../../../common/components/icons/sheep/wool";
 
 export default function FaceEditorView() {
   const { setExpression } = usePooCreatureStyleStore();

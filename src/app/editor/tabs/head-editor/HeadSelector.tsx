@@ -1,9 +1,9 @@
-import { colors } from "../../../common/utils/color-utils";
-import EditSelector, { EditSelectorProps } from "../EditSelector";
-import { PooHeads } from "../../../common/types/PooHeads";
-import { MathUtils } from "../../../common/utils/math-utils";
-import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
-import { Resources } from "../../../common/types/Resources";
+import { colors } from "../../../../common/utils/color-utils";
+import EditSelector, { EditSelectorProps } from "../../EditSelector";
+import { PooHeads } from "../../../../common/types/PooHeads";
+import { MathUtils } from "../../../../common/utils/math-utils";
+import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
+import { Resources } from "../../../../common/types/Resources";
 
 export default function HeadSelector({
   name,

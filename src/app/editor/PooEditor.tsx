@@ -4,12 +4,14 @@ import EditorTopBar from "./navigation/EditorTopBar";
 import PooCreature from "../../common/components/misc/PooCreature";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
 import PooBodyEditIcon from "../../common/components/icons/pooBodyEdit";
-import BodyEditorView from "./body-editor/BodyEditorView";
+import BodyEditorView from "./tabs/body-editor/BodyEditorView";
 import PooHeadEditIcon from "../../common/components/icons/pooHeadEdit";
 import PooFaceEditIcon from "../../common/components/icons/pooFaceEdit";
-import FaceEditorView from "./face-editor/FaceEditorView";
-import HeadEditorView from "./head-editor/HeadEditorView";
+import FaceEditorView from "./tabs/face-editor/FaceEditorView";
+import HeadEditorView from "./tabs/head-editor/HeadEditorView";
 import CustomPage from "../../common/components/navigation/CustomPage";
+import PooCoinsConverterIcon from "../../common/components/icons/ui/pooCoinsConverter";
+import PooCoinsConverterTab from "./tabs/PooCoinsConverterTab";
 
 export default function PooEditor() {
   return (
@@ -38,6 +40,12 @@ export default function PooEditor() {
             {
               icon: <PooFaceEditIcon size={35}></PooFaceEditIcon>,
               content: <FaceEditorView></FaceEditorView>,
+            },
+          ]}
+          endTabs={[
+            {
+              icon: <PooCoinsConverterIcon size={35}></PooCoinsConverterIcon>,
+              content: <PooCoinsConverterTab></PooCoinsConverterTab>,
             },
           ]}
         ></RoundedScrollView>

@@ -8,6 +8,8 @@ import StatsIcons from "../../common/components/icons/stats";
 import PooUltiIcon from "../../common/components/icons/pooUlti";
 import UltiTab from "./tabs/UltiTab";
 import CustomPage from "../../common/components/navigation/CustomPage";
+import StarConverterIcon from "../../common/components/icons/ui/starConverter";
+import StarConverterTab from "./tabs/StarConverterTab";
 
 export default function PooFight() {
   return (
@@ -33,6 +35,12 @@ export default function PooFight() {
             {
               icon: <PooUltiIcon size={35}></PooUltiIcon>,
               content: <UltiTab></UltiTab>,
+            },
+          ]}
+          endTabs={[
+            {
+              icon: <StarConverterIcon size={35}></StarConverterIcon>,
+              content: <StarConverterTab></StarConverterTab>,
             },
           ]}
         ></RoundedScrollView>
