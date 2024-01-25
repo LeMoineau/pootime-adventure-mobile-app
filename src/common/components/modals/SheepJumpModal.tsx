@@ -5,7 +5,7 @@ import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store"
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import SheepIcon from "../icons/sheep/sheep";
 import { CutSheepIcon } from "../icons/sheep/cutSheep";
-import RewardModal from "./RewardModal";
+import RewardModal from "./primitives/RewardModal";
 import { style } from "../../utils/style-utils";
 import { colors } from "../../utils/color-utils";
 import { useResourcesStore } from "../../stores/resources.store";

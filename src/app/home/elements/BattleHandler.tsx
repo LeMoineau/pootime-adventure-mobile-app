@@ -1,22 +1,35 @@
-import { View } from "react-native";
+import { ActivityIndicator, Text, View } from "react-native";
 import FightButton from "./FightButton";
 import PrivateFightModal from "../../../common/components/modals/PrivateFightModal";
 import BattleArenaModal from "../../../common/components/modals/BattleArenaModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 import { useBattleStore } from "../../../common/stores/battle.store";
 import { ServerTypes } from "../../../common/types/ServerTypes";
 import WaitForFightModal from "../../../common/components/modals/WaitForFightModal";
+import PlainModal from "../../../common/components/modals/primitives/PlainModal";
+import useModals from "../../../common/hooks/use-modals";
 
 export default function BattleHandler() {
-  const [showPrivateModal, setShowPrivateModal] = useState(false);
-  const [showBattleModal, setShowBattleModal] = useState(false);
-  const [showBattleArena, setShowBattleArena] = useState(false);
+  const { connect, isConnected, disconnect, joinTheQueue } = useBattleStore();
 
+  const { isVisible, show, hide } = useModals<
+    "private-battle" | "battle-waiting" | "battle-arena" | "server-waiting"
+  >();
   const [room, setRoom] = useState<ServerTypes.Room | null>(null);
 
-  const { connect, disconnect, joinTheQueue } = useBattleStore();
+  useEffect(() => {
+    connect();
+    if (!isConnected()) {
+      let _intervalId = setInterval(() => {
+        connect();
+        if (isConnected()) {
+          clearInterval(_intervalId);
+        }
+      }, 5000);
+    }
+  }, []);
   return (
     <>
       <View
@@ -32,7 +45,7 @@ export default function BattleHandler() {
           color={colors.yellow}
           onPress={() => {
             connect();
-            setShowBattleModal(true);
+            isConnected() ? show("battle-waiting") : show("server-waiting");
             joinTheQueue();
           }}
         ></FightButton>
@@ -42,39 +55,56 @@ export default function BattleHandler() {
           color={colors.blue}
           onPress={() => {
             connect();
-            setShowPrivateModal(true);
+            isConnected() ? show("private-battle") : show("server-waiting");
           }}
         ></FightButton>
       </View>
+      <PlainModal
+        visible={isVisible("server-waiting")}
+        onRequestClose={() => {
+          hide("server-waiting");
+        }}
+      >
+        <Text style={[style.textCenter, style.textMd, {}]}>
+          Lancement des Serveurs
+        </Text>
+        <Text style={[style.textCenter, style.textSm, { marginBottom: 10 }]}>
+          Temps d'attente estimé : 2 minutes
+        </Text>
+        <ActivityIndicator size={"large"} />
+        <Text style={[style.textCenter, { marginTop: 10 }]}>
+          Un peu de patience, les serveurs (gratuits) se lancent... ça chauffe !
+        </Text>
+      </PlainModal>
       <WaitForFightModal
-        visible={showBattleModal}
+        visible={isVisible("battle-waiting")}
         onRequestClose={() => {
           disconnect();
-          setShowBattleModal(false);
+          hide("battle-waiting");
         }}
         openRoom={(room) => {
           setRoom(room);
-          setShowBattleModal(false);
-          setShowBattleArena(true);
+          hide("battle-waiting");
+          show("battle-arena");
         }}
       ></WaitForFightModal>
       <PrivateFightModal
-        visible={showPrivateModal}
+        visible={isVisible("private-battle")}
         onRequestClose={() => {
           disconnect();
-          setShowPrivateModal(false);
+          hide("private-battle");
         }}
         openRoom={(room) => {
           setRoom(room);
-          setShowPrivateModal(false);
-          setShowBattleArena(true);
+          hide("private-battle");
+          show("battle-arena");
         }}
       ></PrivateFightModal>
       {room && (
         <BattleArenaModal
-          visible={showBattleArena}
+          visible={isVisible("battle-arena")}
           onBattleFinish={() => {
-            setShowBattleArena(false);
+            hide("battle-arena");
             disconnect();
             setTimeout(() => {
               setRoom(null);

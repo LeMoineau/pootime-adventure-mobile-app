@@ -5,7 +5,7 @@ import ResourceIcon from "../icons/ResourceIcon";
 import { colors } from "../../utils/color-utils";
 import { useResourcesStore } from "../../stores/resources.store";
 import { useState } from "react";
-import ConfirmModal from "../modals/ConfirmModal";
+import ConfirmModal from "../modals/primitives/ConfirmModal";
 
 export default function ResourceConverterButton({
   from,

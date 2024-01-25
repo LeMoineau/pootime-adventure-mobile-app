@@ -1,10 +1,10 @@
 import { Modal, ModalProps, Text, View } from "react-native";
-import { style } from "../../utils/style-utils";
-import StandardButton from "../buttons/StandardButton";
-import { colors } from "../../utils/color-utils";
-import StarIcon from "../icons/star";
-import PooCoinIcon from "../icons/pooCoin";
-import WoolIcon from "../icons/sheep/wool";
+import { style } from "../../../utils/style-utils";
+import StandardButton from "../../buttons/StandardButton";
+import { colors } from "../../../utils/color-utils";
+import StarIcon from "../../icons/star";
+import PooCoinIcon from "../../icons/pooCoin";
+import WoolIcon from "../../icons/sheep/wool";
 
 export default function RewardModal({
   children,

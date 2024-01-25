@@ -1,22 +1,11 @@
-import { ActivityIndicator, Modal, ModalProps, Text, View } from "react-native";
-import { style } from "../../utils/style-utils";
-import { colors } from "../../utils/color-utils";
+import { Modal, ModalProps, View } from "react-native";
 import React from "react";
-import { useBattleStore } from "../../stores/battle.store";
-import PlusIcon from "../icons/plus";
-import PillButton from "../buttons/PillButton";
-import { ServerTypes } from "../../types/ServerTypes";
+import { style } from "../../../utils/style-utils";
+import { colors } from "../../../utils/color-utils";
+import PillButton from "../../buttons/PillButton";
+import PlusIcon from "../../icons/plus";
 
-export default function WaitForFightModal({
-  openRoom,
-  ...props
-}: { openRoom: (room: ServerTypes.Room) => void } & ModalProps) {
-  const { whenFindTheRoom } = useBattleStore();
-
-  whenFindTheRoom((room) => {
-    openRoom(room);
-  });
-
+export default function PlainModal({ ...props }: ModalProps) {
   return (
     <Modal animationType="slide" transparent {...props}>
       <View
@@ -52,10 +41,7 @@ export default function WaitForFightModal({
               style={[{ transform: [{ rotateZ: "45deg" }] }]}
             ></PlusIcon>
           </PillButton>
-          <ActivityIndicator size={"large"} />
-          <Text style={[style.textCenter, { marginTop: 10 }]}>
-            En attente de joueur pour commencer...
-          </Text>
+          {props.children}
         </View>
       </View>
     </Modal>

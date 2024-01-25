@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import ResourceConverterButton from "../../../common/components/buttons/ResourceConverterButton";
 import { useState } from "react";
-import ConfirmModal from "../../../common/components/modals/ConfirmModal";
+import ConfirmModal from "../../../common/components/modals/primitives/ConfirmModal";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 
 export default function StarConverterTab() {

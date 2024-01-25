@@ -3,4 +3,19 @@ export namespace ArrayUtils {
     array.push(item);
     return array;
   }
+
+  export function findAndCall<T>(
+    array: T[],
+    condition: (i: T) => boolean,
+    onFound: (i: T) => void,
+    onFailed: (arr: T[]) => void
+  ): T[] {
+    const target = array.find(condition);
+    if (!target) {
+      onFailed(array);
+    } else {
+      onFound(target);
+    }
+    return array;
+  }
 }

@@ -3,7 +3,7 @@ import { style } from "../../../../common/utils/style-utils";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { ItemInStore } from "../../../../common/types/itemInStore";
 import { useState } from "react";
-import ConfirmModal from "../../../../common/components/modals/ConfirmModal";
+import ConfirmModal from "../../../../common/components/modals/primitives/ConfirmModal";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
 import HeadSelector from "./HeadSelector";

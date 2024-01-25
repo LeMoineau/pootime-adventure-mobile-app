@@ -9,6 +9,7 @@ type Store = {
   socket: Socket | null;
   connect: () => void;
   getSocketId: () => string;
+  isConnected: () => boolean;
   disconnect: () => void;
   createARoom: () => void;
   joinARoom: (roomId: string) => void;
@@ -45,6 +46,10 @@ export const useBattleStore = create<Store>((set, get) => {
 
   const getSocketId = () => {
     return get().socket?.id!;
+  };
+
+  const isConnected = () => {
+    return get().socket !== null;
   };
 
   const disconnect = () => {
@@ -119,6 +124,7 @@ export const useBattleStore = create<Store>((set, get) => {
     socket: null,
     connect,
     getSocketId,
+    isConnected,
     disconnect,
     createARoom,
     joinARoom,

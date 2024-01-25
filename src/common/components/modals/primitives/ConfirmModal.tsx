@@ -1,9 +1,8 @@
 import { Modal, ModalProps, Text, View } from "react-native";
-import { style } from "../../utils/style-utils";
-import StandardButton from "../buttons/StandardButton";
-import { colors } from "../../utils/color-utils";
+import { style } from "../../../utils/style-utils";
+import StandardButton from "../../buttons/StandardButton";
+import { colors } from "../../../utils/color-utils";
 import React from "react";
-import { Resources } from "../../types/Resources";
 
 export default function ConfirmModal({
   children,

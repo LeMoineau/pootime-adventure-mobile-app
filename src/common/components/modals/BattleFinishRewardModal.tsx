@@ -1,5 +1,5 @@
 import { ModalProps, Text } from "react-native";
-import RewardModal from "./RewardModal";
+import RewardModal from "./primitives/RewardModal";
 import { style } from "../../utils/style-utils";
 import { colors } from "../../utils/color-utils";
 
