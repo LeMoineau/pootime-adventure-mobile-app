@@ -1,11 +1,11 @@
 import { ActivityIndicator, Modal, ModalProps, Text, View } from "react-native";
-import { style } from "../../utils/style-utils";
-import { colors } from "../../utils/color-utils";
+import { style } from "../../../utils/style-utils";
+import { colors } from "../../../utils/color-utils";
 import React from "react";
-import { useBattleStore } from "../../stores/battle.store";
-import PlusIcon from "../icons/plus";
-import PillButton from "../buttons/PillButton";
-import { ServerTypes } from "../../types/ServerTypes";
+import { useBattleStore } from "../../../stores/battle.store";
+import PlusIcon from "../../icons/plus";
+import PillButton from "../../buttons/PillButton";
+import { ServerTypes } from "../../../types/ServerTypes";
 
 export default function WaitForFightModal({
   openRoom,

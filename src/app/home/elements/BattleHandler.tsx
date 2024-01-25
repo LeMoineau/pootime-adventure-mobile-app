@@ -1,13 +1,13 @@
 import { ActivityIndicator, Text, View } from "react-native";
 import FightButton from "./FightButton";
-import PrivateFightModal from "../../../common/components/modals/PrivateFightModal";
-import BattleArenaModal from "../../../common/components/modals/BattleArenaModal";
+import PrivateFightModal from "../../../common/components/modals/online-battle/PrivateFightModal";
+import BattleArenaModal from "../../../common/components/modals/online-battle/BattleArenaModal";
 import { useEffect, useState } from "react";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 import { useBattleStore } from "../../../common/stores/battle.store";
 import { ServerTypes } from "../../../common/types/ServerTypes";
-import WaitForFightModal from "../../../common/components/modals/WaitForFightModal";
+import WaitForFightModal from "../../../common/components/modals/online-battle/WaitForFightModal";
 import PlainModal from "../../../common/components/modals/primitives/PlainModal";
 import useModals from "../../../common/hooks/use-modals";
 

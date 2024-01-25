@@ -2,7 +2,7 @@ import PooCreature from "../../common/components/misc/PooCreature";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { ServerTypes } from "../../common/types/ServerTypes";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
-import BattleFinishRewardModal from "../../common/components/modals/BattleFinishRewardModal";
+import BattleFinishRewardModal from "../../common/components/modals/online-battle/BattleFinishRewardModal";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import Arena from "../../common/components/misc/Arena";
 import useOnlineBattle from "../../common/hooks/use-online-battle";
