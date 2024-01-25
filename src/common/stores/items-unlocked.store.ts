@@ -29,7 +29,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     if (isUnlocked(item, name)) {
       return;
     }
-    set({ ultis: { ...get().ultis, name: true } });
+    set({ [item]: { ...get()[item], [name]: true } });
     await addItemInObjectInJson(StorageKeys.ITEMS_UNLOCKED, item, name, true);
   };
 
