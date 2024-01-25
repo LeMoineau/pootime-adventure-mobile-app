@@ -31,10 +31,10 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       const gain = MathUtils.calculateGainStat(stat, get()[stat]);
       set((state) => ({ [stat]: state[stat] + gain }));
       await saveItemInJson(StorageKeys.POO_CREATURE_STATS, stat, get()[stat]);
-      await incrExp();
+      await _incrExp();
     };
 
-    const incrExp = async () => {
+    const _incrExp = async () => {
       let currentExp = get().currentExp + 1;
       if (currentExp >= MathUtils.calculateExpNeedForNextLevel(get().level)) {
         set((state) => ({ level: state.level + 1, currentExp: 0 }));
