@@ -9,8 +9,8 @@ import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-st
 import { Ultis } from "../../../common/types/Ultis";
 
 export default function UltiTab() {
-  const { spendStar } = useResourcesStore();
-  const { ultis, unlock } = useItemsUnlockedStore();
+  const { spend } = useResourcesStore();
+  const { unlock, isUnlocked } = useItemsUnlockedStore();
   const { ultiSelected, selectUlti } = usePooCreatureStatsStore();
 
   return (
@@ -25,11 +25,11 @@ export default function UltiTab() {
             icon={<IconFromImage uri={ulti.icon} size={70}></IconFromImage>}
             details={ulti.details}
             price={item.price}
-            unlocked={ultis.includes(item.name)}
+            unlocked={isUnlocked("ultis", item.name)}
             selected={ultiSelected === item.name}
             onPress={async () => {
-              if (!ultis.includes(item.name)) {
-                await spendStar(item.price, async () => {
+              if (!isUnlocked("ultis", item.name)) {
+                await spend("stars", item.price, async () => {
                   await unlock("ultis", item.name);
                   await selectUlti(item.name);
                 });

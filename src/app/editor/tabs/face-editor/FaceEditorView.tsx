@@ -20,8 +20,8 @@ export default function FaceEditorView() {
     expression: string;
     price: number;
     resource?: Resources;
-  }>({ expression: DefaultValues.PooFace, price: 0 });
-  const { expressions, unlock } = useItemsUnlockedStore();
+  }>({ expression: DefaultValues.PooCreatureStyle.expression, price: 0 });
+  const { unlock, isUnlocked } = useItemsUnlockedStore();
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function FaceEditorView() {
                 }}
               ></FaceSelector>
             );
-          } else if (expressions.includes(item.uri)) {
+          } else if (isUnlocked("expressions", item.uri)) {
             return (
               <FaceSelector
                 uri={item.uri}
@@ -83,7 +83,10 @@ export default function FaceEditorView() {
               await unlock("expressions", currentTrade.expression);
             }
           );
-          setCurrentTrade({ expression: DefaultValues.PooFace, price: 0 });
+          setCurrentTrade({
+            expression: DefaultValues.PooCreatureStyle.expression,
+            price: 0,
+          });
         }}
       >
         <View

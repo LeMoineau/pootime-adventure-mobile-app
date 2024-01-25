@@ -1,66 +1,45 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
-import { ArrayUtils } from "../utils/array-utils";
-import { DataInStorage } from "../types/dataInStorage";
 import { UnlockableItems } from "../types/UnlockableItems";
+import { DefaultValues } from "../config/DefaultValues";
+import { ObjectUtils } from "../utils/object-utils";
+import { DataInStorage } from "../types/dataInStorage";
 
 type Store = {
-  bodyColors: string[];
-  heads: string[];
-  expressions: string[];
-  ultis: string[];
-  events: string[];
-  unlock: (item: UnlockableItems, value: string) => Promise<void>;
-};
+  unlock: (item: UnlockableItems, name: string) => Promise<void>;
+  isUnlocked: (item: UnlockableItems, name: string) => boolean;
+} & DataInStorage.ItemsUnlocked;
 
 export const useItemsUnlockedStore = create<Store>((set, get) => {
   const { getJson, addItemInObjectInJson, saveJson } = useStorage();
 
   getJson(StorageKeys.ITEMS_UNLOCKED).then(async (json: any) => {
-    if (json) {
-      loadUnlockedItems(json as DataInStorage.ItemsUnlocked);
-    } else {
-      await saveDefaultValues();
+    const baseValues = {
+      ...DefaultValues.ItemsUnlocked,
+      ...json,
+    };
+    set(baseValues);
+    if (json === null || !ObjectUtils.equals(json, baseValues)) {
+      await saveJson(StorageKeys.ITEMS_UNLOCKED, baseValues);
     }
   });
 
-  const loadUnlockedItems = (itemsUnlocked: DataInStorage.ItemsUnlocked) => {
-    set({
-      bodyColors: Object.keys(itemsUnlocked.bodyColors),
-      heads: Object.keys(itemsUnlocked.heads),
-      expressions: Object.keys(itemsUnlocked.expressions),
-      ultis: Object.keys(itemsUnlocked.ultis),
-      events: Object.keys(itemsUnlocked.events),
-    });
-  };
-
-  const saveDefaultValues = async () => {
-    await saveJson(StorageKeys.ITEMS_UNLOCKED, {
-      bodyColors: {},
-      heads: {},
-      expressions: {},
-      ultis: {},
-      events: {},
-    } as DataInStorage.ItemsUnlocked);
-  };
-
-  const unlock = async (item: UnlockableItems, value: string) => {
-    if (get()[item].includes(value)) {
+  const unlock = async (item: UnlockableItems, name: string) => {
+    if (isUnlocked(item, name)) {
       return;
     }
-    set((state) => ({
-      ultis: ArrayUtils.pushAndReturn(state[item], value),
-    }));
-    await addItemInObjectInJson(StorageKeys.ITEMS_UNLOCKED, item, value, true);
+    set({ ultis: { ...get().ultis, name: true } });
+    await addItemInObjectInJson(StorageKeys.ITEMS_UNLOCKED, item, name, true);
+  };
+
+  const isUnlocked = (item: UnlockableItems, name: string): boolean => {
+    return get()[item][name] === true;
   };
 
   return {
-    bodyColors: [],
-    heads: [],
-    expressions: [],
-    ultis: [],
-    events: [],
+    ...DefaultValues.ItemsUnlocked,
     unlock,
+    isUnlocked,
   };
 });

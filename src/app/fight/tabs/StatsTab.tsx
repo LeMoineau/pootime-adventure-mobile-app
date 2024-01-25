@@ -8,7 +8,7 @@ import StatsTips from "../elements/StatsTips";
 export default function StatsTab() {
   const { attaque, defense, pv, mana, resMana, recupMana, incrStat } =
     usePooCreatureStatsStore();
-  const { stars, spendStar } = useResourcesStore();
+  const { stars, spend } = useResourcesStore();
   const statsHandlers: {
     label: string;
     value: number;
@@ -67,7 +67,7 @@ export default function StatsTab() {
             value={sh.value}
             upgradeAvailable={stars >= 1}
             onUpgrade={async () => {
-              await spendStar(1, async () => {
+              await spend("stars", 1, async () => {
                 await sh.onPress();
               });
             }}

@@ -1,56 +1,31 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
-import { DataInStorage } from "../types/dataInStorage";
 import { DefaultValues } from "../config/DefaultValues";
 import { StatType } from "../types/StatType";
 import { MathUtils } from "../utils/math-utils";
+import { ObjectUtils } from "../utils/object-utils";
+import { DataInStorage } from "../types/dataInStorage";
 
 export type PooCreatureStatsStore = {
-  level: number;
-  currentExp: number;
-  attaque: number;
-  defense: number;
-  pv: number;
-  mana: number;
-  resMana: number;
-  recupMana: number;
   incrStat: (stat: StatType) => Promise<void>;
-  ultiSelected: string | null;
   selectUlti: (ulti: string) => Promise<void>;
-};
+} & DataInStorage.PooCreatureStats;
 
 export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
   (set, get) => {
     const { getJson, saveItemInJson, saveJson } = useStorage();
 
     getJson(StorageKeys.POO_CREATURE_STATS).then(async (json) => {
-      if (json) {
-        loadSavedValues(json as DataInStorage.PooCreatureStats);
-      } else {
-        await saveDefaultValues();
+      const baseValues = {
+        ...DefaultValues.PooCreatureStats,
+        ...json,
+      };
+      set(baseValues);
+      if (json === null || !ObjectUtils.equals(json, baseValues)) {
+        await saveJson(StorageKeys.POO_CREATURE_STATS, baseValues);
       }
     });
-
-    const loadSavedValues = (stats: DataInStorage.PooCreatureStats) => {
-      set({
-        level: stats.level,
-        currentExp: stats.currentExp,
-        attaque: stats.attaque,
-        defense: stats.defense,
-        pv: stats.pv,
-        mana: stats.mana,
-        resMana: stats.resMana,
-        recupMana: stats.recupMana,
-        ultiSelected: stats.ultiSelected,
-      });
-    };
-
-    const saveDefaultValues = async () => {
-      await saveJson(StorageKeys.POO_CREATURE_STATS, {
-        ...DefaultValues.PooCreatureStats,
-      } as DataInStorage.PooCreatureStats);
-    };
 
     const incrStat = async (stat: StatType) => {
       const gain = MathUtils.calculateGainStat(stat, get()[stat]);
@@ -88,7 +63,7 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
     };
 
     return {
-      ...(DefaultValues.PooCreatureStats as PooCreatureStatsStore),
+      ...DefaultValues.PooCreatureStats,
       incrStat,
       selectUlti,
     };

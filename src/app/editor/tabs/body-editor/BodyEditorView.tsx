@@ -9,16 +9,17 @@ import { colors } from "../../../../common/utils/color-utils";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import PooCoinIcon from "../../../../common/components/icons/pooCoin";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
+import { DefaultValues } from "../../../../common/config/DefaultValues";
 
 export default function BodyEditorView() {
   const { setBodyColor } = usePooCreatureStyleStore();
-  const { spendPooCoin } = useResourcesStore();
+  const { spend } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{
     color: string;
     price: number;
-  }>({ color: colors.baseBodyColor, price: 0 });
-  const { bodyColors, unlock } = useItemsUnlockedStore();
+  }>({ color: DefaultValues.PooCreatureStyle.bodyColor, price: 0 });
+  const { unlock, isUnlocked } = useItemsUnlockedStore();
 
   return (
     <>
@@ -40,7 +41,7 @@ export default function BodyEditorView() {
                 onRequestSelect={setBodyColor}
               ></ColorSelector>
             );
-          } else if (bodyColors.includes(item.color)) {
+          } else if (isUnlocked("bodyColors", item.color)) {
             return (
               <ColorSelector
                 color={item.color}
@@ -67,11 +68,14 @@ export default function BodyEditorView() {
         visible={showConfirmModal}
         onRequestClose={() => setShowConfirmModal(false)}
         onConfirm={async () => {
-          spendPooCoin(currentTrade.price, async () => {
+          spend("pooCoins", currentTrade.price, async () => {
             await setBodyColor(currentTrade.color);
             await unlock("bodyColors", currentTrade.color);
           });
-          setCurrentTrade({ color: colors.baseBodyColor, price: 0 });
+          setCurrentTrade({
+            color: DefaultValues.PooCreatureStyle.bodyColor,
+            price: 0,
+          });
         }}
       >
         <View

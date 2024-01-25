@@ -4,10 +4,10 @@ import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.sto
 
 export default function EventsModalHandler() {
   const [showEventModal, setShowEventModal] = useState(true);
-  const { events, unlock } = useItemsUnlockedStore();
+  const { unlock, isUnlocked } = useItemsUnlockedStore();
   return (
     <>
-      {!events.includes("audreyBirthday") && (
+      {!isUnlocked("events", "audreyBirthday") && (
         <AudreyBirthdayModal
           visible={showEventModal}
           onRequestClose={async () => {

@@ -21,8 +21,8 @@ export default function HeadEditorView() {
     name: string;
     price: number;
     resource?: Resources;
-  }>({ name: DefaultValues.PooHead, price: 0 });
-  const { heads, unlock } = useItemsUnlockedStore();
+  }>({ name: DefaultValues.PooCreatureStyle.head, price: 0 });
+  const { unlock, isUnlocked } = useItemsUnlockedStore();
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function HeadEditorView() {
                 }}
               ></HeadSelector>
             );
-          } else if (heads.includes(item.name)) {
+          } else if (isUnlocked("heads", item.name)) {
             return (
               <HeadSelector
                 name={item.name}
@@ -84,7 +84,10 @@ export default function HeadEditorView() {
               await unlock("heads", currentTrade.name);
             }
           );
-          setCurrentTrade({ name: DefaultValues.PooHead, price: 0 });
+          setCurrentTrade({
+            name: DefaultValues.PooCreatureStyle.head,
+            price: 0,
+          });
         }}
       >
         <View

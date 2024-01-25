@@ -2,47 +2,29 @@ import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
 import { DefaultValues } from "../config/DefaultValues";
+import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";
 
 export type PooCreatureStyleStore = {
-  name: string;
-  bodyColor: string;
-  head: string;
-  expression: string;
   setName: (newname: string) => Promise<void>;
   setBodyColor: (newColor: string) => Promise<void>;
   setHead: (newHead: string) => Promise<void>;
   setExpression: (newExpression: string) => Promise<void>;
-};
+} & DataInStorage.PooCreatureStyle;
 
 export const usePooCreatureStyleStore = create<PooCreatureStyleStore>((set) => {
   const { getJson, saveItemInJson, saveJson } = useStorage();
 
-  const saveDefaultValues = async () => {
-    await saveJson(StorageKeys.POO_CREATURE_STYLE, {
-      name: DefaultValues.PooCreatureName,
-      bodyColor: DefaultValues.PooCreatureBodyColor,
-      head: DefaultValues.PooHead,
-      expression: DefaultValues.PooFace,
-    } as DataInStorage.PooCreatureStyle);
-  };
-
   getJson(StorageKeys.POO_CREATURE_STYLE).then(async (json) => {
-    if (json) {
-      loadSavedValues(json as DataInStorage.PooCreatureStyle);
-    } else {
-      await saveDefaultValues();
+    const baseValues = {
+      ...DefaultValues.PooCreatureStyle,
+      ...json,
+    };
+    set(baseValues);
+    if (json === null || !ObjectUtils.equals(json, baseValues)) {
+      await saveJson(StorageKeys.POO_CREATURE_STYLE, baseValues);
     }
   });
-
-  const loadSavedValues = (style: DataInStorage.PooCreatureStyle) => {
-    set({
-      name: style.name,
-      bodyColor: style.bodyColor,
-      head: style.head,
-      expression: style.expression,
-    });
-  };
 
   const setName = async (newName: string) => {
     set({ name: newName });
@@ -69,10 +51,7 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>((set) => {
   };
 
   return {
-    name: DefaultValues.PooCreatureName,
-    bodyColor: DefaultValues.PooCreatureBodyColor,
-    head: DefaultValues.PooHead,
-    expression: DefaultValues.PooFace,
+    ...DefaultValues.PooCreatureStyle,
     setName,
     setBodyColor,
     setHead,

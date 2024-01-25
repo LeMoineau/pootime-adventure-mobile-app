@@ -1,32 +1,25 @@
 import { colors } from "../utils/color-utils";
-import { JSONObject } from "../types/JSONObject";
+import { DataInStorage } from "../types/dataInStorage";
 
 export namespace DefaultValues {
   //Style
-  export const PooCreatureName = "Mr. Poopoo";
-  export const PooCreatureBodyColor = colors.baseBodyColor;
-  export const PooHead = "classic";
-  export const PooFace =
-    "https://bigstones.fr/pootime-adventure/expressions/smile.png";
+  export const PooCreatureStyle: DataInStorage.PooCreatureStyle = {
+    name: "Mr. Poopoo",
+    bodyColor: colors.baseBodyColor,
+    head: "classic",
+    expression: "https://bigstones.fr/pootime-adventure/expressions/smile.png",
+  };
 
   //Stats
-  export const Level = 1;
-  export const CurrentExp = 0;
-  export const Attaque = 1;
-  export const Defense = 1;
-  export const PV = 20;
-  export const Mana = 0;
-  export const ResMana = 0;
-  export const RecupMana = 0;
-  export const PooCreatureStats: JSONObject = {
-    level: Level,
-    currentExp: CurrentExp,
-    attaque: Attaque,
-    defense: Defense,
-    pv: PV,
-    mana: Mana,
-    resMana: ResMana,
-    recupMana: RecupMana,
+  export const PooCreatureStats: DataInStorage.PooCreatureStats = {
+    level: 1,
+    currentExp: 0,
+    attaque: 1,
+    defense: 1,
+    pv: 20,
+    mana: 0,
+    resMana: 0,
+    recupMana: 0,
     ultiSelected: "",
   };
 
@@ -37,9 +30,20 @@ export namespace DefaultValues {
   export const PooHeadColor = "#c8a000";
 
   //Resources
-  export const Star = 5;
-  export const PooCoins = 250;
-  export const Wool = 0;
+  export const Resources: DataInStorage.Resources = {
+    stars: 5,
+    pooCoins: 250,
+    wool: 0,
+  };
+
+  //ItemUnlocked
+  export const ItemsUnlocked: DataInStorage.ItemsUnlocked = {
+    bodyColors: {},
+    heads: {},
+    expressions: {},
+    ultis: {},
+    events: {},
+  };
 
   //UI
   export const MaxNameCharacters = 10;
