@@ -12,7 +12,7 @@ import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.
 import { DefaultValues } from "../../../../common/config/DefaultValues";
 
 export default function BodyEditorView() {
-  const { setBodyColor } = usePooCreatureStyleStore();
+  const { update } = usePooCreatureStyleStore();
   const { spend } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{
@@ -38,7 +38,9 @@ export default function BodyEditorView() {
               <ColorSelector
                 color={item}
                 key={index}
-                onRequestSelect={setBodyColor}
+                onRequestSelect={(color) => {
+                  update("bodyColor", color);
+                }}
               ></ColorSelector>
             );
           } else if (isUnlocked("bodyColors", item.color)) {
@@ -46,7 +48,9 @@ export default function BodyEditorView() {
               <ColorSelector
                 color={item.color}
                 key={index}
-                onRequestSelect={setBodyColor}
+                onRequestSelect={(color) => {
+                  update("bodyColor", color);
+                }}
               ></ColorSelector>
             );
           } else {
@@ -69,7 +73,7 @@ export default function BodyEditorView() {
         onRequestClose={() => setShowConfirmModal(false)}
         onConfirm={async () => {
           spend("pooCoins", currentTrade.price, async () => {
-            await setBodyColor(currentTrade.color);
+            await update("bodyColor", currentTrade.color);
             await unlock("bodyColors", currentTrade.color);
           });
           setCurrentTrade({

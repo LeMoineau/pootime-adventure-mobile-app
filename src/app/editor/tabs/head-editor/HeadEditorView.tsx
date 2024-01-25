@@ -5,16 +5,14 @@ import { ItemInStore } from "../../../../common/types/itemInStore";
 import { useState } from "react";
 import ConfirmModal from "../../../../common/components/modals/ConfirmModal";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
-import PooCoinIcon from "../../../../common/components/icons/pooCoin";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
 import HeadSelector from "./HeadSelector";
 import { DefaultValues } from "../../../../common/config/DefaultValues";
 import { Resources } from "../../../../common/types/Resources";
-import WoolIcon from "../../../../common/components/icons/sheep/wool";
 import ResourceIcon from "../../../../common/components/icons/ResourceIcon";
 
 export default function HeadEditorView() {
-  const { setHead } = usePooCreatureStyleStore();
+  const { update } = usePooCreatureStyleStore();
   const { spend } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{
@@ -42,7 +40,7 @@ export default function HeadEditorView() {
                 name={item}
                 key={index}
                 onRequestSelect={async (h) => {
-                  await setHead(h);
+                  await update("head", h);
                 }}
               ></HeadSelector>
             );
@@ -52,7 +50,7 @@ export default function HeadEditorView() {
                 name={item.name}
                 key={index}
                 onRequestSelect={async (h) => {
-                  await setHead(h);
+                  await update("head", h);
                 }}
               ></HeadSelector>
             );
@@ -80,7 +78,7 @@ export default function HeadEditorView() {
             currentTrade.resource ?? "pooCoins",
             currentTrade.price,
             async () => {
-              await setHead(currentTrade.name);
+              await update("head", currentTrade.name);
               await unlock("heads", currentTrade.name);
             }
           );

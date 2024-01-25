@@ -4,12 +4,10 @@ import { StorageKeys } from "../utils/storage-keys";
 import { DefaultValues } from "../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";
+import { StyleKeys } from "../types/StyleKeys";
 
 export type PooCreatureStyleStore = {
-  setName: (newname: string) => Promise<void>;
-  setBodyColor: (newColor: string) => Promise<void>;
-  setHead: (newHead: string) => Promise<void>;
-  setExpression: (newExpression: string) => Promise<void>;
+  update: (style: StyleKeys, name: string) => Promise<void>;
 } & DataInStorage.PooCreatureStyle;
 
 export const usePooCreatureStyleStore = create<PooCreatureStyleStore>((set) => {
@@ -26,35 +24,13 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>((set) => {
     }
   });
 
-  const setName = async (newName: string) => {
-    set({ name: newName });
-    await saveItemInJson(StorageKeys.POO_CREATURE_STYLE, "name", newName);
-  };
-
-  const setBodyColor = async (newColor: string) => {
-    set({ bodyColor: newColor });
-    await saveItemInJson(StorageKeys.POO_CREATURE_STYLE, "bodyColor", newColor);
-  };
-
-  const setHead = async (newHead: string) => {
-    set({ head: newHead });
-    await saveItemInJson(StorageKeys.POO_CREATURE_STYLE, "head", newHead);
-  };
-
-  const setExpression = async (newExpression: string) => {
-    set({ expression: newExpression });
-    await saveItemInJson(
-      StorageKeys.POO_CREATURE_STYLE,
-      "expression",
-      newExpression
-    );
+  const update = async (style: StyleKeys, name: string) => {
+    set({ [style]: name });
+    await saveItemInJson(StorageKeys.POO_CREATURE_STYLE, style, name);
   };
 
   return {
     ...DefaultValues.PooCreatureStyle,
-    setName,
-    setBodyColor,
-    setHead,
-    setExpression,
+    update,
   };
 });

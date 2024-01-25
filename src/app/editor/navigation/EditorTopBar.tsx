@@ -12,7 +12,7 @@ import WoolIcon from "../../../common/components/icons/sheep/wool";
 export default function EditorTopBar() {
   const { width } = useWindowDimensions();
   const { pooCoins, wool } = useResourcesStore();
-  const { name, setName } = usePooCreatureStyleStore();
+  const { name, update } = usePooCreatureStyleStore();
 
   return (
     <View
@@ -34,7 +34,7 @@ export default function EditorTopBar() {
         placeholder={"Name"}
         defaultValue={name}
         onChange={async (val) => {
-          setName(val);
+          await update("name", val);
         }}
         appendIcon={<PenIcon size={20}></PenIcon>}
       ></InputField>
