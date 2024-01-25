@@ -1,5 +1,5 @@
 import { Modal, ModalProps, Text } from "react-native";
-import Arena from "../misc/Arena";
+import Arena from "../views/arena/Arena";
 import useSheepJumpStore from "../../stores/sheep-jump.store";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";

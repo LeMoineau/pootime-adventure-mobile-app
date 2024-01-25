@@ -4,16 +4,16 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import { style } from "../../utils/style-utils";
-import CustomPage from "../navigation/CustomPage";
-import PooCreature from "./PooCreature";
-import PVPanel from "../../../app/battle/elements/PVPanel";
-import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
-import UltiButton from "../../../app/battle/elements/UltiButton";
-import { UltiDetails, Ultis } from "../../types/Ultis";
-import ReadyGoText from "../../../app/battle/elements/ReadyGoText";
-import { colors } from "../../utils/color-utils";
-import { DefaultValues } from "../../config/DefaultValues";
+import { style } from "../../../utils/style-utils";
+import CustomPage from "../../navigation/CustomPage";
+import PooCreature from "../../misc/PooCreature";
+import PVPanel from "./PVPanel";
+import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.store";
+import UltiButton from "./UltiButton";
+import { UltiDetails, Ultis } from "../../../types/Ultis";
+import ReadyGoText from "./ReadyGoText";
+import { colors } from "../../../utils/color-utils";
+import { DefaultValues } from "../../../config/DefaultValues";
 
 export default function Arena({
   onHit,

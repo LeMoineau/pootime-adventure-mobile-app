@@ -1,5 +1,4 @@
 import { Image, View, ViewProps } from "react-native";
-import PooHead from "../icons/head/PooHead";
 import React from "react";
 import PooFace from "../icons/poo/PooFace";
 import PooBody from "../icons/poo/PooBody";
@@ -13,6 +12,7 @@ export default function PooCreature({
   width,
   height,
   behind,
+  onlyHead,
   bodyColorProps,
   headProps,
   expressionProps,
@@ -22,6 +22,7 @@ export default function PooCreature({
   width?: number;
   height?: number;
   behind?: boolean;
+  onlyHead?: boolean;
   bodyColorProps?: string;
   headProps?: string;
   expressionProps?: string;
@@ -48,7 +49,7 @@ export default function PooCreature({
       ]}
       {...props}
     >
-      <PooBody fillColor={bodyColorProps ?? bodyColor}></PooBody>
+      {!onlyHead && <PooBody fillColor={bodyColorProps ?? bodyColor}></PooBody>}
       {PooHeads[headProps ?? head]({
         fillColor: MathUtils.calculateHeadColorFromLevel(levelProps ?? level),
         style: [

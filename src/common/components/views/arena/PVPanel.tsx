@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
-import ProgressBar from "../../../common/components/fields/ProgressBar";
-import { colors } from "../../../common/utils/color-utils";
-import { style } from "../../../common/utils/style-utils";
+import ProgressBar from "../../fields/ProgressBar";
+import { colors } from "../../../utils/color-utils";
+import { style } from "../../../utils/style-utils";
 
 export default function PVPanel({
   pooName,
