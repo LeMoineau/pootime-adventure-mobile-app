@@ -2,7 +2,6 @@ import * as React from "react";
 import Svg, {
   SvgProps,
   Defs,
-  RadialGradient,
   LinearGradient,
   Stop,
   Path,

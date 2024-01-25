@@ -42,11 +42,13 @@ export default function EditorTopBar() {
         <NumberField
           value={pooCoins}
           appendElement={<PooCoinIcon size={40}></PooCoinIcon>}
+          useReduceNumberFormat
         ></NumberField>
         <NumberField
           value={wool}
           style={[{ marginTop: 5 }]}
           appendElement={<WoolIcon ratio={0.35}></WoolIcon>}
+          useReduceNumberFormat
         ></NumberField>
       </View>
     </View>

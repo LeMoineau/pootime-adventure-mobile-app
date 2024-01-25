@@ -7,7 +7,7 @@ import SheepJumpModal from "../../../common/components/modals/SheepJumpModal";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
 
 export default function SheepJumpHandler() {
-  const { sheep, showSheepJumpModal, startSheepJump } = useSheepJumpStore();
+  const { showSheepJumpModal, startSheepJump } = useSheepJumpStore();
   const playerStats = usePooCreatureStatsStore();
 
   return (

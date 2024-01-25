@@ -10,16 +10,19 @@ import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { style } from "../../utils/style-utils";
 import React, { useEffect } from "react";
 import { colors } from "../../utils/color-utils";
+import { MathUtils } from "../../utils/math-utils";
 
 export default function NumberField({
   value,
   appendImage,
   appendElement,
+  useReduceNumberFormat,
   ...props
 }: {
   value: number;
   appendImage?: ImageSourcePropType;
   appendElement?: React.ReactNode;
+  useReduceNumberFormat?: boolean;
 } & ViewProps) {
   const scaleValue = new Animated.Value(0);
 
@@ -85,7 +88,9 @@ export default function NumberField({
               },
             ]}
           >
-            {value}
+            {useReduceNumberFormat
+              ? MathUtils.convertToReduceStrFormat(value)
+              : value}
           </Animated.Text>
           {appendImage && (
             <Image

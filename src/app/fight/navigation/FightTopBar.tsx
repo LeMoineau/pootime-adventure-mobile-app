@@ -37,6 +37,7 @@ export default function FightTopBar() {
       <NumberField
         value={stars}
         appendElement={<StarIcon size={40}></StarIcon>}
+        useReduceNumberFormat
       ></NumberField>
     </View>
   );

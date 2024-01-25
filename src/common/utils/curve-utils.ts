@@ -6,7 +6,7 @@ export namespace CurveUtils {
     let starEarn = 0;
     let pooCoinsEarn = 0;
     if (elapsedTime > 1 * 60) {
-      pooCoinsEarn = (50 * elapsedTime) / 60;
+      pooCoinsEarn = Math.round((50 * elapsedTime) / 60);
       starEarn = 1;
     }
     return {

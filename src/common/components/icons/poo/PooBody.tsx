@@ -1,4 +1,3 @@
-import { style } from "../../../utils/style-utils";
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 
