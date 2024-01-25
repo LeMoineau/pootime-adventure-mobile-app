@@ -13,7 +13,7 @@ import { Resources } from "../../../../common/types/Resources";
 import WoolIcon from "../../../../common/components/icons/sheep/wool";
 
 export default function FaceEditorView() {
-  const { setExpression } = usePooCreatureStyleStore();
+  const { update } = usePooCreatureStyleStore();
   const { spend } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [currentTrade, setCurrentTrade] = useState<{
@@ -41,7 +41,7 @@ export default function FaceEditorView() {
                 uri={item}
                 key={index}
                 onRequestSelect={async (u) => {
-                  await setExpression(u);
+                  await update("expression", u);
                 }}
               ></FaceSelector>
             );
@@ -51,7 +51,7 @@ export default function FaceEditorView() {
                 uri={item.uri}
                 key={index}
                 onRequestSelect={async (u) => {
-                  await setExpression(u);
+                  await update("expression", u);
                 }}
               ></FaceSelector>
             );
@@ -79,7 +79,7 @@ export default function FaceEditorView() {
             currentTrade.resource ?? "pooCoins",
             currentTrade.price,
             async () => {
-              await setExpression(currentTrade.expression);
+              await update("expression", currentTrade.expression);
               await unlock("expressions", currentTrade.expression);
             }
           );

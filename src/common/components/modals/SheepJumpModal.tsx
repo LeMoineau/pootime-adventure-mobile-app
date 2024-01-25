@@ -85,7 +85,7 @@ export default function SheepJumpModal({ ...props }: {} & ModalProps) {
           <Text style={[]}>
             {winner === "player"
               ? `Vous avez totalement rasé ${sheep?.name} !`
-              : `${sheep?.name} vouus a complètement tondu !`}
+              : `${sheep?.name} vous a complètement tondu !`}
           </Text>
         </RewardModal>
       )}
