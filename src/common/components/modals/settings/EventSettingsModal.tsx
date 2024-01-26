@@ -22,8 +22,8 @@ export default function EventSettingsModal({ ...props }: {} & ModalProps) {
           <SettingsScrollView
             items={[
               {
-                icon: "cake",
                 label: "Anniversaire Audrey",
+                subLabel: "le 24/01/24",
                 hasRightArrow: true,
                 onPress: () => {
                   show("audreyBirthday");

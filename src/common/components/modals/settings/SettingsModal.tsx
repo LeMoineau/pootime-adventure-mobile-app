@@ -21,23 +21,22 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
           }
         >
           <PooCreatureBadge></PooCreatureBadge>
-          <View style={[style.wFull, { flex: 1, padding: 10, marginTop: 20 }]}>
-            <SettingsScrollView
-              items={[
-                { icon: "person", label: "Votre Compte", hasRightArrow: true },
-                {
-                  icon: "gift",
-                  label: "Evenement",
-                  hasRightArrow: true,
-                  onPress: () => {
-                    show("event-settings");
-                  },
+          <SettingsScrollView
+            style={[{ marginTop: 20 }]}
+            items={[
+              { icon: "person", label: "Votre Compte", hasRightArrow: true },
+              {
+                icon: "gift",
+                label: "Evenement",
+                hasRightArrow: true,
+                onPress: () => {
+                  show("event-settings");
                 },
-                { icon: "book", label: "Tutoriel", hasRightArrow: true },
-                { icon: "code", label: "Infos Dev", hasRightArrow: true },
-              ]}
-            ></SettingsScrollView>
-          </View>
+              },
+              { icon: "book", label: "Tutoriel", hasRightArrow: true },
+              { icon: "code", label: "Infos Dev", hasRightArrow: true },
+            ]}
+          ></SettingsScrollView>
         </SettingsPage>
       </Modal>
       <EventSettingsModal
