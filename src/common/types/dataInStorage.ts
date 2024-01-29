@@ -18,5 +18,6 @@ export namespace DataInStorage {
     expressions: { [expression: string]: boolean };
     ultis: { [ulti: string]: boolean };
     events: { [event: string]: boolean };
+    options: { [option: string]: any };
   }
 }

@@ -43,6 +43,7 @@ export namespace DefaultValues {
     expressions: {},
     ultis: {},
     events: {},
+    options: { dev: false },
   };
 
   //UI

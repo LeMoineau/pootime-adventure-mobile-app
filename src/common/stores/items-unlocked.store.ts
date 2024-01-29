@@ -7,7 +7,7 @@ import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";
 
 type Store = {
-  unlock: (item: UnlockableItems, name: string) => Promise<void>;
+  unlock: (item: UnlockableItems, name: string, value?: any) => Promise<void>;
   isUnlocked: (item: UnlockableItems, name: string) => boolean;
   resetData: () => Promise<void>;
 } & DataInStorage.ItemsUnlocked;
@@ -26,12 +26,19 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     }
   });
 
-  const unlock = async (item: UnlockableItems, name: string) => {
-    if (isUnlocked(item, name)) {
+  const unlock = async (item: UnlockableItems, name: string, value?: any) => {
+    if (isUnlocked(item, name) && value === undefined) {
       return;
     }
-    set({ [item]: { ...get()[item], [name]: true } });
-    await addItemInObjectInJson(StorageKeys.ITEMS_UNLOCKED, item, name, true);
+    set({
+      [item]: { ...get()[item], [name]: value === undefined ? true : value },
+    });
+    await addItemInObjectInJson(
+      StorageKeys.ITEMS_UNLOCKED,
+      item,
+      name,
+      value === undefined ? true : value
+    );
   };
 
   const isUnlocked = (item: UnlockableItems, name: string): boolean => {

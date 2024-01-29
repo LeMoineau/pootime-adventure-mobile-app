@@ -1,5 +1,4 @@
-import { Linking, Modal, ModalProps, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { Linking, Modal, ModalProps, Pressable } from "react-native";
 import { SettingsScrollView } from "../../views/settings/SettingsScrollView";
 import SettingsHeader from "../../views/settings/SettingsHeader";
 import SettingsPage from "../../views/settings/SettingsPage";
@@ -7,11 +6,29 @@ import PooCreatureBadge from "../../misc/PooCreatureBadge";
 import useModals from "../../../hooks/use-modals";
 import EventSettingsModal from "./EventSettingsModal";
 import AccountSettingsModal from "./AccountSettingsModal";
+import DevSettingsModal from "./DevSettingsModal";
+import { useEffect, useState } from "react";
+import { SettingsItemProps } from "../../views/settings/SettingsItem";
+import { useItemsUnlockedStore } from "../../../stores/items-unlocked.store";
 
 export default function SettingsModal({ ...props }: {} & ModalProps) {
+  const { unlock, isUnlocked } = useItemsUnlockedStore();
   const { isVisible, show, hide } = useModals<
-    "event-settings" | "account-settings"
+    "event-settings" | "account-settings" | "dev-settings"
   >();
+  const [counterDev, setCounterDev] = useState(0);
+
+  useEffect(() => {
+    if (counterDev >= 7) {
+      if (isUnlocked("options", "dev")) {
+        unlock("options", "dev", false);
+      } else {
+        unlock("options", "dev", true);
+      }
+      setCounterDev(0);
+    }
+  }, [counterDev]);
+
   return (
     <>
       <Modal animationType="slide" {...props}>
@@ -23,7 +40,9 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
             ></SettingsHeader>
           }
         >
-          <PooCreatureBadge></PooCreatureBadge>
+          <Pressable onPress={() => setCounterDev(counterDev + 1)}>
+            <PooCreatureBadge></PooCreatureBadge>
+          </Pressable>
           <SettingsScrollView
             style={[{ marginTop: 20 }]}
             items={[
@@ -40,7 +59,7 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
                 onPress: () => show("event-settings"),
               },
               { icon: "book", label: "Tutoriel", hasRightArrow: true },
-              { icon: "code", label: "Infos Dev", hasRightArrow: true },
+
               {
                 icon: "attach-money",
                 label: "Faire un don",
@@ -49,6 +68,16 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
                   Linking.openURL("https://fr.tipee.com/pierrot");
                 },
               },
+              ...(isUnlocked("options", "dev")
+                ? ([
+                    {
+                      icon: "code",
+                      label: "Infos Dev",
+                      hasRightArrow: true,
+                      onPress: () => show("dev-settings"),
+                    },
+                  ] as SettingsItemProps[])
+                : []),
             ]}
           ></SettingsScrollView>
         </SettingsPage>
@@ -61,6 +90,10 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
         visible={isVisible("event-settings")}
         onRequestClose={() => hide("event-settings")}
       ></EventSettingsModal>
+      <DevSettingsModal
+        visible={isVisible("dev-settings")}
+        onRequestClose={() => hide("dev-settings")}
+      ></DevSettingsModal>
     </>
   );
 }

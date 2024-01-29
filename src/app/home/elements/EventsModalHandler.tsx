@@ -9,7 +9,10 @@ export default function EventsModalHandler() {
     <>
       {!isUnlocked("events", "audreyBirthday") && (
         <AudreyBirthdayModal
-          visible={isVisible("audreyBirthday")}
+          visible={
+            isVisible("audreyBirthday") ||
+            !isUnlocked("events", "audreyBirthday")
+          }
           onRequestClose={async () => {
             await unlock("events", "audreyBirthday");
             hide("audreyBirthday");

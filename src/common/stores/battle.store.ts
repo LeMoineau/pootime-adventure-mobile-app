@@ -38,7 +38,7 @@ export const useBattleStore = create<Store>((set, get) => {
     var io = require("socket.io-client/dist/socket.io");
     // "https://pootime-adventure-battle-server.onrender.com/"
     set({
-      socket: io("https://pootime-adventure-battle-server.onrender.com/", {
+      socket: io(getConfig().BATTLE_SERVER_URL, {
         transports: ["websocket"],
       }),
     });

@@ -1,15 +1,21 @@
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
 import { colors } from "../../../utils/color-utils";
 import SettingsItem, { SettingsItemProps } from "./SettingsItem";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 
 export function SettingsScrollView({
+  title,
   items,
   ...props
-}: { items: SettingsItemProps[] } & ViewProps) {
+}: { title?: string; items: SettingsItemProps[] } & ViewProps) {
   return (
     <View style={[style.wFull, { flex: 1, padding: 10 }, props.style]}>
+      {title && (
+        <Text style={[style.textMd, { marginBottom: 5, marginLeft: 10 }]}>
+          {title}
+        </Text>
+      )}
       <View
         style={[
           style.wFull,

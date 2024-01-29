@@ -3,4 +3,5 @@ export type UnlockableItems =
   | "bodyColors"
   | "heads"
   | "expressions"
-  | "ultis";
+  | "ultis"
+  | "options";
