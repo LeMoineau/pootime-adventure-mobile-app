@@ -8,6 +8,7 @@ import { StyleKeys } from "../types/StyleKeys";
 
 export type PooCreatureStyleStore = {
   update: (style: StyleKeys, name: string) => Promise<void>;
+  resetData: () => Promise<void>;
 } & DataInStorage.PooCreatureStyle;
 
 export const usePooCreatureStyleStore = create<PooCreatureStyleStore>((set) => {
@@ -29,8 +30,17 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>((set) => {
     await saveItemInJson(StorageKeys.POO_CREATURE_STYLE, style, name);
   };
 
+  const resetData = async () => {
+    await saveJson(
+      StorageKeys.POO_CREATURE_STYLE,
+      DefaultValues.PooCreatureStyle
+    );
+    set({ ...DefaultValues.PooCreatureStyle });
+  };
+
   return {
     ...DefaultValues.PooCreatureStyle,
     update,
+    resetData,
   };
 });

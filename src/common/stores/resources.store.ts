@@ -14,6 +14,7 @@ type Store = {
     onSuccess?: (newVal: number) => void,
     onFailed?: (val: number) => void
   ) => Promise<void>;
+  resetData: () => Promise<void>;
 } & DataInStorage.Resources;
 
 export const useResourcesStore = create<Store>((set, get) => {
@@ -50,9 +51,15 @@ export const useResourcesStore = create<Store>((set, get) => {
     }
   };
 
+  const resetData = async () => {
+    await saveJson(StorageKeys.RESOURCES, DefaultValues.Resources);
+    set({ ...DefaultValues.Resources });
+  };
+
   return {
     ...DefaultValues.Resources,
     earn,
     spend,
+    resetData,
   };
 });

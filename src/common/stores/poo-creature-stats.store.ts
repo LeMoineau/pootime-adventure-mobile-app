@@ -10,6 +10,7 @@ import { DataInStorage } from "../types/dataInStorage";
 export type PooCreatureStatsStore = {
   incrStat: (stat: StatType) => Promise<void>;
   selectUlti: (ulti: string) => Promise<void>;
+  resetData: () => Promise<void>;
 } & DataInStorage.PooCreatureStats;
 
 export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
@@ -62,10 +63,19 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       );
     };
 
+    const resetData = async () => {
+      await saveJson(
+        StorageKeys.POO_CREATURE_STATS,
+        DefaultValues.PooCreatureStats
+      );
+      set({ ...DefaultValues.PooCreatureStats });
+    };
+
     return {
       ...DefaultValues.PooCreatureStats,
       incrStat,
       selectUlti,
+      resetData,
     };
   }
 );

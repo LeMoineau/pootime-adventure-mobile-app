@@ -9,6 +9,7 @@ import { DataInStorage } from "../types/dataInStorage";
 type Store = {
   unlock: (item: UnlockableItems, name: string) => Promise<void>;
   isUnlocked: (item: UnlockableItems, name: string) => boolean;
+  resetData: () => Promise<void>;
 } & DataInStorage.ItemsUnlocked;
 
 export const useItemsUnlockedStore = create<Store>((set, get) => {
@@ -37,9 +38,15 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     return get()[item][name] === true;
   };
 
+  const resetData = async () => {
+    await saveJson(StorageKeys.ITEMS_UNLOCKED, DefaultValues.ItemsUnlocked);
+    set({ ...DefaultValues.ItemsUnlocked });
+  };
+
   return {
     ...DefaultValues.ItemsUnlocked,
     unlock,
     isUnlocked,
+    resetData,
   };
 });
