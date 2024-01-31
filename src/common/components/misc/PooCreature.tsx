@@ -7,6 +7,7 @@ import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store"
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { MathUtils } from "../../utils/math-utils";
 import { PooHeads } from "../../types/PooHeads";
+import { CurveUtils } from "../../utils/curve-utils";
 
 export default function PooCreature({
   width,
@@ -51,7 +52,7 @@ export default function PooCreature({
     >
       {!onlyHead && <PooBody fillColor={bodyColorProps ?? bodyColor}></PooBody>}
       {PooHeads[headProps ?? head]({
-        fillColor: MathUtils.calculateHeadColorFromLevel(levelProps ?? level),
+        fillColor: CurveUtils.calculateHeadColor(levelProps ?? level),
         style: [
           {
             position: "absolute",

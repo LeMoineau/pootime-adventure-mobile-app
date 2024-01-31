@@ -2,6 +2,7 @@ import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { MathUtils } from "../../utils/math-utils";
 import ProgressBar, { ProgressBarProps } from "./ProgressBar";
+import { CurveUtils } from "../../utils/curve-utils";
 
 export default function LevelProgressBar({
   ...props
@@ -10,7 +11,7 @@ export default function LevelProgressBar({
   return (
     <ProgressBar
       {...props}
-      max={MathUtils.calculateExpNeedForNextLevel(level)}
+      max={CurveUtils.calculateExpNeedForNextLevel(level)}
       current={currentExp}
       appendText={`${level}`}
     ></ProgressBar>

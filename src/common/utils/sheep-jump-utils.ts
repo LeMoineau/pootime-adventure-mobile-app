@@ -1,3 +1,4 @@
+import { DefaultValues } from "../config/DefaultValues";
 import { SheepJumpTypes } from "../types/SheepJumpTypes";
 import { UltiDetails } from "../types/Ultis";
 import { MathUtils } from "./math-utils";
@@ -13,7 +14,7 @@ export namespace SheepJumpUtils {
     const sheepLevel = level + roll;
     return {
       name: getRandomSheepName(),
-      color: SheepJumpTypes.SheepWoolPalette.hexValueAt((sheepLevel / 40) % 1),
+      color: DefaultValues.SheepWoolPalette.hexValueAt((sheepLevel / 40) % 1),
       level: sheepLevel,
       pv: sheepLevel * 50,
       attaque: sheepLevel * 2,

@@ -65,7 +65,7 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
                 label: "Faire un don",
                 hasRightArrow: true,
                 onPress: () => {
-                  Linking.openURL("https://fr.tipee.com/pierrot");
+                  Linking.openURL("https://linktr.ee/pierrot_");
                 },
               },
               ...(isUnlocked("options", "dev")

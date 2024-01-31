@@ -4,6 +4,7 @@ import { PooHeads } from "../../../../common/types/PooHeads";
 import { MathUtils } from "../../../../common/utils/math-utils";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import { Resources } from "../../../../common/types/Resources";
+import { CurveUtils } from "../../../../common/utils/curve-utils";
 
 export default function HeadSelector({
   name,
@@ -27,7 +28,7 @@ export default function HeadSelector({
       }
     >
       {PooHeads[name]({
-        fillColor: MathUtils.calculateHeadColorFromLevel(level),
+        fillColor: CurveUtils.calculateHeadColor(level),
         style: {
           width: 80,
           height: 80,

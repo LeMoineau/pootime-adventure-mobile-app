@@ -6,6 +6,7 @@ import { StatType } from "../types/StatType";
 import { MathUtils } from "../utils/math-utils";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";
+import { CurveUtils } from "../utils/curve-utils";
 
 export type PooCreatureStatsStore = {
   incrStat: (stat: StatType) => Promise<void>;
@@ -37,7 +38,7 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
 
     const _incrExp = async () => {
       let currentExp = get().currentExp + 1;
-      if (currentExp >= MathUtils.calculateExpNeedForNextLevel(get().level)) {
+      if (currentExp >= CurveUtils.calculateExpNeedForNextLevel(get().level)) {
         set((state) => ({ level: state.level + 1, currentExp: 0 }));
       } else {
         set({ currentExp: currentExp });
