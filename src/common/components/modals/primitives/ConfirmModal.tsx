@@ -3,16 +3,21 @@ import { style } from "../../../utils/style-utils";
 import StandardButton from "../../buttons/StandardButton";
 import { colors } from "../../../utils/color-utils";
 import React from "react";
+import { GestureResponderEvent } from "react-native-modal";
 
 export default function ConfirmModal({
   children,
   onConfirm,
   onCancel,
+  confirmButton,
   ...props
 }: {
   children: React.ReactNode;
   onConfirm?: () => void;
   onCancel?: () => void;
+  confirmButton?: (
+    onPress?: (evt: GestureResponderEvent) => void
+  ) => React.ReactNode;
 } & ModalProps) {
   return (
     <Modal animationType="slide" transparent {...props}>
@@ -43,17 +48,25 @@ export default function ConfirmModal({
               { justifyContent: "space-around" },
             ]}
           >
-            <StandardButton
-              style={{ paddingTop: 10 }}
-              bgColor={colors.teal[400]}
-              textColor={colors.white}
-              onPress={(evt) => {
+            {confirmButton ? (
+              confirmButton((evt) => {
                 props.onRequestClose && props.onRequestClose(evt);
                 onConfirm && onConfirm();
-              }}
-            >
-              Confirm
-            </StandardButton>
+              })
+            ) : (
+              <StandardButton
+                style={{ paddingTop: 10 }}
+                bgColor={colors.teal[400]}
+                textColor={colors.white}
+                onPress={(evt) => {
+                  props.onRequestClose && props.onRequestClose(evt);
+                  onConfirm && onConfirm();
+                }}
+              >
+                Confirm
+              </StandardButton>
+            )}
+
             <StandardButton
               style={{ paddingTop: 10 }}
               bgColor={colors.red[400]}

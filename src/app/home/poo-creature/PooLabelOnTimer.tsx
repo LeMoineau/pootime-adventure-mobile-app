@@ -3,8 +3,9 @@ import { style } from "../../../common/utils/style-utils";
 import TimerField from "../../../common/components/fields/TimerField";
 import { useState } from "react";
 import { useResourcesStore } from "../../../common/stores/resources.store";
-import PooingRewardModal from "../../../common/components/modals/PooingRewardModal";
 import { CurveUtils } from "../../../common/utils/curve-utils";
+import PooingRewardModal from "../../../common/components/modals/pooing/PooingRewardModal";
+import useModals from "../../../common/hooks/use-modals";
 
 export default function PooLabelOnTimer({
   scaleValue,
@@ -16,8 +17,8 @@ export default function PooLabelOnTimer({
   stopPooing?: (elapsedTime: number) => void;
 }) {
   const { earn } = useResourcesStore();
+  const { isVisible, show, hide } = useModals<"reward-pooing">();
 
-  const [showRewardModal, toggleShowRewardModal] = useState(false);
   const [rewards, setRewards] = useState<
     | {
         star: number;
@@ -72,7 +73,7 @@ export default function PooLabelOnTimer({
           onStop={(t) => {
             stopPooing && stopPooing(t);
             setRewards(CurveUtils.calculateRewardsPooing(t));
-            toggleShowRewardModal(true);
+            show("reward-pooing");
           }}
         ></TimerField>
         <Text
@@ -90,13 +91,13 @@ export default function PooLabelOnTimer({
       </Animated.View>
       {rewards && (
         <PooingRewardModal
-          visible={showRewardModal}
+          visible={isVisible("reward-pooing")}
           starEarn={rewards.star}
           pooCoinEarn={rewards.pooCoins}
           onRequestClose={async () => {
             await earn("stars", rewards.star);
             await earn("pooCoins", rewards.pooCoins);
-            toggleShowRewardModal(false);
+            hide("reward-pooing");
           }}
         ></PooingRewardModal>
       )}

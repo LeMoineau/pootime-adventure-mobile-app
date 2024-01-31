@@ -1,8 +1,8 @@
 import { ModalProps, Text } from "react-native";
-import RewardModal from "./primitives/RewardModal";
-import { style } from "../../utils/style-utils";
-import { colors } from "../../utils/color-utils";
-import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
+import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
+import RewardModal from "../primitives/RewardModal";
+import { style } from "../../../utils/style-utils";
+import { colors } from "../../../utils/color-utils";
 
 export default function PooingRewardModal({
   starEarn,

@@ -10,11 +10,15 @@ import { useEffect, useState } from "react";
 import ClockCircularProgress from "../../../common/components/fields/ClockCircularProgress";
 import PooLabelOnTimer from "./PooLabelOnTimer";
 import PooLabelOnIdle from "./PooLabelOnIdle";
+import PooingConfirmModal from "../../../common/components/modals/pooing/PooingConfirmModal";
+import useModals from "../../../common/hooks/use-modals";
 
 export default function PooCreatureHandler() {
   const { height } = useWindowDimensions();
   const [isPlaying, setIsPlaying] = useState(false);
   const scaleValue = new Animated.Value(0);
+
+  const { isVisible, show, hide } = useModals<"confirm-stop-pooing">();
 
   const showTimerAnim = Animated.spring(scaleValue, {
     toValue: 1,
@@ -39,7 +43,13 @@ export default function PooCreatureHandler() {
   return (
     <>
       <TouchableWithoutFeedback
-        onPress={() => setIsPlaying(!isPlaying)}
+        onPress={() => {
+          if (isPlaying) {
+            show("confirm-stop-pooing");
+          } else {
+            setIsPlaying(true);
+          }
+        }}
         onLongPress={() => {}}
       >
         <View
@@ -100,6 +110,12 @@ export default function PooCreatureHandler() {
           </View>
         </View>
       </TouchableWithoutFeedback>
+
+      <PooingConfirmModal
+        visible={isVisible("confirm-stop-pooing")}
+        onConfirm={() => setIsPlaying(false)}
+        onRequestClose={() => hide("confirm-stop-pooing")}
+      ></PooingConfirmModal>
     </>
   );
 }
