@@ -18,4 +18,8 @@ export namespace ArrayUtils {
     }
     return array;
   }
+
+  export function createArray(length: number): number[] {
+    return Array.from({ length: length }, (_, index) => index);
+  }
 }

@@ -1,8 +1,8 @@
-import { Text, View } from "react-native";
+import { Text, View, useWindowDimensions } from "react-native";
 import { style } from "../../../../common/utils/style-utils";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { ItemInStore } from "../../../../common/types/itemInStore";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ConfirmModal from "../../../../common/components/modals/primitives/ConfirmModal";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
@@ -10,8 +10,11 @@ import HeadSelector from "./HeadSelector";
 import { DefaultValues } from "../../../../common/config/DefaultValues";
 import { Resources } from "../../../../common/types/Resources";
 import ResourceIcon from "../../../../common/components/icons/ResourceIcon";
+import PooHeadPalette from "../../../../common/components/misc/PooHeadPalette";
+import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 
 export default function HeadEditorView() {
+  const { level } = usePooCreatureStatsStore();
   const { update } = usePooCreatureStyleStore();
   const { spend } = useResourcesStore();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -24,6 +27,28 @@ export default function HeadEditorView() {
 
   return (
     <>
+      <View style={[{ paddingHorizontal: 15 }]}>
+        <PooHeadPalette
+          style={[
+            style.flexRow,
+            style.justifyCenter,
+            style.rounded,
+            style.overflowHidden,
+            style.wFull,
+            {
+              flex: 1,
+              minHeight: 20,
+              height: 20,
+              borderTopLeftRadius: 0,
+              borderTopRightRadius: 0,
+            },
+          ]}
+          palette={DefaultValues.PooHeadPalette}
+          resolution={DefaultValues.LevelMax}
+          addMarkerOn={level}
+        ></PooHeadPalette>
+      </View>
+
       <View
         style={[
           style.flexRow,
