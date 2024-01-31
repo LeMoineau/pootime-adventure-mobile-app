@@ -10,11 +10,12 @@ import DevSettingsModal from "./DevSettingsModal";
 import { useEffect, useState } from "react";
 import { SettingsItemProps } from "../../views/settings/SettingsItem";
 import { useItemsUnlockedStore } from "../../../stores/items-unlocked.store";
+import TutoSettingsModal from "./TutoSettingsModal";
 
 export default function SettingsModal({ ...props }: {} & ModalProps) {
   const { unlock, isUnlocked } = useItemsUnlockedStore();
   const { isVisible, show, hide } = useModals<
-    "event-settings" | "account-settings" | "dev-settings"
+    "event-settings" | "account-settings" | "dev-settings" | "tuto-settings"
   >();
   const [counterDev, setCounterDev] = useState(0);
 
@@ -58,8 +59,12 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
                 hasRightArrow: true,
                 onPress: () => show("event-settings"),
               },
-              { icon: "book", label: "Tutoriel", hasRightArrow: true },
-
+              {
+                icon: "book",
+                label: "Tutoriel",
+                hasRightArrow: true,
+                onPress: () => show("tuto-settings"),
+              },
               {
                 icon: "attach-money",
                 label: "Faire un don",
@@ -90,6 +95,10 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
         visible={isVisible("event-settings")}
         onRequestClose={() => hide("event-settings")}
       ></EventSettingsModal>
+      <TutoSettingsModal
+        visible={isVisible("tuto-settings")}
+        onRequestClose={() => hide("tuto-settings")}
+      ></TutoSettingsModal>
       <DevSettingsModal
         visible={isVisible("dev-settings")}
         onRequestClose={() => hide("dev-settings")}

@@ -7,7 +7,6 @@ import { useItemsUnlockedStore } from "../../../stores/items-unlocked.store";
 
 export default function DevSettingsModal({ ...props }: {} & ModalProps) {
   const itemsUnlocked = useItemsUnlockedStore();
-  type Test = "test" | { a: number } | number;
   return (
     <>
       <Modal {...props} animationType="fade">
