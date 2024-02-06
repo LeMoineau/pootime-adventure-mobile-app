@@ -27,7 +27,7 @@ export default function HeadEditorView() {
 
   return (
     <>
-      <View style={[{ paddingHorizontal: 15 }]}>
+      <View style={[{ paddingHorizontal: 15, paddingTop: 10 }]}>
         <PooHeadPalette
           style={[
             style.flexRow,
@@ -39,13 +39,11 @@ export default function HeadEditorView() {
               flex: 1,
               minHeight: 20,
               height: 20,
-              borderTopLeftRadius: 0,
-              borderTopRightRadius: 0,
             },
           ]}
           palette={DefaultValues.PooHeadPalette}
           resolution={DefaultValues.LevelMax}
-          addMarkerOn={level}
+          addMarkerOn={level - 1}
         ></PooHeadPalette>
       </View>
 

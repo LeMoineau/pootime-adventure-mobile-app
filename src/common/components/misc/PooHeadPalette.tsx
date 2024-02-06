@@ -23,24 +23,28 @@ export default function PooHeadPalette({
           { flex: 1, flexWrap: "nowrap", backgroundColor: colors.black },
         ]}
       >
-        {ArrayUtils.createArray(resolution ?? 100).map((value) => (
-          <View
-            key={value}
-            style={[
-              style.hFull,
-              style.border,
-              {
-                flexGrow: 1,
-                backgroundColor: `${palette.hexValueAt(
-                  value / (resolution ?? 100)
-                )}`,
-                borderWidth: 3,
-                borderColor:
-                  value === addMarkerOn ? colors.red[500] : colors.transparent,
-              },
-            ]}
-          ></View>
-        ))}
+        {ArrayUtils.createArray(resolution ? resolution - 1 : 99).map(
+          (value) => (
+            <View
+              key={value}
+              style={[
+                style.hFull,
+                style.border,
+                {
+                  flexGrow: 1,
+                  backgroundColor: `${palette.hexValueAt(
+                    (value + 1) / (resolution ? resolution - 1 : 99)
+                  )}`,
+                  borderWidth: 3,
+                  borderColor:
+                    value === addMarkerOn
+                      ? colors.red[500]
+                      : colors.transparent,
+                },
+              ]}
+            ></View>
+          )
+        )}
       </View>
     </View>
   );

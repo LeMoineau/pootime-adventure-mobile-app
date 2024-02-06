@@ -12,6 +12,7 @@ export type PooCreatureStatsStore = {
   incrStat: (stat: StatType) => Promise<void>;
   selectUlti: (ulti: string) => Promise<void>;
   resetData: () => Promise<void>;
+  calculateAllStarsSpent: () => number;
 } & DataInStorage.PooCreatureStats;
 
 export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
@@ -72,11 +73,24 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       set({ ...DefaultValues.PooCreatureStats });
     };
 
+    const calculateAllStarsSpent = () => {
+      const allStarsSpent =
+        get()?.attaque -
+        DefaultValues.PooCreatureStats.attaque +
+        (get()?.defense - DefaultValues.PooCreatureStats.defense) +
+        (get()?.pv - DefaultValues.PooCreatureStats.pv) / 5 +
+        (get()?.mana - DefaultValues.PooCreatureStats.mana) / 5 +
+        (get()?.resMana - DefaultValues.PooCreatureStats.resMana) +
+        (get()?.recupMana - DefaultValues.PooCreatureStats.recupMana);
+      return allStarsSpent;
+    };
+
     return {
       ...DefaultValues.PooCreatureStats,
       incrStat,
       selectUlti,
       resetData,
+      calculateAllStarsSpent,
     };
   }
 );
