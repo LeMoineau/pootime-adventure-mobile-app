@@ -15,12 +15,20 @@ export namespace MathUtils {
     return (min ?? 0) + Math.floor(Math.random() * (min ? max - min + 1 : max));
   }
 
+  export function divideToMaxFixed(
+    val: number,
+    divider: number,
+    maxFixed: number
+  ): string {
+    return (val / divider).toFixed(val % divider === 0 ? 0 : maxFixed);
+  }
+
   export function convertToReduceStrFormat(val: number): string {
     if (val >= 1000) {
-      return `${(val / 1000).toFixed(1)}K`;
+      return `${divideToMaxFixed(val, 1000, 1)}K`;
     }
     if (val >= 1000000) {
-      return `${(val / 1000000).toFixed(1)}M`;
+      return `${divideToMaxFixed(val, 1000000, 1)}M`;
     }
     return `${val.toFixed(0)}`;
   }
