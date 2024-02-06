@@ -6,6 +6,7 @@ import { colors } from "../../utils/color-utils";
 import { useResourcesStore } from "../../stores/resources.store";
 import { useState } from "react";
 import ConfirmModal from "../modals/primitives/ConfirmModal";
+import { MathUtils } from "../../utils/math-utils";
 
 export default function ResourceConverterButton({
   from,
@@ -63,7 +64,9 @@ export default function ResourceConverterButton({
                 { color: colors.gray[50], marginRight: 5 },
               ]}
             >
-              {nbGive === undefined ? 1 : nbGive}
+              {nbGive === undefined
+                ? 1
+                : MathUtils.convertToReduceStrFormat(nbGive)}
             </Text>
             <ResourceIcon resource={to} size={50}></ResourceIcon>
           </View>
@@ -86,7 +89,7 @@ export default function ResourceConverterButton({
             <Text
               style={[style.textBold, { color: colors.white, marginRight: 5 }]}
             >
-              {price}
+              {MathUtils.convertToReduceStrFormat(price)}
             </Text>
             <ResourceIcon resource={from} size={20}></ResourceIcon>
           </View>

@@ -10,7 +10,7 @@ export function SettingsScrollView({
   ...props
 }: { title?: string; items: SettingsItemProps[] } & ViewProps) {
   return (
-    <View style={[style.wFull, { flex: 1, padding: 10 }, props.style]}>
+    <View style={[style.wFull, { padding: 10 }, props.style]}>
       {title && (
         <Text style={[style.textMd, { marginBottom: 5, marginLeft: 10 }]}>
           {title}

@@ -1,4 +1,5 @@
 import {
+  Animated,
   GestureResponderEvent,
   Pressable,
   View,
@@ -14,6 +15,10 @@ import { UltiDetails, Ultis } from "../../../types/Ultis";
 import ReadyGoText from "./ReadyGoText";
 import { colors } from "../../../utils/color-utils";
 import { DefaultValues } from "../../../config/DefaultValues";
+import { useEffect, useState } from "react";
+import PlayerNode from "./PlayerNode";
+import AdvNode from "./AdvNode";
+import useChangingDetection from "../../../hooks/use-changing-detection";
 
 export default function Arena({
   onHit,
@@ -52,11 +57,31 @@ export default function Arena({
   const { width } = useWindowDimensions();
   const { ultiSelected } = usePooCreatureStatsStore();
 
+  const playerAnimation = new Animated.Value(0);
+  const advAnimation = new Animated.Value(0);
+  const {} = useChangingDetection(playerData?.currentPv, (prev, _) => {
+    if (prev !== undefined) {
+      advAnimation.setValue(1);
+    }
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      advAnimation.setValue(0);
+    }, 50);
+  }, [advAnimation]);
+
   return (
     <Pressable
       style={[{ flex: 1 }]}
       onTouchStart={(evt) => {
-        battleBegin && onHit && onHit(evt);
+        if (battleBegin && onHit) {
+          onHit(evt);
+          playerAnimation.setValue(1);
+        }
+      }}
+      onTouchEnd={() => {
+        playerAnimation.setValue(0);
       }}
     >
       <CustomPage bgColor={bgColor ?? colors.blue[500]}>
@@ -112,25 +137,11 @@ export default function Arena({
               </>
             )}
           </View>
-          <View
-            style={[
-              {
-                position: "absolute",
-                bottom: "50%",
-                right: 30,
-                marginBottom: 20,
-              },
-            ]}
-          >
-            {advNode}
-          </View>
-          <View
-            style={[
-              { position: "absolute", top: "50%", left: 30, marginTop: 20 },
-            ]}
-          >
-            {playerNode ?? <PooCreature behind width={230}></PooCreature>}
-          </View>
+          <AdvNode advNode={advNode} animValue={advAnimation}></AdvNode>
+          <PlayerNode
+            playerNode={playerNode}
+            animValue={playerAnimation}
+          ></PlayerNode>
           {playerData && ultiSelected && (
             <UltiButton
               ultiSelected={Ultis[ultiSelected]}

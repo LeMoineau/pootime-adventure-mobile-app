@@ -27,13 +27,13 @@ export default function SettingsItem({
         style.justifyBetween,
         style.itemsCenter,
         style.border,
-        { padding: 20, borderWidth: 0, borderBottomWidth: 1 },
+        { flex: 1, padding: 20, borderWidth: 0, borderBottomWidth: 1 },
       ]}
       onPress={onPress}
     >
-      <View style={[style.flexRow, style.itemsCenter]}>
+      <View style={[style.flexRow, style.itemsCenter, { flex: 1 }]}>
         {icon && <ExpoIcon name={icon} size={30}></ExpoIcon>}
-        <View style={[{ marginLeft: icon ? 15 : 0 }]}>
+        <View style={[style.wFull, { marginLeft: icon ? 15 : 0 }]}>
           <Text style={[style.textMd]}>{label}</Text>
           {subLabel && (
             <Text style={[style.textSm, { color: colors.gray[500] }]}>
