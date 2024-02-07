@@ -12,24 +12,13 @@ import PlainModal from "../../../common/components/modals/primitives/PlainModal"
 import useModals from "../../../common/hooks/use-modals";
 
 export default function BattleHandler() {
-  const { connect, isConnected, disconnect, joinTheQueue } = useBattleStore();
-
+  const { isConnected, connect, disconnect, joinTheQueue } = useBattleStore();
   const { isVisible, show, hide } = useModals<
     "private-battle" | "battle-waiting" | "battle-arena" | "server-waiting"
   >();
+
   const [room, setRoom] = useState<ServerTypes.Room | null>(null);
 
-  useEffect(() => {
-    connect();
-    if (!isConnected()) {
-      let _intervalId = setInterval(() => {
-        connect();
-        if (isConnected()) {
-          clearInterval(_intervalId);
-        }
-      }, 5000);
-    }
-  }, []);
   return (
     <>
       <View
@@ -44,9 +33,11 @@ export default function BattleHandler() {
           textContent="Battle!"
           color={colors.yellow}
           onPress={() => {
-            connect();
-            isConnected() ? show("battle-waiting") : show("server-waiting");
-            joinTheQueue();
+            show("server-waiting");
+            connect(() => {
+              show("battle-waiting");
+              joinTheQueue();
+            });
           }}
         ></FightButton>
         <View style={{ width: 15 }}></View>
@@ -54,13 +45,13 @@ export default function BattleHandler() {
           textContent="Private"
           color={colors.blue}
           onPress={() => {
-            connect();
-            isConnected() ? show("private-battle") : show("server-waiting");
+            show("server-waiting");
+            connect(() => show("private-battle"));
           }}
         ></FightButton>
       </View>
       <PlainModal
-        visible={isVisible("server-waiting")}
+        visible={!isConnected && isVisible("server-waiting")}
         onRequestClose={() => {
           hide("server-waiting");
         }}
@@ -81,10 +72,12 @@ export default function BattleHandler() {
         onRequestClose={() => {
           disconnect();
           hide("battle-waiting");
+          hide("server-waiting");
         }}
         openRoom={(room) => {
           setRoom(room);
           hide("battle-waiting");
+          hide("server-waiting");
           show("battle-arena");
         }}
       ></WaitForFightModal>
@@ -93,10 +86,12 @@ export default function BattleHandler() {
         onRequestClose={() => {
           disconnect();
           hide("private-battle");
+          hide("server-waiting");
         }}
         openRoom={(room) => {
           setRoom(room);
           hide("private-battle");
+          hide("server-waiting");
           show("battle-arena");
         }}
       ></PrivateFightModal>

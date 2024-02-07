@@ -7,9 +7,9 @@ import { getConfig } from "../config/env";
 
 type Store = {
   socket: Socket | null;
-  connect: () => void;
+  isConnected: boolean;
+  connect: (onSuccess?: () => void, onFailed?: () => void) => void;
   getSocketId: () => string;
-  isConnected: () => boolean;
   disconnect: () => void;
   createARoom: () => void;
   joinARoom: (roomId: string) => void;
@@ -34,13 +34,22 @@ type Store = {
 };
 
 export const useBattleStore = create<Store>((set, get) => {
-  const connect = () => {
+  const connect = (onSuccess?: () => void, onFailed?: () => void) => {
     var io = require("socket.io-client/dist/socket.io");
-    // "https://pootime-adventure-battle-server.onrender.com/"
+    const socket = io(getConfig().BATTLE_SERVER_URL, {
+      transports: ["websocket"],
+      reconnection: false,
+    });
+    socket.on("connect", () => {
+      set({ isConnected: true });
+      onSuccess && onSuccess();
+    });
+    socket.on("connect_error", () => {
+      set({ socket: null });
+      onFailed && onFailed();
+    });
     set({
-      socket: io(getConfig().BATTLE_SERVER_URL, {
-        transports: ["websocket"],
-      }),
+      socket: socket,
     });
   };
 
@@ -48,14 +57,11 @@ export const useBattleStore = create<Store>((set, get) => {
     return get().socket?.id!;
   };
 
-  const isConnected = () => {
-    return get().socket !== null;
-  };
-
   const disconnect = () => {
     get().socket?.disconnect();
     set({
       socket: null,
+      isConnected: false,
     });
   };
 
@@ -122,9 +128,9 @@ export const useBattleStore = create<Store>((set, get) => {
 
   return {
     socket: null,
+    isConnected: false,
     connect,
     getSocketId,
-    isConnected,
     disconnect,
     createARoom,
     joinARoom,
