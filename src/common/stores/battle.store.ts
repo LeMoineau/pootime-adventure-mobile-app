@@ -38,14 +38,12 @@ export const useBattleStore = create<Store>((set, get) => {
     var io = require("socket.io-client/dist/socket.io");
     const socket = io(getConfig().BATTLE_SERVER_URL, {
       transports: ["websocket"],
-      reconnection: false,
     });
     socket.on("connect", () => {
       set({ isConnected: true });
       onSuccess && onSuccess();
     });
     socket.on("connect_error", () => {
-      set({ socket: null });
       onFailed && onFailed();
     });
     set({
