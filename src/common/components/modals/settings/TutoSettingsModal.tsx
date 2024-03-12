@@ -1,9 +1,6 @@
 import { Modal, ModalProps, Text, View } from "react-native";
 import SettingsPage from "../../views/settings/SettingsPage";
 import SettingsHeader from "../../views/settings/SettingsHeader";
-import { SettingsScrollView } from "../../views/settings/SettingsScrollView";
-import { getConfig } from "../../../config/env";
-import { useItemsUnlockedStore } from "../../../stores/items-unlocked.store";
 import { style } from "../../../utils/style-utils";
 import PooUltiIcon from "../../icons/pooUlti";
 
