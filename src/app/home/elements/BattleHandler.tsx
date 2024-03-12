@@ -35,6 +35,10 @@ export default function BattleHandler() {
           onPress={() => {
             show("server-waiting");
             connect(() => {
+              if (!isVisible("server-waiting")) {
+                disconnect();
+                return;
+              }
               show("battle-waiting");
               joinTheQueue();
             });
@@ -46,7 +50,13 @@ export default function BattleHandler() {
           color={colors.blue}
           onPress={() => {
             show("server-waiting");
-            connect(() => show("private-battle"));
+            connect(() => {
+              if (!isVisible("server-waiting")) {
+                disconnect();
+                return;
+              }
+              show("private-battle");
+            });
           }}
         ></FightButton>
       </View>
@@ -68,7 +78,7 @@ export default function BattleHandler() {
         </Text>
       </PlainModal>
       <WaitForFightModal
-        visible={isVisible("battle-waiting")}
+        visible={isVisible("server-waiting") && isVisible("battle-waiting")}
         onRequestClose={() => {
           disconnect();
           hide("battle-waiting");
@@ -82,7 +92,7 @@ export default function BattleHandler() {
         }}
       ></WaitForFightModal>
       <PrivateFightModal
-        visible={isVisible("private-battle")}
+        visible={isVisible("server-waiting") && isVisible("private-battle")}
         onRequestClose={() => {
           disconnect();
           hide("private-battle");

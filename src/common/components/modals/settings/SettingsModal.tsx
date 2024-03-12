@@ -11,11 +11,16 @@ import { useEffect, useState } from "react";
 import { SettingsItemProps } from "../../views/settings/SettingsItem";
 import { useItemsUnlockedStore } from "../../../stores/items-unlocked.store";
 import TutoSettingsModal from "./TutoSettingsModal";
+import TipsSettingsModal from "./TipsSettingsModal";
 
 export default function SettingsModal({ ...props }: {} & ModalProps) {
   const { unlock, isUnlocked } = useItemsUnlockedStore();
   const { isVisible, show, hide } = useModals<
-    "event-settings" | "account-settings" | "dev-settings" | "tuto-settings"
+    | "event-settings"
+    | "account-settings"
+    | "dev-settings"
+    | "tuto-settings"
+    | "tips-settings"
   >();
   const [counterDev, setCounterDev] = useState(0);
 
@@ -69,9 +74,7 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
                 icon: "attach-money",
                 label: "Faire un don",
                 hasRightArrow: true,
-                onPress: () => {
-                  Linking.openURL("https://linktr.ee/pierrot_");
-                },
+                onPress: () => show("tips-settings"),
               },
               ...(isUnlocked("options", "dev")
                 ? ([
@@ -103,6 +106,10 @@ export default function SettingsModal({ ...props }: {} & ModalProps) {
         visible={isVisible("dev-settings")}
         onRequestClose={() => hide("dev-settings")}
       ></DevSettingsModal>
+      <TipsSettingsModal
+        visible={isVisible("tips-settings")}
+        onRequestClose={() => hide("tips-settings")}
+      ></TipsSettingsModal>
     </>
   );
 }
