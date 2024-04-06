@@ -4,7 +4,7 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import PooCreature from "../../../common/components/misc/PooCreature";
+import PooCreature from "../../../common/components/misc/poo-creature/PooCreature";
 import { style } from "../../../common/utils/style-utils";
 import { useEffect, useState } from "react";
 import ClockCircularProgress from "../../../common/components/fields/ClockCircularProgress";

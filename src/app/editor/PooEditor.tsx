@@ -1,7 +1,7 @@
 import { SafeAreaView, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import EditorTopBar from "./navigation/EditorTopBar";
-import PooCreature from "../../common/components/misc/PooCreature";
+import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
 import PooBodyEditIcon from "../../common/components/icons/ui/pooBodyEdit";
 import BodyEditorView from "./tabs/body-editor/BodyEditorView";
@@ -12,10 +12,11 @@ import HeadEditorView from "./tabs/head-editor/HeadEditorView";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import PooCoinsConverterIcon from "../../common/components/icons/ui/pooCoinsConverter";
 import PooCoinsConverterTab from "./tabs/PooCoinsConverterTab";
+import { colors } from "../../common/utils/color-utils";
 
 export default function PooEditor() {
   return (
-    <CustomPage>
+    <CustomPage bgColor={colors.transparent}>
       <View
         style={[
           style.wFull,
@@ -25,8 +26,7 @@ export default function PooEditor() {
           { paddingTop: 80 },
         ]}
       >
-        <EditorTopBar></EditorTopBar>
-        <PooCreature width={150}></PooCreature>
+        {/* <EditorTopBar></EditorTopBar> */}
         <RoundedScrollView
           tabs={[
             {

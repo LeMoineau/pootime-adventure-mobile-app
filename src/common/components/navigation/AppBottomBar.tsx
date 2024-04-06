@@ -1,8 +1,8 @@
 import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
-import { Animated, View, TouchableOpacity, Image } from "react-native";
+import { Animated, View, TouchableOpacity } from "react-native";
 import { style } from "../../utils/style-utils";
 
-export default function CustomTabBar({
+export default function AppBottomBar({
   state,
   descriptors,
   navigation,
@@ -37,7 +37,7 @@ export default function CustomTabBar({
         {
           width: "100%",
           height: 70,
-          backgroundColor: "#FFE5A3",
+          elevation: 0,
         },
       ]}
     >
@@ -69,18 +69,6 @@ export default function CustomTabBar({
           inputRange,
           outputRange: inputRange.map((i) => (i === index ? 1 : 0.2)),
         });
-        const textOpacity = position.interpolate({
-          inputRange,
-          outputRange: inputRange.map((i) => (i === index ? 1 : 0)),
-        });
-        const textHeight = position.interpolate({
-          inputRange,
-          outputRange: inputRange.map((i) => (i === index ? 10 : 0)),
-        });
-        const width = position.interpolate({
-          inputRange,
-          outputRange: inputRange.map((i) => (i === index ? 1 : 1)),
-        });
         const bgColor = position.interpolate({
           inputRange,
           outputRange: inputRange.map((i) =>
@@ -97,9 +85,6 @@ export default function CustomTabBar({
               {
                 flex: 1,
                 backgroundColor: bgColor,
-                borderColor: "rgba(255, 255, 255, 0.4)",
-                borderLeftWidth: 1,
-                borderRightWidth: 1,
               },
             ]}
           >

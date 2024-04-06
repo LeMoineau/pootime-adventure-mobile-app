@@ -17,7 +17,7 @@ export default function CustomPage({
 } & ViewProps) {
   const { width, height } = useWindowDimensions();
   return (
-    <SafeAreaView style={[{ flex: 1 }]} {...props}>
+    <SafeAreaView style={[{ flex: 1, elevation: 0 }]} {...props}>
       <View
         style={[
           {
@@ -28,10 +28,11 @@ export default function CustomPage({
             height: height,
             zIndex: -10,
             backgroundColor: bgColor ?? colors.baseBackgroundColor,
+            elevation: 0,
           },
         ]}
       >
-        <ImageBackground
+        {/* <ImageBackground
           source={{
             uri: "https://bigstones.fr/pootime-adventure/bg.png",
           }}
@@ -41,7 +42,7 @@ export default function CustomPage({
             },
           ]}
           resizeMode="cover"
-        ></ImageBackground>
+        ></ImageBackground> */}
       </View>
       {children}
     </SafeAreaView>

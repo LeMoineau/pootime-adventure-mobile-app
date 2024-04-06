@@ -1,6 +1,6 @@
 import { Image, SafeAreaView, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import PooCreature from "../../common/components/misc/PooCreature";
+import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
 import FightTopBar from "./navigation/FightTopBar";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
 import StatsTab from "./tabs/StatsTab";

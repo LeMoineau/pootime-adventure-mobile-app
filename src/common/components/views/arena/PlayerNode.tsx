@@ -1,5 +1,5 @@
 import { Animated } from "react-native";
-import PooCreature from "../../misc/PooCreature";
+import PooCreature from "../../misc/poo-creature/PooCreature";
 import React, { useEffect } from "react";
 
 export default function PlayerNode({

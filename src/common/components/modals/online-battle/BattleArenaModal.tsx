@@ -6,7 +6,7 @@ import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.sto
 import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
 import { useResourcesStore } from "../../../stores/resources.store";
 import Arena from "../../views/arena/Arena";
-import PooCreature from "../../misc/PooCreature";
+import PooCreature from "../../misc/poo-creature/PooCreature";
 import BattleFinishRewardModal from "./BattleFinishRewardModal";
 
 export default function BattleArenaModal({

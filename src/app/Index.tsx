@@ -2,36 +2,54 @@ import * as React from "react";
 import Home from "./home/Home";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import CustomTabBar from "../common/components/navigation/CustomTabBar";
 import PooEditor from "./editor/PooEditor";
 import PooFight from "./fight/PooFight";
-import { View, useWindowDimensions } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { style } from "../common/utils/style-utils";
+import { colors } from "../common/utils/color-utils";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AppTopBar from "../common/components/navigation/AppTopBar";
+import InventoryPage from "./inventory/InventoryPage";
+import AppBottomBar from "../common/components/navigation/AppBottomBar";
+import { useBlurStore } from "../common/stores/blur.store";
+import { Pressable, useWindowDimensions } from "react-native";
+import Blur from "../common/components/views/Blur";
 
 const Tab = createMaterialTopTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const { width, height } = useWindowDimensions();
   return (
     <>
       <NavigationContainer>
         <StatusBar hidden />
-        <View
-          style={[style.flexCol, { flex: 1, height: height, width: width }]}
+        <Stack.Navigator
+          initialRouteName="App"
+          screenOptions={{ headerShown: false }}
         >
-          <Tab.Navigator
-            tabBarPosition="bottom"
-            initialRouteName="Home"
-            pagerStyle={[{ flex: 1 }]}
-            tabBar={(props) => <CustomTabBar {...props} />}
-          >
-            <Tab.Screen name="Battle" component={PooFight} />
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Editor" component={PooEditor} />
-          </Tab.Navigator>
-        </View>
+          <Stack.Screen name="App" component={MainPage} />
+          <Stack.Screen name="Inventory" component={InventoryPage} />
+        </Stack.Navigator>
       </NavigationContainer>
+    </>
+  );
+}
+
+function MainPage() {
+  return (
+    <>
+      <AppTopBar></AppTopBar>
+      <Blur></Blur>
+      <Tab.Navigator
+        tabBarPosition="bottom"
+        initialRouteName="Home"
+        pagerStyle={[{ flex: 1 }]}
+        tabBar={(props) => <AppBottomBar {...props} />}
+        style={[{ backgroundColor: colors.transparent }]}
+      >
+        <Tab.Screen name="Battle" component={PooFight} />
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Editor" component={PooEditor} />
+      </Tab.Navigator>
     </>
   );
 }

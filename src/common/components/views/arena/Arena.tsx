@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { style } from "../../../utils/style-utils";
 import CustomPage from "../../navigation/CustomPage";
-import PooCreature from "../../misc/PooCreature";
+import PooCreature from "../../misc/poo-creature/PooCreature";
 import PVPanel from "./PVPanel";
 import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.store";
 import UltiButton from "./UltiButton";

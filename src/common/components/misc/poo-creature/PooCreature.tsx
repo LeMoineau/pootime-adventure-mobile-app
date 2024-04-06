@@ -1,13 +1,13 @@
 import { Image, View, ViewProps } from "react-native";
 import React from "react";
-import PooFace from "../icons/poo/PooFace";
-import PooBody from "../icons/poo/PooBody";
-import { style } from "../../utils/style-utils";
-import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
-import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
-import { MathUtils } from "../../utils/math-utils";
-import { PooHeads } from "../../types/PooHeads";
-import { CurveUtils } from "../../utils/curve-utils";
+import PooFace from "../../icons/poo/PooFace";
+import PooBody from "../../icons/poo/PooBody";
+import { style } from "../../../utils/style-utils";
+import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
+import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.store";
+import { MathUtils } from "../../../utils/math-utils";
+import { PooHeads } from "../../../types/PooHeads";
+import { CurveUtils } from "../../../utils/curve-utils";
 
 export default function PooCreature({
   width,

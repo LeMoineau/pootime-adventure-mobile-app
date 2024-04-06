@@ -2,7 +2,7 @@ import { Linking, Modal, ModalProps, Pressable } from "react-native";
 import { SettingsScrollView } from "../../views/settings/SettingsScrollView";
 import SettingsHeader from "../../views/settings/SettingsHeader";
 import SettingsPage from "../../views/settings/SettingsPage";
-import PooCreatureBadge from "../../misc/PooCreatureBadge";
+import PooCreatureBadge from "../../misc/poo-creature/PooCreatureBadge";
 import useModals from "../../../hooks/use-modals";
 import EventSettingsModal from "./EventSettingsModal";
 import AccountSettingsModal from "./AccountSettingsModal";

@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Text, useWindowDimensions, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import PooCreatureHandler from "./poo-creature/PooCreatureHandler";
 import HomeTopBar from "./navigation/HomeTopBar";
@@ -6,6 +6,17 @@ import BattleHandler from "./elements/BattleHandler";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import SheepJumpHandler from "./elements/SheepJumpHandler";
 import EventsModalHandler from "./elements/EventsModalHandler";
+import PlainButton from "../../common/components/buttons/PlainButton";
+import DialogBubble from "../../common/components/views/DialogBubble";
+import DialogBubbleModal from "../../common/components/modals/primitives/DialogBubbleModal";
+import useModals from "../../common/hooks/use-modals";
+import GradientButton from "../../common/components/buttons/GradientButton";
+import { useBlurStore } from "../../common/stores/blur.store";
+import ButtonWithDialogBubble from "../../common/components/buttons/ButtonWithDialogBubble";
+import PillButton from "../../common/components/buttons/PillButton";
+import { colors } from "../../common/utils/color-utils";
+import { LinearGradient } from "expo-linear-gradient";
+import BattleButton from "./elements/BattleButton";
 
 export default function Home() {
   return (
@@ -17,7 +28,7 @@ export default function Home() {
           style.flexCol,
           style.justifyBetween,
           style.itemsCenter,
-          { paddingHorizontal: 20, paddingVertical: 10 },
+          { paddingHorizontal: 20 },
         ]}
       >
         <HomeTopBar></HomeTopBar>
@@ -31,10 +42,12 @@ export default function Home() {
           ]}
         >
           <PooCreatureHandler></PooCreatureHandler>
-          <BattleHandler></BattleHandler>
+          {/* <BattleHandler></BattleHandler>
           <SheepJumpHandler></SheepJumpHandler>
-          <EventsModalHandler></EventsModalHandler>
+          <EventsModalHandler></EventsModalHandler> */}
         </View>
+
+        <BattleButton></BattleButton>
       </View>
     </CustomPage>
   );

@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
-import { style } from "../../utils/style-utils";
+import { style } from "../../../utils/style-utils";
 import PooCreatureHead from "./PooCreatureHead";
-import { colors } from "../../utils/color-utils";
-import LevelProgressBar from "../fields/LevelProgressBar";
-import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
+import { colors } from "../../../utils/color-utils";
+import LevelProgressBar from "../../fields/LevelProgressBar";
+import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
 
 export default function PooCreatureBadge({
   showInfos,
