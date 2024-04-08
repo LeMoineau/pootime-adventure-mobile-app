@@ -29,25 +29,3 @@ export interface PlayerStateInEntityBattle {
   recupMana: number;
   [detail: string]: any;
 }
-export namespace EntityBattleTypes {
-  export const EntityNames = [
-    "Cheap",
-    "A Sheep",
-    "B Sheep",
-    "Sans Nom",
-    "Perdu",
-    "X2000 Cyborg",
-    "MoutMout",
-    "Ton Mou",
-  ];
-
-  export const Audrey: Entity = {
-    name: "Audrey",
-    entityType: "sheep",
-    color: colors.yellow[300],
-    level: 100,
-    pv: 9999999,
-    attaque: 99999999,
-    freqAttaque: 5000,
-  };
-}

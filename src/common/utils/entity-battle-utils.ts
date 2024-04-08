@@ -1,24 +1,27 @@
-import { DefaultValues } from "../config/DefaultValues";
-import Entities from "../config/game-data/Entities";
 import {
   Entity,
   EntityBattleWinner,
   EntityState,
 } from "../types/battle/entity-battle/EntityBattleTypes";
+import { EntityZone } from "../types/battle/entity-battle/EntityZone";
 import { BattleReward } from "../types/battle/online-battle/BattleReward";
 import { PlayerBattleState } from "../types/battle/PlayerBattleState";
 import { UltiDetails } from "../types/Ultis";
 import { MathUtils } from "./math-utils";
 
 export namespace EntityBattleUtils {
-  export function chooseEntity(): Entity {
-    const choseEntityIndex = MathUtils.getRandomInt(Entities.nbEntities);
+  export function chooseEntity(zone: EntityZone): Entity {
+    const choseEntityIndex = MathUtils.getRandomInt(zone.nbEntities);
     let currentIndex = 0;
-    for (let e of Entities.entities) {
-      if (currentIndex === choseEntityIndex) return e.entity;
+    for (let e of zone.entities) {
+      if (
+        currentIndex < choseEntityIndex &&
+        currentIndex + e.number >= choseEntityIndex
+      )
+        return e.entity;
       currentIndex += e.number;
     }
-    return Entities.entities[0].entity;
+    return zone.entities[0].entity;
   }
 
   export function calculateNewStatesFromPlayerHit(
@@ -96,7 +99,7 @@ export namespace EntityBattleUtils {
     winner: EntityBattleWinner,
     entity: Entity
   ): BattleReward {
-    if (winner) {
+    if (winner === "player") {
       let rewards: BattleReward = [];
       rewards.push({ resource: "pooCoins", number: 100 + entity.level * 5 });
       if (entity.entityType === "sheep") {

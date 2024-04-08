@@ -17,7 +17,7 @@ export type ParamListBase = {
   Inventory: undefined;
   App: undefined;
   OnlineArena: { room: ServerTypes.Room };
-  EntityArena: undefined;
+  EntityArena: { zoneIndex: number };
   Settings: undefined;
   AccountSettings: undefined;
   DevSettings: undefined;

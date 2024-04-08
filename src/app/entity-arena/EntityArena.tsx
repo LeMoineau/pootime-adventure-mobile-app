@@ -9,6 +9,12 @@ import SheepIcon from "../../common/components/icons/sheep/sheep";
 import EntityBattleRewardModal from "./modals/EntityBattleRewardModal";
 import { EntityBattleUtils } from "../../common/utils/entity-battle-utils";
 import { useResourcesStore } from "../../common/stores/resources.store";
+import EntityZones from "../../common/config/game-data/EntityZones";
+import {
+  useNavigationType,
+  useRouteType,
+} from "../../common/types/navigation/NavigationTypes";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default function EntityArena() {
   const {
@@ -33,12 +39,15 @@ export default function EntityArena() {
     ultiSelected,
     resMana,
     recupMana,
+    currentExp,
   } = usePooCreatureStatsStore();
   const { name } = usePooCreatureStyleStore();
   const { earn } = useResourcesStore();
+  const route: useRouteType<"EntityArena"> = useRoute();
+  const navigator: useNavigationType = useNavigation();
 
   useEffect(() => {
-    startNewBattle({
+    startNewBattle(EntityZones[route.params.zoneIndex], {
       pv,
       level,
       attaque,
@@ -46,6 +55,7 @@ export default function EntityArena() {
       mana,
       recupMana,
       resMana,
+      currentExp,
       ultiSelected,
     });
   }, []);
@@ -84,11 +94,13 @@ export default function EntityArena() {
         <EntityBattleRewardModal
           visible={battleFinish}
           rewards={rewards}
+          entity={entity}
           onCollectingRewards={(rewards) => {
             for (let r of rewards) {
               earn(r.resource, r.number);
             }
             reset();
+            navigator.goBack();
           }}
         ></EntityBattleRewardModal>
       )}

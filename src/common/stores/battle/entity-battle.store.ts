@@ -8,6 +8,8 @@ import {
 } from "../../types/battle/entity-battle/EntityBattleTypes";
 import { EntityBattleUtils } from "../../utils/entity-battle-utils";
 import { PlayerBattleState } from "../../types/battle/PlayerBattleState";
+import { PooCreatureStats } from "../../types/PooCreatureStats";
+import { EntityZone } from "../../types/battle/entity-battle/EntityZone";
 
 type Store = {
   entity?: Entity;
@@ -17,7 +19,7 @@ type Store = {
   battleFinish: boolean;
   winner: EntityBattleWinner | undefined;
   rewards: BattleReward | undefined;
-  startNewBattle: (playerStartingState: PlayerBattleState) => void;
+  startNewBattle: (zone: EntityZone, playerStats: PooCreatureStats) => void;
   playerHit: () => void;
   playerSpell: (ulti: UltiDetails) => void;
   entityHit: () => void;
@@ -27,16 +29,19 @@ type Store = {
 const useEntityBattleStore = create<Store>((set, get) => {
   let _intervalId: NodeJS.Timeout | undefined = undefined;
 
-  const startNewBattle = (playerStartingState: PlayerBattleState) => {
+  const startNewBattle = (zone: EntityZone, playerStats: PooCreatureStats) => {
     set({
-      entity: EntityBattleUtils.chooseEntity(),
+      entity: EntityBattleUtils.chooseEntity(zone),
     });
     set({
       currentEntityState: {
         currentPv: get().entity!.pv,
         attaque: get().entity!.attaque,
       },
-      currentPlayerState: playerStartingState,
+      currentPlayerState: {
+        ...playerStats,
+        currentPv: playerStats.pv,
+      },
     });
     setTimeout(() => {
       set({ battleBegin: true });

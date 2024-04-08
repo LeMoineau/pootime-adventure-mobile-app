@@ -36,39 +36,45 @@ export default function RewardModal({
           ]}
         >
           {children}
-          <View
-            style={[
-              style.wFull,
-              style.border,
-              style.roundedSm,
-              style.flexRow,
-              {
-                backgroundColor: colors.gray[50],
-                borderColor: colors.gray[200],
-                padding: 20,
-                marginVertical: 20,
-              },
-            ]}
-          >
-            {rewards.map((reward) => (
-              <View
-                style={[
-                  style.flexRow,
-                  style.justifyCenter,
-                  style.itemsCenter,
-                  { flex: 1 },
-                ]}
-              >
-                <TextWithResourceIcon
-                  resource={reward.resource}
-                  text={`${reward.number}`}
-                  fontSize={18}
-                ></TextWithResourceIcon>
-              </View>
-            ))}
-          </View>
+          {rewards.length <= 0 ? (
+            <View style={[{ height: 20 }]}></View>
+          ) : (
+            <View
+              style={[
+                style.wFull,
+                style.border,
+                style.roundedSm,
+                style.flexRow,
+                {
+                  backgroundColor: colors.gray[50],
+                  borderColor: colors.gray[200],
+                  paddingVertical: 20,
+                  marginVertical: 20,
+                },
+              ]}
+            >
+              {rewards.map((reward, index) => (
+                <View
+                  key={`reward-${index}`}
+                  style={[
+                    style.flexRow,
+                    style.justifyCenter,
+                    style.itemsCenter,
+                    { flex: 1 },
+                  ]}
+                >
+                  <TextWithResourceIcon
+                    resource={reward.resource}
+                    text={`${reward.number}`}
+                    fontSize={18}
+                  ></TextWithResourceIcon>
+                </View>
+              ))}
+            </View>
+          )}
+
           <StandardButton
-            bgColor={colors.teal[400]}
+            bgColor={rewards.length > 0 ? colors.teal[400] : colors.red[400]}
             textColor={colors.white}
             textStyle={{ flex: 0 }}
             onPress={(evt) => {
@@ -76,7 +82,7 @@ export default function RewardModal({
               props.onRequestClose && props.onRequestClose(evt);
             }}
           >
-            Earn rewards
+            {rewards.length > 0 ? "Earn rewards" : "Cancel"}
           </StandardButton>
         </View>
       </View>

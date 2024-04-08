@@ -11,12 +11,17 @@ import WaitForFightModal from "./modals/WaitForFightModal";
 import PrivateFightModal from "./modals/PrivateFightModal";
 import { useNavigationType } from "../../../../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
+import ChooseZoneModal from "./modals/ChooseZoneModal";
 
 export default function HomeBattleButton() {
   const { animValue, enable, setEnabled } = useAnimatedValue({ duration: 250 });
   const { isConnected, connect, disconnect, joinTheQueue } = useBattleStore();
   const { isVisible, show, hide } = useModals<
-    "private-battle" | "battle-waiting" | "battle-arena" | "server-waiting"
+    | "private-battle"
+    | "battle-waiting"
+    | "battle-arena"
+    | "server-waiting"
+    | "choose-zone"
   >();
   const navigator: useNavigationType = useNavigation();
 
@@ -121,14 +126,14 @@ export default function HomeBattleButton() {
           {/* SAUTE-MOUTON BUTTON */}
           <StandardButton
             viewStyle={[style.roundedFull, { flex: 0, marginTop: 10 }]}
-            bgColor={colors.pink[200]}
+            bgColor={colors.orange[400]}
             textStyle={[
               style.textCenter,
               { color: colors.white, fontSize: 15, fontWeight: "500" },
             ]}
-            onPress={() => navigator.navigate("EntityArena")}
+            onPress={() => show("choose-zone")}
           >
-            Saute-Mouton
+            Partir à l'aventure
           </StandardButton>
         </Animated.View>
 
@@ -186,19 +191,16 @@ export default function HomeBattleButton() {
           hide("private-battle");
         }}
       ></PrivateFightModal>
-      {/* {room && (
-        <BattleArenaModal
-          visible={isVisible("battle-arena")}
-          onBattleFinish={() => {
-            hide("battle-arena");
-            disconnect();
-            setTimeout(() => {
-              setRoom(null);
-            }, 500);
-          }}
-          room={room}
-        ></BattleArenaModal>
-      )} */}
+
+      {/* CHOOSE ZONE MODAL */}
+      <ChooseZoneModal
+        visible={isVisible("choose-zone")}
+        onRequestClose={() => hide("choose-zone")}
+        onZoneSelect={(zoneIndex) => {
+          hide("choose-zone");
+          navigator.navigate("EntityArena", { zoneIndex });
+        }}
+      ></ChooseZoneModal>
     </>
   );
 }
