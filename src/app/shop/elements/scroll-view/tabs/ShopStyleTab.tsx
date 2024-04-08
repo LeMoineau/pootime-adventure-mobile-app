@@ -2,11 +2,9 @@ import { ScrollView, View } from "react-native";
 import PooCreature from "../../../../../common/components/misc/poo-creature/PooCreature";
 import ShopItemView from "../../item-view/ShopItemView";
 import ShopSectionTitle from "../../ShopSectionTitle";
-import { ShopItems } from "../../../../../common/config/game-data/ShopItems";
 import {
   BuyableItem,
   isStyleUnlockableItem,
-  UnlockableItems,
 } from "../../../../../common/types/shop/UnlockableItems";
 import { style } from "../../../../../common/utils/style-utils";
 import {
@@ -18,6 +16,7 @@ import {
   FreeTransaction,
   Transaction,
 } from "../../../../../common/types/shop/Transaction";
+import ShopItems from "../../../../../common/config/game-data/ShopItems";
 
 export default function ShopStyleTab({
   onUnlockedItemPress,

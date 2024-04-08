@@ -1,7 +1,7 @@
 import { Animated, Text, useWindowDimensions } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../../utils/style-utils";
 import { useEffect, useState } from "react";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../../utils/color-utils";
 
 export default function ReadyGoText({
   battleReady,

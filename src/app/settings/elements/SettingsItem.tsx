@@ -1,8 +1,10 @@
 import { Pressable, Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
-import RightArrow from "../../icons/rightArrow";
-import ExpoIcon, { AllIconNames } from "../../icons/ExpoIcon";
-import { colors } from "../../../utils/color-utils";
+import { style } from "../../../common/utils/style-utils";
+import RightArrow from "../../../common/components/icons/rightArrow";
+import ExpoIcon, {
+  AllIconNames,
+} from "../../../common/components/icons/ExpoIcon";
+import { colors } from "../../../common/utils/color-utils";
 
 export interface SettingsItemProps {
   icon?: AllIconNames;
@@ -27,7 +29,12 @@ export default function SettingsItem({
         style.justifyBetween,
         style.itemsCenter,
         style.border,
-        { flex: 1, padding: 20, borderWidth: 0, borderBottomWidth: 1 },
+        {
+          flex: 1,
+          padding: 20,
+          borderWidth: 0,
+          borderBottomWidth: 1,
+        },
       ]}
       onPress={onPress}
     >

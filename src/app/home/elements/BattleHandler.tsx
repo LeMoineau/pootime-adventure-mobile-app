@@ -4,8 +4,8 @@ import PrivateFightModal from "./buttons/home-battle-button/modals/PrivateFightM
 import { useEffect, useState } from "react";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
-import { useBattleStore } from "../../../common/stores/battle.store";
-import { ServerTypes } from "../../../common/types/ServerTypes";
+import { useBattleStore } from "../../../common/stores/battle/online-battle.store";
+import { ServerTypes } from "../../../common/types/battle/online-battle/ServerTypes";
 import WaitForFightModal from "./buttons/home-battle-button/modals/WaitForFightModal";
 import PlainModal from "../../../common/components/modals/primitives/PlainModal";
 import useModals from "../../../common/hooks/use-modals";

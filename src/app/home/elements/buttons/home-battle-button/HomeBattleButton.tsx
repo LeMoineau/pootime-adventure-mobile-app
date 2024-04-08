@@ -6,7 +6,7 @@ import ExpoIcon from "../../../../../common/components/icons/ExpoIcon";
 import useAnimatedValue from "../../../../../common/hooks/use-animated-value";
 import ServerWaitingModal from "./modals/ServerWaitingModal";
 import useModals from "../../../../../common/hooks/use-modals";
-import { useBattleStore } from "../../../../../common/stores/battle.store";
+import { useBattleStore } from "../../../../../common/stores/battle/online-battle.store";
 import WaitForFightModal from "./modals/WaitForFightModal";
 import PrivateFightModal from "./modals/PrivateFightModal";
 import { useNavigationType } from "../../../../../common/types/navigation/NavigationTypes";
@@ -126,6 +126,7 @@ export default function HomeBattleButton() {
               style.textCenter,
               { color: colors.white, fontSize: 15, fontWeight: "500" },
             ]}
+            onPress={() => navigator.navigate("EntityArena")}
           >
             Saute-Mouton
           </StandardButton>

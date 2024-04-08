@@ -1,9 +1,9 @@
 import { create } from "zustand";
 import { Socket } from "socket.io-client";
-import { ServerTypes } from "../types/ServerTypes";
-import { SocketEvents } from "../types/SocketEvents";
-import { UltiDetails } from "../types/Ultis";
-import config from "../config/config";
+import { ServerTypes } from "../../types/battle/online-battle/ServerTypes";
+import { SocketEvents } from "../../types/SocketEvents";
+import { UltiDetails } from "../../types/Ultis";
+import config from "../../config/config";
 
 type Store = {
   socket: Socket | null;

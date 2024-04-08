@@ -2,20 +2,18 @@ import { Modal, ModalProps, Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
 import StandardButton from "../../buttons/StandardButton";
 import { colors } from "../../../utils/color-utils";
-import StarIcon from "../../icons/star";
-import PooCoinIcon from "../../icons/pooCoin";
-import WoolIcon from "../../icons/sheep/wool";
-import { Resources } from "../../../types/Resources";
-import { BattleReward } from "../../../types/online-arena/BattleReward";
+import { BattleReward } from "../../../types/battle/online-battle/BattleReward";
 import TextWithResourceIcon from "../../text/TextWithResourceIcon";
 
 export default function RewardModal({
   children,
   rewards,
+  onCollectingRewards,
   ...props
 }: {
   children?: React.ReactNode;
   rewards: BattleReward;
+  onCollectingRewards?: (rewards: BattleReward) => void;
 } & ModalProps) {
   return (
     <Modal animationType="slide" transparent {...props}>
@@ -73,7 +71,10 @@ export default function RewardModal({
             bgColor={colors.teal[400]}
             textColor={colors.white}
             textStyle={{ flex: 0 }}
-            onPress={props.onRequestClose}
+            onPress={(evt) => {
+              onCollectingRewards && onCollectingRewards(rewards);
+              props.onRequestClose && props.onRequestClose(evt);
+            }}
           >
             Earn rewards
           </StandardButton>

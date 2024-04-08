@@ -2,8 +2,8 @@ import { View } from "react-native";
 import StandardButton from "../../../common/components/buttons/StandardButton";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
-import useSheepJumpStore from "../../../common/stores/sheep-jump.store";
-import SheepJumpModal from "../../../common/components/modals/SheepJumpModal";
+import useSheepJumpStore from "../../../common/stores/battle/entity-battle.store";
+import SheepJumpModal from "../../entity-arena/SheepJumpModal";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
 
 export default function SheepJumpHandler() {

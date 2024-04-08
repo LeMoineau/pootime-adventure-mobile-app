@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useBattleStore } from "../stores/battle.store";
+import { useBattleStore } from "../../stores/battle/online-battle.store";
 import { useImmer } from "use-immer";
-import { ServerTypes } from "../types/ServerTypes";
-import { usePooCreatureStatsStore } from "../stores/poo-creature-stats.store";
-import { usePooCreatureStyleStore } from "../stores/poo-creature-style.store";
+import { ServerTypes } from "../../types/battle/online-battle/ServerTypes";
+import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
+import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 
 const useOnlineBattle = ({ room }: { room: ServerTypes.Room }) => {
   const {

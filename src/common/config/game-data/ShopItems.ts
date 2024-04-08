@@ -2,7 +2,7 @@ import { colors } from "../../utils/color-utils";
 import { BuyableItem, UnlockableItems } from "../../types/shop/UnlockableItems";
 import { ShopItem } from "../../types/shop/ShopItem";
 
-export const ShopItems: {
+const ShopItems: {
   [section in BuyableItem]?: {
     sectionTitle?: string;
     items: ShopItem[];
@@ -137,3 +137,5 @@ export const ShopItems: {
     ],
   },
 };
+
+export default ShopItems;

@@ -1,5 +1,4 @@
 import { ScrollView, View } from "react-native";
-import { ShopItems } from "../../../../../common/config/game-data/ShopItems";
 import ShopItemView from "../../item-view/ShopItemView";
 import {
   isMultiPricesShopItem,
@@ -7,6 +6,7 @@ import {
 } from "../../../../../common/types/shop/ShopItem";
 import { style } from "../../../../../common/utils/style-utils";
 import { Transaction } from "../../../../../common/types/shop/Transaction";
+import ShopItems from "../../../../../common/config/game-data/ShopItems";
 
 export default function ShopResourcesTab({
   onBuyableItemPress,

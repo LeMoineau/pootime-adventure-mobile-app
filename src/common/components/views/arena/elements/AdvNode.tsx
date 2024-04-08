@@ -1,11 +1,15 @@
 import { Animated, View } from "react-native";
+import { colors } from "../../../../utils/color-utils";
+import NodeShadow from "./NodeShadow";
 
 export default function AdvNode({
   advNode,
   animValue,
+  shadowColor,
 }: {
   advNode: React.ReactNode;
   animValue: Animated.Value;
+  shadowColor?: string;
 }) {
   return (
     <Animated.View
@@ -33,6 +37,7 @@ export default function AdvNode({
       ]}
     >
       {advNode}
+      <NodeShadow shadowColor={shadowColor}></NodeShadow>
     </Animated.View>
   );
 }

@@ -1,7 +1,7 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
 import Arena from "../../common/components/views/arena/Arena";
-import useOnlineBattle from "../../common/hooks/use-online-battle";
+import useOnlineBattle from "../../common/hooks/battle/use-online-battle";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
 import { useResourcesStore } from "../../common/stores/resources.store";
@@ -10,7 +10,9 @@ import {
   useRouteType,
 } from "../../common/types/navigation/NavigationTypes";
 import BattleFinishRewardModal from "./modals/BattleFinishRewardModal";
-import { useBattleStore } from "../../common/stores/battle.store";
+import { useBattleStore } from "../../common/stores/battle/online-battle.store";
+import { View } from "react-native";
+import NodeShadow from "../../common/components/views/arena/elements/NodeShadow";
 
 export default function OnlineArena() {
   const route: useRouteType<"OnlineArena"> = useRoute();
@@ -58,15 +60,21 @@ export default function OnlineArena() {
         advNode={
           advStyle &&
           advStats && (
-            <PooCreature
-              bodyColorProps={advStyle.bodyColor}
-              expressionProps={advStyle.expression}
-              headProps={advStyle.head}
-              levelProps={advStats.level}
-              width={180}
-            ></PooCreature>
+            <>
+              <PooCreature
+                bodyColorProps={advStyle.bodyColor}
+                expressionProps={advStyle.expression}
+                headProps={advStyle.head}
+                levelProps={advStats.level}
+                width={180}
+              ></PooCreature>
+              <View style={[{ transform: [{ translateY: 90 }] }]}>
+                <NodeShadow></NodeShadow>
+              </View>
+            </>
           )
         }
+        noAdvNodeShadow
         onHit={() => {
           battleBegin && hit();
         }}

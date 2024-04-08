@@ -2,7 +2,7 @@ import { ModalProps, Text } from "react-native";
 import RewardModal from "../../../common/components/modals/primitives/RewardModal";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
-import { BattleReward } from "../../../common/types/online-arena/BattleReward";
+import { BattleReward } from "../../../common/types/battle/online-battle/BattleReward";
 
 export default function BattleFinishRewardModal({
   winner,

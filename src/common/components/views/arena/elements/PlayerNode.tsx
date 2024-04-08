@@ -1,13 +1,16 @@
-import { Animated } from "react-native";
-import PooCreature from "../../misc/poo-creature/PooCreature";
+import { Animated, View } from "react-native";
+import PooCreature from "../../../misc/poo-creature/PooCreature";
 import React, { useEffect } from "react";
+import NodeShadow from "./NodeShadow";
 
 export default function PlayerNode({
   playerNode,
   animValue,
+  shadowColor,
 }: {
   playerNode?: React.ReactNode;
   animValue: Animated.Value;
+  shadowColor?: string;
 }) {
   return (
     <Animated.View
@@ -35,6 +38,9 @@ export default function PlayerNode({
       ]}
     >
       {playerNode ?? <PooCreature behind width={230}></PooCreature>}
+      <View style={[{ transform: [{ translateY: 110 }] }]}>
+        <NodeShadow shadowColor={shadowColor}></NodeShadow>
+      </View>
     </Animated.View>
   );
 }

@@ -1,5 +1,5 @@
-import { PooCreatureStats } from "./PooCreatureStats";
-import { PooCreatureStyle } from "./PooCreatureStyle";
+import { PooCreatureStats } from "../../PooCreatureStats";
+import { PooCreatureStyle } from "../../PooCreatureStyle";
 
 export namespace ServerTypes {
   //Room

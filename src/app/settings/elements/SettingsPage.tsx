@@ -1,7 +1,6 @@
 import { ScrollView, View, useWindowDimensions } from "react-native";
-import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
-import SettingsHeader from "./SettingsHeader";
+import { style } from "../../../common/utils/style-utils";
+import { colors } from "../../../common/utils/color-utils";
 
 export default function SettingsPage({
   header,
@@ -18,7 +17,7 @@ export default function SettingsPage({
         {
           flex: 1,
           height: height,
-          backgroundColor: colors.gray[100],
+          backgroundColor: colors.orange[200],
         },
       ]}
     >

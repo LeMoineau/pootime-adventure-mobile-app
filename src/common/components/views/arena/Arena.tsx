@@ -8,16 +8,16 @@ import {
 import { style } from "../../../utils/style-utils";
 import CustomPage from "../../navigation/CustomPage";
 import PooCreature from "../../misc/poo-creature/PooCreature";
-import PVPanel from "./PVPanel";
+import PVPanel from "./elements/PVPanel";
 import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.store";
-import UltiButton from "./UltiButton";
+import UltiButton from "./elements/UltiButton";
 import { UltiDetails, Ultis } from "../../../types/Ultis";
-import ReadyGoText from "./ReadyGoText";
+import ReadyGoText from "./elements/ReadyGoText";
 import { colors } from "../../../utils/color-utils";
 import { DefaultValues } from "../../../config/DefaultValues";
 import { useEffect, useState } from "react";
-import PlayerNode from "./PlayerNode";
-import AdvNode from "./AdvNode";
+import PlayerNode from "./elements/PlayerNode";
+import AdvNode from "./elements/AdvNode";
 import useChangingDetection from "../../../hooks/use-changing-detection";
 
 export default function Arena({
@@ -26,32 +26,32 @@ export default function Arena({
   battleBegin,
   advData,
   advNode,
+  noAdvNodeShadow,
   playerData,
   playerNode,
+  noPlayerNodeShadow,
   bgColor,
 }: {
   onHit?: (event: GestureResponderEvent) => void;
   onSpell?: (ulti: UltiDetails) => void;
   battleBegin?: boolean;
-  advData:
-    | {
-        name: string;
-        level: number;
-        pv: number;
-        currentPv: number;
-      }
-    | undefined;
+  advData?: {
+    name: string;
+    level: number;
+    pv: number;
+    currentPv: number;
+  };
   advNode: React.ReactNode;
-  playerData:
-    | {
-        name: string;
-        level: number;
-        pv: number;
-        currentPv: number;
-        currentMana: number;
-      }
-    | undefined;
+  noAdvNodeShadow?: boolean;
+  playerData?: {
+    name: string;
+    level: number;
+    pv: number;
+    currentPv: number;
+    currentMana: number;
+  };
   playerNode?: React.ReactNode;
+  noPlayerNodeShadow?: boolean;
   bgColor?: string;
 }) {
   const { width } = useWindowDimensions();
@@ -137,10 +137,15 @@ export default function Arena({
               </>
             )}
           </View>
-          <AdvNode advNode={advNode} animValue={advAnimation}></AdvNode>
+          <AdvNode
+            advNode={advNode}
+            animValue={advAnimation}
+            shadowColor={noAdvNodeShadow ? "transparent" : undefined}
+          ></AdvNode>
           <PlayerNode
             playerNode={playerNode}
             animValue={playerAnimation}
+            shadowColor={noPlayerNodeShadow ? "transparent" : undefined}
           ></PlayerNode>
           {playerData && ultiSelected && (
             <UltiButton

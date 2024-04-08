@@ -52,7 +52,7 @@ export default function HomeTopBar() {
             { width: 70, flex: 1 },
           ]}
           onPress={() => {
-            navigator.navigate("Inventory");
+            navigator.navigate("Settings");
           }}
         >
           <ExpoIcon
