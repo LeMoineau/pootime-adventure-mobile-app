@@ -1,16 +1,16 @@
 import { ModalProps, Text } from "react-native";
-import RewardModal from "../primitives/RewardModal";
-import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
+import RewardModal from "../../../common/components/modals/primitives/RewardModal";
+import { style } from "../../../common/utils/style-utils";
+import { colors } from "../../../common/utils/color-utils";
+import { BattleReward } from "../../../common/types/online-arena/BattleReward";
 
 export default function BattleFinishRewardModal({
-  starEarn,
-  pooCoinEarn,
   winner,
+  rewards,
   ...props
-}: { starEarn: number; pooCoinEarn: number; winner?: boolean } & ModalProps) {
+}: { winner?: boolean; rewards: BattleReward } & ModalProps) {
   return (
-    <RewardModal starEarn={starEarn} pooCoinEarn={pooCoinEarn} {...props}>
+    <RewardModal rewards={rewards} {...props}>
       <Text
         style={[
           style.textLg,

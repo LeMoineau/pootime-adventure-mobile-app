@@ -35,6 +35,7 @@ const useAnimatedValue = ({
 
   return {
     animValue,
+    enable,
     setEnabled,
   };
 };

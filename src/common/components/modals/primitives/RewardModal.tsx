@@ -5,18 +5,17 @@ import { colors } from "../../../utils/color-utils";
 import StarIcon from "../../icons/star";
 import PooCoinIcon from "../../icons/pooCoin";
 import WoolIcon from "../../icons/sheep/wool";
+import { Resources } from "../../../types/Resources";
+import { BattleReward } from "../../../types/online-arena/BattleReward";
+import TextWithResourceIcon from "../../text/TextWithResourceIcon";
 
 export default function RewardModal({
   children,
-  starEarn,
-  pooCoinEarn,
-  woolEarn,
+  rewards,
   ...props
 }: {
   children?: React.ReactNode;
-  starEarn?: number;
-  pooCoinEarn?: number;
-  woolEarn?: number;
+  rewards: BattleReward;
 } & ModalProps) {
   return (
     <Modal animationType="slide" transparent {...props}>
@@ -32,6 +31,7 @@ export default function RewardModal({
             style.rounded,
             style.shadowMd,
             style.wFull,
+            style.flexCol,
             style.justifyCenter,
             style.itemsCenter,
             { padding: 20, backgroundColor: "white" },
@@ -52,7 +52,7 @@ export default function RewardModal({
               },
             ]}
           >
-            {starEarn !== undefined ? (
+            {rewards.map((reward) => (
               <View
                 style={[
                   style.flexRow,
@@ -61,68 +61,18 @@ export default function RewardModal({
                   { flex: 1 },
                 ]}
               >
-                <Text
-                  style={[
-                    style.textMd,
-                    { marginRight: 5, color: colors.blue[500] },
-                  ]}
-                >
-                  {starEarn}
-                </Text>
-                <StarIcon size={30}></StarIcon>
+                <TextWithResourceIcon
+                  resource={reward.resource}
+                  text={`${reward.number}`}
+                  fontSize={18}
+                ></TextWithResourceIcon>
               </View>
-            ) : (
-              <></>
-            )}
-            {pooCoinEarn !== undefined ? (
-              <View
-                style={[
-                  style.flexRow,
-                  style.justifyCenter,
-                  style.itemsCenter,
-                  { flex: 1 },
-                ]}
-              >
-                <Text
-                  style={[
-                    style.textMd,
-                    { marginRight: 5, color: colors.yellow[500] },
-                  ]}
-                >
-                  {pooCoinEarn}
-                </Text>
-                <PooCoinIcon size={30}></PooCoinIcon>
-              </View>
-            ) : (
-              <></>
-            )}
-            {woolEarn !== undefined ? (
-              <View
-                style={[
-                  style.flexRow,
-                  style.justifyCenter,
-                  style.itemsCenter,
-                  { flex: 1 },
-                ]}
-              >
-                <Text
-                  style={[
-                    style.textMd,
-                    { marginRight: 5, color: colors.pink[400] },
-                  ]}
-                >
-                  {woolEarn}
-                </Text>
-                <WoolIcon size={30}></WoolIcon>
-              </View>
-            ) : (
-              <></>
-            )}
+            ))}
           </View>
           <StandardButton
-            style={{ paddingTop: 10 }}
             bgColor={colors.teal[400]}
             textColor={colors.white}
+            textStyle={{ flex: 0 }}
             onPress={props.onRequestClose}
           >
             Earn rewards

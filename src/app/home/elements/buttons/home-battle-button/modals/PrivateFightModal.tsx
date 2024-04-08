@@ -1,12 +1,12 @@
 import { Modal, ModalProps, Pressable, Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
+import { style } from "../../../../../../common/utils/style-utils";
+import { colors } from "../../../../../../common/utils/color-utils";
 import React, { useState } from "react";
-import { useBattleStore } from "../../../stores/battle.store";
-import PlusIcon from "../../icons/plus";
-import InputField from "../../fields/InputField";
-import PillButton from "../../buttons/PillButton";
-import { ServerTypes } from "../../../types/ServerTypes";
+import { useBattleStore } from "../../../../../../common/stores/battle.store";
+import PlusIcon from "../../../../../../common/components/icons/plus";
+import InputField from "../../../../../../common/components/fields/InputField";
+import PillButton from "../../../../../../common/components/buttons/PillButton";
+import { ServerTypes } from "../../../../../../common/types/ServerTypes";
 
 export default function PrivateFightModal({
   openRoom,

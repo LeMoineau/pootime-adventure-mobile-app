@@ -1,19 +1,20 @@
-import { Modal, ModalProps } from "react-native";
-import React from "react";
-import { ServerTypes } from "../../../types/ServerTypes";
-import useOnlineBattle from "../../../hooks/use-online-battle";
-import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.store";
-import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
-import { useResourcesStore } from "../../../stores/resources.store";
-import Arena from "../../views/arena/Arena";
-import PooCreature from "../../misc/poo-creature/PooCreature";
-import BattleFinishRewardModal from "./BattleFinishRewardModal";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
+import Arena from "../../common/components/views/arena/Arena";
+import useOnlineBattle from "../../common/hooks/use-online-battle";
+import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
+import { useResourcesStore } from "../../common/stores/resources.store";
+import {
+  useNavigationType,
+  useRouteType,
+} from "../../common/types/navigation/NavigationTypes";
+import BattleFinishRewardModal from "./modals/BattleFinishRewardModal";
+import { useBattleStore } from "../../common/stores/battle.store";
 
-export default function BattleArenaModal({
-  room,
-  onBattleFinish,
-  ...props
-}: { room: ServerTypes.Room; onBattleFinish: () => void } & ModalProps) {
+export default function OnlineArena() {
+  const route: useRouteType<"OnlineArena"> = useRoute();
+  const navigator: useNavigationType = useNavigation();
   const {
     socketId,
     battleBegin,
@@ -25,13 +26,14 @@ export default function BattleArenaModal({
     hit,
     spell,
     reset,
-  } = useOnlineBattle({ room });
+  } = useOnlineBattle({ room: route.params.room });
+  const { disconnect } = useBattleStore();
   const { level, pv } = usePooCreatureStatsStore();
   const { name } = usePooCreatureStyleStore();
   const { earn } = useResourcesStore();
 
   return (
-    <Modal animationType="slide" transparent {...props}>
+    <>
       <Arena
         battleBegin={battleBegin}
         advData={
@@ -78,17 +80,25 @@ export default function BattleArenaModal({
       {battleEnding && (
         <BattleFinishRewardModal
           visible={battleEnding !== undefined}
-          starEarn={battleEnding[socketId].rewards.stars}
-          pooCoinEarn={battleEnding[socketId].rewards.pooCoins}
+          rewards={[
+            { resource: "stars", number: battleEnding[socketId].rewards.stars },
+            {
+              resource: "pooCoins",
+              number: battleEnding[socketId].rewards.pooCoins,
+            },
+          ]}
           winner={battleEnding[socketId].victoryState === "winner"}
           onRequestClose={async () => {
-            await earn("stars", battleEnding[socketId].rewards.stars);
-            await earn("pooCoins", battleEnding[socketId].rewards.pooCoins);
+            const starEarn = battleEnding[socketId].rewards.stars;
+            const pooCoinEarn = battleEnding[socketId].rewards.pooCoins;
+            earn("stars", starEarn);
+            earn("pooCoins", pooCoinEarn);
             reset();
-            onBattleFinish();
+            disconnect();
+            navigator.navigate("App");
           }}
         ></BattleFinishRewardModal>
       )}
-    </Modal>
+    </>
   );
 }

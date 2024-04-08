@@ -92,7 +92,7 @@ export default function StandardButton({
             {children}
           </Text>
         ) : (
-          children
+          <>{children}</>
         )}
         {appendIcon}
       </Animated.View>

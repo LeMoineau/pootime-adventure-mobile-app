@@ -16,6 +16,7 @@ import Blur from "../common/components/views/Blur";
 import ShopPage from "./shop/ShopPage";
 import { useResourcesStore } from "../common/stores/resources.store";
 import { useItemsUnlockedStore } from "../common/stores/items-unlocked.store";
+import OnlineArena from "./online-arena/OnlineArena";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -40,6 +41,10 @@ export default function App() {
         >
           <Stack.Screen name="App" component={MainPage} />
           <Stack.Screen name="Inventory" component={InventoryPage} />
+          <Stack.Screen
+            name="OnlineArena"
+            component={OnlineArena}
+          ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>

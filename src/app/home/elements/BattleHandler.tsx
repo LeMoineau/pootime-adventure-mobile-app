@@ -1,13 +1,12 @@
 import { ActivityIndicator, Text, View } from "react-native";
 import FightButton from "./buttons/HomeFightButton";
-import PrivateFightModal from "../../../common/components/modals/online-battle/PrivateFightModal";
-import BattleArenaModal from "../../../common/components/modals/online-battle/BattleArenaModal";
+import PrivateFightModal from "./buttons/home-battle-button/modals/PrivateFightModal";
 import { useEffect, useState } from "react";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 import { useBattleStore } from "../../../common/stores/battle.store";
 import { ServerTypes } from "../../../common/types/ServerTypes";
-import WaitForFightModal from "../../../common/components/modals/online-battle/WaitForFightModal";
+import WaitForFightModal from "./buttons/home-battle-button/modals/WaitForFightModal";
 import PlainModal from "../../../common/components/modals/primitives/PlainModal";
 import useModals from "../../../common/hooks/use-modals";
 
@@ -105,7 +104,7 @@ export default function BattleHandler() {
           show("battle-arena");
         }}
       ></PrivateFightModal>
-      {room && (
+      {/* {room && (
         <BattleArenaModal
           visible={isVisible("battle-arena")}
           onBattleFinish={() => {
@@ -117,7 +116,7 @@ export default function BattleHandler() {
           }}
           room={room}
         ></BattleArenaModal>
-      )}
+      )} */}
     </>
   );
 }

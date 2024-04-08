@@ -3,6 +3,7 @@ import { Socket } from "socket.io-client";
 import { ServerTypes } from "../types/ServerTypes";
 import { SocketEvents } from "../types/SocketEvents";
 import { UltiDetails } from "../types/Ultis";
+import config from "../config/config";
 
 type Store = {
   socket: Socket | null;
@@ -36,7 +37,7 @@ export const useBattleStore = create<Store>((set, get) => {
   const connect = (onSuccess?: () => void, onFailed?: () => void) => {
     var io = require("socket.io-client/dist/socket.io");
     //https://pootime-adventure-battle-server.onrender.com/
-    const socket = io("https://pootime-adventure-battle-server.onrender.com/", {
+    const socket = io(config.getEnv().BATTLE_SERVER_URL, {
       transports: ["websocket"],
     });
     socket.on("connect", () => {

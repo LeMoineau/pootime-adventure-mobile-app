@@ -15,7 +15,7 @@ import ButtonWithDialogBubble from "../../common/components/buttons/ButtonWithDi
 import PillButton from "../../common/components/buttons/PillButton";
 import { colors } from "../../common/utils/color-utils";
 import { LinearGradient } from "expo-linear-gradient";
-import HomeBattleButton from "./elements/buttons/HomeBattleButton";
+import HomeBattleButton from "./elements/buttons/home-battle-button/HomeBattleButton";
 
 export default function Home() {
   return (
@@ -41,11 +41,10 @@ export default function Home() {
           ]}
         >
           <PooCreatureHandler></PooCreatureHandler>
-          {/* <BattleHandler></BattleHandler>
+          <BattleHandler></BattleHandler>
           <SheepJumpHandler></SheepJumpHandler>
-          <EventsModalHandler></EventsModalHandler> */}
+          <EventsModalHandler></EventsModalHandler>
         </View>
-
         <HomeBattleButton></HomeBattleButton>
       </View>
     </CustomPage>
