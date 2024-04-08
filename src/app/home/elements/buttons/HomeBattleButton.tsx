@@ -1,8 +1,8 @@
 import { Animated, Text, View } from "react-native";
-import StandardButton from "../../../common/components/buttons/StandardButton";
-import { style } from "../../../common/utils/style-utils";
-import { colors } from "../../../common/utils/color-utils";
-import ExpoIcon from "../../../common/components/icons/ExpoIcon";
+import StandardButton from "../../../../common/components/buttons/StandardButton";
+import { style } from "../../../../common/utils/style-utils";
+import { colors } from "../../../../common/utils/color-utils";
+import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
 import { useEffect, useRef, useState } from "react";
 
 export default function HomeBattleButton() {

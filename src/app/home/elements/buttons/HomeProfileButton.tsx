@@ -1,10 +1,10 @@
 import { Text, View } from "react-native";
-import StandardButton from "../../../common/components/buttons/StandardButton";
-import PooCreatureHead from "../../../common/components/misc/poo-creature/PooCreatureHead";
-import { colors } from "../../../common/utils/color-utils";
-import { style } from "../../../common/utils/style-utils";
-import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
-import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
+import StandardButton from "../../../../common/components/buttons/StandardButton";
+import PooCreatureHead from "../../../../common/components/misc/poo-creature/PooCreatureHead";
+import { colors } from "../../../../common/utils/color-utils";
+import { style } from "../../../../common/utils/style-utils";
+import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
+import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 
 export default function HomeProfileButton() {
   const { name } = usePooCreatureStyleStore();
@@ -12,8 +12,6 @@ export default function HomeProfileButton() {
   return (
     <>
       <StandardButton
-        bgColor={colors.white}
-        borderColor={colors.gray[50]}
         style={[{ flex: 1 }]}
         viewStyle={[
           style.border,

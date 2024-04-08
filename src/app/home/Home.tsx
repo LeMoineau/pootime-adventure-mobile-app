@@ -15,7 +15,7 @@ import ButtonWithDialogBubble from "../../common/components/buttons/ButtonWithDi
 import PillButton from "../../common/components/buttons/PillButton";
 import { colors } from "../../common/utils/color-utils";
 import { LinearGradient } from "expo-linear-gradient";
-import HomeBattleButton from "./elements/HomeBattleButton";
+import HomeBattleButton from "./elements/buttons/HomeBattleButton";
 
 export default function Home() {
   return (

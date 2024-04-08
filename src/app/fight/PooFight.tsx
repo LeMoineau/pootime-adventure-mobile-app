@@ -20,11 +20,9 @@ export default function PooFight() {
           style.hFull,
           style.flexCol,
           style.itemsCenter,
-          { paddingTop: 80 },
+          { paddingTop: 10, paddingHorizontal: 10 },
         ]}
       >
-        <FightTopBar></FightTopBar>
-        <PooCreature width={150}></PooCreature>
         <RoundedScrollView
           defaultTab={0}
           tabs={[
@@ -35,12 +33,6 @@ export default function PooFight() {
             {
               icon: <PooUltiIcon size={35}></PooUltiIcon>,
               content: <UltiTab></UltiTab>,
-            },
-          ]}
-          endTabs={[
-            {
-              icon: <StarConverterIcon size={35}></StarConverterIcon>,
-              content: <StarConverterTab></StarConverterTab>,
             },
           ]}
         ></RoundedScrollView>
