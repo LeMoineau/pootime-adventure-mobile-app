@@ -25,7 +25,10 @@ export default function ResetStatsButton() {
           show("confirm");
         }}
       >
-        <ExpoIcon name="exchange" size={20}></ExpoIcon> Reset stats
+        <>
+          <ExpoIcon name="exchange" size={20}></ExpoIcon>
+          <Text>Reset stats</Text>
+        </>
       </StandardButton>
       <ConfirmModal
         visible={isVisible("confirm")}

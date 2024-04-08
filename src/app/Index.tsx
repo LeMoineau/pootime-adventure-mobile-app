@@ -13,11 +13,23 @@ import AppBottomBar from "../common/components/navigation/AppBottomBar";
 import { useBlurStore } from "../common/stores/blur.store";
 import { Pressable, useWindowDimensions } from "react-native";
 import Blur from "../common/components/views/Blur";
+import ShopPage from "./shop/ShopPage";
+import { useResourcesStore } from "../common/stores/resources.store";
+import { useItemsUnlockedStore } from "../common/stores/items-unlocked.store";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const { earn } = useResourcesStore();
+  const { resetData } = useItemsUnlockedStore();
+
+  React.useEffect(() => {
+    resetData();
+    earn("pooCoins", 0);
+    earn("stars", 10);
+  }, []);
+
   return (
     <>
       <NavigationContainer>
@@ -48,7 +60,7 @@ function MainPage() {
       >
         <Tab.Screen name="Battle" component={PooFight} />
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Editor" component={PooEditor} />
+        <Tab.Screen name="Shop" component={ShopPage} />
       </Tab.Navigator>
     </>
   );

@@ -2,7 +2,7 @@ import { Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 
-export default function FightButton({
+export default function HomeFightButton({
   textContent,
   color,
   onPress,

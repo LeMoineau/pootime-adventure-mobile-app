@@ -10,17 +10,16 @@ import { colors } from "../../../common/utils/color-utils";
 import useModals from "../../../common/hooks/use-modals";
 import SettingsModal from "../../../common/components/modals/settings/SettingsModal";
 import LevelProgressBar from "../../../common/components/fields/LevelProgressBar";
-import GradientButton from "../../../common/components/buttons/GradientButton";
+import StandardButton from "../../../common/components/buttons/StandardButton";
 import { useNavigation } from "@react-navigation/native";
 import { useNavigationType } from "../../../common/types/NavigationTypes";
 import PooCreatureHead from "../../../common/components/misc/poo-creature/PooCreatureHead";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
+import HomeProfileButton from "../elements/HomeProfileButton";
 
 export default function HomeTopBar() {
   const { width } = useWindowDimensions();
-  const { name } = usePooCreatureStyleStore();
-  const { level } = usePooCreatureStatsStore();
   const navigator: useNavigationType = useNavigation();
 
   return (
@@ -34,49 +33,27 @@ export default function HomeTopBar() {
             justifyContent: "space-around",
             width: width,
             paddingHorizontal: 10,
+            height: 70,
           },
         ]}
       >
-        <GradientButton colors={[colors.gray[300], colors.gray[100]]}>
-          <View
-            style={[
-              style.flexRow,
-              style.justifyBetween,
-              { flex: 1, paddingHorizontal: 15 },
-            ]}
-          >
-            <View
-              style={[style.flexRow, style.justifyCenter, style.itemsCenter]}
-            >
-              <PooCreatureHead size={45}></PooCreatureHead>
-              <View>
-                <Text
-                  style={[style.textBold, { marginLeft: 10, fontSize: 15 }]}
-                >
-                  {name}
-                </Text>
-                <Text
-                  style={[
-                    { color: colors.gray[500], marginLeft: 10, fontSize: 12 },
-                  ]}
-                >
-                  Level {level}
-                </Text>
-              </View>
-            </View>
-          </View>
-        </GradientButton>
-        <GradientButton
-          colors={[colors.gray[300], colors.gray[100]]}
-          viewStyle={[{ width: 70, flex: 0, marginHorizontal: 5 }]}
-        ></GradientButton>
-        <GradientButton
-          colors={[colors.gray[300], colors.gray[100]]}
-          viewStyle={[{ width: 70, flex: 0 }]}
-          onClick={() => {
+        <HomeProfileButton></HomeProfileButton>
+        <StandardButton
+          bgColor={colors.white}
+          borderColor={colors.gray[50]}
+          viewStyle={[
+            style.border,
+            { width: 70, flex: 1, marginHorizontal: 5 },
+          ]}
+        ></StandardButton>
+        <StandardButton
+          bgColor={colors.white}
+          borderColor={colors.gray[50]}
+          viewStyle={[style.border, { width: 70, flex: 1 }]}
+          onPress={() => {
             navigator.navigate("Inventory");
           }}
-        ></GradientButton>
+        ></StandardButton>
       </View>
     </>
   );

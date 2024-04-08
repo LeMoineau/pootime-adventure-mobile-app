@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, StyleProp, View, ViewStyle } from "react-native";
 import { style } from "../../../utils/style-utils";
 import { colors } from "../../../utils/color-utils";
 import RoundedScrollViewTabSelector from "./RoundedScrollViewTabSelector";
@@ -8,10 +8,12 @@ export default function RoundedScrollView({
   tabs,
   endTabs,
   defaultTab,
+  containerStyle,
 }: {
   tabs: { icon: React.ReactNode; content: React.ReactNode }[];
   endTabs?: { icon: React.ReactNode; content: React.ReactNode }[];
   defaultTab?: number;
+  containerStyle?: StyleProp<ViewStyle>;
 }) {
   const [tabSelected, setTabSelected] = useState<number>(defaultTab ?? 0);
 
@@ -21,13 +23,14 @@ export default function RoundedScrollView({
         style.wFull,
         style.shadowMd,
         style.border,
+        style.overflowHidden,
         {
-          marginTop: 20,
           backgroundColor: colors.white,
           flex: 1,
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
         },
+        containerStyle,
       ]}
     >
       <View

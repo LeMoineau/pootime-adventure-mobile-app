@@ -4,7 +4,8 @@ import { StorageKeys } from "../utils/storage-keys";
 import { DefaultValues } from "../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";
-import { StyleKeys } from "../types/StyleKeys";
+import { StyleKeys } from "../types/poo-creature-style/StyleKeys";
+import { StyleUnlockableItem } from "../types/shop/UnlockableItems";
 
 export type PooCreatureStyleStore = {
   update: (style: StyleKeys, name: string) => Promise<void>;

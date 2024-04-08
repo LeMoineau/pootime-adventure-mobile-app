@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../utils/storage-keys";
-import { UnlockableItems } from "../types/UnlockableItems";
+import { UnlockableItems } from "../types/shop/UnlockableItems";
 import { DefaultValues } from "../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";

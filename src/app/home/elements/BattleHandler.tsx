@@ -1,5 +1,5 @@
 import { ActivityIndicator, Text, View } from "react-native";
-import FightButton from "./FightButton";
+import FightButton from "./HomeFightButton";
 import PrivateFightModal from "../../../common/components/modals/online-battle/PrivateFightModal";
 import BattleArenaModal from "../../../common/components/modals/online-battle/BattleArenaModal";
 import { useEffect, useState } from "react";

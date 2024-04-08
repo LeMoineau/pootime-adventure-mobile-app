@@ -14,7 +14,14 @@ type Store = {
     onSuccess?: (newVal: number) => void,
     onFailed?: (val: number) => void
   ) => Promise<void>;
+  spendMany: (
+    resources: Resources[],
+    vals: number[],
+    onSuccess?: () => void,
+    onFailed?: () => void
+  ) => Promise<void>;
   resetData: () => Promise<void>;
+  get: (resource: Resources) => number;
 } & DataInStorage.Resources;
 
 export const useResourcesStore = create<Store>((set, get) => {
@@ -51,15 +58,47 @@ export const useResourcesStore = create<Store>((set, get) => {
     }
   };
 
+  const spendMany = async (
+    resources: Resources[],
+    vals: number[],
+    onSuccess?: () => void,
+    onFailed?: () => void
+  ) => {
+    if (resources.length !== vals.length) {
+      onFailed && onFailed();
+      return;
+    }
+    let index = 0;
+    for (let r of resources) {
+      if (get()[r] < vals[index]) {
+        onFailed && onFailed();
+        return;
+      }
+      index++;
+    }
+    index = 0;
+    for (let r of resources) {
+      await spend(r, vals[index]);
+      index++;
+    }
+    onSuccess && onSuccess();
+  };
+
   const resetData = async () => {
     await saveJson(StorageKeys.RESOURCES, DefaultValues.Resources);
     set({ ...DefaultValues.Resources });
+  };
+
+  const _get = (resource: Resources) => {
+    return get()[resource] ?? 0;
   };
 
   return {
     ...DefaultValues.Resources,
     earn,
     spend,
+    spendMany,
     resetData,
+    get: _get,
   };
 });
