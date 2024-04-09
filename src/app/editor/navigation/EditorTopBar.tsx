@@ -11,7 +11,7 @@ import WoolIcon from "../../../common/components/icons/sheep/wool";
 
 export default function EditorTopBar() {
   const { width } = useWindowDimensions();
-  const { pooCoins, wool } = useResourcesStore();
+  const { get } = useResourcesStore();
   const { name, update } = usePooCreatureStyleStore();
 
   return (
@@ -40,12 +40,12 @@ export default function EditorTopBar() {
       ></InputField>
       <View>
         <NumberField
-          value={pooCoins}
+          value={get("pooCoins")}
           appendElement={<PooCoinIcon size={40}></PooCoinIcon>}
           useReduceNumberFormat
         ></NumberField>
         <NumberField
-          value={wool}
+          value={get("stars")}
           style={[{ marginTop: 5 }]}
           appendElement={<WoolIcon ratio={0.35}></WoolIcon>}
           useReduceNumberFormat

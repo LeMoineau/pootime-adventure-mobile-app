@@ -1,6 +1,7 @@
 import { colors } from "../utils/color-utils";
 import { DataInStorage } from "../types/dataInStorage";
 import { ColorPalette } from "color-curves";
+import { Inventory } from "../types/resources/Inventory";
 
 export namespace DefaultValues {
   //Style
@@ -32,6 +33,11 @@ export namespace DefaultValues {
 
   //Resources
   export const Resources: DataInStorage.Resources = {
+    stars: 5,
+    pooCoins: 250,
+    wool: 0,
+  };
+  export const Inventory: Inventory = {
     stars: 5,
     pooCoins: 250,
     wool: 0,

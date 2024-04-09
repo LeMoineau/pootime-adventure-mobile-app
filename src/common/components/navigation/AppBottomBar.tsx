@@ -22,6 +22,12 @@ export default function AppBottomBar({
       },
     },
     {
+      title: "Village",
+      image: {
+        uri: "https://bigstones.fr/pootime-adventure/poohome.png",
+      },
+    },
+    {
       title: "Edit",
       image: {
         uri: "https://bigstones.fr/pootime-adventure/pooedit.png",

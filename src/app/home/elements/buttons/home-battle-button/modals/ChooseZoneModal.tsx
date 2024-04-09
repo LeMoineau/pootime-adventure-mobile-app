@@ -33,6 +33,7 @@ export default function ChooseZoneModal({
             return (
               <>
                 <View
+                  key={`zone-chooser-${index}`}
                   style={[
                     style.roundedFull,
                     style.overflowHidden,
@@ -56,7 +57,6 @@ export default function ChooseZoneModal({
                   </StandardButton>
                   {level < zone.unlockLevel && (
                     <View
-                      key={`zone-chooser-${index}`}
                       style={[
                         style.flexCol,
                         style.justifyCenter,

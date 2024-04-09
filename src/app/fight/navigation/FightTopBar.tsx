@@ -6,12 +6,15 @@ import { useShallow } from "zustand/react/shallow";
 import StarIcon from "../../../common/components/icons/star";
 import ProgressBar from "../../../common/components/fields/ProgressBar";
 import LevelProgressBar from "../../../common/components/fields/LevelProgressBar";
+import InputField from "../../../common/components/fields/InputField";
+import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
+import ResetStatsButton from "../elements/ResetStatsButton";
+import { DefaultValues } from "../../../common/config/DefaultValues";
 
 export default function FightTopBar() {
   const { width } = useWindowDimensions();
-  const { stars } = useResourcesStore(
-    useShallow((state) => ({ stars: state.stars, pooCoins: state.pooCoins }))
-  );
+  const { get } = useResourcesStore();
+  const { name, update } = usePooCreatureStyleStore();
 
   return (
     <View
@@ -19,26 +22,26 @@ export default function FightTopBar() {
         style.flexRow,
         style.justifyCenter,
         style.itemsCenter,
-        {
-          width: width,
-          position: "absolute",
-          top: 20,
-          left: 0,
-          paddingHorizontal: 20,
-        },
+        { marginBottom: 15 },
       ]}
     >
-      <LevelProgressBar
-        height={35}
-        width={"100%"}
-        style={{ flex: 1, marginRight: 20 }}
-        showProgressText
-      ></LevelProgressBar>
-      <NumberField
-        value={stars}
-        appendElement={<StarIcon size={40}></StarIcon>}
-        useReduceNumberFormat
-      ></NumberField>
+      <InputField
+        style={[{ flex: 1 }]}
+        textInputStyle={[{ width: "100%", paddingVertical: 10 }]}
+        paddingVertical={7}
+        paddingHorizontal={20}
+        placeholder={"Your Name"}
+        onChange={(value) => {
+          if (value.length <= 0) {
+            update("name", DefaultValues.PooCreatureStyle.name);
+            return;
+          }
+          update("name", value);
+        }}
+        defaultValue={name}
+      ></InputField>
+      <View style={[{ width: 10 }]}></View>
+      <ResetStatsButton></ResetStatsButton>
     </View>
   );
 }

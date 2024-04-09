@@ -2,7 +2,6 @@ import { Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import StarIcon from "../../../common/components/icons/star";
 import { colors } from "../../../common/utils/color-utils";
-import { useResourcesStore } from "../../../common/stores/resources.store";
 
 export default function UltiView({
   icon,
@@ -23,8 +22,6 @@ export default function UltiView({
   selected: boolean;
   onPress: (title: string) => void;
 }) {
-  const { stars } = useResourcesStore();
-
   return (
     <Pressable onPress={() => onPress(title)}>
       <View

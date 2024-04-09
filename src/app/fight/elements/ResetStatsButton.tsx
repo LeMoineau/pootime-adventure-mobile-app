@@ -16,19 +16,23 @@ export default function ResetStatsButton() {
   return (
     <>
       <StandardButton
-        style={[{ marginTop: 10 }]}
-        viewStyle={[style.roundedFull, {}]}
-        textStyle={[]}
+        style={[{ width: 150, height: "auto" }]}
+        viewStyle={[style.roundedFull, { paddingVertical: 0, flex: 1 }]}
+        textStyle={[{ fontSize: 17 }]}
         bgColor={colors.orange[400]}
         textColor={colors.white}
         onPress={() => {
           show("confirm");
         }}
+        prependIcon={
+          <ExpoIcon
+            name="refresh-sharp"
+            style={[{ color: colors.white }]}
+            size={20}
+          ></ExpoIcon>
+        }
       >
-        <>
-          <ExpoIcon name="exchange" size={20}></ExpoIcon>
-          <Text>Reset stats</Text>
-        </>
+        Reset
       </StandardButton>
       <ConfirmModal
         visible={isVisible("confirm")}

@@ -6,10 +6,12 @@ import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store"
 import config from "../../common/config/config";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
+import { useResourcesStore } from "../../common/stores/resources.store";
 
 export default function DevSettings() {
   const navigator: useNavigationType = useNavigation();
   const itemsUnlocked = useItemsUnlockedStore();
+  const { inventory } = useResourcesStore();
 
   return (
     <>
@@ -40,6 +42,10 @@ export default function DevSettings() {
             {
               label: `Items Unlocked`,
               subLabel: `${JSON.stringify({ ...itemsUnlocked })}`,
+            },
+            {
+              label: `Inventory`,
+              subLabel: `${JSON.stringify({ ...inventory })}`,
             },
           ]}
         ></SettingsScrollView>

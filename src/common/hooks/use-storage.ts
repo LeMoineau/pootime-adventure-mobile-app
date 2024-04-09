@@ -80,6 +80,10 @@ const useStorage = () => {
     return strVal ? JSON.parse(strVal) : null;
   };
 
+  const removeItem = async (key: string): Promise<void> => {
+    await AsyncStorage.removeItem(key);
+  };
+
   return {
     saveString,
     saveNumber,
@@ -91,6 +95,7 @@ const useStorage = () => {
     getNumber,
     getBoolean,
     getJson,
+    removeItem,
   };
 };
 

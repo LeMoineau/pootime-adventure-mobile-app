@@ -21,6 +21,7 @@ import DevSettings from "./settings/DevSettings";
 import EventSettings from "./settings/EventSettings";
 import DonationSettings from "./settings/DonationSettings";
 import TutoSettings from "./settings/TutoSettings";
+import VillagePage from "./village/VillagePage";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -94,6 +95,7 @@ function MainPage() {
       >
         <Tab.Screen name="Battle" component={PooFight} />
         <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Village" component={VillagePage} />
         <Tab.Screen name="Shop" component={ShopPage} />
       </Tab.Navigator>
     </>

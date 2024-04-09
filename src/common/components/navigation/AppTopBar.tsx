@@ -10,7 +10,7 @@ import { colors } from "../../utils/color-utils";
 
 export default function AppTopBar() {
   const { width } = useWindowDimensions();
-  const { stars, pooCoins } = useResourcesStore();
+  const { get } = useResourcesStore();
 
   return (
     <>
@@ -49,12 +49,12 @@ export default function AppTopBar() {
             <LevelProgressBar height={35} showProgressText></LevelProgressBar>
           </View>
           <NumberField
-            value={stars}
+            value={get("stars")}
             appendElement={<StarIcon size={40}></StarIcon>}
             useReduceNumberFormat
           ></NumberField>
           <NumberField
-            value={pooCoins}
+            value={get("pooCoins")}
             appendElement={<PooCoinIcon size={40}></PooCoinIcon>}
             useReduceNumberFormat
           ></NumberField>

@@ -1,6 +1,5 @@
 import { Image, SafeAreaView, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
 import FightTopBar from "./navigation/FightTopBar";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
 import StatsTab from "./tabs/StatsTab";
@@ -8,8 +7,6 @@ import StatsIcons from "../../common/components/icons/stats";
 import PooUltiIcon from "../../common/components/icons/pooUlti";
 import UltiTab from "./tabs/UltiTab";
 import CustomPage from "../../common/components/navigation/CustomPage";
-import StarConverterIcon from "../../common/components/icons/ui/starConverter";
-import StarConverterTab from "./tabs/StarConverterTab";
 
 export default function PooFight() {
   return (
@@ -23,6 +20,7 @@ export default function PooFight() {
           { paddingTop: 10, paddingHorizontal: 10 },
         ]}
       >
+        <FightTopBar></FightTopBar>
         <RoundedScrollView
           defaultTab={0}
           tabs={[

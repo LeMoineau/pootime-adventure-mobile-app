@@ -4,15 +4,11 @@ import StatsField from "../elements/StatsField";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import StatsTips from "../elements/StatsTips";
-import StandardButton from "../../../common/components/buttons/StandardButton";
-import { colors } from "../../../common/utils/color-utils";
-import ExpoIcon from "../../../common/components/icons/ExpoIcon";
-import ResetStatsButton from "../elements/ResetStatsButton";
 
 export default function StatsTab() {
   const { attaque, defense, pv, mana, resMana, recupMana, incrStat } =
     usePooCreatureStatsStore();
-  const { stars, spend, earn } = useResourcesStore();
+  const { get, spend, earn } = useResourcesStore();
   const statsHandlers: {
     label: string;
     value: number;
@@ -69,7 +65,7 @@ export default function StatsTab() {
           <StatsField
             label={sh.label}
             value={sh.value}
-            upgradeAvailable={stars >= 1}
+            upgradeAvailable={get("stars") >= 1}
             onUpgrade={async () => {
               await spend("stars", 1, async () => {
                 await sh.onPress();
@@ -79,9 +75,6 @@ export default function StatsTab() {
           ></StatsField>
         );
       })}
-      <View style={[style.flexRow, style.justifyCenter, style.wFull, {}]}>
-        <ResetStatsButton></ResetStatsButton>
-      </View>
       <StatsTips></StatsTips>
     </View>
   );

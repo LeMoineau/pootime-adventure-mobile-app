@@ -1,12 +1,14 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
-import { StorageKeys } from "../utils/storage-keys";
+import { StorageKeys } from "../config/StorageKeys";
 import { DataInStorage } from "../types/dataInStorage";
 import { DefaultValues } from "../config/DefaultValues";
 import { Resources } from "../types/Resources";
 import { ObjectUtils } from "../utils/object-utils";
+import { Inventory } from "../types/resources/Inventory";
 
 type Store = {
+  inventory: Inventory;
   earn: (resource: Resources, val: number) => Promise<void>;
   spend: (
     resource: Resources,
@@ -22,25 +24,40 @@ type Store = {
   ) => Promise<void>;
   resetData: () => Promise<void>;
   get: (resource: Resources) => number;
-} & DataInStorage.Resources;
+};
 
 export const useResourcesStore = create<Store>((set, get) => {
-  const { getJson, saveJson, saveItemInJson } = useStorage();
+  const { getJson, saveJson, saveItemInJson, removeItem } = useStorage();
 
-  getJson(StorageKeys.RESOURCES).then(async (json) => {
+  getJson(StorageKeys.INVENTORY).then(async (json) => {
+    await restoreOldData();
     const baseValues = {
-      ...DefaultValues.Resources,
+      ...get().inventory,
       ...json,
     };
-    set(baseValues);
+    set({ inventory: baseValues });
     if (json === null || !ObjectUtils.equals(json, baseValues)) {
-      await saveJson(StorageKeys.RESOURCES, baseValues);
+      await saveJson(StorageKeys.INVENTORY, baseValues);
     }
   });
 
+  const restoreOldData = async () => {
+    getJson(StorageKeys.RESOURCES).then(async (json) => {
+      if (json !== null) {
+        set({ inventory: { ...get().inventory, ...json } });
+        await removeItem(StorageKeys.RESOURCES);
+      }
+    });
+  };
+
   const earn = async (resource: Resources, val: number) => {
-    set((state) => ({ [resource]: state[resource] + val }));
-    await saveItemInJson(StorageKeys.RESOURCES, resource, get()[resource]);
+    set((state) => ({
+      inventory: {
+        ...get().inventory,
+        [resource]: state.inventory[resource] + val,
+      },
+    }));
+    await saveItemInJson(StorageKeys.INVENTORY, resource, _get(resource));
   };
 
   const spend = async (
@@ -49,12 +66,17 @@ export const useResourcesStore = create<Store>((set, get) => {
     onSuccess?: (newVal: number) => void,
     onFailed?: (val: number) => void
   ) => {
-    if (get()[resource] >= val) {
-      set((state) => ({ [resource]: state[resource] - val }));
-      await saveItemInJson(StorageKeys.RESOURCES, resource, get()[resource]);
-      onSuccess && onSuccess(get()[resource]);
+    if (_get(resource) >= val) {
+      set((state) => ({
+        inventory: {
+          ...get().inventory,
+          [resource]: state.inventory[resource] - val,
+        },
+      }));
+      await saveItemInJson(StorageKeys.INVENTORY, resource, _get(resource));
+      onSuccess && onSuccess(_get(resource));
     } else {
-      onFailed && onFailed(get()[resource]);
+      onFailed && onFailed(_get(resource));
     }
   };
 
@@ -70,7 +92,7 @@ export const useResourcesStore = create<Store>((set, get) => {
     }
     let index = 0;
     for (let r of resources) {
-      if (get()[r] < vals[index]) {
+      if (_get(r) < vals[index]) {
         onFailed && onFailed();
         return;
       }
@@ -85,16 +107,16 @@ export const useResourcesStore = create<Store>((set, get) => {
   };
 
   const resetData = async () => {
-    await saveJson(StorageKeys.RESOURCES, DefaultValues.Resources);
-    set({ ...DefaultValues.Resources });
+    await saveJson(StorageKeys.INVENTORY, DefaultValues.Inventory);
+    set({ inventory: DefaultValues.Inventory });
   };
 
   const _get = (resource: Resources) => {
-    return get()[resource] ?? 0;
+    return get().inventory[resource] ?? 0;
   };
 
   return {
-    ...DefaultValues.Resources,
+    inventory: DefaultValues.Inventory,
     earn,
     spend,
     spendMany,
