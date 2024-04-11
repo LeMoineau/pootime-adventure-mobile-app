@@ -8,6 +8,8 @@ import TransferButton from "../../../../common/components/buttons/TransferButton
 import useStructure from "../../../../common/hooks/village/use-structure";
 import { Resources } from "../../../../common/config/game-data/Resources";
 import { useEffect } from "react";
+import TabTitle from "../text/TabTitle";
+import TabText from "../text/TabText";
 
 export default function StructureInfosBuildTab() {
   const { selectedStructureName: structName, build } = useVillageStore();
@@ -22,12 +24,8 @@ export default function StructureInfosBuildTab() {
   return (
     <>
       <ScrollView style={[{ padding: 10 }]}>
-        <Text style={[{ fontSize: 15, fontWeight: "500", letterSpacing: 0.5 }]}>
-          Building
-        </Text>
-        <Text style={[{ fontSize: 12, marginBottom: 10 }]}>
-          Resources needed for building this structure
-        </Text>
+        <TabTitle>Building</TabTitle>
+        <TabText>Resources needed for building this structure</TabText>
 
         {/* NEEDED RESOURCES */}
         <View

@@ -16,12 +16,12 @@ export default function RewardModal({
   onCollectingRewards?: (rewards: BattleReward) => void;
 } & ModalProps) {
   return (
-    <Modal animationType="slide" transparent {...props}>
+    <Modal animationType="fade" transparent {...props}>
       <View
         style={[
           style.justifyCenter,
           style.itemsCenter,
-          { flex: 1, padding: 20 },
+          { flex: 1, padding: 20, backgroundColor: "rgba(0, 0, 0, 0.5)" },
         ]}
       >
         <View

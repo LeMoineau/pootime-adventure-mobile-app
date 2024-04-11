@@ -1,11 +1,13 @@
-import { View } from "react-native";
+import { Text, useWindowDimensions, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import PooCreatureHandler from "./poo-creature/PooCreatureHandler";
 import HomeTopBar from "./navigation/HomeTopBar";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import EventsModalHandler from "./elements/EventsModalHandler";
 import HomeBattleButton from "./elements/buttons/home-battle-button/HomeBattleButton";
-import ToiletIcon from "../../common/components/icons/village/toilet/Toilet";
+import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
+import LevelProgressBar from "../../common/components/fields/LevelProgressBar";
+import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
+import PooCreatureView from "./elements/PooCreatureView";
 
 export default function Home() {
   return (
@@ -30,7 +32,7 @@ export default function Home() {
             { flex: 1 },
           ]}
         >
-          <PooCreatureHandler></PooCreatureHandler>
+          <PooCreatureView></PooCreatureView>
           <EventsModalHandler></EventsModalHandler>
         </View>
         <HomeBattleButton></HomeBattleButton>
