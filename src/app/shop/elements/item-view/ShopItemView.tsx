@@ -155,7 +155,7 @@ export default function ShopItemView({
               <TextWithResourceIcon
                 fontSize={12}
                 textStyle={[{ fontWeight: "500" }]}
-                text={`${price ? price : prices ? prices[0] : ""}`}
+                text={price ? price : prices ? prices[0] : ""}
                 resource={resource ?? (resources ? resources[0] : "pooCoins")}
               ></TextWithResourceIcon>
             </View>

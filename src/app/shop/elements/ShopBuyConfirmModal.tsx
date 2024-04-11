@@ -126,7 +126,7 @@ export default function ShopBuyConfirmModal({
                         textStyle={[{ fontWeight: "500" }]}
                         key={`transaction-price-${r}-${index}`}
                         resource={currentTransaction.resources[index]}
-                        text={`${currentTransaction.prices[index]}`}
+                        text={currentTransaction.prices[index]}
                       ></TextWithResourceIcon>
                     );
                   })}
