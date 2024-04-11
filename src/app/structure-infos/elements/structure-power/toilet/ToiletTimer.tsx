@@ -87,8 +87,8 @@ export default function ToiletTimer({
         visible={wantToStop}
         onRequestClose={() => onCancelStoping && onCancelStoping()}
         onConfirm={() => {
-          const tmpTime = elapsedTime;
-          onConfirmStoping && onConfirmStoping(tmpTime);
+          onConfirmStoping &&
+            onConfirmStoping(elapsedTime + (alreadyElapsedTime ?? 0));
           reset();
           animValue.setValue(0);
         }}

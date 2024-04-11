@@ -37,7 +37,7 @@ export const useBattleStore = create<Store>((set, get) => {
   const connect = (onSuccess?: () => void, onFailed?: () => void) => {
     var io = require("socket.io-client/dist/socket.io");
     //https://pootime-adventure-battle-server.onrender.com/
-    const socket = io(config.getEnv().BATTLE_SERVER_URL, {
+    const socket = io("https://pootime-adventure-battle-server.onrender.com/", {
       transports: ["websocket"],
     });
     socket.on("connect", () => {
