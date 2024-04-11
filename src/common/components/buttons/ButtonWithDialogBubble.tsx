@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { style } from "../../utils/style-utils";
 import DialogBubble from "../views/DialogBubble";
-import { useBlurStore } from "../../stores/blur.store";
+import { useBlurStore } from "../../stores/style/blur.store";
 
 export default function ButtonWithDialogBubble({
   button,

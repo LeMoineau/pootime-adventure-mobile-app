@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
 import {
@@ -7,17 +7,36 @@ import {
 } from "../../common/config/game-data/Structures";
 import StructureView from "./elements/StructureView";
 import { style } from "../../common/utils/style-utils";
-import InputField from "../../common/components/fields/InputField";
+import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
+import { useNavigation } from "@react-navigation/native";
+import VillageTopBar from "./elements/navigation/VillageTopBar";
 
 export default function VillagePage() {
+  const navigator: useNavigationType = useNavigation();
+
   return (
     <>
-      <CustomPage bgColor={colors.baseBackgroundColor}>
+      <CustomPage
+        bgColor={colors.baseBackgroundColor}
+        style={[
+          style.flexCol,
+          style.justifyCenter,
+          style.itemsCenter,
+          { padding: 10 },
+        ]}
+      >
+        <VillageTopBar></VillageTopBar>
         <View
           style={[
+            style.flexRow,
+            style.justifyCenter,
+            style.itemsCenter,
             style.rounded,
-            style.overflowHidden,
-            { flex: 1, backgroundColor: colors.green[500], margin: 20 },
+            {
+              flex: 1,
+              flexWrap: "wrap",
+              paddingTop: 50,
+            },
           ]}
         >
           {Object.keys(Structures).map((key, index) => {
@@ -26,30 +45,13 @@ export default function VillagePage() {
             return (
               <StructureView
                 key={`structure-${key}-${index}`}
-                position={structure.style.position}
-                size={structure.style.size}
+                structure={structure}
+                onStructurePress={() =>
+                  navigator.navigate("StructureInfos", { structureName })
+                }
               ></StructureView>
             );
           })}
-          <InputField style={[{ backgroundColor: "transparent" }]}></InputField>
-          <Text
-            style={[
-              style.textCenter,
-              {
-                position: "absolute",
-                bottom: 20,
-                left: 0,
-                width: "100%",
-                fontSize: 25,
-                fontWeight: "700",
-                letterSpacing: 2,
-                color: colors.green[400],
-                transform: [{ rotateX: "0deg" }, { rotateY: "0deg" }],
-              },
-            ]}
-          >
-            Votre village
-          </Text>
         </View>
       </CustomPage>
     </>

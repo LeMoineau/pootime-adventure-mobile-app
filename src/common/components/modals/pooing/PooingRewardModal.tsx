@@ -11,7 +11,13 @@ export default function PooingRewardModal({
 }: { starEarn: number; pooCoinEarn: number } & ModalProps) {
   const { name } = usePooCreatureStyleStore();
   return (
-    <RewardModal starEarn={starEarn} pooCoinEarn={pooCoinEarn} {...props}>
+    <RewardModal
+      rewards={[
+        { resource: "stars", number: starEarn },
+        { resource: "pooCoins", number: pooCoinEarn },
+      ]}
+      {...props}
+    >
       <Text
         style={[
           style.textXl,

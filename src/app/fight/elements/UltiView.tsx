@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import StarIcon from "../../../common/components/icons/star";
+import StarIcon from "../../../common/components/icons/resources/star";
 import { colors } from "../../../common/utils/color-utils";
 
 export default function UltiView({

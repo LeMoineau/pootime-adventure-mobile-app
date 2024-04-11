@@ -1,5 +1,6 @@
 import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { ServerTypes } from "../battle/online-battle/ServerTypes";
+import { StructureName } from "../../config/game-data/Structures";
 
 export type RouteName =
   | "App"
@@ -11,7 +12,8 @@ export type RouteName =
   | "DevSettings"
   | "EventSettings"
   | "DonationSettings"
-  | "TutoSettings";
+  | "TutoSettings"
+  | "StructureInfos";
 
 export type ParamListBase = {
   Inventory: undefined;
@@ -24,6 +26,7 @@ export type ParamListBase = {
   EventSettings: undefined;
   DonationSettings: undefined;
   TutoSettings: undefined;
+  StructureInfos: { structureName: StructureName };
 };
 
 export type useNavigationType = NavigationProp<ParamListBase>;

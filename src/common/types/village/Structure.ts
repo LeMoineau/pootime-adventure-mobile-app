@@ -1,17 +1,18 @@
-import { Resources } from "../Resources";
+import { StructureName } from "../../config/game-data/Structures";
+import { Resources } from "../../config/game-data/Resources";
+import { StructureCost, UpgradeCost } from "./StructureCost";
 
 export interface Structure {
+  type: StructureName;
   name: string;
+  description: string;
   style: {
     image?: string;
     position: StructurePosition;
-    size: number;
   };
-  buildingCost: StructureCost;
+  buildingCost?: StructureCost;
+  upgradeCosts: UpgradeCost[];
+  baseLevel?: number;
 }
 
 export type StructurePosition = [number, number];
-
-export type StructureCost = {
-  [resource in Resources]?: number;
-};

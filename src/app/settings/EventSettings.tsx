@@ -6,9 +6,12 @@ import useModals from "../../common/hooks/use-modals";
 import AudreyBirthdayModal from "../../common/components/modals/event/AudreyBirthdayModal";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
+import LouisBirthdayModal from "../../common/components/modals/event/LouisBirthdayModal";
 
 export default function EventSettings() {
-  const { isVisible, show, hide } = useModals<"audreyBirthday">();
+  const { isVisible, show, hide } = useModals<
+    "audreyBirthday" | "louisBirthday"
+  >();
   const navigator: useNavigationType = useNavigation();
 
   return (
@@ -31,6 +34,14 @@ export default function EventSettings() {
                 show("audreyBirthday");
               },
             },
+            {
+              label: "Anniversaire Louis",
+              subLabel: "le 11/04/24",
+              hasRightArrow: true,
+              onPress: () => {
+                show("louisBirthday");
+              },
+            },
           ]}
         ></SettingsScrollView>
       </SettingsPage>
@@ -40,6 +51,12 @@ export default function EventSettings() {
           hide("audreyBirthday");
         }}
       ></AudreyBirthdayModal>
+      <LouisBirthdayModal
+        visible={isVisible("louisBirthday")}
+        onRequestClose={() => {
+          hide("louisBirthday");
+        }}
+      ></LouisBirthdayModal>
     </>
   );
 }

@@ -22,6 +22,7 @@ import EventSettings from "./settings/EventSettings";
 import DonationSettings from "./settings/DonationSettings";
 import TutoSettings from "./settings/TutoSettings";
 import VillagePage from "./village/VillagePage";
+import StructureInfosPage from "./structure-infos/StructureInfosPage";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -31,9 +32,9 @@ export default function App() {
   const { resetData } = useItemsUnlockedStore();
 
   React.useEffect(() => {
-    resetData();
-    earn("pooCoins", 0);
-    earn("stars", 10);
+    // resetData();
+    // earn("pooCoins", 0);
+    // earn("stars", 10);
   }, []);
 
   return (
@@ -45,7 +46,14 @@ export default function App() {
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="App" component={MainPage} />
-          <Stack.Screen name="Inventory" component={InventoryPage} />
+          <Stack.Screen
+            name="Inventory"
+            component={InventoryPage}
+            options={{
+              presentation: "transparentModal",
+              animation: "slide_from_bottom",
+            }}
+          />
           <Stack.Screen
             name="OnlineArena"
             component={OnlineArena}
@@ -74,6 +82,14 @@ export default function App() {
           <Stack.Screen
             name="TutoSettings"
             component={TutoSettings}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="StructureInfos"
+            component={StructureInfosPage}
+            options={{
+              presentation: "transparentModal",
+              animation: "slide_from_bottom",
+            }}
           ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>

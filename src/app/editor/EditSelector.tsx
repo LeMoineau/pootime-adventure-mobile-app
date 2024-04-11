@@ -2,9 +2,9 @@ import React from "react";
 import { Pressable, Text, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import { colors } from "../../common/utils/color-utils";
-import PooCoinIcon from "../../common/components/icons/pooCoin";
-import { Resources } from "../../common/types/Resources";
-import WoolIcon from "../../common/components/icons/sheep/wool";
+import PooCoinIcon from "../../common/components/icons/resources/pooCoin";
+import { Resources } from "../../common/config/game-data/Resources";
+import WoolIcon from "../../common/components/icons/resources/wool";
 
 export interface EditSelectorProps {
   price?: number;

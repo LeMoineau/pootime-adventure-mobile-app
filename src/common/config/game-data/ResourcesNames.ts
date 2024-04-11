@@ -1,4 +1,4 @@
-import { Resources } from "../../types/Resources";
+import { Resources } from "./Resources";
 
 export const ResourcesNames: { [resource in Resources]: string } = {
   pooCoins: "PooCoins",

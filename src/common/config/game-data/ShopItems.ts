@@ -1,6 +1,6 @@
 import { colors } from "../../utils/color-utils";
-import { BuyableItem, UnlockableItems } from "../../types/shop/UnlockableItems";
 import { ShopItem } from "../../types/shop/ShopItem";
+import { BuyableItem } from "../../types/shop/BuyableItem";
 
 const ShopItems: {
   [section in BuyableItem]?: {
@@ -59,6 +59,17 @@ const ShopItems: {
         price: 2500,
         resource: "wool",
       },
+      { item: "pingoo", resource: "snow", price: 1500 },
+      {
+        item: "poulpe",
+        resources: ["ink", "cosmicPowder"],
+        prices: [1500, 10],
+      },
+      {
+        item: "aureoledClassic",
+        resources: ["cosmicPowder", "pooCoins"],
+        prices: [50, 2500],
+      },
     ],
   },
   expressions: {
@@ -106,6 +117,26 @@ const ShopItems: {
         price: 1000,
         resource: "wool",
       },
+      {
+        item: "https://bigstones.fr/pootime-adventure/expressions/pingoonose.png",
+        resources: ["snow", "glass"],
+        prices: [1500, 500],
+      },
+      {
+        item: "https://bigstones.fr/pootime-adventure/expressions/poulpeeyes.png",
+        resource: "ink",
+        price: 500,
+      },
+      {
+        item: "https://bigstones.fr/pootime-adventure/expressions/bignosesmile.png",
+        resources: ["ink", "cosmicPowder"],
+        prices: [2000, 20],
+      },
+      {
+        item: "https://bigstones.fr/pootime-adventure/expressions/bignosenotsmile.png",
+        resources: ["ink"],
+        prices: [1000],
+      },
     ],
   },
   resources: {
@@ -117,6 +148,14 @@ const ShopItems: {
         },
         resource: "pooCoins",
         price: 1000,
+      },
+      {
+        item: {
+          resource: "stars",
+          number: 1,
+        },
+        resource: "cosmicPowder",
+        price: 10,
       },
       {
         item: {
@@ -132,6 +171,38 @@ const ShopItems: {
           number: 1000,
         },
         resource: "wool",
+        price: 2500,
+      },
+      {
+        item: {
+          resource: "pooCoins",
+          number: 100,
+        },
+        resource: "snow",
+        price: 250,
+      },
+      {
+        item: {
+          resource: "pooCoins",
+          number: 1000,
+        },
+        resource: "snow",
+        price: 2500,
+      },
+      {
+        item: {
+          resource: "pooCoins",
+          number: 100,
+        },
+        resource: "ink",
+        price: 250,
+      },
+      {
+        item: {
+          resource: "pooCoins",
+          number: 1000,
+        },
+        resource: "ink",
         price: 2500,
       },
     ],

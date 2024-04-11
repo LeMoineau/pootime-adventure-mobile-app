@@ -3,7 +3,7 @@ import { style } from "../../../common/utils/style-utils";
 import NumberField from "../../../common/components/fields/NumberField";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import { useShallow } from "zustand/react/shallow";
-import StarIcon from "../../../common/components/icons/star";
+import StarIcon from "../../../common/components/icons/resources/star";
 import ProgressBar from "../../../common/components/fields/ProgressBar";
 import LevelProgressBar from "../../../common/components/fields/LevelProgressBar";
 import InputField from "../../../common/components/fields/InputField";

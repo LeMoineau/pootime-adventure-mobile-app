@@ -3,7 +3,7 @@ import EditSelector, { EditSelectorProps } from "../../EditSelector";
 import { PooHeads } from "../../../../common/types/PooHeads";
 import { MathUtils } from "../../../../common/utils/math-utils";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
-import { Resources } from "../../../../common/types/Resources";
+import { Resources } from "../../../../common/config/game-data/Resources";
 import { CurveUtils } from "../../../../common/utils/curve-utils";
 
 export default function HeadSelector({

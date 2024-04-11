@@ -20,12 +20,12 @@ export default function ConfirmModal({
   ) => React.ReactNode;
 } & ModalProps) {
   return (
-    <Modal animationType="slide" transparent {...props}>
+    <Modal animationType="fade" transparent {...props}>
       <View
         style={[
           style.justifyCenter,
           style.itemsCenter,
-          { flex: 1, padding: 20 },
+          { flex: 1, padding: 20, backgroundColor: "rgba(0, 0, 0, 0.5)" },
         ]}
       >
         <View
@@ -55,9 +55,11 @@ export default function ConfirmModal({
               })
             ) : (
               <StandardButton
-                style={{ paddingTop: 10 }}
+                style={{ paddingTop: 10, flex: 1 }}
                 bgColor={colors.teal[400]}
                 textColor={colors.white}
+                viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
+                textStyle={[{ fontSize: 15 }]}
                 onPress={(evt) => {
                   props.onRequestClose && props.onRequestClose(evt);
                   onConfirm && onConfirm();
@@ -66,11 +68,13 @@ export default function ConfirmModal({
                 Confirm
               </StandardButton>
             )}
-
+            <View style={[{ width: 10 }]}></View>
             <StandardButton
-              style={{ paddingTop: 10 }}
+              style={{ paddingTop: 10, flex: 1 }}
               bgColor={colors.red[400]}
               textColor={colors.white}
+              viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
+              textStyle={[{ fontSize: 15 }]}
               onPress={(evt) => {
                 props.onRequestClose && props.onRequestClose(evt);
                 onCancel && onCancel();

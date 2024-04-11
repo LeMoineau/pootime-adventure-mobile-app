@@ -1,10 +1,10 @@
-import PooCoinIcon from "../../../../common/components/icons/pooCoin";
+import PooCoinIcon from "../../../../common/components/icons/resources/pooCoin";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { colors } from "../../../../common/utils/color-utils";
 import { style } from "../../../../common/utils/style-utils";
 import { Image, Pressable, Text, View } from "react-native";
 import EditSelector, { EditSelectorProps } from "../../EditSelector";
-import { Resources } from "../../../../common/types/Resources";
+import { Resources } from "../../../../common/config/game-data/Resources";
 
 export default function FaceSelector({
   uri,

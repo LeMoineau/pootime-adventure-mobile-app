@@ -47,14 +47,20 @@ export default function InputField({
         }}
         placeholder={placeholder}
         value={value}
-      />
+      ></TextInput>
       {appendIcon && (
         <View
           style={[
             style.flexRow,
             style.justifyCenter,
             style.itemsCenter,
-            { position: "absolute", right: 0, top: 0, height: 35, width: 35 },
+            {
+              position: "absolute",
+              right: 0,
+              top: 0,
+              height: "100%",
+              width: 35,
+            },
           ]}
         >
           {appendIcon}

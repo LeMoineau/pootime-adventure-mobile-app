@@ -31,59 +31,57 @@ export default function ChooseZoneModal({
         <ScrollView style={[style.flexCol, { width: "100%" }]}>
           {EntityZones.map((zone, index) => {
             return (
-              <>
-                <View
-                  key={`zone-chooser-${index}`}
-                  style={[
-                    style.roundedFull,
-                    style.overflowHidden,
-                    {
-                      marginVertical: 10,
-                    },
-                  ]}
+              <View
+                key={`zone-chooser-${index}`}
+                style={[
+                  style.roundedFull,
+                  style.overflowHidden,
+                  {
+                    marginVertical: 10,
+                  },
+                ]}
+              >
+                <StandardButton
+                  viewStyle={[style.roundedFull, {}]}
+                  textStyle={[{ flex: 1 }]}
+                  bgColor={zone.mainColor}
+                  textColor={colors.white}
+                  onPress={() =>
+                    level >= zone.unlockLevel &&
+                    onZoneSelect &&
+                    onZoneSelect(index)
+                  }
                 >
-                  <StandardButton
-                    viewStyle={[style.roundedFull, {}]}
-                    textStyle={[{ flex: 1 }]}
-                    bgColor={zone.mainColor}
-                    textColor={colors.white}
-                    onPress={() =>
-                      level >= zone.unlockLevel &&
-                      onZoneSelect &&
-                      onZoneSelect(index)
-                    }
+                  {zone.name}
+                </StandardButton>
+                {level < zone.unlockLevel && (
+                  <View
+                    style={[
+                      style.flexCol,
+                      style.justifyCenter,
+                      style.itemsCenter,
+                      {
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      },
+                    ]}
                   >
-                    {zone.name}
-                  </StandardButton>
-                  {level < zone.unlockLevel && (
-                    <View
+                    <Text
                       style={[
-                        style.flexCol,
-                        style.justifyCenter,
-                        style.itemsCenter,
                         {
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%",
-                          backgroundColor: "rgba(0, 0, 0, 0.5)",
+                          color: colors.white,
+                          fontWeight: "500",
+                          fontSize: 15,
                         },
                       ]}
-                    >
-                      <Text
-                        style={[
-                          {
-                            color: colors.white,
-                            fontWeight: "500",
-                            fontSize: 15,
-                          },
-                        ]}
-                      >{`Unlock at level ${zone.unlockLevel}`}</Text>
-                    </View>
-                  )}
-                </View>
-              </>
+                    >{`Unlock at level ${zone.unlockLevel}`}</Text>
+                  </View>
+                )}
+              </View>
             );
           })}
         </ScrollView>

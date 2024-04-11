@@ -1,15 +1,6 @@
 import { Entity } from "../../types/battle/entity-battle/EntityBattleTypes";
 import { colors } from "../../utils/color-utils";
-
-export type EntityName =
-  | "Audrey"
-  | "Cheap"
-  | "ASheep"
-  | "BSheep"
-  | "SansNom"
-  | "Perdu"
-  | "X2000Cyborg"
-  | "MoutMout";
+import { EntityName } from "./EntityNames";
 
 const Entities: { [name in EntityName]: Entity } = {
   Audrey: {
@@ -20,6 +11,11 @@ const Entities: { [name in EntityName]: Entity } = {
     pv: 9999999,
     attaque: 99999999,
     freqAttaque: 5000,
+    rewards: [
+      { resource: "wool", number: 10000 },
+      { resource: "pooCoins", number: 10000 },
+      { resource: "stars", number: 10 },
+    ],
   },
   Cheap: {
     name: "Cheap",
@@ -40,22 +36,22 @@ const Entities: { [name in EntityName]: Entity } = {
     freqAttaque: 500,
   },
   BSheep: {
-    name: "A Sheep",
+    name: "B Sheep",
     entityType: "sheep",
-    color: colors.green[300],
-    level: 3,
-    pv: 25,
-    attaque: 2,
-    freqAttaque: 500,
+    color: colors.green[500],
+    level: 5,
+    pv: 60,
+    attaque: 10,
+    freqAttaque: 1500,
   },
   Perdu: {
-    name: "A Sheep",
+    name: "Perdu",
     entityType: "sheep",
-    color: colors.green[300],
-    level: 3,
-    pv: 25,
-    attaque: 2,
-    freqAttaque: 500,
+    color: colors.gray[50],
+    level: 5,
+    pv: 70,
+    attaque: 50,
+    freqAttaque: 2500,
   },
   SansNom: {
     name: "Sans Nom",
@@ -67,22 +63,127 @@ const Entities: { [name in EntityName]: Entity } = {
     freqAttaque: 1000,
   },
   X2000Cyborg: {
-    name: "A Sheep",
+    name: "X2000 Cyborg",
     entityType: "sheep",
     color: colors.gray[500],
     level: 2000,
     pv: 100,
     attaque: 5,
     freqAttaque: 200,
+    rewards: [
+      { resource: "wool", number: 2 },
+      { resource: "metal", number: 10 },
+    ],
   },
   MoutMout: {
-    name: "A Sheep",
+    name: "MoutMout",
     entityType: "sheep",
-    color: colors.green[300],
-    level: 3,
-    pv: 25,
-    attaque: 2,
+    color: colors.red[400],
+    level: 7,
+    pv: 150,
+    attaque: 15,
+    freqAttaque: 1000,
+  },
+  DieuPoulpe: {
+    name: "LouisLePoulpe",
+    entityType: "god-poulpe",
+    level: 100,
+    pv: 750,
+    attaque: 50,
+    freqAttaque: 1000,
+  },
+  Agentpingoo: {
+    name: "AgentPingoo",
+    entityType: "pingoo",
+    level: 100,
+    pv: 500,
+    attaque: 25,
+    freqAttaque: 1000,
+    rewards: [
+      { resource: "snow", number: 500 },
+      { resource: "glass", number: 100 },
+    ],
+  },
+  Akira78: {
+    name: "RenéDu78",
+    entityType: "pingoo",
+    level: 7,
+    pv: 75,
+    attaque: 25,
+    freqAttaque: 1500,
+  },
+  BigNoseTank: {
+    name: "B.N.Tank",
+    entityType: "tank",
+    level: 10,
+    pv: 100,
+    attaque: 50,
+    freqAttaque: 2000,
+  },
+  ClubPingu: {
+    name: "ClubPinguin",
+    entityType: "pingoo",
+    level: 6,
+    pv: 65,
+    attaque: 25,
+    freqAttaque: 1250,
+  },
+  Franky: {
+    name: "Franky",
+    entityType: "tank",
+    level: 15,
+    pv: 150,
+    attaque: 50,
+    freqAttaque: 1500,
+  },
+  GrosNez: {
+    name: "GrosNez!",
+    entityType: "pingoo",
+    level: 10,
+    pv: 85,
+    attaque: 25,
+    freqAttaque: 1000,
+  },
+  Tankky: {
+    name: "Tankky",
+    entityType: "tank",
+    level: 1,
+    pv: 10,
+    attaque: 10000,
+    freqAttaque: 10000,
+    rewards: [{ resource: "metal", number: 1 }],
+  },
+  Tankker: {
+    name: "Tankker",
+    entityType: "tank",
+    level: 20,
+    pv: 200,
+    attaque: 10,
     freqAttaque: 500,
+  },
+  Gremlins: {
+    name: "Gremlins",
+    entityType: "gremlins",
+    level: 12,
+    pv: 165,
+    attaque: 30,
+    freqAttaque: 750,
+  },
+  HorrorMask: {
+    name: "Un Masque.",
+    entityType: "horror-mask",
+    level: 0,
+    pv: 500,
+    attaque: 0,
+    freqAttaque: 10000,
+  },
+  PoulpySwag: {
+    name: "PoulpySWAG",
+    entityType: "poulpe",
+    level: 16,
+    pv: 150,
+    attaque: 20,
+    freqAttaque: 1500,
   },
 };
 

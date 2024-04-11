@@ -1,7 +1,7 @@
 import { colors } from "../utils/color-utils";
-import { DataInStorage } from "../types/dataInStorage";
 import { ColorPalette } from "color-curves";
 import { Inventory } from "../types/resources/Inventory";
+import { DataInStorage } from "./DataInStorage";
 
 export namespace DefaultValues {
   //Style
@@ -41,6 +41,11 @@ export namespace DefaultValues {
     stars: 5,
     pooCoins: 250,
     wool: 0,
+    metal: 0,
+    cosmicPowder: 0,
+    glass: 0,
+    ink: 0,
+    snow: 0,
   };
 
   //ItemUnlocked
@@ -67,4 +72,14 @@ export namespace DefaultValues {
     '{"type":"linear","overflow":"clamp","reverse":false,"translation":{"x":-0.025,"y":0.624},"scale":{"x":1.078,"y":0.007},"rotation":0}',
     '{"start":0,"end":1}'
   );
+
+  export const VillageName = "Poo Land";
+
+  export const Village: DataInStorage.Village = {
+    name: VillageName,
+    structures: {
+      toilet: { level: 1, details: {} },
+      yaris: { level: 0, details: {} },
+    },
+  };
 }

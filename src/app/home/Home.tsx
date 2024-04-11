@@ -2,11 +2,10 @@ import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import PooCreatureHandler from "./poo-creature/PooCreatureHandler";
 import HomeTopBar from "./navigation/HomeTopBar";
-import BattleHandler from "./elements/BattleHandler";
 import CustomPage from "../../common/components/navigation/CustomPage";
-import SheepJumpHandler from "./elements/SheepJumpHandler";
 import EventsModalHandler from "./elements/EventsModalHandler";
 import HomeBattleButton from "./elements/buttons/home-battle-button/HomeBattleButton";
+import ToiletIcon from "../../common/components/icons/village/toilet/Toilet";
 
 export default function Home() {
   return (

@@ -2,12 +2,12 @@ import { View, useWindowDimensions } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import InputField from "../../../common/components/fields/InputField";
 import NumberField from "../../../common/components/fields/NumberField";
-import PooCoinIcon from "../../../common/components/icons/pooCoin";
+import PooCoinIcon from "../../../common/components/icons/resources/pooCoin";
 import PenIcon from "../../../common/components/icons/pen";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { useShallow } from "zustand/react/shallow";
-import WoolIcon from "../../../common/components/icons/sheep/wool";
+import WoolIcon from "../../../common/components/icons/resources/wool";
 
 export default function EditorTopBar() {
   const { width } = useWindowDimensions();

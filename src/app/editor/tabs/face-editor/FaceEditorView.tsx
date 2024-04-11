@@ -5,12 +5,12 @@ import { ItemInStore } from "../../../../common/types/itemInStore";
 import { useState } from "react";
 import ConfirmModal from "../../../../common/components/modals/primitives/ConfirmModal";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
-import PooCoinIcon from "../../../../common/components/icons/pooCoin";
+import PooCoinIcon from "../../../../common/components/icons/resources/pooCoin";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
 import FaceSelector from "./FaceSelector";
 import { DefaultValues } from "../../../../common/config/DefaultValues";
-import { Resources } from "../../../../common/types/Resources";
-import WoolIcon from "../../../../common/components/icons/sheep/wool";
+import { Resources } from "../../../../common/config/game-data/Resources";
+import WoolIcon from "../../../../common/components/icons/resources/wool";
 
 export default function FaceEditorView() {
   const { update } = usePooCreatureStyleStore();

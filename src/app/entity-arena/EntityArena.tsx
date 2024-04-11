@@ -4,9 +4,9 @@ import useEntityBattleStore from "../../common/stores/battle/entity-battle.store
 import { colors } from "../../common/utils/color-utils";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
-import { CutSheepIcon } from "../../common/components/icons/sheep/cutSheep";
-import SheepIcon from "../../common/components/icons/sheep/sheep";
-import EntityBattleRewardModal from "./modals/EntityBattleRewardModal";
+import { CutSheepIcon } from "../../common/components/icons/entities/sheep/cutSheep";
+import SheepIcon from "../../common/components/icons/entities/sheep/sheep";
+import EntityBattleRewardModal from "./elements/modals/EntityBattleRewardModal";
 import { EntityBattleUtils } from "../../common/utils/entity-battle-utils";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import EntityZones from "../../common/config/game-data/EntityZones";
@@ -15,6 +15,7 @@ import {
   useRouteType,
 } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import EntityView from "./elements/EntityView";
 
 export default function EntityArena() {
   const {
@@ -82,11 +83,10 @@ export default function EntityArena() {
             currentMana: currentPlayerState.currentMana,
           }}
           advNode={
-            battleFinish && winner === "player" ? (
-              <CutSheepIcon woolColor={entity.color} ratio={0.5}></CutSheepIcon>
-            ) : (
-              <SheepIcon woolColor={entity.color} ratio={0.5}></SheepIcon>
-            )
+            <EntityView
+              entity={entity}
+              fainted={battleFinish && winner === "player"}
+            ></EntityView>
           }
         ></Arena>
       )}
@@ -94,6 +94,7 @@ export default function EntityArena() {
         <EntityBattleRewardModal
           visible={battleFinish}
           rewards={rewards}
+          winner={winner}
           entity={entity}
           onCollectingRewards={(rewards) => {
             for (let r of rewards) {

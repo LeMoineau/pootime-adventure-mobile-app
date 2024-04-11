@@ -65,7 +65,7 @@ export default function RewardModal({
                 >
                   <TextWithResourceIcon
                     resource={reward.resource}
-                    text={`${reward.number}`}
+                    text={reward.number}
                     fontSize={18}
                   ></TextWithResourceIcon>
                 </View>
@@ -74,9 +74,14 @@ export default function RewardModal({
           )}
 
           <StandardButton
+            style={[{ width: "100%", marginTop: 10 }]}
             bgColor={rewards.length > 0 ? colors.teal[400] : colors.red[400]}
             textColor={colors.white}
-            textStyle={{ flex: 0 }}
+            viewStyle={[
+              style.roundedFull,
+              { paddingVertical: 15, paddingHorizontal: 50 },
+            ]}
+            textStyle={[{ flex: 1, fontSize: 17 }]}
             onPress={(evt) => {
               onCollectingRewards && onCollectingRewards(rewards);
               props.onRequestClose && props.onRequestClose(evt);

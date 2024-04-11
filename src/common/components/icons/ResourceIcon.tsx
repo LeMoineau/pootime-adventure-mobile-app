@@ -1,7 +1,7 @@
-import { Resources } from "../../types/Resources";
-import PooCoinIcon from "./pooCoin";
-import WoolIcon from "./sheep/wool";
-import StarIcon from "./star";
+import { Resources } from "../../config/game-data/Resources";
+import PooCoinIcon from "./resources/pooCoin";
+import WoolIcon from "./resources/wool";
+import StarIcon from "./resources/star";
 
 export default function ResourceIcon({
   resource,

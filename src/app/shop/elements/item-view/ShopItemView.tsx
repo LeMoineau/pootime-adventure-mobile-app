@@ -1,8 +1,6 @@
 import { Animated, Pressable, useWindowDimensions, View } from "react-native";
-import { Resources } from "../../../../common/types/Resources";
+import { Resources } from "../../../../common/config/game-data/Resources";
 import {
-  BuyableItem,
-  BuyableItemValue,
   isStringItemValue,
   isUnlockableItem,
 } from "../../../../common/types/shop/UnlockableItems";
@@ -17,6 +15,10 @@ import {
 } from "../../../../common/types/shop/Transaction";
 import ShopItemTypeView from "./ShopItemTypeView";
 import useAnimatedValue from "../../../../common/hooks/use-animated-value";
+import {
+  BuyableItem,
+  BuyableItemValue,
+} from "../../../../common/types/shop/BuyableItem";
 
 export default function ShopItemView({
   item,
@@ -92,7 +94,7 @@ export default function ShopItemView({
               onUnlockedItemPress && onUnlockedItemPress({ item, itemType });
               return;
             }
-            if (!onLockedItemPress || !purchasable()) return;
+            if (!onLockedItemPress) return;
             if (price && resource) {
               onLockedItemPress({
                 item,

@@ -1,9 +1,9 @@
-import { StyleKeys } from "../poo-creature-style/StyleKeys";
-import { Resources } from "../Resources";
-
-export type BuyableItem = UnlockableItems | ResourcesItem;
-export type BuyableItemValue = string | ResourcesItemValue;
-export type ResourcesItemValue = { resource: Resources; number: number };
+import {
+  BuyableItem,
+  BuyableItemValue,
+  ResourcesItem,
+  ResourcesItemValue,
+} from "./BuyableItem";
 
 export type UnlockableItems =
   | "events"
@@ -12,7 +12,6 @@ export type UnlockableItems =
   | StyleUnlockableItem;
 
 export type StyleUnlockableItem = "bodyColors" | "heads" | "expressions";
-export type ResourcesItem = "resources";
 
 export function isUnlockableItem(
   itemType: BuyableItem

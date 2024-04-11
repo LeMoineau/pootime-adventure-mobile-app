@@ -1,8 +1,8 @@
 import { View, useWindowDimensions } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import NumberField from "../../../common/components/fields/NumberField";
-import StarIcon from "../../../common/components/icons/star";
-import PooCoinIcon from "../../../common/components/icons/pooCoin";
+import StarIcon from "../icons/resources/star";
+import PooCoinIcon from "../icons/resources/pooCoin";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import LevelProgressBar from "../../../common/components/fields/LevelProgressBar";
 import { LinearGradient } from "expo-linear-gradient";

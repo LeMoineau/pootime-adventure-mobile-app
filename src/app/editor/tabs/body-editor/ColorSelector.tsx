@@ -1,4 +1,4 @@
-import PooCoinIcon from "../../../../common/components/icons/pooCoin";
+import PooCoinIcon from "../../../../common/components/icons/resources/pooCoin";
 import { colors } from "../../../../common/utils/color-utils";
 import { style } from "../../../../common/utils/style-utils";
 import { Pressable, Text, View } from "react-native";

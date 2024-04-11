@@ -1,4 +1,4 @@
-import { Modal, ModalProps, View } from "react-native";
+import { Modal, ModalProps, Pressable, View } from "react-native";
 import React from "react";
 import { style } from "../../../utils/style-utils";
 import { colors } from "../../../utils/color-utils";
@@ -7,13 +7,16 @@ import PlusIcon from "../../icons/plus";
 
 export default function PlainModal({ ...props }: ModalProps) {
   return (
-    <Modal animationType="slide" transparent {...props}>
-      <View
+    <Modal animationType="fade" transparent {...props}>
+      <Pressable
         style={[
           style.justifyCenter,
           style.itemsCenter,
-          { flex: 1, padding: 20 },
+          { flex: 1, padding: 20, backgroundColor: "rgba(0, 0, 0, 0.5)" },
         ]}
+        onPress={(evt) => {
+          props.onRequestClose && props.onRequestClose(evt);
+        }}
       >
         <View
           style={[
@@ -43,7 +46,7 @@ export default function PlainModal({ ...props }: ModalProps) {
           </PillButton>
           {props.children}
         </View>
-      </View>
+      </Pressable>
     </Modal>
   );
 }

@@ -1,6 +1,7 @@
 import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 import { Animated, View, TouchableOpacity } from "react-native";
 import { style } from "../../utils/style-utils";
+import { colors } from "../../utils/color-utils";
 
 export default function AppBottomBar({
   state,
@@ -18,7 +19,7 @@ export default function AppBottomBar({
     {
       title: "Home",
       image: {
-        uri: "https://bigstones.fr/pootime-adventure/poohome.png",
+        uri: "https://bigstones.fr/pootime-adventure/poo.png",
       },
     },
     {
@@ -44,6 +45,7 @@ export default function AppBottomBar({
           width: "100%",
           height: 70,
           elevation: 0,
+          backgroundColor: colors.baseBackgroundColor,
         },
       ]}
     >

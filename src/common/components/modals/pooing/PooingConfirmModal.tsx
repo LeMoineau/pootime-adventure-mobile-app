@@ -3,6 +3,7 @@ import StandardButton from "../../buttons/StandardButton";
 import { colors } from "../../../utils/color-utils";
 import React, { useEffect, useRef, useState } from "react";
 import ConfirmModal from "../primitives/ConfirmModal";
+import { style } from "../../../utils/style-utils";
 
 export default function PooingConfirmModal({
   onConfirm,
@@ -33,10 +34,12 @@ export default function PooingConfirmModal({
         !enableConfirm
           ? () => (
               <StandardButton
-                style={{ paddingTop: 10 }}
+                style={{ paddingTop: 10, flex: 1 }}
                 bgColor={colors.gray[100]}
+                viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
+                textStyle={[{ fontSize: 15 }]}
               >
-                Confirm
+                Please wait...
               </StandardButton>
             )
           : undefined

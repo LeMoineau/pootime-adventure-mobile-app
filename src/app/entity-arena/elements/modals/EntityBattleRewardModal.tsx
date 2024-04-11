@@ -1,12 +1,12 @@
 import { ModalProps, Text } from "react-native";
-import RewardModal from "../../../common/components/modals/primitives/RewardModal";
-import { BattleReward } from "../../../common/types/battle/online-battle/BattleReward";
-import { style } from "../../../common/utils/style-utils";
+import RewardModal from "../../../../common/components/modals/primitives/RewardModal";
+import { BattleReward } from "../../../../common/types/battle/online-battle/BattleReward";
+import { style } from "../../../../common/utils/style-utils";
 import {
   Entity,
   EntityBattleWinner,
-} from "../../../common/types/battle/entity-battle/EntityBattleTypes";
-import { colors } from "../../../common/utils/color-utils";
+} from "../../../../common/types/battle/entity-battle/EntityBattleTypes";
+import { colors } from "../../../../common/utils/color-utils";
 
 export default function EntityBattleRewardModal({
   entity,
@@ -39,8 +39,8 @@ export default function EntityBattleRewardModal({
       </Text>
       <Text style={[]}>
         {winner === "player"
-          ? `Vous avez totalement rasé ${entity?.name} !`
-          : `${entity?.name} vous a complètement tondu !`}
+          ? `Vous avez battu ${entity?.name} !`
+          : `${entity?.name} vous a terminé..!`}
       </Text>
     </RewardModal>
   );

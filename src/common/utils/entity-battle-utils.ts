@@ -1,3 +1,4 @@
+import { EntityDrops } from "../config/game-data/EntityDrops";
 import {
   Entity,
   EntityBattleWinner,
@@ -15,13 +16,13 @@ export namespace EntityBattleUtils {
     let currentIndex = 0;
     for (let e of zone.entities) {
       if (
-        currentIndex < choseEntityIndex &&
-        currentIndex + e.number >= choseEntityIndex
+        currentIndex <= choseEntityIndex &&
+        currentIndex + e.number > choseEntityIndex
       )
         return e.entity;
       currentIndex += e.number;
     }
-    return zone.entities[0].entity;
+    return zone.entities[1].entity;
   }
 
   export function calculateNewStatesFromPlayerHit(
@@ -100,12 +101,10 @@ export namespace EntityBattleUtils {
     entity: Entity
   ): BattleReward {
     if (winner === "player") {
-      let rewards: BattleReward = [];
-      rewards.push({ resource: "pooCoins", number: 100 + entity.level * 5 });
-      if (entity.entityType === "sheep") {
-        rewards.push({ resource: "wool", number: 100 + entity.level * 10 });
+      if (entity.rewards) {
+        return entity.rewards;
       }
-      return rewards;
+      return EntityDrops[entity.entityType](entity);
     } else {
       return [];
     }

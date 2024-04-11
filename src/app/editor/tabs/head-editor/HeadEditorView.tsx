@@ -8,7 +8,7 @@ import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
 import HeadSelector from "./HeadSelector";
 import { DefaultValues } from "../../../../common/config/DefaultValues";
-import { Resources } from "../../../../common/types/Resources";
+import { Resources } from "../../../../common/config/game-data/Resources";
 import ResourceIcon from "../../../../common/components/icons/ResourceIcon";
 import PooHeadPalette from "../../../../common/components/misc/poo-creature/PooHeadPalette";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";

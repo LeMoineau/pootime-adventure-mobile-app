@@ -10,6 +10,7 @@ import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style
 import { useResourcesStore } from "../../common/stores/resources.store";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
+import { useVillageStore } from "../../common/stores/village.store";
 
 export default function AccountSettings() {
   const { isVisible, show, hide } = useModals<"confirm">();
@@ -18,6 +19,7 @@ export default function AccountSettings() {
   const pooCreatureStyleStore = usePooCreatureStyleStore();
   const resourcesStore = useResourcesStore();
   const navigator: useNavigationType = useNavigation();
+  const { resetData: resetDataVillage } = useVillageStore();
 
   return (
     <>
@@ -38,6 +40,15 @@ export default function AccountSettings() {
             },
           ]}
         ></SettingsScrollView>
+        <SettingsScrollView
+          items={[
+            {
+              label: "Reset Données Village",
+              subLabel: "Efface toutes vos données du village",
+              onPress: () => show("confirm"),
+            },
+          ]}
+        ></SettingsScrollView>
       </SettingsPage>
       <ConfirmModal
         visible={isVisible("confirm")}
@@ -46,6 +57,7 @@ export default function AccountSettings() {
           await pooCreatureStatsStore.resetData();
           await pooCreatureStyleStore.resetData();
           await resourcesStore.resetData();
+          await resetDataVillage();
         }}
         onRequestClose={() => hide("confirm")}
       >

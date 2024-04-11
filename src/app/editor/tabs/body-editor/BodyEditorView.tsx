@@ -7,7 +7,7 @@ import { useState } from "react";
 import ConfirmModal from "../../../../common/components/modals/primitives/ConfirmModal";
 import { colors } from "../../../../common/utils/color-utils";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
-import PooCoinIcon from "../../../../common/components/icons/pooCoin";
+import PooCoinIcon from "../../../../common/components/icons/resources/pooCoin";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
 import { DefaultValues } from "../../../../common/config/DefaultValues";
 

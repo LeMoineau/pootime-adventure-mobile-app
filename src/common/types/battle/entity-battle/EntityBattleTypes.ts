@@ -1,6 +1,5 @@
-import { colors } from "../../../utils/color-utils";
+import { EntityType } from "../../../config/game-data/EntityTypes";
 import { BattleReward } from "../online-battle/BattleReward";
-export type EntityType = "sheep";
 
 export interface Entity {
   name: string;

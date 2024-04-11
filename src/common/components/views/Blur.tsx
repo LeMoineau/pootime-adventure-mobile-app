@@ -1,5 +1,5 @@
 import { Animated, Pressable, useWindowDimensions } from "react-native";
-import { useBlurStore } from "../../stores/blur.store";
+import { useBlurStore } from "../../stores/style/blur.store";
 import { colors } from "../../utils/color-utils";
 import { useEffect, useRef } from "react";
 

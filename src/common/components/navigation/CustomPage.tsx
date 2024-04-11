@@ -17,7 +17,7 @@ export default function CustomPage({
 } & ViewProps) {
   const { width, height } = useWindowDimensions();
   return (
-    <SafeAreaView style={[{ flex: 1, elevation: 0 }]} {...props}>
+    <SafeAreaView {...props} style={[{ flex: 1, elevation: 0 }, props.style]}>
       <View
         style={[
           {

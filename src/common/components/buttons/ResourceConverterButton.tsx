@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from "react-native";
 import { style } from "../../utils/style-utils";
-import { Resources } from "../../types/Resources";
+import { Resources } from "../../config/game-data/Resources";
 import ResourceIcon from "../icons/ResourceIcon";
 import { colors } from "../../utils/color-utils";
 import { useResourcesStore } from "../../stores/resources.store";
