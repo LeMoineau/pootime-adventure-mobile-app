@@ -1,4 +1,5 @@
-export type StructureDetailName = "pooStartingTimer";
+export type StructureDetailName = "pooStartingTimer" | "yarisLeavingDate";
+
 export type StructureDetail = DateDetail | ElapsedTimeDetail | {};
 export type DateDetail = string;
 export type ElapsedTimeDetail = number;

@@ -77,11 +77,6 @@ export default function ToiletPower({}: { dateNow: number }) {
               const now = Date.now();
               setDateNow(now);
               saveDetail("toilet", "pooStartingTimer", now);
-              console.log(
-                getDetail("toilet", "pooStartingTimer"),
-                now,
-                dateNow
-              );
             } else {
               show("confirm");
             }
