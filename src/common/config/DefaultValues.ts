@@ -41,11 +41,11 @@ export namespace DefaultValues {
     stars: 5,
     pooCoins: 250,
     wool: 0,
+    snow: 0,
     metal: 0,
-    cosmicPowder: 0,
     glass: 0,
     ink: 0,
-    snow: 0,
+    cosmicPowder: 0,
   };
 
   //ItemUnlocked

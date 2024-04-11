@@ -57,12 +57,16 @@ export default function InventoryPage() {
             >
               <View
                 style={[
+                  style.flexRow,
+                  style.justifyCenter,
+                  style.itemsCenter,
                   {
-                    padding: 15,
                     borderRightColor: colors.gray[200],
                     borderRightWidth: 1,
                     backgroundColor: colors.gray[100],
                     flex: 0,
+                    width: 80,
+                    height: 80,
                   },
                 ]}
               >
