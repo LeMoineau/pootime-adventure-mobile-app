@@ -10,8 +10,8 @@ export const EntityDrops: {
     { resource: "pooCoins", number: 50 + e.level * 5 },
   ],
   "god-poulpe": (e) => [
-    { resource: "ink", number: 500 },
-    { resource: "cosmicPowder", number: 20 },
+    { resource: "ink", number: 1000 },
+    { resource: "cosmicPowder", number: 50 },
   ],
   "horror-mask": (e) => [
     { resource: "glass", number: 500 },

@@ -40,15 +40,6 @@ export default function AccountSettings() {
             },
           ]}
         ></SettingsScrollView>
-        <SettingsScrollView
-          items={[
-            {
-              label: "Reset Données Village",
-              subLabel: "Efface toutes vos données du village",
-              onPress: () => show("confirm"),
-            },
-          ]}
-        ></SettingsScrollView>
       </SettingsPage>
       <ConfirmModal
         visible={isVisible("confirm")}
