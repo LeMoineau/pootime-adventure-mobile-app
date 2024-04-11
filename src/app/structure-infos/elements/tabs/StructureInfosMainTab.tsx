@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import StructurePower from "../structure-power/StructurePower";
 
 export default function StructureInfosMainTab() {
-  const { selectedStructureName: structName, get, upgrade } = useVillageStore();
+  const { selectedStructureName: structName, get } = useVillageStore();
   const { setStructName, structure } = useStructure();
 
   useEffect(() => {

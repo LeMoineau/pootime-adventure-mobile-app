@@ -9,7 +9,9 @@ export default function StructurePower({
 }) {
   return (
     <>
-      {structName === "toilet" && <ToiletPower></ToiletPower>}
+      {structName === "toilet" && (
+        <ToiletPower dateNow={Date.now()}></ToiletPower>
+      )}
       {structName === "yaris" && <YarisPower></YarisPower>}
     </>
   );

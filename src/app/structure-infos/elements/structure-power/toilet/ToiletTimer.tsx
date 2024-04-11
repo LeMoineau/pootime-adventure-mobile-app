@@ -1,10 +1,4 @@
-import {
-  Animated,
-  Easing,
-  Text,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { Animated, Easing, Text, View } from "react-native";
 import useTimer from "../../../../../common/hooks/use-timer";
 import TabTitle from "../../text/TabTitle";
 import useAnimatedValue from "../../../../../common/hooks/use-animated-value";
@@ -12,22 +6,26 @@ import { style } from "../../../../../common/utils/style-utils";
 import { useEffect } from "react";
 import { colors } from "../../../../../common/utils/color-utils";
 import ConfirmModal from "../../../../../common/components/modals/primitives/ConfirmModal";
-import useModals from "../../../../../common/hooks/use-modals";
 
 export default function ToiletTimer({
   isPlaying,
+  alreadyElapsedTime,
   wantToStop,
   onCancelStoping,
   onConfirmStoping,
 }: {
   isPlaying: boolean;
+  alreadyElapsedTime?: number;
   wantToStop: boolean;
   onCancelStoping: () => void;
   onConfirmStoping?: (elapsedTime: number) => void;
 }) {
-  const { timeToString, elapsedTime, reset } = useTimer({ isPlaying });
+  const { timeToString, elapsedTime, reset } = useTimer({
+    isPlaying,
+    startAt: alreadyElapsedTime ?? undefined,
+  });
   const { animValue, setEnabled } = useAnimatedValue({
-    duration: 60000,
+    duration: alreadyElapsedTime ? 60000 - alreadyElapsedTime : 60000,
     easing: Easing.linear,
   });
 
@@ -67,7 +65,12 @@ export default function ToiletTimer({
                 top: 0,
                 left: animValue.interpolate({
                   inputRange: [0, 1],
-                  outputRange: ["-100%", "0%"],
+                  outputRange: [
+                    alreadyElapsedTime
+                      ? `${-1 * (100 - (alreadyElapsedTime / 60000) * 100)}%`
+                      : "-100%",
+                    "0%",
+                  ],
                 }),
                 backgroundColor: animValue.interpolate({
                   inputRange: [0, 1],

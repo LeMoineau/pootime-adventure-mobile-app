@@ -6,21 +6,24 @@ import TabTitle from "../../text/TabTitle";
 import TabText from "../../text/TabText";
 import Divider from "../../../../../common/components/text/Divider";
 import ToiletTimer from "./ToiletTimer";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useModals from "../../../../../common/hooks/use-modals";
 import PooingRewardModal from "./PooingRewardModal";
 import { BattleReward } from "../../../../../common/types/battle/online-battle/BattleReward";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
-import { CurveUtils } from "../../../../../common/utils/curve-utils";
 import { VillageUtils } from "../../../../../common/utils/village-utils";
 import { useVillageStore } from "../../../../../common/stores/village.store";
 
-export default function ToiletPower() {
-  const [timerPlaying, setTimerPlaying] = useState(false);
+export default function ToiletPower({}: { dateNow: number }) {
+  const [dateNow, setDateNow] = useState(Date.now());
+  const { get, saveDetail, getDetail, hasDetail, eraseDetail } =
+    useVillageStore();
+  const [timerPlaying, setTimerPlaying] = useState(
+    hasDetail("toilet", "pooStartingTimer")
+  );
   const [pooingRewards, setPooingRewards] = useState<BattleReward>();
   const { isVisible, show, hide } = useModals<"confirm" | "reward">();
   const { earn } = useResourcesStore();
-  const { get } = useVillageStore();
 
   return (
     <>
@@ -43,16 +46,21 @@ export default function ToiletPower() {
         <Divider style={[{ marginBottom: 10 }]}></Divider>
         <ToiletTimer
           isPlaying={timerPlaying}
+          alreadyElapsedTime={
+            hasDetail("toilet", "pooStartingTimer")
+              ? dateNow - (getDetail("toilet", "pooStartingTimer") as number)
+              : undefined
+          }
           wantToStop={isVisible("confirm")}
           onCancelStoping={() => hide("confirm")}
           onConfirmStoping={(elapsedTime) => {
-            setTimerPlaying(false);
-            setPooingRewards(
-              VillageUtils.calculateToiletRewards(
-                elapsedTime,
-                get("toilet").level
-              )
+            const reward = VillageUtils.calculateToiletRewards(
+              elapsedTime,
+              get("toilet").level
             );
+            setPooingRewards(reward);
+            setTimerPlaying(false);
+            eraseDetail("toilet", "pooStartingTimer");
             show("reward");
             hide("confirm");
           }}
@@ -66,6 +74,14 @@ export default function ToiletPower() {
           onPress={() => {
             if (!timerPlaying) {
               setTimerPlaying(true);
+              const now = Date.now();
+              setDateNow(now);
+              saveDetail("toilet", "pooStartingTimer", now);
+              console.log(
+                getDetail("toilet", "pooStartingTimer"),
+                now,
+                dateNow
+              );
             } else {
               show("confirm");
             }
@@ -74,18 +90,16 @@ export default function ToiletPower() {
           {!timerPlaying ? "Starting Pooing" : "Stop Timer"}
         </StandardButton>
       </View>
-      {pooingRewards && (
-        <PooingRewardModal
-          visible={isVisible("reward")}
-          onRequestClose={() => hide("reward")}
-          onCollectingRewards={async (rewards) => {
-            for (let r of rewards) {
-              await earn(r.resource, r.number);
-            }
-          }}
-          rewards={pooingRewards}
-        ></PooingRewardModal>
-      )}
+      <PooingRewardModal
+        visible={isVisible("reward")}
+        onRequestClose={() => hide("reward")}
+        onCollectingRewards={async (rewards) => {
+          for (let r of rewards) {
+            await earn(r.resource, r.number);
+          }
+        }}
+        rewards={pooingRewards ?? []}
+      ></PooingRewardModal>
     </>
   );
 }

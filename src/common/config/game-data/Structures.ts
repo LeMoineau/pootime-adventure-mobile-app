@@ -39,7 +39,8 @@ export const Structures: { [name in StructureName]: Structure } = {
     description:
       "Endors-toi et laisse ta yaris te conduire vers des contrées encore inexplorées et te trouver des récompenses fabuleuses !",
     style: { position: [250, 180] },
-    buildingCost: { metal: 1000, glass: 1000, snow: 100, wool: 500 },
+    buildingCost: { pooCoins: 10 },
+    // { metal: 1000, glass: 1000, snow: 100, wool: 500 }
     upgradeCosts: [
       {
         fromLevel: 1,
