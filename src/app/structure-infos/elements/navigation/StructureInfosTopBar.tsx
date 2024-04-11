@@ -12,7 +12,6 @@ export default function StructureInfosTopBar({
   position,
   icons,
 }: { icons: React.ReactNode[] } & MaterialTopTabBarProps) {
-  //   console.log(state, descriptors, navigation, position);
   return (
     <>
       <View

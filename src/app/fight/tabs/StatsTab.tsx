@@ -8,7 +8,7 @@ import StatsTips from "../elements/StatsTips";
 export default function StatsTab() {
   const { attaque, defense, pv, mana, resMana, recupMana, incrStat } =
     usePooCreatureStatsStore();
-  const { get, spend, earn } = useResourcesStore();
+  const { get, spend } = useResourcesStore();
   const statsHandlers: {
     label: string;
     value: number;

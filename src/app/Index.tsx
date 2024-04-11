@@ -28,15 +28,6 @@ const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const { earn } = useResourcesStore();
-  const { resetData } = useItemsUnlockedStore();
-
-  React.useEffect(() => {
-    // resetData();
-    // earn("pooCoins", 0);
-    // earn("stars", 10);
-  }, []);
-
   return (
     <>
       <NavigationContainer>

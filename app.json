@@ -2,15 +2,10 @@
   "expo": {
     "name": "PooTime Adventure",
     "slug": "pootime-adventure-mobile-app",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/bg.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
@@ -21,7 +16,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "fr.pierrot.pootimeadventure",
-      "versionCode": 3
+      "versionCode": 4
     },
     "web": {
       "favicon": "./assets/icon.png",

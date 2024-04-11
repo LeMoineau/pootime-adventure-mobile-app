@@ -41,7 +41,6 @@ export namespace VillageUtils {
     elapsedTime: number,
     toiletLevel: number
   ): BattleReward {
-    console.log("pooing time: ", elapsedTime);
     let starEarn = 0;
     let pooCoinsEarn = 0;
     const limitMax = 2000 + 500 * (toiletLevel - 1);
@@ -62,7 +61,6 @@ export namespace VillageUtils {
     elapsedTime: number,
     yarisLevel: number
   ): BattleReward {
-    console.log("elapsedtime", elapsedTime);
     const elapsedMin = Math.floor(elapsedTime / 60000);
     if (elapsedMin < 15) return [];
     let rewards: BattleReward = [];

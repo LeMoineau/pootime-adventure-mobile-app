@@ -26,7 +26,6 @@ export default function ButtonWithDialogBubble({
       >
         <Pressable
           onPress={() => {
-            console.log("coucou");
             enableBlur();
             setShowBubble(true);
           }}

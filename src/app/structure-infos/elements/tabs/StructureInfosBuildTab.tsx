@@ -77,7 +77,6 @@ export default function StructureInfosBuildTab() {
           onConfirm={async () => {
             const struct = structure();
             if (!struct || !struct.buildingCost || !structName) return;
-            console.log(struct.buildingCost);
             await spendMany(
               Object.keys(struct.buildingCost) as Resources[],
               Object.values(struct.buildingCost),

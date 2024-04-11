@@ -1,5 +1,8 @@
 import { useElapsedTime } from "use-elapsed-time";
 
+/**
+ * elapsedTime en secondes
+ */
 const useTimer = ({
   isPlaying,
   onUpdate,
