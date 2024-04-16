@@ -1,4 +1,4 @@
-import { ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
 import StandardButton from "../../common/components/buttons/StandardButton";
@@ -10,6 +10,7 @@ import ResourceIcon from "../../common/components/icons/ResourceIcon";
 import { Resources } from "../../common/config/game-data/Resources";
 import { style } from "../../common/utils/style-utils";
 import { ResourcesNames } from "../../common/config/game-data/ResourcesNames";
+import { MathUtils } from "../../common/utils/math-utils";
 
 export default function InventoryPage() {
   const navigator: useNavigationType = useNavigation();
@@ -27,75 +28,90 @@ export default function InventoryPage() {
             flex: 1,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
+            paddingHorizontal: 10,
+            paddingTop: 10,
           },
         ]}
       >
-        <Text
+        <View
           style={[
+            style.flexRow,
+            style.itemsCenter,
             {
-              fontSize: 17,
-              letterSpacing: 1,
-              paddingHorizontal: 10,
               paddingTop: 20,
               paddingBottom: 10,
-              fontWeight: "500",
             },
           ]}
         >
-          Inventory
-        </Text>
-        <View style={[style.flexCol, { flex: 1, paddingHorizontal: 10 }]}>
-          {Object.keys(inventory).map((resource, index) => (
-            <View
-              key={`inventory-${resource}-${index}`}
-              style={[
-                style.border,
-                style.flexRow,
-                style.rounded,
-                { backgroundColor: colors.gray[50], marginVertical: 5 },
-              ]}
-            >
+          <Pressable
+            onPress={() => navigator.goBack()}
+            style={{ paddingRight: 10 }}
+          >
+            <ExpoIcon name="chevron-back" size={20}></ExpoIcon>
+          </Pressable>
+          <Text
+            style={[
+              {
+                fontSize: 17,
+                letterSpacing: 1,
+                fontWeight: "500",
+              },
+            ]}
+          >
+            Inventory
+          </Text>
+        </View>
+        <View
+          style={[
+            style.flexRow,
+            style.border,
+            style.rounded,
+            style.itemsCenter,
+            {
+              flex: 1,
+              flexWrap: "wrap",
+              backgroundColor: colors.gray[100],
+              marginTop: 10,
+              paddingBottom: 10,
+              paddingTop: 5,
+            },
+          ]}
+        >
+          {Object.keys(inventory).map((resource, index) => {
+            if (get(resource as Resources) <= 0) return;
+            return (
               <View
+                key={`inventory-item-${resource}-${index}`}
                 style={[
                   style.flexRow,
                   style.justifyCenter,
                   style.itemsCenter,
-                  {
-                    borderRightColor: colors.gray[200],
-                    borderRightWidth: 1,
-                    backgroundColor: colors.gray[100],
-                    flex: 0,
-                    width: 80,
-                    height: 80,
-                  },
+                  { padding: 10, width: 60, height: 60 },
                 ]}
               >
                 <ResourceIcon
                   resource={resource as Resources}
-                  size={50}
+                  size={40}
                 ></ResourceIcon>
-              </View>
-              <View
-                style={[
-                  style.flexRow,
-                  style.justifyBetween,
-                  style.itemsCenter,
-                  { flex: 1, paddingHorizontal: 20 },
-                ]}
-              >
                 <Text
                   style={[
-                    { fontSize: 17, fontWeight: "500", letterSpacing: 1 },
+                    style.textShadowMd,
+                    {
+                      position: "absolute",
+                      bottom: 0,
+                      right: 0,
+                      fontWeight: "700",
+                      color: colors.white,
+                    },
                   ]}
                 >
-                  {ResourcesNames[resource as Resources]}
-                </Text>
-                <Text style={[style.textBold, style.textMd]}>
-                  {get(resource as Resources)}
+                  {MathUtils.convertToReduceStrFormat(
+                    get(resource as Resources)
+                  )}
                 </Text>
               </View>
-            </View>
-          ))}
+            );
+          })}
         </View>
       </ScrollView>
     </CustomPage>

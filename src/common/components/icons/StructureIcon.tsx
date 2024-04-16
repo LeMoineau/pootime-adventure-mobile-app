@@ -48,7 +48,7 @@ export default function StructureIcon({
           <ToiletIcon gold={level >= 5} height={size ?? 100}></ToiletIcon>
         )}
         {structureName === "yaris" && (
-          <YarisIcon gold={level >= 5} width={size ?? 100}></YarisIcon>
+          <YarisIcon gold={false} width={size ?? 100}></YarisIcon>
         )}
       </View>
     </>

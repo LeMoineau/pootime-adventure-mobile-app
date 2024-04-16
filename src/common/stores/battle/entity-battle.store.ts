@@ -41,6 +41,7 @@ const useEntityBattleStore = create<Store>((set, get) => {
       currentPlayerState: {
         ...playerStats,
         currentPv: playerStats.pv,
+        currentMana: playerStats.mana,
       },
     });
     setTimeout(() => {

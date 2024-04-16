@@ -50,7 +50,11 @@ const EntityZones: EntityZone[] = [
     name: "The EndGame",
     mainColor: colors.purple[800],
     unlockLevel: 12,
-    entities: [{ entity: Entities.DieuPoulpe, number: 1 }], //poulpegod
+    entities: [
+      { entity: Entities.DieuPoulpe, number: 1 },
+      { entity: Entities.Agentpingoo, number: 1 },
+      { entity: Entities.HorrorMask, number: 1 },
+    ], //poulpegod
     nbEntities: 1,
   },
 ];

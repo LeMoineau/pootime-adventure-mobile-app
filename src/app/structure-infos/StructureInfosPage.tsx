@@ -1,7 +1,10 @@
-import { useRoute } from "@react-navigation/native";
-import { useRouteType } from "../../common/types/navigation/NavigationTypes";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useNavigationType,
+  useRouteType,
+} from "../../common/types/navigation/NavigationTypes";
 import CustomPage from "../../common/components/navigation/CustomPage";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { colors } from "../../common/utils/color-utils";
 import { style } from "../../common/utils/style-utils";
 import { Structures } from "../../common/config/game-data/Structures";
@@ -19,6 +22,7 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function StructureInfosPage() {
   const route: useRouteType<"StructureInfos"> = useRoute();
+  const navigator: useNavigationType = useNavigation();
   const { get, select } = useVillageStore();
 
   const structure = () => Structures[route.params.structureName];
@@ -60,6 +64,12 @@ export default function StructureInfosPage() {
             },
           ]}
         >
+          <Pressable
+            onPress={() => navigator.goBack()}
+            style={[{ position: "absolute", top: 0, right: 0, padding: 10 }]}
+          >
+            <ExpoIcon name="close" size={25}></ExpoIcon>
+          </Pressable>
           <StructureIcon
             structureName={route.params.structureName}
             level={get(structure().type).level}
