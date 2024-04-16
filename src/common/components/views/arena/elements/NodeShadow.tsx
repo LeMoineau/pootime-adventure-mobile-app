@@ -12,7 +12,7 @@ export default function NodeShadow({ shadowColor }: { shadowColor?: string }) {
           width: "100%",
           paddingTop: "100%",
           backgroundColor: shadowColor ?? colors.black,
-          zIndex: -5,
+          zIndex: -105,
           borderRadius: 150,
           transform: [{ rotateX: "75deg" }],
           opacity: 0.5,

@@ -36,7 +36,7 @@ export default function AdvNode({
         },
       ]}
     >
-      {advNode}
+      <View style={[{ zIndex: 1 }]}>{advNode}</View>
       <NodeShadow shadowColor={shadowColor}></NodeShadow>
     </Animated.View>
   );

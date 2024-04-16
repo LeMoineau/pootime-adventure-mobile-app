@@ -37,7 +37,9 @@ export default function PlayerNode({
         },
       ]}
     >
-      {playerNode ?? <PooCreature behind width={230}></PooCreature>}
+      <View style={[{ zIndex: 1 }]}>
+        {playerNode ?? <PooCreature behind width={230}></PooCreature>}
+      </View>
       <View style={[{ transform: [{ translateY: 110 }] }]}>
         <NodeShadow shadowColor={shadowColor}></NodeShadow>
       </View>
