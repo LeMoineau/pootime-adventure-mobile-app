@@ -61,19 +61,57 @@ export namespace VillageUtils {
     elapsedTime: number,
     yarisLevel: number
   ): BattleReward {
+    const calculateResourceReward = (
+      value: number,
+      resource: Resources
+    ): number => {
+      return value > maxValues[resource]! ? maxValues[resource]! : value;
+    };
+    const maxValues: { [resource in Resources]?: number } = {
+      pooCoins: 5000 + 500 * (yarisLevel - 1),
+      wool: 6000 + 500 * (yarisLevel - 1),
+      metal: 3000 + 500 * (yarisLevel - 1),
+      snow: 3000 + 500 * (yarisLevel - 1),
+      glass: 200 + 200 * (yarisLevel - 3),
+      ink: 500 + 500 * (yarisLevel - 3),
+      cosmicPowder: 30 + 20 * (yarisLevel - 4),
+    };
+
     const elapsedMin = Math.floor(elapsedTime / 60000);
     if (elapsedMin < 15) return [];
     let rewards: BattleReward = [];
-    rewards.push({ resource: "pooCoins", number: elapsedMin * 60 });
-    rewards.push({ resource: "wool", number: elapsedMin * 40 });
-    rewards.push({ resource: "metal", number: elapsedMin * 7 });
-    rewards.push({ resource: "snow", number: elapsedMin * 10 });
+
+    rewards.push({
+      resource: "pooCoins",
+      number: calculateResourceReward(elapsedMin * 60, "pooCoins"),
+    });
+    rewards.push({
+      resource: "wool",
+      number: calculateResourceReward(elapsedMin * 40, "wool"),
+    });
+    rewards.push({
+      resource: "metal",
+      number: calculateResourceReward(elapsedMin * 7, "metal"),
+    });
+    rewards.push({
+      resource: "snow",
+      number: calculateResourceReward(elapsedMin * 10, "snow"),
+    });
     if (yarisLevel >= 3) {
-      rewards.push({ resource: "glass", number: elapsedMin * 10 });
-      rewards.push({ resource: "ink", number: elapsedMin * 15 });
+      rewards.push({
+        resource: "glass",
+        number: calculateResourceReward(elapsedMin * 10, "glass"),
+      });
+      rewards.push({
+        resource: "ink",
+        number: calculateResourceReward(elapsedMin * 15, "ink"),
+      });
     }
     if (yarisLevel >= 4) {
-      rewards.push({ resource: "cosmicPowder", number: elapsedMin * 2 });
+      rewards.push({
+        resource: "cosmicPowder",
+        number: calculateResourceReward(elapsedMin * 2, "cosmicPowder"),
+      });
     }
     return rewards;
   }

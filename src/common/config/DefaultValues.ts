@@ -79,7 +79,7 @@ export namespace DefaultValues {
     name: VillageName,
     structures: {
       toilet: { level: 1, details: {} },
-      yaris: { level: 1, details: {} },
+      yaris: { level: 0, details: {} },
     },
   };
 }
