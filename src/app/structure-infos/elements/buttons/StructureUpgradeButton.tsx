@@ -10,6 +10,8 @@ import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
 import ConfirmModal from "../../../../common/components/modals/primitives/ConfirmModal";
 import useModals from "../../../../common/hooks/use-modals";
 import { UpgradeCost } from "../../../../common/types/village/StructureCost";
+import useStructure from "../../../../common/hooks/village/use-structure";
+import { useEffect } from "react";
 
 export default function StructureUpgradeButton({
   onUpgrade,
@@ -19,6 +21,13 @@ export default function StructureUpgradeButton({
   const { selectedStructureName: structName, get } = useVillageStore();
   const { get: getResource } = useResourcesStore();
   const { isVisible, show, hide } = useModals<"confirm">();
+  const {
+    setStructName,
+    isLevelMax,
+    upgradable,
+    iterateOnUpgradeCost,
+    structure,
+  } = useStructure();
 
   const buyable = (): boolean => {
     if (!structName) return false;
@@ -32,34 +41,45 @@ export default function StructureUpgradeButton({
     return true;
   };
 
+  useEffect(() => {
+    setStructName(structName);
+  }, [structName]);
+
   return (
     <>
-      <StandardButton
-        style={[{ flex: 1, marginTop: 15 }]}
-        bgColor={buyable() ? colors.green[500] : colors.gray[400]}
-        viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
-        onPress={() => buyable() && show("confirm")}
-      >
-        <View
-          style={[
-            style.flexRow,
-            style.itemsCenter,
-            { flex: 1, justifyContent: "space-around" },
-          ]}
+      {isLevelMax() ? (
+        <StandardButton
+          style={[{ flex: 1, marginTop: 15 }]}
+          bgColor={colors.green[500]}
+          viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
+          textColor={colors.white}
+          textStyle={[{ fontSize: 17, fontWeight: "500" }]}
+        >
+          Level MAX
+        </StandardButton>
+      ) : (
+        <StandardButton
+          style={[{ flex: 1, marginTop: 15 }]}
+          bgColor={upgradable() ? colors.green[500] : colors.gray[400]}
+          viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
+          onPress={() => upgradable() && show("confirm")}
         >
           <View
             style={[
               style.flexRow,
-              style.justifyCenter,
               style.itemsCenter,
-              { flex: 1, flexWrap: "wrap" },
+              { flex: 1, justifyContent: "space-around" },
             ]}
           >
-            {structName &&
-              VillageUtils.iterateOnUpgradeCostOf(
-                structName,
-                get(structName).level
-              ).map(([resource, val], index) => {
+            <View
+              style={[
+                style.flexRow,
+                style.justifyCenter,
+                style.itemsCenter,
+                { flex: 1, flexWrap: "wrap" },
+              ]}
+            >
+              {iterateOnUpgradeCost().map(([resource, val], index) => {
                 return (
                   <TextWithResourceIcon
                     key={`upgrade-cost-transfer-${resource}-${index}`}
@@ -70,26 +90,29 @@ export default function StructureUpgradeButton({
                   ></TextWithResourceIcon>
                 );
               })}
+            </View>
+            <ExpoIcon
+              name="caret-right"
+              size={20}
+              style={[{ color: colors.white }]}
+            ></ExpoIcon>
+            <Text
+              style={[
+                style.textCenter,
+                { color: colors.white, fontSize: 17, flex: 1 },
+              ]}
+            >
+              {structName &&
+                `Level ${
+                  VillageUtils.getUpgradeCostOf(
+                    structName,
+                    get(structName).level
+                  )?.toLevel
+                }`}
+            </Text>
           </View>
-          <ExpoIcon
-            name="caret-right"
-            size={20}
-            style={[{ color: colors.white }]}
-          ></ExpoIcon>
-          <Text
-            style={[
-              style.textCenter,
-              { color: colors.white, fontSize: 17, flex: 1 },
-            ]}
-          >
-            {structName &&
-              `Level ${
-                VillageUtils.getUpgradeCostOf(structName, get(structName).level)
-                  ?.toLevel
-              }`}
-          </Text>
-        </View>
-      </StandardButton>
+        </StandardButton>
+      )}
       {structName && (
         <ConfirmModal
           visible={isVisible("confirm")}

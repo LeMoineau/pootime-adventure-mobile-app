@@ -38,6 +38,15 @@ const useStructure = () => {
     return true;
   };
 
+  const isLevelMax = (): boolean => {
+    if (!structName) return false;
+    return (
+      VillageUtils.getStructureData(structName).upgradeCosts.find(
+        (c) => c.fromLevel === get(structName).level
+      ) === undefined
+    );
+  };
+
   const iterateOnUpgradeCost = (): [Resources, number][] => {
     if (!structName) return [];
     return VillageUtils.iterateOnUpgradeCostOf(
@@ -62,6 +71,7 @@ const useStructure = () => {
     upgradable,
     iterateOnUpgradeCost,
     iterateOnBuildingCost,
+    isLevelMax,
   };
 };
 

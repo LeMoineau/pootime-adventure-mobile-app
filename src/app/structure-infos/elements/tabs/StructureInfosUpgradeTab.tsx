@@ -9,10 +9,17 @@ import TextWithResourceIcon from "../../../../common/components/text/TextWithRes
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import StructureUpgradeButton from "../buttons/StructureUpgradeButton";
 import { Resources } from "../../../../common/config/game-data/Resources";
+import useStructure from "../../../../common/hooks/village/use-structure";
+import { useEffect } from "react";
 
 export default function StructureInfosUpgradeTab() {
   const { selectedStructureName: structName, get, upgrade } = useVillageStore();
   const { get: getResource, spendMany } = useResourcesStore();
+  const { setStructName, iterateOnUpgradeCost, isLevelMax } = useStructure();
+
+  useEffect(() => {
+    setStructName(structName);
+  }, [structName]);
 
   return (
     <>
@@ -25,31 +32,28 @@ export default function StructureInfosUpgradeTab() {
         </Text>
 
         {/* NEEDED RESOURCES */}
-        <View
-          style={[
-            style.border,
-            style.roundedSm,
-            {
-              padding: 10,
-              backgroundColor: colors.gray[200],
-              borderColor: colors.gray[300],
-              marginVertical: 10,
-            },
-          ]}
-        >
+        {!isLevelMax() && (
           <View
             style={[
-              style.flexRow,
-              style.justifyCenter,
-              style.itemsCenter,
-              { flexWrap: "wrap" },
+              style.border,
+              style.roundedSm,
+              {
+                padding: 10,
+                backgroundColor: colors.gray[200],
+                borderColor: colors.gray[300],
+                marginVertical: 10,
+              },
             ]}
           >
-            {structName &&
-              VillageUtils.iterateOnUpgradeCostOf(
-                structName,
-                get(structName).level
-              ).map(([resource, val], index) => {
+            <View
+              style={[
+                style.flexRow,
+                style.justifyCenter,
+                style.itemsCenter,
+                { flexWrap: "wrap" },
+              ]}
+            >
+              {iterateOnUpgradeCost().map(([resource, val], index) => {
                 return (
                   <TextWithResourceIcon
                     key={`upgrade-cost-${resource}-${index}`}
@@ -67,8 +71,9 @@ export default function StructureInfosUpgradeTab() {
                   ></TextWithResourceIcon>
                 );
               })}
+            </View>
           </View>
-        </View>
+        )}
 
         {/* UPGRADE BUTTON */}
         <StructureUpgradeButton
