@@ -12,12 +12,17 @@ export default function HomeProfileButton() {
   return (
     <>
       <StandardButton
-        style={[{ flex: 1 }]}
+        style={[{ flex: 1, height: "100%" }]}
         viewStyle={[
           style.border,
           style.flexRow,
           style.justifyBetween,
-          { flex: 1, paddingHorizontal: 15 },
+          {
+            flex: 1,
+            paddingHorizontal: 15,
+            paddingVertical: 0,
+            height: "100%",
+          },
         ]}
       >
         <View style={[style.flexRow, style.justifyCenter, style.itemsCenter]}>

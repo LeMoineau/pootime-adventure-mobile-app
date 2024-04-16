@@ -1,11 +1,11 @@
 import { Image, SafeAreaView, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import FightTopBar from "./navigation/FightTopBar";
+import FightTopBar from "./elements/navigation/FightTopBar";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
-import StatsTab from "./tabs/StatsTab";
+import StatsTab from "./elements/tabs/StatsTab";
 import StatsIcons from "../../common/components/icons/stats";
 import PooUltiIcon from "../../common/components/icons/pooUlti";
-import UltiTab from "./tabs/UltiTab";
+import UltiTab from "./elements/tabs/UltiTab";
 import CustomPage from "../../common/components/navigation/CustomPage";
 
 export default function PooFight() {

@@ -54,6 +54,8 @@ export default function ToiletTimer({
               width: "100%",
               backgroundColor: colors.white,
               height: 10,
+              minHeight: 10,
+              marginTop: 10,
             },
           ]}
         >

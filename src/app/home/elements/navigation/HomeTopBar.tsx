@@ -1,11 +1,10 @@
 import { View, useWindowDimensions } from "react-native";
-import { style } from "../../../common/utils/style-utils";
-import { colors } from "../../../common/utils/color-utils";
-import StandardButton from "../../../common/components/buttons/StandardButton";
+import { style } from "../../../../common/utils/style-utils";
+import StandardButton from "../../../../common/components/buttons/StandardButton";
 import { useNavigation } from "@react-navigation/native";
-import { useNavigationType } from "../../../common/types/navigation/NavigationTypes";
-import HomeProfileButton from "../elements/buttons/HomeProfileButton";
-import ExpoIcon from "../../../common/components/icons/ExpoIcon";
+import { useNavigationType } from "../../../../common/types/navigation/NavigationTypes";
+import HomeProfileButton from "../buttons/HomeProfileButton";
+import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
 
 export default function HomeTopBar() {
   const { width } = useWindowDimensions();

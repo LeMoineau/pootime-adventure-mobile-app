@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
-import { style } from "../../../common/utils/style-utils";
-import StatsField from "../elements/StatsField";
-import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
-import { useResourcesStore } from "../../../common/stores/resources.store";
-import StatsTips from "../elements/StatsTips";
+import { style } from "../../../../common/utils/style-utils";
+import StatsField from "../StatsField";
+import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
+import { useResourcesStore } from "../../../../common/stores/resources.store";
+import StatsTips from "../StatsTips";
 
 export default function StatsTab() {
   const { attaque, defense, pv, mana, resMana, recupMana, incrStat } =

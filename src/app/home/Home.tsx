@@ -1,6 +1,6 @@
 import { Text, useWindowDimensions, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import HomeTopBar from "./navigation/HomeTopBar";
+import HomeTopBar from "./elements/navigation/HomeTopBar";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import EventsModalHandler from "./elements/EventsModalHandler";
 import HomeBattleButton from "./elements/buttons/home-battle-button/HomeBattleButton";

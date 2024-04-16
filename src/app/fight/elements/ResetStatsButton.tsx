@@ -16,7 +16,7 @@ export default function ResetStatsButton() {
   return (
     <>
       <StandardButton
-        style={[{ width: 150, height: "auto" }]}
+        style={[{ width: 150, height: "100%" }]}
         viewStyle={[style.roundedFull, { paddingVertical: 0, flex: 1 }]}
         textStyle={[{ fontSize: 17 }]}
         bgColor={colors.orange[400]}

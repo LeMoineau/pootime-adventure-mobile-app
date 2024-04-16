@@ -139,7 +139,7 @@ export default function HomeBattleButton() {
 
         {/* BATTLE BUTTON */}
         <StandardButton
-          viewStyle={[style.roundedFull, { flex: 0 }]}
+          viewStyle={[style.roundedFull, {}]}
           bgColor={colors.indigo[400]}
           onPress={() => setEnabled(!enable)}
           appendIcon={

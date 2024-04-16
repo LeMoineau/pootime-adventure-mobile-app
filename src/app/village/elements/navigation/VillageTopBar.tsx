@@ -15,7 +15,7 @@ export default function VillageTopBar() {
           style.flexRow,
           style.justifyCenter,
           style.itemsCenter,
-          { flex: 0, marginBottom: 20 },
+          { marginBottom: 20 },
         ]}
       >
         <InputField
