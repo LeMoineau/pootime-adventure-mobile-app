@@ -105,9 +105,11 @@ export default function InventoryPage() {
                     },
                   ]}
                 >
-                  {MathUtils.convertToReduceStrFormat(
-                    get(resource as Resources)
-                  )}
+                  {get(resource as Resources) >= 1000000
+                    ? MathUtils.convertToReduceStrFormat(
+                        get(resource as Resources)
+                      )
+                    : get(resource as Resources)}
                 </Text>
               </View>
             );
