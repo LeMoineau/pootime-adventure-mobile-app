@@ -21,8 +21,11 @@ export namespace MathUtils {
     val: number,
     divider: number,
     maxFixed: number
-  ): string {
-    return (val / divider).toFixed(val % divider === 0 ? 0 : maxFixed);
+  ): number {
+    return (
+      Math.floor((val / divider) * Math.pow(10, maxFixed)) /
+      Math.pow(10, maxFixed)
+    );
   }
 
   export function convertToReduceStrFormat(val: number): string {
