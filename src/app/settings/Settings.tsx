@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store";
 import SettingsHeader from "./elements/SettingsHeader";
-import { Pressable } from "react-native";
+import { Pressable, View } from "react-native";
 import PooCreatureBadge from "../../common/components/misc/poo-creature/PooCreatureBadge";
 import { SettingsScrollView } from "./elements/SettingsScrollView";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
@@ -37,7 +37,9 @@ export default function Settings() {
       >
         <>
           <Pressable onPress={() => setCounterDev(counterDev + 1)}>
-            <PooCreatureBadge></PooCreatureBadge>
+            <View style={[{ marginTop: 20 }]}>
+              <PooCreatureBadge></PooCreatureBadge>
+            </View>
           </Pressable>
           <SettingsScrollView
             style={[{ marginTop: 20 }]}

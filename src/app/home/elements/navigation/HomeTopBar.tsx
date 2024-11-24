@@ -25,7 +25,9 @@ export default function HomeTopBar() {
           },
         ]}
       >
-        <HomeProfileButton></HomeProfileButton>
+        <HomeProfileButton
+          onPress={() => navigator.navigate("LeaderboardPage")}
+        ></HomeProfileButton>
         <StandardButton
           viewStyle={[
             style.border,

@@ -1,7 +1,6 @@
 import { Pressable, ScrollView, Text, View } from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
-import StandardButton from "../../common/components/buttons/StandardButton";
 import ExpoIcon from "../../common/components/icons/ExpoIcon";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
@@ -9,7 +8,6 @@ import { useResourcesStore } from "../../common/stores/resources.store";
 import ResourceIcon from "../../common/components/icons/ResourceIcon";
 import { Resources } from "../../common/config/game-data/Resources";
 import { style } from "../../common/utils/style-utils";
-import { ResourcesNames } from "../../common/config/game-data/ResourcesNames";
 import { MathUtils } from "../../common/utils/math-utils";
 
 export default function InventoryPage() {

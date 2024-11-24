@@ -6,7 +6,11 @@ import { style } from "../../../../common/utils/style-utils";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 
-export default function HomeProfileButton() {
+export default function HomeProfileButton({
+  onPress,
+}: {
+  onPress?: () => void;
+}) {
   const { name } = usePooCreatureStyleStore();
   const { level } = usePooCreatureStatsStore();
   return (
@@ -24,6 +28,7 @@ export default function HomeProfileButton() {
             height: "100%",
           },
         ]}
+        onPress={onPress}
       >
         <View style={[style.flexRow, style.justifyCenter, style.itemsCenter]}>
           <PooCreatureHead size={45}></PooCreatureHead>

@@ -23,6 +23,7 @@ import DonationSettings from "./settings/DonationSettings";
 import TutoSettings from "./settings/TutoSettings";
 import VillagePage from "./village/VillagePage";
 import StructureInfosPage from "./structure-infos/StructureInfosPage";
+import LeaderboardPage from "./leaderboard/LeaderboardPage";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -82,6 +83,14 @@ export default function App() {
               animation: "slide_from_bottom",
             }}
           ></Stack.Screen>
+          <Stack.Screen
+            name="LeaderboardPage"
+            component={LeaderboardPage}
+            options={{
+              presentation: "transparentModal",
+              animation: "slide_from_bottom",
+            }}
+          ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>
@@ -100,6 +109,7 @@ function MainPage() {
         tabBar={(props) => <AppBottomBar {...props} />}
         style={[{ backgroundColor: colors.transparent }]}
       >
+        <Tab.Screen name="Leaderboard" component={LeaderboardPage} />
         <Tab.Screen name="Battle" component={PooFight} />
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Village" component={VillagePage} />

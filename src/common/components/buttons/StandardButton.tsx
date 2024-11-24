@@ -6,7 +6,6 @@ import {
   StyleProp,
   Text,
   TextStyle,
-  View,
   ViewStyle,
 } from "react-native";
 import { style } from "../../utils/style-utils";
@@ -63,7 +62,7 @@ export default function StandardButton({
           {
             paddingHorizontal: 30,
             paddingVertical: 20,
-            backgroundColor: bgColor ?? colors.gray[100],
+            backgroundColor: bgColor ?? colors.white,
           },
           borderColor ? [style.border, { borderColor }] : {},
           viewStyle,

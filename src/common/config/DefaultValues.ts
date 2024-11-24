@@ -46,6 +46,7 @@ export namespace DefaultValues {
     glass: 0,
     ink: 0,
     cosmicPowder: 0,
+    pooTrophee: 0,
   };
 
   //ItemUnlocked

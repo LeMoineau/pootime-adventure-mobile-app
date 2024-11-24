@@ -1,12 +1,9 @@
-import { Text, useWindowDimensions, View } from "react-native";
+import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import HomeTopBar from "./elements/navigation/HomeTopBar";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import EventsModalHandler from "./elements/EventsModalHandler";
 import HomeBattleButton from "./elements/buttons/home-battle-button/HomeBattleButton";
-import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
-import LevelProgressBar from "../../common/components/fields/LevelProgressBar";
-import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
 import PooCreatureView from "./elements/PooCreatureView";
 
 export default function Home() {

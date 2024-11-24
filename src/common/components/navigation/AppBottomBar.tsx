@@ -11,6 +11,12 @@ export default function AppBottomBar({
 }: MaterialTopTabBarProps) {
   const navInfos = [
     {
+      title: "Board",
+      image: {
+        uri: "https://bigstones.fr/pootime-adventure/poofight.png",
+      },
+    },
+    {
       title: "Fight",
       image: {
         uri: "https://bigstones.fr/pootime-adventure/poofight.png",

@@ -11,6 +11,7 @@ import { useResourcesStore } from "../../common/stores/resources.store";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
 import { useVillageStore } from "../../common/stores/village.store";
+import SettingsItem from "./elements/SettingsItem";
 
 export default function AccountSettings() {
   const { isVisible, show, hide } = useModals<"confirm">();
@@ -31,6 +32,23 @@ export default function AccountSettings() {
           ></SettingsHeader>
         }
       >
+        <SettingsScrollView
+          title="Synchroniser ses données"
+          items={[
+            {
+              label: "Se connecter avec Google",
+              onPress: () => show("confirm"),
+            },
+            {
+              label: "Se connecter avec Google",
+              onPress: () => show("confirm"),
+            },
+            {
+              label: "Se connecter avec Google",
+              onPress: () => show("confirm"),
+            },
+          ]}
+        ></SettingsScrollView>
         <SettingsScrollView
           items={[
             {

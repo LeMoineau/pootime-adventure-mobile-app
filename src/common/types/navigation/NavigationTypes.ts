@@ -13,7 +13,8 @@ export type RouteName =
   | "EventSettings"
   | "DonationSettings"
   | "TutoSettings"
-  | "StructureInfos";
+  | "StructureInfos"
+  | "LeaderboardPage";
 
 export type ParamListBase = {
   Inventory: undefined;
@@ -27,6 +28,7 @@ export type ParamListBase = {
   DonationSettings: undefined;
   TutoSettings: undefined;
   StructureInfos: { structureName: StructureName };
+  LeaderboardPage: undefined;
 };
 
 export type useNavigationType = NavigationProp<ParamListBase>;

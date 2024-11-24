@@ -6,4 +6,5 @@ export type Resources =
   | "ink"
   | "cosmicPowder"
   | "snow"
-  | "glass";
+  | "glass"
+  | "pooTrophee";

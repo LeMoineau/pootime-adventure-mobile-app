@@ -7,6 +7,7 @@ import InkIcon from "./resources/Ink";
 import GlassIcon from "./resources/Glass";
 import SnowIcon from "./resources/Snow";
 import CosmicPowderIcon from "./resources/CosmicPowder";
+import PooTropheeIcon from "./resources/PooTropheeIcon";
 
 export default function ResourceIcon({
   resource,
@@ -31,6 +32,8 @@ export default function ResourceIcon({
         <GlassIcon height={size}></GlassIcon>
       ) : resource === "snow" ? (
         <SnowIcon width={size}></SnowIcon>
+      ) : resource === "pooTrophee" ? (
+        <PooTropheeIcon height={size}></PooTropheeIcon>
       ) : (
         <CosmicPowderIcon width={size}></CosmicPowderIcon>
       )}

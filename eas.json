@@ -13,12 +13,12 @@
         "buildType": "apk"
       },
       "env": {
-        "PUBLIC_EXPO_BATTLE_SERVER_URL": "https://pootime-adventure-battle-server.onrender.com/"
+        "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://pootime-adventure-battle-server.onrender.com/"
       }
     },
     "production": {
       "env": {
-        "PUBLIC_EXPO_BATTLE_SERVER_URL": "https://pootime-adventure-battle-server.onrender.com/"
+        "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://pootime-adventure-battle-server.onrender.com/"
       }
     }
   },
