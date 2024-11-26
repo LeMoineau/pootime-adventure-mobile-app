@@ -1,11 +1,16 @@
 import { Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import PooCreatureBadge from "../../../common/components/misc/poo-creature/PooCreatureBadge";
-import { colors } from "../../../common/utils/color-utils";
-import PooTropheeIcon from "../../../common/components/icons/resources/PooTropheeIcon";
 import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
+import UserData from "../../../common/types/firebase/UserData";
 
-export default function LeaderboardRow() {
+export default function LeaderboardRow({
+  userData,
+  trailing,
+}: {
+  userData: UserData;
+  trailing: React.ReactNode;
+}) {
   return (
     <>
       <View
@@ -44,15 +49,10 @@ export default function LeaderboardRow() {
             style={[{ fontSize: 20, fontWeight: "600", overflow: "hidden" }]}
             numberOfLines={1}
           >
-            Un nom zqdoihqdzoi hqoizdh qoizdh oiqzhd oiqzhdo iqhzodiq hzoi dho
+            {userData.style.name}
           </Text>
         </View>
-        <TextWithResourceIcon
-          resource="pooTrophee"
-          text={255}
-          fontSize={20}
-          textStyle={[{ fontWeight: "500" }]}
-        ></TextWithResourceIcon>
+        {trailing}
       </View>
     </>
   );

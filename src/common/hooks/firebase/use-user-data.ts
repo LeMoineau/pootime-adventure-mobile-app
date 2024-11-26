@@ -1,19 +1,48 @@
+import { DefaultValues } from "../../config/DefaultValues";
 import { useFirebase } from "../../stores/firebase/firebase.store";
-import { getAuth, signInAnonymously } from "firebase/auth";
+import UserData from "../../types/firebase/UserData";
+import {
+  collection,
+  doc,
+  getDoc,
+  getFirestore,
+  limit,
+  query,
+  setDoc,
+  orderBy,
+  OrderByDirection,
+  getDocs,
+} from "firebase/firestore";
 
 export function useUserData() {
   const { getApp } = useFirebase();
+  const bd = getFirestore(getApp());
 
-  const signInAnonymous = async () => {
-    const auth = getAuth();
-    if (!auth.currentUser) {
-      await signInAnonymously(auth).then((...args) => {
-        console.log(args, "new user created!");
-      });
-    } else {
-      console.log("old user");
+  const getUserData = async (uid: string): Promise<UserData | undefined> => {
+    const snap = await getDoc(doc(bd, "user-data", uid));
+    if (snap.exists()) {
+      return snap.data() as UserData;
     }
+    return;
   };
 
-  return { signInAnonymous };
+  const getUserDatasOrderBy = async (
+    _orderBy: string,
+    _direction: OrderByDirection,
+    _limit?: number
+  ): Promise<UserData[]> => {
+    const q = query(
+      collection(bd, "user-data"),
+      orderBy(_orderBy, _direction),
+      limit(_limit ?? DefaultValues.FETCHING_LIMIT)
+    );
+    const snap = await getDocs(q);
+    return snap.docs.map((d) => d.exists() && d.data()) as UserData[];
+  };
+
+  const saveUserData = async (uid: string, userData: UserData) => {
+    await setDoc(doc(bd, "user-data", uid), userData);
+  };
+
+  return { getUserData, saveUserData, getUserDatasOrderBy };
 }

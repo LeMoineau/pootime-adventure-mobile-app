@@ -15,6 +15,7 @@ import {
 type Store = {
   selectedStructureName?: StructureName;
   get: (structureName: StructureName) => DataInStorage.Structure;
+  getName: () => string;
   saveDetail: (
     structureName: StructureName,
     detailName: StructureDetailName,
@@ -137,6 +138,10 @@ export const useVillageStore = create<Store>((set, get) => {
     await saveJson(StorageKeys.VILLAGE, DefaultValues.Village);
   };
 
+  const getName = () => {
+    return get().name;
+  };
+
   return {
     ...DefaultValues.Village,
     get: _get,
@@ -149,5 +154,6 @@ export const useVillageStore = create<Store>((set, get) => {
     select,
     change,
     resetData,
+    getName,
   };
 });

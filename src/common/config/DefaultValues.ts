@@ -83,4 +83,6 @@ export namespace DefaultValues {
       yaris: { level: 0, details: {} },
     },
   };
+
+  export const FETCHING_LIMIT = 20;
 }

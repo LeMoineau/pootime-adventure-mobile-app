@@ -49,3 +49,5 @@ export function isResourceItemValue(
 export function isStringItemValue(item: BuyableItemValue): item is string {
   return typeof item === "string";
 }
+
+export { BuyableItem };

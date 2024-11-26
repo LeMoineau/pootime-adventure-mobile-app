@@ -5,6 +5,8 @@ import { colors } from "../../../../common/utils/color-utils";
 import { style } from "../../../../common/utils/style-utils";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
+import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
+import { useResourcesStore } from "../../../../common/stores/resources.store";
 
 export default function HomeProfileButton({
   onPress,
@@ -12,7 +14,7 @@ export default function HomeProfileButton({
   onPress?: () => void;
 }) {
   const { name } = usePooCreatureStyleStore();
-  const { level } = usePooCreatureStatsStore();
+  const { get } = useResourcesStore();
   return (
     <>
       <StandardButton
@@ -32,17 +34,14 @@ export default function HomeProfileButton({
       >
         <View style={[style.flexRow, style.justifyCenter, style.itemsCenter]}>
           <PooCreatureHead size={45}></PooCreatureHead>
-          <View>
-            <Text style={[style.textBold, { marginLeft: 10, fontSize: 15 }]}>
-              {name}
-            </Text>
-            <Text
-              style={[
-                { color: colors.gray[500], marginLeft: 10, fontSize: 12 },
-              ]}
-            >
-              Level {level}
-            </Text>
+          <View style={[{ paddingLeft: 10 }]}>
+            <Text style={[style.textBold, { fontSize: 15 }]}>{name}</Text>
+            <TextWithResourceIcon
+              style={{ justifyContent: "flex-start" }}
+              resource="pooTrophee"
+              text={get("pooTrophee")}
+              textStyle={{ fontWeight: "400" }}
+            ></TextWithResourceIcon>
           </View>
         </View>
       </StandardButton>

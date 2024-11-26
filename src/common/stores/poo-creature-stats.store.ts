@@ -7,12 +7,14 @@ import { MathUtils } from "../utils/math-utils";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";
 import { CurveUtils } from "../utils/curve-utils";
+import { PooCreatureStats } from "../types/PooCreatureStats";
 
 export type PooCreatureStatsStore = {
   incrStat: (stat: StatType) => Promise<void>;
   selectUlti: (ulti: string) => Promise<void>;
   resetData: () => Promise<void>;
   calculateAllStarsSpent: () => number;
+  getStat: (stat: keyof PooCreatureStats) => any;
 } & DataInStorage.PooCreatureStats;
 
 export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
@@ -85,12 +87,17 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       return allStarsSpent;
     };
 
+    const getStat = (stat: keyof PooCreatureStats) => {
+      return get()[stat];
+    };
+
     return {
       ...DefaultValues.PooCreatureStats,
       incrStat,
       selectUlti,
       resetData,
       calculateAllStarsSpent,
+      getStat,
     };
   }
 );

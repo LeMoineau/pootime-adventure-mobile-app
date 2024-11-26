@@ -1,15 +1,22 @@
 import { useEffect } from "react";
 import Index from "./src/app/Index";
 import { useFirebase } from "./src/common/stores/firebase/firebase.store";
-import { useUserData } from "./src/common/hooks/firebase/use-user-data";
+import { AppState } from "react-native";
+import { useUserAuth } from "./src/common/hooks/firebase/use-user-auth";
 
 export default function App() {
   const { initApp } = useFirebase();
-  const { signInAnonymous } = useUserData();
+  const { saveCurrentStateInUser } = useUserAuth();
 
   useEffect(() => {
     initApp();
-    signInAnonymous();
+    AppState.addEventListener("change", async (state) => {
+      console.log("change", state);
+      if (state === "inactive" || state === "background") {
+        await saveCurrentStateInUser();
+        console.log("saved!");
+      }
+    });
   }, []);
 
   return <Index></Index>;

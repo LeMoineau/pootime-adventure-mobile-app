@@ -1,12 +1,23 @@
 import { Pressable, Text, View } from "react-native";
-import { style } from "../../../../common/utils/style-utils";
-import LeaderboardRow from "../LeaderboardRow";
-import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
-import { useState } from "react";
-import PooTropheeIcon from "../../../../common/components/icons/resources/PooTropheeIcon";
-import { colors } from "../../../../common/utils/color-utils";
+import { style } from "../../../common/utils/style-utils";
+import { colors } from "../../../common/utils/color-utils";
+import PooTropheeIcon from "../../../common/components/icons/resources/PooTropheeIcon";
+import ExpoIcon from "../../../common/components/icons/ExpoIcon";
+import LeaderboardRow from "./LeaderboardRow";
+import React, { useState } from "react";
+import UserData from "../../../common/types/firebase/UserData";
 
-export default function TropheeBoard() {
+export default function LeaderboardBoard({
+  title,
+  rows,
+  filterIcon,
+  item,
+}: {
+  title: string;
+  rows: UserData[];
+  filterIcon: React.ReactNode;
+  item: (userData: UserData) => React.ReactNode;
+}) {
   const [sortedAsc, setSortedAsc] = useState(false);
 
   return (
@@ -26,14 +37,14 @@ export default function TropheeBoard() {
             },
           ]}
         >
-          <Text> Classement par trophées </Text>
+          <Text> {title} </Text>
           <Pressable
             style={[style.flexRow, style.itemsCenter, { paddingHorizontal: 5 }]}
             onPress={() => {
               setSortedAsc(!sortedAsc);
             }}
           >
-            <PooTropheeIcon height={25}></PooTropheeIcon>
+            {filterIcon}
             <View style={[{ width: 10 }]}></View>
             <ExpoIcon
               name={sortedAsc ? "sort-asc" : "sort-desc"}
@@ -41,7 +52,7 @@ export default function TropheeBoard() {
             ></ExpoIcon>
           </Pressable>
         </View>
-        <LeaderboardRow></LeaderboardRow>
+        {rows.map(item)}
       </View>
     </>
   );
