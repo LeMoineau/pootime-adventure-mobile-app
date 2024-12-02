@@ -10,16 +10,22 @@ import PooTropheeIcon from "../../common/components/icons/resources/PooTropheeIc
 import PooCoinIcon from "../../common/components/icons/resources/pooCoin";
 import { getAuth } from "firebase/auth";
 import useLeaderboard from "../../common/hooks/leaderboard/use-leaderboard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LeaderboardBoard from "./elements/LeaderboardBoard";
 import TextWithResourceIcon from "../../common/components/text/TextWithResourceIcon";
+import { LeaderboardName } from "../../common/types/leaderboard/LeaderboardName";
+import { LeaderboardDirection } from "../../common/types/leaderboard/LeaderboardDirection";
 
 export default function LeaderboardPage() {
   const { getBoard, fetch } = useLeaderboard();
+  const [boardsDirection, setBoardsDirection] = useState<
+    [LeaderboardDirection, LeaderboardDirection]
+  >(["asc", "asc"]);
 
   useEffect(() => {
     fetch("trophees", "asc").then(async () => {
       await fetch("pooCoins", "asc");
+      setBoardsDirection(["asc", "asc"]);
     });
   }, []);
 
@@ -67,13 +73,20 @@ export default function LeaderboardPage() {
               content: (
                 <LeaderboardBoard
                   title="Classement par trophées"
+                  boardDirection={boardsDirection[0]}
                   filterIcon={<PooTropheeIcon height={25}></PooTropheeIcon>}
-                  rows={getBoard("trophees-asc")}
-                  item={(ud) => (
+                  onFilterPress={async (direction) => {
+                    await fetch("trophees", direction);
+                    setBoardsDirection([direction, boardsDirection[0]]);
+                  }}
+                  rows={getBoard(`trophees-${boardsDirection[0]}`)}
+                  item={(ud, index) => (
                     <LeaderboardRow
                       userData={ud}
+                      key={index}
                       trailing={
                         <TextWithResourceIcon
+                          key={`trophees-item-${index}`}
                           resource="pooTrophee"
                           text={ud.resources.pooTrophee}
                           fontSize={20}
@@ -90,13 +103,20 @@ export default function LeaderboardPage() {
               content: (
                 <LeaderboardBoard
                   title="Classement par pooCoins"
+                  boardDirection={boardsDirection[1]}
                   filterIcon={<PooCoinIcon width={25}></PooCoinIcon>}
-                  rows={getBoard("pooCoins-asc")}
-                  item={(ud) => (
+                  onFilterPress={async (direction) => {
+                    await fetch("pooCoins", direction);
+                    setBoardsDirection([boardsDirection[1], direction]);
+                  }}
+                  rows={getBoard(`pooCoins-${boardsDirection[1]}`)}
+                  item={(ud, index) => (
                     <LeaderboardRow
                       userData={ud}
+                      key={index}
                       trailing={
                         <TextWithResourceIcon
+                          key={`pooCoins-item-${index}`}
                           resource="pooCoins"
                           text={ud.resources.pooCoins}
                           fontSize={20}

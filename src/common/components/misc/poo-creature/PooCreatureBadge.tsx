@@ -4,6 +4,7 @@ import PooCreatureHead from "./PooCreatureHead";
 import { colors } from "../../../utils/color-utils";
 import LevelProgressBar from "../../fields/LevelProgressBar";
 import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
+import { PooHeadName } from "../../../types/shop/BuyableItem";
 
 export default function PooCreatureBadge({
   showInfos,
@@ -14,6 +15,9 @@ export default function PooCreatureBadge({
   border,
   borderColor,
   borderWidth,
+  bodyColor,
+  expression,
+  head,
 }: {
   showInfos?: boolean;
   size?: number;
@@ -23,8 +27,11 @@ export default function PooCreatureBadge({
   border?: boolean;
   borderColor?: ColorValue;
   borderWidth?: number;
+  bodyColor?: string;
+  expression?: string;
+  head?: PooHeadName;
 }) {
-  const { name, bodyColor } = usePooCreatureStyleStore();
+  const { name, bodyColor: bodyColorFromStore } = usePooCreatureStyleStore();
   return (
     <>
       <View
@@ -40,12 +47,18 @@ export default function PooCreatureBadge({
           {
             padding: padding ?? (size ? size / 10 : 20),
             backgroundColor: useBodyColorForBackground
-              ? bodyColor
+              ? bodyColor ?? bodyColorFromStore
               : backgroundColor ?? colors.white,
+            overflow: "hidden",
           },
         ]}
       >
-        <PooCreatureHead size={size ?? 200}></PooCreatureHead>
+        <PooCreatureHead
+          size={size ?? 200}
+          bodyColor={bodyColor}
+          expression={expression}
+          head={head}
+        ></PooCreatureHead>
       </View>
       {showInfos && (
         <>

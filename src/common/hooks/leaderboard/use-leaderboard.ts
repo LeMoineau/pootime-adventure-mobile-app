@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useUserData } from "../firebase/use-user-data";
 import UserData from "../../types/firebase/UserData";
+import { LeaderboardDirection } from "../../types/leaderboard/LeaderboardDirection";
+import { ItemsLeaderboardable } from "../../config/game-data/Leaderboard";
+import { LeaderboardName } from "../../types/leaderboard/LeaderboardName";
 
 export default function useLeaderboard() {
   const { getUserDatasOrderBy } = useUserData();
@@ -10,8 +13,8 @@ export default function useLeaderboard() {
   useEffect(() => {}, []);
 
   const fetch = async (
-    board: "trophees" | "pooCoins",
-    direction: "asc" | "desc"
+    board: ItemsLeaderboardable,
+    direction: LeaderboardDirection
   ) => {
     const boardKey = `${board}-${direction}`;
     if (!boards[boardKey]) {
@@ -26,9 +29,7 @@ export default function useLeaderboard() {
     }
   };
 
-  const getBoard = (
-    board: "trophees-asc" | "trophees-desc" | "pooCoins-asc" | "pooCoins-desc"
-  ): UserData[] => {
+  const getBoard = (board: LeaderboardName): UserData[] => {
     return boards[board] || [];
   };
 

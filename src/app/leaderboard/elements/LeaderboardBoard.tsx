@@ -1,25 +1,26 @@
 import { Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
-import PooTropheeIcon from "../../../common/components/icons/resources/PooTropheeIcon";
 import ExpoIcon from "../../../common/components/icons/ExpoIcon";
-import LeaderboardRow from "./LeaderboardRow";
 import React, { useState } from "react";
 import UserData from "../../../common/types/firebase/UserData";
+import { LeaderboardDirection } from "../../../common/types/leaderboard/LeaderboardDirection";
 
 export default function LeaderboardBoard({
+  boardDirection,
   title,
   rows,
   filterIcon,
+  onFilterPress,
   item,
 }: {
+  boardDirection: LeaderboardDirection;
   title: string;
   rows: UserData[];
   filterIcon: React.ReactNode;
-  item: (userData: UserData) => React.ReactNode;
+  onFilterPress?: (newDirection: LeaderboardDirection) => void;
+  item: (userData: UserData, index: number) => React.ReactNode;
 }) {
-  const [sortedAsc, setSortedAsc] = useState(false);
-
   return (
     <>
       <View>
@@ -41,13 +42,14 @@ export default function LeaderboardBoard({
           <Pressable
             style={[style.flexRow, style.itemsCenter, { paddingHorizontal: 5 }]}
             onPress={() => {
-              setSortedAsc(!sortedAsc);
+              onFilterPress &&
+                onFilterPress(boardDirection === "asc" ? "desc" : "asc");
             }}
           >
             {filterIcon}
             <View style={[{ width: 10 }]}></View>
             <ExpoIcon
-              name={sortedAsc ? "sort-asc" : "sort-desc"}
+              name={boardDirection === "asc" ? "sort-asc" : "sort-desc"}
               size={20}
             ></ExpoIcon>
           </Pressable>

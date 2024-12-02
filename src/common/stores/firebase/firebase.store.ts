@@ -1,5 +1,10 @@
 import { create } from "zustand";
-import { FirebaseApp, initializeApp } from "firebase/app";
+import {
+  FirebaseApp,
+  FirebaseError,
+  getApps,
+  initializeApp,
+} from "firebase/app";
 import { Auth, initializeAuth, getReactNativePersistence } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { firebaseConfig } from "../../config/firebaseConfig";
@@ -14,15 +19,17 @@ type Store = {
 
 export const useFirebase = create<Store>((set, get) => {
   const initApp = () => {
-    try {
-      const app = initializeApp(firebaseConfig);
-      const auth = initializeAuth(app, {
-        persistence: getReactNativePersistence(AsyncStorage),
-      });
+    if (getApps().length === 0) {
+      try {
+        const app = initializeApp(firebaseConfig);
+        const auth = initializeAuth(app, {
+          persistence: getReactNativePersistence(AsyncStorage),
+        });
 
-      set({ app, auth });
-    } catch (e) {
-      console.error("error find when trying initializing : ", e);
+        set({ app, auth });
+      } catch (e) {
+        console.error("error find when trying initializing : ", e);
+      }
     }
   };
 

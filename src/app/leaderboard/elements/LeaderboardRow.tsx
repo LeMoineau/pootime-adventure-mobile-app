@@ -1,7 +1,6 @@
 import { Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import PooCreatureBadge from "../../../common/components/misc/poo-creature/PooCreatureBadge";
-import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
 import UserData from "../../../common/types/firebase/UserData";
 
 export default function LeaderboardRow({
@@ -43,10 +42,13 @@ export default function LeaderboardRow({
             size={40}
             padding={7}
             useBodyColorForBackground
+            bodyColor={userData.style.bodyColor}
+            expression={userData.style.expression}
+            head={userData.style.head}
           ></PooCreatureBadge>
           <View style={[{ width: 10 }]}></View>
           <Text
-            style={[{ fontSize: 20, fontWeight: "600", overflow: "hidden" }]}
+            style={[{ fontSize: 17, fontWeight: "600", overflow: "hidden" }]}
             numberOfLines={1}
           >
             {userData.style.name}

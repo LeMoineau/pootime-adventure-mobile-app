@@ -10,12 +10,14 @@ export default function App() {
 
   useEffect(() => {
     initApp();
-    AppState.addEventListener("change", async (state) => {
-      console.log("change", state);
-      if (state === "inactive" || state === "background") {
-        await saveCurrentStateInUser();
-        console.log("saved!");
-      }
+    saveCurrentStateInUser().then(() => {
+      AppState.addEventListener("change", async (state) => {
+        console.log("change", state);
+        if (state === "inactive" || state === "background") {
+          await saveCurrentStateInUser();
+          console.log("saved!");
+        }
+      });
     });
   }, []);
 
