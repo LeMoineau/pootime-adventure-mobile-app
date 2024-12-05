@@ -12,6 +12,7 @@ export interface SettingsItemProps {
   subLabel?: string;
   hasRightArrow?: boolean;
   onPress?: () => void;
+  variant?: "standard" | "error" | "fade" | "success";
 }
 
 export default function SettingsItem({
@@ -20,6 +21,7 @@ export default function SettingsItem({
   subLabel,
   hasRightArrow,
   onPress,
+  variant,
 }: {} & SettingsItemProps) {
   return (
     <Pressable
@@ -32,7 +34,20 @@ export default function SettingsItem({
         {
           paddingHorizontal: 20,
           paddingVertical: 15,
-          backgroundColor: colors.gray[50],
+          backgroundColor:
+            variant === "error"
+              ? colors.red[100]
+              : variant === "success"
+              ? colors.green[100]
+              : colors.gray[50],
+          borderColor:
+            variant === "error"
+              ? colors.red[200]
+              : variant === "fade"
+              ? colors.gray[50]
+              : variant === "success"
+              ? colors.green[200]
+              : colors.gray[200],
           borderRadius: 10,
           marginBottom: 15,
         },
@@ -40,10 +55,15 @@ export default function SettingsItem({
       onPress={onPress}
     >
       <View
-        style={[style.flexRow, style.itemsCenter, style.hFull, { flex: 1 }]}
+        style={[
+          style.flexRow,
+          style.itemsCenter,
+          style.hFull,
+          { flex: 1, paddingRight: 10 },
+        ]}
       >
         {icon && <ExpoIcon name={icon} size={20}></ExpoIcon>}
-        <View style={[style.wFull, style.hFull, { marginLeft: icon ? 15 : 0 }]}>
+        <View style={[{ flex: 1, marginLeft: icon ? 15 : 0 }]}>
           <Text style={[{ color: colors.black, fontSize: 17 }]}>{label}</Text>
           {subLabel && (
             <Text style={[style.textSm, { color: colors.black, opacity: 0.5 }]}>

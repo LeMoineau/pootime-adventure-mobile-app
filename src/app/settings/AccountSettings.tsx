@@ -1,4 +1,4 @@
-import { Modal, ModalProps, Text } from "react-native";
+import { Modal, ModalProps, Text, View } from "react-native";
 import SettingsPage from "./elements/SettingsPage";
 import SettingsHeader from "./elements/SettingsHeader";
 import { SettingsScrollView } from "./elements/SettingsScrollView";
@@ -11,7 +11,8 @@ import { useResourcesStore } from "../../common/stores/resources.store";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
 import { useVillageStore } from "../../common/stores/village.store";
-import SettingsItem from "./elements/SettingsItem";
+import { useUserAuth } from "../../common/hooks/firebase/use-user-auth";
+import { useFirebase } from "../../common/stores/firebase/firebase.store";
 
 export default function AccountSettings() {
   const { isVisible, show, hide } = useModals<"confirm">();
@@ -21,6 +22,7 @@ export default function AccountSettings() {
   const resourcesStore = useResourcesStore();
   const navigator: useNavigationType = useNavigation();
   const { resetData: resetDataVillage } = useVillageStore();
+  const { getAuth } = useFirebase();
 
   return (
     <>
@@ -33,23 +35,48 @@ export default function AccountSettings() {
         }
       >
         <SettingsScrollView
-          title="Synchroniser ses données"
           items={[
             {
-              label: "Se connecter avec Google",
+              icon: "check",
+              label: getAuth().currentUser ? "Connecté" : "Non connecté",
+              subLabel: getAuth().currentUser
+                ? `ID: #${getAuth().currentUser?.uid}`
+                : `Veuillez vérifier votre connexion internet`,
+              variant: getAuth().currentUser ? "success" : "error",
               onPress: () => show("confirm"),
             },
             {
-              label: "Se connecter avec Google",
-              onPress: () => show("confirm"),
-            },
-            {
-              label: "Se connecter avec Google",
+              icon: "close",
+              label: getAuth().currentUser?.isAnonymous
+                ? "Compte non lié"
+                : "Compte lié",
+              subLabel: getAuth().currentUser?.isAnonymous
+                ? "Veuillez lier votre compte pour sécuriser vos données"
+                : "",
+              variant: getAuth().currentUser?.isAnonymous ? "error" : "success",
               onPress: () => show("confirm"),
             },
           ]}
         ></SettingsScrollView>
         <SettingsScrollView
+          title="Synchronisation des données"
+          items={[
+            {
+              icon: "google",
+              label: "Lier à Google",
+              hasRightArrow: true,
+              onPress: () => show("confirm"),
+            },
+            {
+              icon: "cancel-presentation",
+              label: "Se déconnecter",
+              variant: "error",
+              onPress: () => show("confirm"),
+            },
+          ]}
+        ></SettingsScrollView>
+        <SettingsScrollView
+          title="Gestion des données"
           items={[
             {
               label: "Reset",

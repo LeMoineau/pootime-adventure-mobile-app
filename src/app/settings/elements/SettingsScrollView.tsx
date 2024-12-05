@@ -9,17 +9,16 @@ export function SettingsScrollView({
   items,
   ...props
 }: { title?: string; items: SettingsItemProps[] } & ViewProps) {
-  console.log(items);
   return (
-    <View style={[style.wFull, props.style]}>
+    <View style={[style.wFull, { marginBottom: 20 }, props.style]}>
       {title && (
         <Text
           style={[
-            style.textMd,
             {
-              marginBottom: 10,
+              marginBottom: 15,
               marginLeft: 10,
               color: colors.black,
+              fontSize: 17,
             },
           ]}
         >

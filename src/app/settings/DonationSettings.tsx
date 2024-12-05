@@ -51,22 +51,26 @@ export default function DonationSettings() {
             software ✨
           </Text>
         </View>
+        <View style={[{ height: 20 }]}></View>
         <SettingsScrollView
           items={[
             {
               label: `☕  Buy me a coffee !`,
+              hasRightArrow: true,
               onPress: () => {
                 Linking.openURL("https://ko-fi.com/pierrot_");
               },
             },
             {
               label: `🍱  Check my bento !`,
+              hasRightArrow: true,
               onPress: () => {
                 Linking.openURL("https://bento.me/pierrrot");
               },
             },
             {
               label: `🌳  Check my linktree !`,
+              hasRightArrow: true,
               onPress: () => {
                 Linking.openURL("https://linktr.ee/pierrot_");
               },

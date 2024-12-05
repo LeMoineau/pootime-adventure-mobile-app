@@ -23,7 +23,6 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>(
       };
       set(baseValues);
       if (json === null || !ObjectUtils.equals(json, baseValues)) {
-        console.log("coucou");
         await saveJson(StorageKeys.POO_CREATURE_STYLE, baseValues);
       }
     });
