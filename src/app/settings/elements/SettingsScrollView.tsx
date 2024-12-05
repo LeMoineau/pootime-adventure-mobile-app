@@ -9,22 +9,31 @@ export function SettingsScrollView({
   items,
   ...props
 }: { title?: string; items: SettingsItemProps[] } & ViewProps) {
+  console.log(items);
   return (
-    <View style={[style.wFull, { padding: 10 }, props.style]}>
+    <View style={[style.wFull, props.style]}>
       {title && (
-        <Text style={[style.textMd, { marginBottom: 5, marginLeft: 10 }]}>
+        <Text
+          style={[
+            style.textMd,
+            {
+              marginBottom: 10,
+              marginLeft: 10,
+              color: colors.black,
+            },
+          ]}
+        >
           {title}
         </Text>
       )}
       <View
         style={[
           style.wFull,
-          style.border,
           style.shadowMd,
-          style.roundedLg,
           style.overflowHidden,
           {
             backgroundColor: colors.white,
+            paddingHorizontal: 10,
             // backgroundColor: "rgba(255, 255, 255, 0.7)",
           },
         ]}

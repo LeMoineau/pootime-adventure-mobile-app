@@ -11,8 +11,6 @@ import InventoryPage from "./inventory/InventoryPage";
 import AppBottomBar from "../common/components/navigation/AppBottomBar";
 import Blur from "../common/components/views/Blur";
 import ShopPage from "./shop/ShopPage";
-import { useResourcesStore } from "../common/stores/resources.store";
-import { useItemsUnlockedStore } from "../common/stores/items-unlocked.store";
 import OnlineArena from "./online-arena/OnlineArena";
 import EntityArena from "./entity-arena/EntityArena";
 import Settings from "./settings/Settings";

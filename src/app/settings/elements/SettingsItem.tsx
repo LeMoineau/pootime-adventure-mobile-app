@@ -30,26 +30,29 @@ export default function SettingsItem({
         style.itemsCenter,
         style.border,
         {
-          flex: 1,
-          padding: 20,
-          borderWidth: 0,
-          borderBottomWidth: 1,
+          paddingHorizontal: 20,
+          paddingVertical: 15,
+          backgroundColor: colors.gray[50],
+          borderRadius: 10,
+          marginBottom: 15,
         },
       ]}
       onPress={onPress}
     >
-      <View style={[style.flexRow, style.itemsCenter, { flex: 1 }]}>
-        {icon && <ExpoIcon name={icon} size={30}></ExpoIcon>}
-        <View style={[style.wFull, { marginLeft: icon ? 15 : 0 }]}>
-          <Text style={[style.textMd]}>{label}</Text>
+      <View
+        style={[style.flexRow, style.itemsCenter, style.hFull, { flex: 1 }]}
+      >
+        {icon && <ExpoIcon name={icon} size={20}></ExpoIcon>}
+        <View style={[style.wFull, style.hFull, { marginLeft: icon ? 15 : 0 }]}>
+          <Text style={[{ color: colors.black, fontSize: 17 }]}>{label}</Text>
           {subLabel && (
-            <Text style={[style.textSm, { color: colors.gray[500] }]}>
+            <Text style={[style.textSm, { color: colors.black, opacity: 0.5 }]}>
               {subLabel}
             </Text>
           )}
         </View>
       </View>
-      {hasRightArrow && <RightArrow size={20}></RightArrow>}
+      {hasRightArrow && <RightArrow size={15}></RightArrow>}
     </Pressable>
   );
 }

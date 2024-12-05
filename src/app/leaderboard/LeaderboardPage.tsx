@@ -50,9 +50,9 @@ export default function LeaderboardPage() {
               resource: "pooTrophee" as Resources,
             },
             {
-              icon: <PooCoinIcon height={35}></PooCoinIcon>,
+              icon: <PooCoinIcon size={35}></PooCoinIcon>,
               title: "Classement par pooCoins",
-              filterIcon: <PooCoinIcon height={25}></PooCoinIcon>,
+              filterIcon: <PooCoinIcon width={25}></PooCoinIcon>,
               leaderboardName: "pooCoins" as ItemsLeaderboardable,
               resource: "pooCoins" as Resources,
             },
@@ -99,6 +99,39 @@ export default function LeaderboardPage() {
               ),
             })
           )}
+          //   [
+
+          //   {
+          //     icon: <PooCoinIcon size={35}></PooCoinIcon>,
+          //     content: (
+          //       <LeaderboardBoard
+          //         title="Classement par pooCoins"
+          //         boardDirection={boardsDirection[1]}
+          //         filterIcon={<PooCoinIcon width={25}></PooCoinIcon>}
+          //         onFilterPress={async (direction) => {
+          //           await fetch("pooCoins", direction);
+          //           setBoardsDirection([boardsDirection[1], direction]);
+          //         }}
+          //         rows={getBoard(`pooCoins-${boardsDirection[1]}`)}
+          //         item={(ud, index) => (
+          //           <LeaderboardRow
+          //             userData={ud}
+          //             key={index}
+          //             trailing={
+          //               <TextWithResourceIcon
+          //                 key={`pooCoins-item-${index}`}
+          //                 resource="pooCoins"
+          //                 text={ud.resources.pooCoins}
+          //                 fontSize={20}
+          //                 textStyle={[{ fontWeight: "500" }]}
+          //               ></TextWithResourceIcon>
+          //             }
+          //           ></LeaderboardRow>
+          //         )}
+          //       ></LeaderboardBoard>
+          //     ),
+          //   },
+          // ]}
         ></RoundedScrollView>
       </CustomPage>
     </>

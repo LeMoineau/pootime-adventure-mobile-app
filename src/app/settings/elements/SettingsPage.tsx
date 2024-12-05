@@ -17,7 +17,8 @@ export default function SettingsPage({
         {
           flex: 1,
           height: height,
-          backgroundColor: colors.orange[200],
+          backgroundColor: colors.white,
+          paddingTop: 100,
         },
       ]}
     >
