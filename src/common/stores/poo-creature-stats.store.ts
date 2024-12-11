@@ -15,6 +15,7 @@ export type PooCreatureStatsStore = {
   resetData: () => Promise<void>;
   calculateAllStarsSpent: () => number;
   getStat: (stat: keyof PooCreatureStats) => any;
+  loadData: (data: DataInStorage.PooCreatureStats) => Promise<void>;
 } & DataInStorage.PooCreatureStats;
 
 export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
@@ -75,6 +76,11 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       set({ ...DefaultValues.PooCreatureStats });
     };
 
+    const loadData = async (data: DataInStorage.PooCreatureStats) => {
+      await saveJson(StorageKeys.POO_CREATURE_STATS, data);
+      set({ ...data });
+    };
+
     const calculateAllStarsSpent = () => {
       const allStarsSpent =
         get()?.attaque -
@@ -98,6 +104,7 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       resetData,
       calculateAllStarsSpent,
       getStat,
+      loadData,
     };
   }
 );

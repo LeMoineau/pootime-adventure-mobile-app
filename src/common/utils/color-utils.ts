@@ -1,4 +1,4 @@
-export const colors = {
+let tmpColors = {
   baseBodyColor: "#e5e3b3",
   transparent: "transparent",
   baseProgressColor: "#4a9fff",
@@ -291,4 +291,14 @@ export const colors = {
     "900": "#881337",
     "950": "#4c0519",
   },
+  error: "",
+  success: "",
+  warning: "",
+  primary: "",
 };
+
+tmpColors.error = tmpColors.red[500];
+tmpColors.success = tmpColors.green[500];
+tmpColors.primary = tmpColors.baseProgressColor;
+
+export const colors = tmpColors;

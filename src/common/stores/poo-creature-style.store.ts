@@ -10,6 +10,7 @@ export type PooCreatureStyleStore = {
   update: (style: StyleKeys, name: string) => Promise<void>;
   resetData: () => Promise<void>;
   getStyle: (style: StyleKeys) => any;
+  loadData: (data: DataInStorage.PooCreatureStyle) => Promise<void>;
 } & DataInStorage.PooCreatureStyle;
 
 export const usePooCreatureStyleStore = create<PooCreatureStyleStore>(
@@ -40,6 +41,11 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>(
       set({ ...DefaultValues.PooCreatureStyle });
     };
 
+    const loadData = async (data: DataInStorage.PooCreatureStyle) => {
+      await saveJson(StorageKeys.POO_CREATURE_STYLE, data);
+      set({ ...data });
+    };
+
     const getStyle = (style: StyleKeys): any => {
       return get()[style];
     };
@@ -49,6 +55,7 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>(
       update,
       resetData,
       getStyle,
+      loadData,
     };
   }
 );

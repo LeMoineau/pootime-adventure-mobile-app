@@ -8,7 +8,7 @@ export default function UltiView({
   title,
   desc,
   details,
-  price,
+  unlockLevel,
   unlocked,
   selected,
   onPress,
@@ -17,7 +17,7 @@ export default function UltiView({
   title: string;
   desc: string;
   details: { mana: number; [key: string]: any };
-  price: number;
+  unlockLevel: number;
   unlocked?: boolean;
   selected: boolean;
   onPress: (title: string) => void;
@@ -108,9 +108,23 @@ export default function UltiView({
           ]}
         >
           <Text style={[style.textBold, style.textMd, { color: colors.white }]}>
-            Unlock for {price}{" "}
+            Unlock at{" "}
           </Text>
-          <StarIcon></StarIcon>
+          <Text
+            style={[
+              style.textBold,
+              style.textMd,
+              {
+                color: colors.white,
+                fontStyle: "italic",
+                backgroundColor: colors.baseProgressColor,
+                paddingHorizontal: 10,
+                borderRadius: 7,
+              },
+            ]}
+          >
+            Level {unlockLevel}
+          </Text>
         </View>
       )}
     </Pressable>

@@ -14,7 +14,7 @@ import ShopPage from "./shop/ShopPage";
 import OnlineArena from "./online-arena/OnlineArena";
 import EntityArena from "./entity-arena/EntityArena";
 import Settings from "./settings/Settings";
-import AccountSettings from "./settings/AccountSettings";
+import AccountSettings from "./settings/account/AccountSettings";
 import DevSettings from "./settings/DevSettings";
 import EventSettings from "./settings/EventSettings";
 import DonationSettings from "./settings/DonationSettings";
@@ -22,6 +22,8 @@ import TutoSettings from "./settings/TutoSettings";
 import VillagePage from "./village/VillagePage";
 import StructureInfosPage from "./structure-infos/StructureInfosPage";
 import LeaderboardPage from "./leaderboard/LeaderboardPage";
+import LoginPage from "./settings/account/LoginPage";
+import RegisterPage from "./settings/account/RegisterPage";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -52,10 +54,17 @@ export default function App() {
             name="EntityArena"
             component={EntityArena}
           ></Stack.Screen>
+
+          {/* SETTINGS PAGES */}
           <Stack.Screen name="Settings" component={Settings}></Stack.Screen>
           <Stack.Screen
             name="AccountSettings"
             component={AccountSettings}
+          ></Stack.Screen>
+          <Stack.Screen name="LoginPage" component={LoginPage}></Stack.Screen>
+          <Stack.Screen
+            name="RegisterPage"
+            component={RegisterPage}
           ></Stack.Screen>
           <Stack.Screen
             name="DevSettings"

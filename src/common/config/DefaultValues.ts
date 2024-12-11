@@ -32,11 +32,6 @@ export namespace DefaultValues {
   export const PooHeadColor = "#c8a000";
 
   //Resources
-  export const Resources: DataInStorage.Resources = {
-    stars: 5,
-    pooCoins: 250,
-    wool: 0,
-  };
   export const Inventory: Inventory = {
     stars: 5,
     pooCoins: 250,
@@ -85,4 +80,7 @@ export namespace DefaultValues {
   };
 
   export const FETCHING_LIMIT = 20;
+
+  export const MIN_PASSWORD_LENGTH = 8;
+  export const MAX_LOGIN_FIELD_LENGTH = 255;
 }

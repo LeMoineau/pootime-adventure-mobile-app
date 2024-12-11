@@ -10,26 +10,38 @@ import {
   initializeAuth,
   getReactNativePersistence,
   getAuth as getFireAuth,
+  User,
+  onAuthStateChanged,
 } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { firebaseConfig } from "../../config/firebaseConfig";
+import useStorage from "../../hooks/use-storage";
+import { StorageKeys } from "../../config/StorageKeys";
 
 type Store = {
+  currentUser?: User;
   initApp: () => void;
   init?: boolean;
   getApp: () => FirebaseApp;
   getAuth: () => Auth;
+  userIsPersisted: () => Promise<boolean>;
+  syncCurrentUser: (user?: User) => void;
 };
 
 export const useFirebase = create<Store>((set, get) => {
+  const { saveBoolean, getBoolean } = useStorage();
+
   const initApp = () => {
     if (getApps().length === 0) {
       try {
         const app = initializeApp(firebaseConfig);
-        initializeAuth(app, {
+        const auth = initializeAuth(app, {
           persistence: getReactNativePersistence(AsyncStorage),
         });
-
+        onAuthStateChanged(auth, async (user) => {
+          set({ currentUser: user ?? undefined });
+          await saveBoolean(StorageKeys.USER_IS_PERSISTED, user !== null);
+        });
         set({ init: true });
       } catch (e) {
         console.error("error find when trying initializing : ", e);
@@ -53,9 +65,20 @@ export const useFirebase = create<Store>((set, get) => {
     return getFireAuth();
   };
 
+  const userIsPersisted = async () => {
+    return (await getBoolean(StorageKeys.USER_IS_PERSISTED)) === true;
+  };
+
+  const syncCurrentUser = (user?: User) => {
+    set({ currentUser: user ?? getAuth().currentUser ?? undefined });
+  };
+
   return {
+    currentUser: undefined,
     initApp,
     getApp,
     getAuth,
+    userIsPersisted,
+    syncCurrentUser,
   };
 });

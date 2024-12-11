@@ -41,6 +41,7 @@ type Store = {
   select: (selectedStructureName: StructureName) => void;
   change: (key: "name", val: string) => Promise<void>;
   resetData: () => Promise<void>;
+  loadData: (data: DataInStorage.Village) => Promise<void>;
 } & DataInStorage.Village;
 
 export const useVillageStore = create<Store>((set, get) => {
@@ -138,6 +139,11 @@ export const useVillageStore = create<Store>((set, get) => {
     await saveJson(StorageKeys.VILLAGE, DefaultValues.Village);
   };
 
+  const loadData = async (data: DataInStorage.Village) => {
+    set({ ...data });
+    await saveJson(StorageKeys.VILLAGE, data);
+  };
+
   const getName = () => {
     return get().name;
   };
@@ -155,5 +161,6 @@ export const useVillageStore = create<Store>((set, get) => {
     change,
     resetData,
     getName,
+    loadData,
   };
 });

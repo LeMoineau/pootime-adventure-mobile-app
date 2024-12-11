@@ -21,11 +21,7 @@ export default function LeaderboardSubHeader() {
               viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
               textColor={colors.white}
               textStyle={[{ fontSize: 17, fontWeight: "500" }]}
-              onPress={async () => {
-                // const currentUser = getAuth().currentUser;
-                // const token = await currentUser?.getIdToken();
-                // console.log(token);
-              }}
+              onPress={async () => {}}
             >
               Coucou
             </StandardButton>

@@ -7,12 +7,6 @@ import {
 } from "../types/village/StructureDetail";
 
 export namespace DataInStorage {
-  export interface Resources {
-    stars: number;
-    pooCoins: number;
-    wool: number;
-  }
-
   export interface PooCreatureStyle extends Style {}
 
   export interface PooCreatureStats extends Stats {}

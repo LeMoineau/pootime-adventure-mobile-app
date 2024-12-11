@@ -3,7 +3,9 @@ import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 import ExpoIcon from "../../../common/components/icons/ExpoIcon";
 import React, { useState } from "react";
-import UserData from "../../../common/types/firebase/UserData";
+import UserData, {
+  UserDataWithUid,
+} from "../../../common/types/firebase/UserData";
 import { LeaderboardDirection } from "../../../common/types/leaderboard/LeaderboardDirection";
 
 export default function LeaderboardBoard({
@@ -16,10 +18,10 @@ export default function LeaderboardBoard({
 }: {
   boardDirection: LeaderboardDirection;
   title: string;
-  rows: UserData[];
+  rows: UserDataWithUid[];
   filterIcon: React.ReactNode;
   onFilterPress?: (newDirection: LeaderboardDirection) => void;
-  item: (userData: UserData, index: number) => React.ReactNode;
+  item: (userData: UserDataWithUid, index: number) => React.ReactNode;
 }) {
   return (
     <>

@@ -2,12 +2,15 @@ import { Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import PooCreatureBadge from "../../../common/components/misc/poo-creature/PooCreatureBadge";
 import UserData from "../../../common/types/firebase/UserData";
+import { colors } from "../../../common/utils/color-utils";
 
 export default function LeaderboardRow({
   userData,
+  isYou,
   trailing,
 }: {
   userData: UserData;
+  isYou?: boolean;
   trailing: React.ReactNode;
 }) {
   return (
@@ -22,6 +25,7 @@ export default function LeaderboardRow({
             padding: 10,
             maxWidth: "100%",
             overflow: "hidden",
+            backgroundColor: isYou ? colors.baseBackgroundColor : undefined,
           },
         ]}
       >
@@ -51,7 +55,7 @@ export default function LeaderboardRow({
             style={[{ fontSize: 17, fontWeight: "600", overflow: "hidden" }]}
             numberOfLines={1}
           >
-            {userData.style.name}
+            {userData.style.name} {isYou && " (Vous)"}
           </Text>
         </View>
         {trailing}

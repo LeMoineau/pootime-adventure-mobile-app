@@ -1,6 +1,6 @@
 import { DefaultValues } from "../../config/DefaultValues";
 import { useFirebase } from "../../stores/firebase/firebase.store";
-import UserData from "../../types/firebase/UserData";
+import UserData, { UserDataWithUid } from "../../types/firebase/UserData";
 import {
   collection,
   doc,
@@ -30,14 +30,16 @@ export function useUserData() {
     _orderBy: string,
     _direction: OrderByDirection,
     _limit?: number
-  ): Promise<UserData[]> => {
+  ): Promise<UserDataWithUid[]> => {
     const q = query(
       collection(bd, "user-data"),
       orderBy(_orderBy, _direction),
       limit(_limit ?? DefaultValues.FETCHING_LIMIT)
     );
     const snap = await getDocs(q);
-    return snap.docs.map((d) => d.exists() && d.data()) as UserData[];
+    return snap.docs.map(
+      (d) => d.exists() && { ...d.data(), uid: d.id }
+    ) as UserDataWithUid[];
   };
 
   const saveUserData = async (uid: string, userData: UserData) => {

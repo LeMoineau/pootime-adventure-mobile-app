@@ -7,23 +7,31 @@ import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 export function SettingsScrollView({
   title,
   items,
+  actionChild,
   ...props
-}: { title?: string; items: SettingsItemProps[] } & ViewProps) {
+}: {
+  title?: string;
+  items: SettingsItemProps[];
+  actionChild?: React.ReactNode;
+} & ViewProps) {
   return (
     <View style={[style.wFull, { marginBottom: 20 }, props.style]}>
       {title && (
-        <Text
-          style={[
-            {
-              marginBottom: 15,
-              marginLeft: 10,
-              color: colors.black,
-              fontSize: 17,
-            },
-          ]}
-        >
-          {title}
-        </Text>
+        <View style={[style.flexRow, style.wFull, style.justifyBetween, {}]}>
+          <Text
+            style={[
+              {
+                marginBottom: 15,
+                marginLeft: 10,
+                color: colors.black,
+                fontSize: 17,
+              },
+            ]}
+          >
+            {title}
+          </Text>
+          {actionChild}
+        </View>
       )}
       <View
         style={[

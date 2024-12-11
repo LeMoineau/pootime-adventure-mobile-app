@@ -11,7 +11,7 @@ import { Ultis } from "../../../../common/types/Ultis";
 export default function UltiTab() {
   const { spend } = useResourcesStore();
   const { unlock, isUnlocked } = useItemsUnlockedStore();
-  const { ultiSelected, selectUlti } = usePooCreatureStatsStore();
+  const { ultiSelected, level, selectUlti } = usePooCreatureStatsStore();
 
   return (
     <View style={[style.flexCol]}>
@@ -24,16 +24,11 @@ export default function UltiTab() {
             desc={ulti.desc}
             icon={<IconFromImage uri={ulti.icon} size={70}></IconFromImage>}
             details={ulti.details}
-            price={item.price}
-            unlocked={isUnlocked("ultis", item.name)}
+            unlockLevel={ulti.unlockLevel}
+            unlocked={level >= ulti.unlockLevel}
             selected={ultiSelected === item.name}
             onPress={async () => {
-              if (!isUnlocked("ultis", item.name)) {
-                await spend("stars", item.price, async () => {
-                  await unlock("ultis", item.name);
-                  await selectUlti(item.name);
-                });
-              } else {
+              if (level >= ulti.unlockLevel) {
                 await selectUlti(item.name);
               }
             }}

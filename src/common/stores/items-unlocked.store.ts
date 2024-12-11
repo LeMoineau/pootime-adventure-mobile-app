@@ -11,6 +11,7 @@ type Store = {
   isUnlocked: (item: UnlockableItems, name: string) => boolean;
   resetData: () => Promise<void>;
   getItemsByCategories: (categorie: keyof DataInStorage.ItemsUnlocked) => any;
+  loadData: (data: DataInStorage.ItemsUnlocked) => Promise<void>;
 } & DataInStorage.ItemsUnlocked;
 
 export const useItemsUnlockedStore = create<Store>((set, get) => {
@@ -51,6 +52,11 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     set({ ...DefaultValues.ItemsUnlocked });
   };
 
+  const loadData = async (data: DataInStorage.ItemsUnlocked) => {
+    await saveJson(StorageKeys.ITEMS_UNLOCKED, data);
+    set({ ...data });
+  };
+
   const getItemsByCategories = (
     categorie: keyof DataInStorage.ItemsUnlocked
   ) => {
@@ -63,5 +69,6 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     isUnlocked,
     resetData,
     getItemsByCategories,
+    loadData,
   };
 });

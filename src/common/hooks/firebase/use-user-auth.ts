@@ -1,94 +1,113 @@
-import { getAuth, signInAnonymously } from "firebase/auth";
-import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
-import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
-import { useResourcesStore } from "../../stores/resources.store";
-import { useVillageStore } from "../../stores/village.store";
+import {
+  createUserWithEmailAndPassword,
+  EmailAuthProvider,
+  linkWithCredential,
+  signInAnonymously,
+  signInWithEmailAndPassword,
+  signOut,
+  UserCredential,
+} from "firebase/auth";
 import { useUserData } from "./use-user-data";
-import UserData from "../../types/firebase/UserData";
-import { useItemsUnlockedStore } from "../../stores/items-unlocked.store";
+import { useFirebase } from "../../stores/firebase/firebase.store";
+import { useState } from "react";
+import { FirebaseError } from "firebase/app";
+import useMassiveStoreLoader from "../admin/user-massive-store-loader";
 
 export function useUserAuth() {
   const { saveUserData } = useUserData();
-  const { getStat } = usePooCreatureStatsStore();
-  const { getStyle } = usePooCreatureStyleStore();
-  const { get } = useResourcesStore();
-  const { getItemsByCategories } = useItemsUnlockedStore();
-  const { get: getStructure, getName } = useVillageStore();
+  const { getAuth, currentUser, syncCurrentUser } = useFirebase();
+  const { generateUserDataFromStores } = useMassiveStoreLoader();
 
-  const _getCurrentUserUid = async (): Promise<string> => {
-    const auth = getAuth();
-    if (!auth.currentUser) {
-      const userCredential = await signInAnonymously(auth);
-      return userCredential.user.uid;
+  const [authError, setAuthError] = useState("");
+
+  const _handleAuthError = (code: string) => {
+    console.error(code);
+    if (code === "auth/invalid-credential") {
+      setAuthError("Adresse mail ou mot de passe incorrect");
+    } else if (code === "auth/email-already-in-use") {
+      setAuthError("Cette adresse mail a déjà été utilisée");
+    } else {
+      setAuthError("Erreur lors de l'authentification");
     }
-    return auth.currentUser.uid;
-  };
-
-  /**
-   * Create a new user from all stores (stats, style, resources & villages)
-   */
-  const _createUserDataFromStores = (): UserData => {
-    return {
-      resources: {
-        cosmicPowder: get("cosmicPowder"),
-        glass: get("glass"),
-        ink: get("ink"),
-        metal: get("metal"),
-        pooCoins: get("pooCoins"),
-        pooTrophee: get("pooTrophee"),
-        snow: get("snow"),
-        stars: get("stars"),
-        wool: get("wool"),
-      },
-      stats: {
-        attaque: getStat("attaque"),
-        defense: getStat("defense"),
-        currentExp: getStat("currentExp"),
-        level: getStat("level"),
-        mana: getStat("mana"),
-        pv: getStat("pv"),
-        recupMana: getStat("recupMana"),
-        resMana: getStat("resMana"),
-        ultiSelected: getStat("ultiSelected"),
-      },
-      style: {
-        bodyColor: getStyle("bodyColor"),
-        head: getStyle("head"),
-        expression: getStyle("expression"),
-        name: getStyle("name"),
-      },
-      village: {
-        name: getName(),
-        structures: {
-          toilet: getStructure("toilet"),
-          yaris: getStructure("yaris"),
-        },
-      },
-      itemsUnlocked: {
-        bodyColors: getItemsByCategories("bodyColors"),
-        events: getItemsByCategories("events"),
-        expressions: getItemsByCategories("expressions"),
-        heads: getItemsByCategories("heads"),
-        options: getItemsByCategories("options"),
-        ultis: getItemsByCategories("ultis"),
-      },
-    };
   };
 
   /**
    * Save the current state (described by stores) in the current user logged in.
    *
-   * If user is not yet logged, will create an anonymous account for
+   * If user is not yet logged, will not save
    */
   const saveCurrentStateInUser = async () => {
+    if (!currentUser) return;
     try {
-      const uid = await _getCurrentUserUid();
-      const userData = _createUserDataFromStores();
-      await saveUserData(uid, userData);
+      const userData = generateUserDataFromStores();
+      await saveUserData(currentUser.uid, userData);
     } catch (e) {
       console.error("error while saving current state in user", e);
     }
   };
 
-  return { saveCurrentStateInUser };
+  const createAnonymousAccount = async () => {
+    try {
+      await signInAnonymously(getAuth());
+    } catch (e) {
+      if (e instanceof FirebaseError) _handleAuthError(e.code);
+    }
+  };
+
+  const disconnect = async () => {
+    await signOut(getAuth());
+  };
+
+  const createAccountWithEmailAndPassword = async (
+    email: string,
+    password: string,
+    onSuccess?: (userCredential: UserCredential) => void
+  ) => {
+    try {
+      if (currentUser && currentUser.isAnonymous) {
+        const credential = EmailAuthProvider.credential(email, password);
+        const userCredential = await linkWithCredential(
+          currentUser,
+          credential
+        );
+        syncCurrentUser(userCredential.user);
+        onSuccess && onSuccess(userCredential);
+      } else {
+        const userCredential = await createUserWithEmailAndPassword(
+          getAuth(),
+          email,
+          password
+        );
+        onSuccess && onSuccess(userCredential);
+      }
+    } catch (e) {
+      if (e instanceof FirebaseError) _handleAuthError(e.code);
+    }
+  };
+
+  const connectWithEmailAndPassword = async (
+    email: string,
+    password: string,
+    onSuccess?: (userCredential: UserCredential) => void
+  ) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        getAuth(),
+        email,
+        password
+      );
+      onSuccess && onSuccess(userCredential);
+    } catch (e) {
+      if (e instanceof FirebaseError) _handleAuthError(e.code);
+    }
+  };
+
+  return {
+    authError,
+    createAnonymousAccount,
+    saveCurrentStateInUser,
+    disconnect,
+    createAccountWithEmailAndPassword,
+    connectWithEmailAndPassword,
+  };
 }

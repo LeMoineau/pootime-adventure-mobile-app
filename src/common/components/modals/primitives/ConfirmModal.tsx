@@ -48,6 +48,20 @@ export default function ConfirmModal({
               { justifyContent: "space-around" },
             ]}
           >
+            <StandardButton
+              style={{ paddingTop: 10, flex: 1 }}
+              bgColor={colors.red[400]}
+              textColor={colors.white}
+              viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
+              textStyle={[{ fontSize: 15 }]}
+              onPress={(evt) => {
+                props.onRequestClose && props.onRequestClose(evt);
+                onCancel && onCancel();
+              }}
+            >
+              Cancel
+            </StandardButton>
+            <View style={[{ width: 10 }]}></View>
             {confirmButton ? (
               confirmButton((evt) => {
                 props.onRequestClose && props.onRequestClose(evt);
@@ -68,20 +82,6 @@ export default function ConfirmModal({
                 Confirm
               </StandardButton>
             )}
-            <View style={[{ width: 10 }]}></View>
-            <StandardButton
-              style={{ paddingTop: 10, flex: 1 }}
-              bgColor={colors.red[400]}
-              textColor={colors.white}
-              viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
-              textStyle={[{ fontSize: 15 }]}
-              onPress={(evt) => {
-                props.onRequestClose && props.onRequestClose(evt);
-                onCancel && onCancel();
-              }}
-            >
-              Cancel
-            </StandardButton>
           </View>
         </View>
       </View>

@@ -24,6 +24,7 @@ type Store = {
   ) => Promise<void>;
   resetData: () => Promise<void>;
   get: (resource: Resources) => number;
+  loadData: (data: Inventory) => Promise<void>;
 };
 
 export const useResourcesStore = create<Store>((set, get) => {
@@ -111,6 +112,11 @@ export const useResourcesStore = create<Store>((set, get) => {
     set({ inventory: DefaultValues.Inventory });
   };
 
+  const loadData = async (data: Inventory) => {
+    await saveJson(StorageKeys.INVENTORY, data);
+    set({ inventory: data });
+  };
+
   const _get = (resource: Resources) => {
     return get().inventory[resource] ?? 0;
   };
@@ -122,5 +128,6 @@ export const useResourcesStore = create<Store>((set, get) => {
     spendMany,
     resetData,
     get: _get,
+    loadData,
   };
 });

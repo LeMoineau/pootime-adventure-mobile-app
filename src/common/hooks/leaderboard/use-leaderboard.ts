@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUserData } from "../firebase/use-user-data";
-import UserData from "../../types/firebase/UserData";
+import UserData, { UserDataWithUid } from "../../types/firebase/UserData";
 import { LeaderboardDirection } from "../../types/leaderboard/LeaderboardDirection";
 import { ItemsLeaderboardable } from "../../config/game-data/Leaderboard";
 import { LeaderboardName } from "../../types/leaderboard/LeaderboardName";
@@ -29,7 +29,7 @@ export default function useLeaderboard() {
     }
   };
 
-  const getBoard = (board: LeaderboardName): UserData[] => {
+  const getBoard = (board: LeaderboardName): UserDataWithUid[] => {
     return boards[board] || [];
   };
 

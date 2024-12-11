@@ -12,6 +12,9 @@ export default function InputField({
   paddingVertical,
   paddingHorizontal,
   textInputStyle,
+  textContentType,
+  secureTextEntry,
+  onBlur,
   ...props
 }: {
   onChange?: (value: string) => void;
@@ -21,6 +24,9 @@ export default function InputField({
   paddingVertical?: number;
   paddingHorizontal?: number;
   textInputStyle?: StyleProp<TextStyle>;
+  textContentType?: "none" | "username" | "password" | "emailAddress";
+  secureTextEntry?: boolean;
+  onBlur?: (value: string) => void;
 } & ViewProps) {
   const [value, setValue] = useState(defaultValue ?? "");
   return (
@@ -45,8 +51,13 @@ export default function InputField({
           setValue(val);
           onChange && onChange(val);
         }}
+        onEndEditing={(e) => {
+          onBlur && onBlur(e.nativeEvent.text);
+        }}
         placeholder={placeholder}
         value={value}
+        textContentType={textContentType ?? "none"}
+        secureTextEntry={secureTextEntry}
       ></TextInput>
       {appendIcon && (
         <View

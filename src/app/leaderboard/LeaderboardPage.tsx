@@ -13,12 +13,14 @@ import { LeaderboardDirection } from "../../common/types/leaderboard/Leaderboard
 import LeaderboardSubHeader from "./elements/LeaderboardSubHeader";
 import { ItemsLeaderboardable } from "../../common/config/game-data/Leaderboard";
 import { Resources } from "../../common/config/game-data/Resources";
+import { useFirebase } from "../../common/stores/firebase/firebase.store";
 
 export default function LeaderboardPage() {
   const { getBoard, fetch } = useLeaderboard();
   const [boardsDirection, setBoardsDirection] = useState<
     [LeaderboardDirection, LeaderboardDirection]
   >(["asc", "asc"]);
+  const { currentUser } = useFirebase();
 
   useEffect(() => {
     fetch("trophees", "asc").then(async () => {
@@ -84,6 +86,7 @@ export default function LeaderboardPage() {
                     <LeaderboardRow
                       userData={ud}
                       key={index}
+                      isYou={ud.uid === currentUser?.uid}
                       trailing={
                         <TextWithResourceIcon
                           key={`trophees-item-${index}`}

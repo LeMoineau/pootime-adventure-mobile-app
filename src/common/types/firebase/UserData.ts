@@ -10,3 +10,7 @@ export default interface UserData {
   village: DataInStorage.Village;
   itemsUnlocked: DataInStorage.ItemsUnlocked;
 }
+
+export interface UserDataWithUid extends UserData {
+  uid: string;
+}
