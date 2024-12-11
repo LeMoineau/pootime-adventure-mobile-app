@@ -15,7 +15,7 @@ import useMassiveStoreLoader from "../admin/user-massive-store-loader";
 
 export function useUserAuth() {
   const { saveUserData } = useUserData();
-  const { getAuth, currentUser, syncCurrentUser } = useFirebase();
+  const { getAuth, syncCurrentUser } = useFirebase();
   const { generateUserDataFromStores } = useMassiveStoreLoader();
 
   const [authError, setAuthError] = useState("");
@@ -37,10 +37,10 @@ export function useUserAuth() {
    * If user is not yet logged, will not save
    */
   const saveCurrentStateInUser = async () => {
-    if (!currentUser) return;
+    if (!getAuth().currentUser) return;
     try {
       const userData = generateUserDataFromStores();
-      await saveUserData(currentUser.uid, userData);
+      await saveUserData(getAuth().currentUser!.uid, userData);
     } catch (e) {
       console.error("error while saving current state in user", e);
     }
@@ -64,10 +64,10 @@ export function useUserAuth() {
     onSuccess?: (userCredential: UserCredential) => void
   ) => {
     try {
-      if (currentUser && currentUser.isAnonymous) {
+      if (getAuth().currentUser && getAuth().currentUser!.isAnonymous) {
         const credential = EmailAuthProvider.credential(email, password);
         const userCredential = await linkWithCredential(
-          currentUser,
+          getAuth().currentUser!,
           credential
         );
         syncCurrentUser(userCredential.user);
