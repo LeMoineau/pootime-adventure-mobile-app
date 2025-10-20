@@ -1,4 +1,3 @@
-import { Modal, ModalProps } from "react-native";
 import SettingsPage from "./elements/SettingsPage";
 import SettingsHeader from "./elements/SettingsHeader";
 import { SettingsScrollView } from "./elements/SettingsScrollView";

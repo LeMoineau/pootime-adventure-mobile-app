@@ -5,7 +5,13 @@ import DialogBubble from "../../views/DialogBubble";
 
 export default function DialogBubbleModal({ ...props }: ModalProps) {
   return (
-    <Modal animationType="slide" transparent {...props}>
+    <Modal
+      animationType="slide"
+      transparent
+      statusBarTranslucent
+      navigationBarTranslucent
+      {...props}
+    >
       <Pressable
         onPress={(evt) => props.onRequestClose && props.onRequestClose(evt)}
         style={[

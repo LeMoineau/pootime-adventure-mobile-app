@@ -22,6 +22,7 @@ export default function SettingsHeader({
             justifyContent: "flex-start",
             paddingHorizontal: 10,
             paddingVertical: 20,
+            paddingTop: 40,
             position: "absolute",
             top: 0,
             zIndex: 2,

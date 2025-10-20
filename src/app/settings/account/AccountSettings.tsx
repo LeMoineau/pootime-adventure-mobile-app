@@ -27,8 +27,14 @@ export default function AccountSettings() {
   >();
   const navigator: useNavigationType = useNavigation();
   const { massiveStoreReset } = useMassiveStoreLoader();
-  const { user, isConnected, isSynched, createAnonymousAccount, disconnect } =
-    useAuthentication();
+  const {
+    user,
+    isConnected,
+    isAnonymous,
+    isSynched,
+    createAnonymousAccount,
+    disconnect,
+  } = useAuthentication();
 
   return (
     <>
@@ -45,7 +51,9 @@ export default function AccountSettings() {
           items={[
             {
               icon: isConnected ? "check" : "close",
-              label: isConnected ? "Connecté" : "Non connecté",
+              label: isConnected
+                ? `Connecté ${isAnonymous ? "(Anonyme)" : ""}`
+                : "Non connecté",
               subLabel: isConnected
                 ? `ID: #${user?.uid}`
                 : `Veuillez vérifier votre connexion internet`,

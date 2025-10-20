@@ -7,7 +7,13 @@ import PlusIcon from "../../icons/plus";
 
 export default function PlainModal({ ...props }: ModalProps) {
   return (
-    <Modal animationType="fade" transparent {...props}>
+    <Modal
+      animationType="fade"
+      transparent
+      statusBarTranslucent
+      navigationBarTranslucent
+      {...props}
+    >
       <Pressable
         style={[
           style.justifyCenter,

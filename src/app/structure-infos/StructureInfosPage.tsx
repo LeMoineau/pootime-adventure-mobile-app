@@ -35,7 +35,7 @@ export default function StructureInfosPage() {
 
   return (
     <CustomPage
-      style={[{ paddingTop: 60, paddingHorizontal: 10 }]}
+      style={[{ paddingTop: 70, paddingHorizontal: 10 }]}
       bgColor="transparent"
     >
       <View

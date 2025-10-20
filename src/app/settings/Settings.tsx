@@ -48,7 +48,7 @@ export default function Settings() {
                 style.justifyCenter,
                 style.itemsCenter,
                 style.wFull,
-                { paddingVertical: 40, zIndex: 1 },
+                { paddingVertical: 40, zIndex: 1, paddingTop: 60 },
               ]}
             >
               <Pressable

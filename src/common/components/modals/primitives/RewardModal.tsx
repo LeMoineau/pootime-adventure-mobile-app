@@ -16,7 +16,13 @@ export default function RewardModal({
   onCollectingRewards?: (rewards: BattleReward) => void;
 } & ModalProps) {
   return (
-    <Modal animationType="fade" transparent {...props}>
+    <Modal
+      animationType="fade"
+      transparent
+      statusBarTranslucent
+      navigationBarTranslucent
+      {...props}
+    >
       <View
         style={[
           style.justifyCenter,
