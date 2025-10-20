@@ -6,7 +6,7 @@ import { useNavigationType } from "../../common/types/navigation/NavigationTypes
 import { useNavigation } from "@react-navigation/native";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import ResourceIcon from "../../common/components/icons/ResourceIcon";
-import { Resources } from "../../common/config/game-data/Resources";
+import { Resources } from "../../common/config/constants/Resources";
 import { style } from "../../common/utils/style-utils";
 import { MathUtils } from "../../common/utils/math-utils";
 
@@ -15,105 +15,113 @@ export default function InventoryPage() {
   const { inventory, get } = useResourcesStore();
 
   return (
-    <CustomPage bgColor={colors.transparent}>
-      <ScrollView
-        style={[
-          style.border,
-          {
-            backgroundColor: colors.white,
-            marginTop: 60,
-            marginHorizontal: 10,
-            flex: 1,
-            borderTopLeftRadius: 20,
-            borderTopRightRadius: 20,
-            paddingHorizontal: 10,
-            paddingTop: 10,
-          },
-        ]}
-      >
-        <View
+    <CustomPage
+      bgColor={colors.transparent}
+      style={{ justifyContent: "flex-end" }}
+    >
+      <Pressable
+        onPress={() => navigator.goBack()}
+        style={{ flex: 1 }}
+      ></Pressable>
+      <View>
+        <ScrollView
           style={[
-            style.flexRow,
-            style.itemsCenter,
+            style.border,
             {
-              paddingTop: 20,
-              paddingBottom: 10,
+              backgroundColor: colors.white,
+              margin: 10,
+              marginBottom: 0,
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+              paddingHorizontal: 10,
+              paddingTop: 10,
+              paddingBottom: 100,
             },
           ]}
         >
-          <Pressable
-            onPress={() => navigator.goBack()}
-            style={{ paddingRight: 10 }}
-          >
-            <ExpoIcon name="chevron-back" size={20}></ExpoIcon>
-          </Pressable>
-          <Text
+          <View
             style={[
+              style.flexRow,
+              style.itemsCenter,
               {
-                fontSize: 17,
-                letterSpacing: 1,
-                fontWeight: "500",
+                paddingTop: 20,
+                paddingBottom: 10,
               },
             ]}
           >
-            Inventory
-          </Text>
-        </View>
-        <View
-          style={[
-            style.flexRow,
-            style.border,
-            style.rounded,
-            style.itemsCenter,
-            {
-              flex: 1,
-              flexWrap: "wrap",
-              backgroundColor: colors.gray[100],
-              marginTop: 10,
-              paddingBottom: 10,
-              paddingTop: 5,
-            },
-          ]}
-        >
-          {Object.keys(inventory).map((resource, index) => {
-            if (get(resource as Resources) <= 0) return;
-            return (
-              <View
-                key={`inventory-item-${resource}-${index}`}
-                style={[
-                  style.flexRow,
-                  style.justifyCenter,
-                  style.itemsCenter,
-                  { padding: 10, width: 60, height: 60 },
-                ]}
-              >
-                <ResourceIcon
-                  resource={resource as Resources}
-                  size={40}
-                ></ResourceIcon>
-                <Text
+            <Pressable
+              onPress={() => navigator.goBack()}
+              style={{ paddingRight: 10 }}
+            >
+              <ExpoIcon name="chevron-back" size={20}></ExpoIcon>
+            </Pressable>
+            <Text
+              style={[
+                {
+                  fontSize: 17,
+                  letterSpacing: 1,
+                  fontWeight: "500",
+                },
+              ]}
+            >
+              Inventory
+            </Text>
+          </View>
+          <View
+            style={[
+              style.flexRow,
+              style.border,
+              style.rounded,
+              style.itemsCenter,
+              {
+                flexWrap: "wrap",
+                backgroundColor: colors.gray[100],
+                marginTop: 10,
+                paddingBottom: 10,
+                paddingTop: 5,
+              },
+            ]}
+          >
+            {Object.keys(inventory).map((resource, index) => {
+              if (get(resource as Resources) <= 0) return;
+              return (
+                <View
+                  key={`inventory-item-${resource}-${index}`}
                   style={[
-                    style.textShadowMd,
-                    {
-                      position: "absolute",
-                      bottom: 0,
-                      right: 0,
-                      fontWeight: "700",
-                      color: colors.white,
-                    },
+                    style.flexRow,
+                    style.justifyCenter,
+                    style.itemsCenter,
+                    { padding: 10, width: 60, height: 60 },
                   ]}
                 >
-                  {get(resource as Resources) >= 1000000
-                    ? MathUtils.convertToReduceStrFormat(
-                        get(resource as Resources)
-                      )
-                    : get(resource as Resources)}
-                </Text>
-              </View>
-            );
-          })}
-        </View>
-      </ScrollView>
+                  <ResourceIcon
+                    resource={resource as Resources}
+                    size={40}
+                  ></ResourceIcon>
+                  <Text
+                    style={[
+                      style.textShadowMd,
+                      {
+                        position: "absolute",
+                        bottom: 0,
+                        right: 0,
+                        fontWeight: "700",
+                        color: colors.white,
+                      },
+                    ]}
+                  >
+                    {get(resource as Resources) >= 1000000
+                      ? MathUtils.convertToReduceStrFormat(
+                          get(resource as Resources)
+                        )
+                      : get(resource as Resources)}
+                  </Text>
+                </View>
+              );
+            })}
+          </View>
+        </ScrollView>
+      </View>
     </CustomPage>
   );
 }

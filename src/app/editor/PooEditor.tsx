@@ -1,7 +1,5 @@
-import { SafeAreaView, View } from "react-native";
+import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import EditorTopBar from "./navigation/EditorTopBar";
-import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
 import PooBodyEditIcon from "../../common/components/icons/ui/pooBodyEdit";
 import BodyEditorView from "./tabs/body-editor/BodyEditorView";

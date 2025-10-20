@@ -6,7 +6,7 @@ import {
 } from "../../../../../common/types/shop/ShopItem";
 import { style } from "../../../../../common/utils/style-utils";
 import { Transaction } from "../../../../../common/types/shop/Transaction";
-import ShopItems from "../../../../../common/config/game-data/ShopItems";
+import ShopItems from "../../../../../common/config/constants/ShopItems";
 
 export default function ShopResourcesTab({
   onBuyableItemPress,

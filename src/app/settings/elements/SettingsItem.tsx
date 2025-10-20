@@ -11,6 +11,7 @@ export interface SettingsItemProps {
   label: string;
   subLabel?: string;
   hasRightArrow?: boolean;
+  disabled?: boolean;
   onPress?: () => void;
   variant?: "standard" | "error" | "fade" | "success";
 }
@@ -20,6 +21,7 @@ export default function SettingsItem({
   label,
   subLabel,
   hasRightArrow,
+  disabled,
   onPress,
   variant,
 }: {} & SettingsItemProps) {
@@ -50,9 +52,14 @@ export default function SettingsItem({
               : colors.gray[200],
           borderRadius: 10,
           marginBottom: 15,
+          opacity: disabled ? 0.5 : 1,
         },
       ]}
-      onPress={onPress}
+      onPress={() => {
+        if (!disabled) {
+          onPress && onPress();
+        }
+      }}
     >
       <View
         style={[

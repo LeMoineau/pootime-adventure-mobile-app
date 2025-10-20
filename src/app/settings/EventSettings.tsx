@@ -3,16 +3,24 @@ import SettingsPage from "./elements/SettingsPage";
 import SettingsHeader from "./elements/SettingsHeader";
 import { SettingsScrollView } from "./elements/SettingsScrollView";
 import useModals from "../../common/hooks/use-modals";
-import AudreyBirthdayModal from "../../common/components/modals/event/AudreyBirthdayModal";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
-import LouisBirthdayModal from "../../common/components/modals/event/LouisBirthdayModal";
+import { EVENT_POSTERS } from "../../common/config/constants/event-posters";
+import moment from "moment";
+import { useEffect, useState } from "react";
+import { EventPoster } from "../../common/types/event-posters/EventPoster";
+import EventPosterModalMatcher from "../../common/components/modals/event/EventPosterModalMatcher";
 
 export default function EventSettings() {
-  const { isVisible, show, hide } = useModals<
-    "audreyBirthday" | "louisBirthday"
-  >();
+  const { isVisible, show, hide } = useModals<"posterModal">();
   const navigator: useNavigationType = useNavigation();
+  const [selectedPoster, setSelectedPoster] = useState<EventPoster>();
+
+  useEffect(() => {
+    if (selectedPoster) {
+      show("posterModal");
+    }
+  }, [selectedPoster]);
 
   return (
     <>
@@ -25,38 +33,29 @@ export default function EventSettings() {
         }
       >
         <SettingsScrollView
-          items={[
-            {
-              label: "Anniversaire Audrey",
-              subLabel: "le 24/01/24",
-              hasRightArrow: true,
-              onPress: () => {
-                show("audreyBirthday");
-              },
+          items={EVENT_POSTERS.map((p) => ({
+            label: p.label,
+            subLabel: `du ${moment(p.startDate)
+              .format("DD/MM/YY")
+              .toString()} au ${moment(p.endDate)
+              .format("DD/MM/YY")
+              .toString()}`,
+            hasRightArrow: true,
+            onPress: () => {
+              setSelectedPoster(p);
             },
-            {
-              label: "Anniversaire Louis",
-              subLabel: "le 11/04/24",
-              hasRightArrow: true,
-              onPress: () => {
-                show("louisBirthday");
-              },
-            },
-          ]}
+          }))}
         ></SettingsScrollView>
       </SettingsPage>
-      <AudreyBirthdayModal
-        visible={isVisible("audreyBirthday")}
-        onRequestClose={() => {
-          hide("audreyBirthday");
-        }}
-      ></AudreyBirthdayModal>
-      <LouisBirthdayModal
-        visible={isVisible("louisBirthday")}
-        onRequestClose={() => {
-          hide("louisBirthday");
-        }}
-      ></LouisBirthdayModal>
+      {selectedPoster && (
+        <EventPosterModalMatcher
+          eventPoster={selectedPoster}
+          visible={isVisible("posterModal")}
+          onRequestClose={() => {
+            hide("posterModal");
+          }}
+        ></EventPosterModalMatcher>
+      )}
     </>
   );
 }

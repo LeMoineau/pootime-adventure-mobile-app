@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import { style } from "../../../../../../common/utils/style-utils";
-import EntityZones from "../../../../../../common/config/game-data/EntityZones";
+import EntityZones from "../../../../../../common/config/constants/EntityZones";
 import StandardButton from "../../../../../../common/components/buttons/StandardButton";
 import { colors } from "../../../../../../common/utils/color-utils";
 import { usePooCreatureStatsStore } from "../../../../../../common/stores/poo-creature-stats.store";

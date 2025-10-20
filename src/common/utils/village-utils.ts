@@ -1,5 +1,5 @@
-import { StructureName, Structures } from "../config/game-data/Structures";
-import { Resources } from "../config/game-data/Resources";
+import { StructureName, Structures } from "../config/constants/Structures";
+import { Resources } from "../config/constants/Resources";
 import { Structure } from "../types/village/Structure";
 import { UpgradeCost } from "../types/village/StructureCost";
 import { BattleReward } from "../types/battle/online-battle/BattleReward";

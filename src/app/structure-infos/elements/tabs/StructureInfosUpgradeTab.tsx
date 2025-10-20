@@ -8,7 +8,7 @@ import { VillageUtils } from "../../../../common/utils/village-utils";
 import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import StructureUpgradeButton from "../buttons/StructureUpgradeButton";
-import { Resources } from "../../../../common/config/game-data/Resources";
+import { Resources } from "../../../../common/config/constants/Resources";
 import useStructure from "../../../../common/hooks/village/use-structure";
 import { useEffect } from "react";
 

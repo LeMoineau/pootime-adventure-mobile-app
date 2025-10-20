@@ -13,7 +13,7 @@ export default function PooingConfirmModal({
 } & ModalProps) {
   const [enableConfirm, setEnableConfirm] = useState(false);
   const delayConfirm = 2000;
-  const timeoutId = useRef<NodeJS.Timeout>();
+  const timeoutId = useRef<NodeJS.Timeout>(null);
 
   useEffect(() => {
     setEnableConfirm(false);

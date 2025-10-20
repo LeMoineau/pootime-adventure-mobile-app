@@ -19,27 +19,16 @@ import { colors } from "../../../common/utils/color-utils";
 import { style } from "../../../common/utils/style-utils";
 import ExpoIcon from "../../../common/components/icons/ExpoIcon";
 import useMassiveStoreLoader from "../../../common/hooks/admin/user-massive-store-loader";
+import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
 
 export default function AccountSettings() {
   const { isVisible, show, hide } = useModals<
     "confirm-reset" | "confirm-disconnect"
   >();
   const navigator: useNavigationType = useNavigation();
-  const { currentUser } = useFirebase();
-  const { disconnect } = useUserAuth();
   const { massiveStoreReset } = useMassiveStoreLoader();
-
-  const [connected, setConnected] = useState(false);
-  const [isAnonymous, setIsAnonymous] = useState(false);
-
-  const updateStatutsIndicator = () => {
-    setConnected(currentUser !== undefined && currentUser !== null);
-    setIsAnonymous(!currentUser || currentUser!.isAnonymous);
-  };
-
-  useEffect(() => {
-    updateStatutsIndicator();
-  }, [currentUser]);
+  const { user, isConnected, isSynched, createAnonymousAccount, disconnect } =
+    useAuthentication();
 
   return (
     <>
@@ -53,57 +42,35 @@ export default function AccountSettings() {
       >
         <SettingsScrollView
           title="Statuts"
-          actionChild={
-            <StandardButton
-              style={[{ width: 100, marginRight: 10 }]}
-              bgColor={colors.gray[400]}
-              viewStyle={[
-                style.roundedSm,
-                { paddingVertical: 3, paddingHorizontal: 10 },
-              ]}
-              prependIcon={
-                <ExpoIcon
-                  name="refresh"
-                  style={[{ color: colors.white }]}
-                ></ExpoIcon>
-              }
-              textColor={colors.white}
-              textStyle={[{ fontSize: 12, fontWeight: "500" }]}
-              onPress={async () => {
-                updateStatutsIndicator();
-              }}
-            >
-              Rafraichir
-            </StandardButton>
-          }
           items={[
             {
-              icon: connected ? "check" : "close",
-              label: connected ? "Connecté" : "Non connecté",
-              subLabel: connected
-                ? `ID: #${currentUser?.uid}`
+              icon: isConnected ? "check" : "close",
+              label: isConnected ? "Connecté" : "Non connecté",
+              subLabel: isConnected
+                ? `ID: #${user?.uid}`
                 : `Veuillez vérifier votre connexion internet`,
-              variant: connected ? "success" : "error",
+              variant: isConnected ? "success" : "error",
             },
             {
-              icon: isAnonymous ? "close" : "check",
-              label: isAnonymous ? "Compte non lié" : "Compte lié",
-              subLabel: isAnonymous
-                ? "Veuillez lier votre compte pour sécuriser vos données"
+              icon: !isSynched ? "close" : "check",
+              label: !isSynched ? "Compte non lié" : "Compte lié",
+              subLabel: !isSynched
+                ? "Veuillez créer un compte pour lier vos données"
                 : "",
-              variant: isAnonymous ? "error" : "success",
+              variant: !isSynched ? "error" : "success",
             },
           ]}
         ></SettingsScrollView>
         <SettingsScrollView
           title="Synchronisation des données"
           items={[
-            // {
-            //   icon: "google",
-            //   label: "Lier à Google",
-            //   hasRightArrow: true,
-            //   onPress: () => show("confirm-disconnect"),
-            // },
+            {
+              icon: "google",
+              label: "Lier à Google",
+              disabled: true,
+              hasRightArrow: true,
+              onPress: () => show("confirm-disconnect"),
+            },
             {
               icon: "account-circle",
               label: "Se connecter",
@@ -115,6 +82,15 @@ export default function AccountSettings() {
               label: "Se créer un compte",
               hasRightArrow: true,
               onPress: () => navigator.navigate("RegisterPage"),
+            },
+            {
+              icon: "person-4",
+              label: "Créer un compte anonyme",
+              hasRightArrow: true,
+              disabled: isConnected,
+              onPress: () => {
+                createAnonymousAccount();
+              },
             },
             {
               icon: "cancel-presentation",
@@ -150,8 +126,6 @@ export default function AccountSettings() {
       <ConfirmModal
         visible={isVisible("confirm-disconnect")}
         onConfirm={async () => {
-          // setConnected(false);
-          // setIsAnonymous(true);
           await disconnect();
           await massiveStoreReset();
         }}

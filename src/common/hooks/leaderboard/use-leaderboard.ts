@@ -1,37 +1,50 @@
 import { useEffect, useState } from "react";
 import { useUserData } from "../firebase/use-user-data";
-import UserData, { UserDataWithUid } from "../../types/firebase/UserData";
+import { UserDataWithUid } from "../../types/firebase/UserData";
 import { LeaderboardDirection } from "../../types/leaderboard/LeaderboardDirection";
-import { ItemsLeaderboardable } from "../../config/game-data/Leaderboard";
-import { LeaderboardName } from "../../types/leaderboard/LeaderboardName";
 
 export default function useLeaderboard() {
   const { getUserDatasOrderBy } = useUserData();
 
-  const [boards, setBoards] = useState<{ [key: string]: any }>({});
+  const [tropheesBoard, setTropheeBoard] = useState<{
+    [key in LeaderboardDirection]?: UserDataWithUid[];
+  }>({});
+  const [pooCoinsBoard, setPooCoinsBoard] = useState<{
+    [key in LeaderboardDirection]?: UserDataWithUid[];
+  }>({});
 
   useEffect(() => {}, []);
 
-  const fetch = async (
-    board: ItemsLeaderboardable,
-    direction: LeaderboardDirection
-  ) => {
-    const boardKey = `${board}-${direction}`;
-    if (!boards[boardKey]) {
+  const fetchTropheesBoard = async (direction: LeaderboardDirection) => {
+    if (!tropheesBoard[direction]) {
       const newBoard = await getUserDatasOrderBy(
-        board === "trophees" ? "resources.pooTrophee" : "resources.pooCoins",
+        "resources.pooTrophee",
         direction
       );
-      setBoards({
-        ...boards,
-        [boardKey]: newBoard,
+      setTropheeBoard({
+        ...tropheesBoard,
+        [direction]: newBoard,
       });
     }
   };
 
-  const getBoard = (board: LeaderboardName): UserDataWithUid[] => {
-    return boards[board] || [];
+  const fetchPooCoinsBoard = async (direction: LeaderboardDirection) => {
+    if (!pooCoinsBoard[direction]) {
+      const newBoard = await getUserDatasOrderBy(
+        "resources.pooCoins",
+        direction
+      );
+      setPooCoinsBoard({
+        ...pooCoinsBoard,
+        [direction]: newBoard,
+      });
+    }
   };
 
-  return { boards, getBoard, fetch };
+  return {
+    pooCoinsBoard,
+    tropheesBoard,
+    fetchTropheesBoard,
+    fetchPooCoinsBoard,
+  };
 }

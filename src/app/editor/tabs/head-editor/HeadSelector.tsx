@@ -3,8 +3,9 @@ import EditSelector, { EditSelectorProps } from "../../EditSelector";
 import { PooHeads } from "../../../../common/types/PooHeads";
 import { MathUtils } from "../../../../common/utils/math-utils";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
-import { Resources } from "../../../../common/config/game-data/Resources";
+import { Resources } from "../../../../common/config/constants/Resources";
 import { CurveUtils } from "../../../../common/utils/curve-utils";
+import { PooHeadName } from "../../../../common/types/shop/BuyableItem";
 
 export default function HeadSelector({
   name,
@@ -27,7 +28,7 @@ export default function HeadSelector({
         onRequestSelect && onRequestSelect(name, props.price, props.resource)
       }
     >
-      {PooHeads[name]({
+      {PooHeads[name as PooHeadName]({
         fillColor: CurveUtils.calculateHeadColor(level),
         style: {
           width: 80,

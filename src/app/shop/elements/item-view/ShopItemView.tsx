@@ -1,5 +1,5 @@
 import { Animated, Pressable, useWindowDimensions, View } from "react-native";
-import { Resources } from "../../../../common/config/game-data/Resources";
+import { Resources } from "../../../../common/config/constants/Resources";
 import {
   isStringItemValue,
   isUnlockableItem,

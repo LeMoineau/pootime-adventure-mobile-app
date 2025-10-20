@@ -44,7 +44,11 @@ export default function NumberField({
   return (
     <View {...props}>
       <View
-        style={[{ marginRight: appendElement ? 25 : appendImage ? 25 : 0 }]}
+        style={[
+          {
+            marginRight: appendElement ? 25 : appendImage ? 25 : 0,
+          },
+        ]}
       >
         <View
           style={[
@@ -53,8 +57,6 @@ export default function NumberField({
             style.justifyCenter,
             style.itemsCenter,
             {
-              minWidth: 90,
-              width: 90,
               backgroundColor: "white",
               paddingRight: 17,
               paddingLeft: 15,
@@ -68,9 +70,9 @@ export default function NumberField({
         >
           <Animated.Text
             style={[
-              style.wFull,
               style.textMd,
               {
+                flex: 1,
                 fontWeight: "600",
                 textAlign: "right",
                 color: scaleValue.interpolate({

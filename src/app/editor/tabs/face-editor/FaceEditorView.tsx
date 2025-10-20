@@ -9,7 +9,7 @@ import PooCoinIcon from "../../../../common/components/icons/resources/pooCoin";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
 import FaceSelector from "./FaceSelector";
 import { DefaultValues } from "../../../../common/config/DefaultValues";
-import { Resources } from "../../../../common/config/game-data/Resources";
+import { Resources } from "../../../../common/config/constants/Resources";
 import WoolIcon from "../../../../common/components/icons/resources/wool";
 
 export default function FaceEditorView() {

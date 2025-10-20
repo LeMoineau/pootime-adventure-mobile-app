@@ -1,5 +1,6 @@
-import { Resources } from "../../config/game-data/Resources";
-import { BuyableItem, BuyableItemValue } from "./UnlockableItems";
+import { Resources } from "../../config/constants/Resources";
+import { BuyableItemValue } from "./BuyableItem";
+import { BuyableItem } from "./UnlockableItems";
 
 export interface FreeTransaction {
   item: BuyableItemValue;

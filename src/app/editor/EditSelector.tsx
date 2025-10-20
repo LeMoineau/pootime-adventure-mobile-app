@@ -3,7 +3,7 @@ import { Pressable, Text, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import { colors } from "../../common/utils/color-utils";
 import PooCoinIcon from "../../common/components/icons/resources/pooCoin";
-import { Resources } from "../../common/config/game-data/Resources";
+import { Resources } from "../../common/config/constants/Resources";
 import WoolIcon from "../../common/components/icons/resources/wool";
 
 export interface EditSelectorProps {

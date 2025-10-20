@@ -6,7 +6,7 @@ import { useVillageStore } from "../../../../common/stores/village.store";
 import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
 import TransferButton from "../../../../common/components/buttons/TransferButton";
 import useStructure from "../../../../common/hooks/village/use-structure";
-import { Resources } from "../../../../common/config/game-data/Resources";
+import { Resources } from "../../../../common/config/constants/Resources";
 import { useEffect } from "react";
 import TabTitle from "../text/TabTitle";
 import TabText from "../text/TabText";

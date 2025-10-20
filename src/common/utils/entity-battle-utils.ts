@@ -1,4 +1,4 @@
-import { EntityDrops } from "../config/game-data/EntityDrops";
+import { EntityDrops } from "../config/constants/EntityDrops";
 import {
   Entity,
   EntityBattleWinner,

@@ -37,23 +37,31 @@ export default function AppTopBar() {
           style={[
             style.flexRow,
             style.itemsCenter,
-            style.justifyCenter,
+            style.justifyBetween,
             {
-              justifyContent: "space-around",
               width: width,
-              paddingVertical: 10,
+              paddingBottom: 10,
+              paddingTop: 20,
+              paddingHorizontal: 10,
+              boxSizing: "border-box",
+              gap: 5,
             },
           ]}
         >
-          <View style={[{ paddingRight: 5 }]}>
-            <LevelProgressBar height={35} showProgressText></LevelProgressBar>
-          </View>
+          <LevelProgressBar
+            style={{ flex: 1.3 }}
+            height={35}
+            width={"100%"}
+            showProgressText
+          ></LevelProgressBar>
           <NumberField
+            style={[{ flex: 1 }]}
             value={get("stars")}
             appendElement={<StarIcon size={40}></StarIcon>}
             useReduceNumberFormat
           ></NumberField>
           <NumberField
+            style={[{ flex: 1 }]}
             value={get("pooCoins")}
             appendElement={<PooCoinIcon size={40}></PooCoinIcon>}
             useReduceNumberFormat

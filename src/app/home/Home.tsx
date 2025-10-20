@@ -30,7 +30,7 @@ export default function Home() {
           ]}
         >
           <PooCreatureView></PooCreatureView>
-          <EventsModalHandler></EventsModalHandler>
+          {/* <EventsModalHandler></EventsModalHandler> */}
         </View>
         <HomeBattleButton></HomeBattleButton>
       </View>

@@ -4,7 +4,7 @@ import { colors } from "../../common/utils/color-utils";
 import {
   StructureName,
   Structures,
-} from "../../common/config/game-data/Structures";
+} from "../../common/config/constants/Structures";
 import StructureView from "./elements/StructureView";
 import { style } from "../../common/utils/style-utils";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";

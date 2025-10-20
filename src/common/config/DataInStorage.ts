@@ -1,6 +1,6 @@
 import { PooCreatureStyle as Style } from "./../types/PooCreatureStyle";
 import { PooCreatureStats as Stats } from "./../types/PooCreatureStats";
-import { StructureName } from "./game-data/Structures";
+import { StructureName } from "./constants/Structures";
 import {
   StructureDetail,
   StructureDetailName,

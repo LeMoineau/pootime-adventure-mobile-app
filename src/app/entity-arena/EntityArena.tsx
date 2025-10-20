@@ -9,7 +9,7 @@ import SheepIcon from "../../common/components/icons/entities/sheep/sheep";
 import EntityBattleRewardModal from "./elements/modals/EntityBattleRewardModal";
 import { EntityBattleUtils } from "../../common/utils/entity-battle-utils";
 import { useResourcesStore } from "../../common/stores/resources.store";
-import EntityZones from "../../common/config/game-data/EntityZones";
+import EntityZones from "../../common/config/constants/EntityZones";
 import {
   useNavigationType,
   useRouteType,

@@ -15,7 +15,13 @@ export default function EventModal({
   const { width, height } = useWindowDimensions();
 
   return (
-    <Modal animationType="fade" transparent {...props}>
+    <Modal
+      animationType="fade"
+      transparent
+      statusBarTranslucent
+      navigationBarTranslucent
+      {...props}
+    >
       <Pressable onPress={props.onRequestClose}>
         <View
           style={[

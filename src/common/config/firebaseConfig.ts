@@ -1,4 +1,8 @@
-export const firebaseConfig = {
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { initializeApp } from "firebase/app";
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
+
+const firebaseConfig = {
   apiKey: "AIzaSyAVkMdbRsNZEnvlrSvzVVhNjUvYYU0qQd8",
   authDomain: "pootimeadventure.firebaseapp.com",
   projectId: "pootimeadventure",
@@ -6,3 +10,10 @@ export const firebaseConfig = {
   messagingSenderId: "159536626884",
   appId: "1:159536626884:web:cfe3e6845bbe9aae901d91",
 };
+
+const app = initializeApp(firebaseConfig);
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage),
+});
+
+export default app;

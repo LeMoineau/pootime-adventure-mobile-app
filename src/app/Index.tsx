@@ -24,6 +24,7 @@ import StructureInfosPage from "./structure-infos/StructureInfosPage";
 import LeaderboardPage from "./leaderboard/LeaderboardPage";
 import LoginPage from "./settings/account/LoginPage";
 import RegisterPage from "./settings/account/RegisterPage";
+import EventPosterOverlay from "./event-posters/EventPosterOverlay";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -43,7 +44,7 @@ export default function App() {
             component={InventoryPage}
             options={{
               presentation: "transparentModal",
-              animation: "slide_from_bottom",
+              animation: "fade_from_bottom",
             }}
           />
           <Stack.Screen
@@ -104,11 +105,12 @@ export default function App() {
   );
 }
 
-function MainPage() {
+export function MainPage() {
   return (
     <>
       <AppTopBar></AppTopBar>
       <Blur></Blur>
+      <EventPosterOverlay></EventPosterOverlay>
       <Tab.Navigator
         tabBarPosition="bottom"
         initialRouteName="Home"

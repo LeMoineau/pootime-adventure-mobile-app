@@ -1,11 +1,7 @@
-import {
-  ImageBackground,
-  SafeAreaView,
-  View,
-  useWindowDimensions,
-} from "react-native";
+import { View, useWindowDimensions } from "react-native";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { colors } from "../../utils/color-utils";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function CustomPage({
   children,
@@ -17,7 +13,11 @@ export default function CustomPage({
 } & ViewProps) {
   const { width, height } = useWindowDimensions();
   return (
-    <SafeAreaView {...props} style={[{ flex: 1, elevation: 0 }, props.style]}>
+    <SafeAreaView
+      edges={{ top: "off", bottom: "off" }}
+      {...props}
+      style={[{ flex: 1, height, elevation: 0 }, props.style]}
+    >
       <View
         style={[
           {
@@ -31,19 +31,7 @@ export default function CustomPage({
             elevation: 0,
           },
         ]}
-      >
-        {/* <ImageBackground
-          source={{
-            uri: "https://bigstones.fr/pootime-adventure/bg.png",
-          }}
-          style={[
-            {
-              flex: 1,
-            },
-          ]}
-          resizeMode="cover"
-        ></ImageBackground> */}
-      </View>
+      ></View>
       {children}
     </SafeAreaView>
   );

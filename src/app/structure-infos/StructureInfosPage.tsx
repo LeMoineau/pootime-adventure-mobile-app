@@ -7,7 +7,7 @@ import CustomPage from "../../common/components/navigation/CustomPage";
 import { Pressable, Text, View } from "react-native";
 import { colors } from "../../common/utils/color-utils";
 import { style } from "../../common/utils/style-utils";
-import { Structures } from "../../common/config/game-data/Structures";
+import { Structures } from "../../common/config/constants/Structures";
 import ExpoIcon from "../../common/components/icons/ExpoIcon";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import StructureInfosTopBar from "./elements/navigation/StructureInfosTopBar";

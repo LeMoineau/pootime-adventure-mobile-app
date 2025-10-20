@@ -4,7 +4,7 @@ import { colors } from "../../../../common/utils/color-utils";
 import { style } from "../../../../common/utils/style-utils";
 import { Image, Pressable, Text, View } from "react-native";
 import EditSelector, { EditSelectorProps } from "../../EditSelector";
-import { Resources } from "../../../../common/config/game-data/Resources";
+import { Resources } from "../../../../common/config/constants/Resources";
 
 export default function FaceSelector({
   uri,

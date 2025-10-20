@@ -1,5 +1,5 @@
-import { StructureName } from "../../config/game-data/Structures";
-import { Resources } from "../../config/game-data/Resources";
+import { StructureName } from "../../config/constants/Structures";
+import { Resources } from "../../config/constants/Resources";
 import { StructureCost, UpgradeCost } from "./StructureCost";
 
 export interface Structure {

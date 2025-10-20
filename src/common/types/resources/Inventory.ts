@@ -1,3 +1,3 @@
-import { Resources } from "../../config/game-data/Resources";
+import { Resources } from "../../config/constants/Resources";
 
 export type Inventory = { [resource in Resources]: number };

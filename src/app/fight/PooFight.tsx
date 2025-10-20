@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, View } from "react-native";
+import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import FightTopBar from "./elements/navigation/FightTopBar";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";

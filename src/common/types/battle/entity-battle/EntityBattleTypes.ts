@@ -1,4 +1,4 @@
-import { EntityType } from "../../../config/game-data/EntityTypes";
+import { EntityType } from "../../../config/constants/EntityTypes";
 import { BattleReward } from "../online-battle/BattleReward";
 
 export interface Entity {

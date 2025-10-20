@@ -5,8 +5,10 @@ import { UnlockableItems } from "../types/shop/UnlockableItems";
 import { DefaultValues } from "../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";
+import { useState } from "react";
 
 type Store = {
+  loading: boolean;
   unlock: (item: UnlockableItems, name: string, value?: any) => Promise<void>;
   isUnlocked: (item: UnlockableItems, name: string) => boolean;
   resetData: () => Promise<void>;
@@ -23,6 +25,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
       ...json,
     };
     set(baseValues);
+    set({ loading: false });
     if (json === null || !ObjectUtils.equals(json, baseValues)) {
       await saveJson(StorageKeys.ITEMS_UNLOCKED, baseValues);
     }
@@ -65,6 +68,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
 
   return {
     ...DefaultValues.ItemsUnlocked,
+    loading: true,
     unlock,
     isUnlocked,
     resetData,

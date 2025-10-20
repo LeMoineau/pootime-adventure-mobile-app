@@ -11,22 +11,28 @@ import LeaderboardBoard from "./elements/LeaderboardBoard";
 import TextWithResourceIcon from "../../common/components/text/TextWithResourceIcon";
 import { LeaderboardDirection } from "../../common/types/leaderboard/LeaderboardDirection";
 import LeaderboardSubHeader from "./elements/LeaderboardSubHeader";
-import { ItemsLeaderboardable } from "../../common/config/game-data/Leaderboard";
-import { Resources } from "../../common/config/game-data/Resources";
+import { ItemsLeaderboardable } from "../../common/config/constants/Leaderboard";
+import { Resources } from "../../common/config/constants/Resources";
 import { useFirebase } from "../../common/stores/firebase/firebase.store";
+import { useAuthentication } from "../../common/hooks/firebase/use-authentification";
 
 export default function LeaderboardPage() {
-  const { getBoard, fetch } = useLeaderboard();
+  const {
+    tropheesBoard,
+    pooCoinsBoard,
+    fetchTropheesBoard,
+    fetchPooCoinsBoard,
+  } = useLeaderboard();
   const [boardsDirection, setBoardsDirection] = useState<
     [LeaderboardDirection, LeaderboardDirection]
   >(["asc", "asc"]);
   const { currentUser } = useFirebase();
+  const { user } = useAuthentication();
 
   useEffect(() => {
-    fetch("trophees", "asc").then(async () => {
-      await fetch("pooCoins", "asc");
-      setBoardsDirection(["asc", "asc"]);
-    });
+    fetchTropheesBoard("asc");
+    fetchPooCoinsBoard("asc");
+    setBoardsDirection(["asc", "asc"]);
   }, []);
 
   return (
@@ -70,20 +76,28 @@ export default function LeaderboardPage() {
                   boardDirection={boardsDirection[index]}
                   filterIcon={filterIcon}
                   onFilterPress={async (direction) => {
-                    fetch(leaderboardName, direction).then(() => {
-                      const newDirections: [
-                        LeaderboardDirection,
-                        LeaderboardDirection
-                      ] = [...boardsDirection];
-                      newDirections[index] = direction;
-                      setBoardsDirection(newDirections);
-                    });
+                    if (resource === "pooTrophee") {
+                      await fetchTropheesBoard(direction);
+                      setBoardsDirection({
+                        ...boardsDirection,
+                        [index]: direction,
+                      });
+                    } else {
+                      await fetchPooCoinsBoard(direction);
+                      setBoardsDirection({
+                        ...boardsDirection,
+                        [index]: direction,
+                      });
+                    }
                   }}
-                  rows={getBoard(
-                    `${leaderboardName}-${boardsDirection[index]}`
-                  )}
+                  rows={
+                    (resource === "pooTrophee"
+                      ? tropheesBoard[boardsDirection[index]]
+                      : pooCoinsBoard[boardsDirection[index]]) ?? []
+                  }
                   item={(ud, index) => (
                     <LeaderboardRow
+                      rank={index + 1}
                       userData={ud}
                       key={index}
                       isYou={ud.uid === currentUser?.uid}
@@ -102,39 +116,6 @@ export default function LeaderboardPage() {
               ),
             })
           )}
-          //   [
-
-          //   {
-          //     icon: <PooCoinIcon size={35}></PooCoinIcon>,
-          //     content: (
-          //       <LeaderboardBoard
-          //         title="Classement par pooCoins"
-          //         boardDirection={boardsDirection[1]}
-          //         filterIcon={<PooCoinIcon width={25}></PooCoinIcon>}
-          //         onFilterPress={async (direction) => {
-          //           await fetch("pooCoins", direction);
-          //           setBoardsDirection([boardsDirection[1], direction]);
-          //         }}
-          //         rows={getBoard(`pooCoins-${boardsDirection[1]}`)}
-          //         item={(ud, index) => (
-          //           <LeaderboardRow
-          //             userData={ud}
-          //             key={index}
-          //             trailing={
-          //               <TextWithResourceIcon
-          //                 key={`pooCoins-item-${index}`}
-          //                 resource="pooCoins"
-          //                 text={ud.resources.pooCoins}
-          //                 fontSize={20}
-          //                 textStyle={[{ fontWeight: "500" }]}
-          //               ></TextWithResourceIcon>
-          //             }
-          //           ></LeaderboardRow>
-          //         )}
-          //       ></LeaderboardBoard>
-          //     ),
-          //   },
-          // ]}
         ></RoundedScrollView>
       </CustomPage>
     </>

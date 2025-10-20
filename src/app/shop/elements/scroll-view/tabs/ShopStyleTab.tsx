@@ -16,7 +16,7 @@ import {
   FreeTransaction,
   Transaction,
 } from "../../../../../common/types/shop/Transaction";
-import ShopItems from "../../../../../common/config/game-data/ShopItems";
+import ShopItems from "../../../../../common/config/constants/ShopItems";
 
 export default function ShopStyleTab({
   onUnlockedItemPress,
