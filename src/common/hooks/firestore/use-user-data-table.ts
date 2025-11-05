@@ -1,5 +1,5 @@
+import { getApp } from "firebase/app";
 import { DefaultValues } from "../../config/DefaultValues";
-import { useFirebase } from "../../stores/firebase/firebase.store";
 import UserData, { UserDataWithUid } from "../../types/firebase/UserData";
 import {
   collection,
@@ -14,25 +14,24 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-export function useUserData() {
-  const { getApp } = useFirebase();
-  const bd = getFirestore(getApp());
+const firestore = getFirestore(getApp());
 
-  const getUserData = async (uid: string): Promise<UserData | undefined> => {
-    const snap = await getDoc(doc(bd, "user-data", uid));
+export function useUserDataTable() {
+  const fetch = async (uid: string): Promise<UserData | undefined> => {
+    const snap = await getDoc(doc(firestore, "user-data", uid));
     if (snap.exists()) {
       return snap.data() as UserData;
     }
     return;
   };
 
-  const getUserDatasOrderBy = async (
+  const fetchManyOrderBy = async (
     _orderBy: string,
     _direction: OrderByDirection,
     _limit?: number
   ): Promise<UserDataWithUid[]> => {
     const q = query(
-      collection(bd, "user-data"),
+      collection(firestore, "user-data"),
       orderBy(_orderBy, _direction),
       limit(_limit ?? DefaultValues.FETCHING_LIMIT)
     );
@@ -42,9 +41,14 @@ export function useUserData() {
     ) as UserDataWithUid[];
   };
 
-  const saveUserData = async (uid: string, userData: UserData) => {
-    await setDoc(doc(bd, "user-data", uid), userData);
+  const update = async (uid: string, userData: UserData) => {
+    await setDoc(doc(firestore, "user-data", uid), userData);
   };
 
-  return { getUserData, saveUserData, getUserDatasOrderBy };
+  const create = async (uid: string, userData: UserData) => {
+    console.log("creation new user");
+    await update(uid, userData);
+  };
+
+  return { fetch, update, create, fetchManyOrderBy };
 }

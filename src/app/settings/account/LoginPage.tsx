@@ -2,8 +2,6 @@ import { useNavigation } from "@react-navigation/native";
 import { useNavigationType } from "../../../common/types/navigation/NavigationTypes";
 import SettingsHeader from "../elements/SettingsHeader";
 import SettingsPage from "../elements/SettingsPage";
-import { useFirebase } from "../../../common/stores/firebase/firebase.store";
-import InputField from "../../../common/components/fields/InputField";
 import { Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import StandardButton from "../../../common/components/buttons/StandardButton";
@@ -14,8 +12,8 @@ import { useUserAuth } from "../../../common/hooks/firebase/use-user-auth";
 import Alert from "../../../common/components/text/Alert";
 import ConfirmModal from "../../../common/components/modals/primitives/ConfirmModal";
 import useModals from "../../../common/hooks/use-modals";
-import { useUserData } from "../../../common/hooks/firebase/use-user-data";
 import useMassiveStoreLoader from "../../../common/hooks/admin/user-massive-store-loader";
+import { useUserDataTable } from "../../../common/hooks/firestore/use-user-data-table";
 
 export default function LoginPage() {
   const navigator: useNavigationType = useNavigation();
@@ -32,7 +30,7 @@ export default function LoginPage() {
     validatePassword,
     validateSignInForm,
   } = useAccountFormValidation();
-  const { getUserData } = useUserData();
+  const { fetch } = useUserDataTable();
   const { massiveLoadFromUserData } = useMassiveStoreLoader();
 
   return (
@@ -99,7 +97,7 @@ export default function LoginPage() {
                 email,
                 password,
                 async (userCredential) => {
-                  const userData = await getUserData(userCredential.user.uid);
+                  const userData = await fetch(userCredential.user.uid);
                   if (userData) {
                     await massiveLoadFromUserData(userData);
                     navigator.goBack();

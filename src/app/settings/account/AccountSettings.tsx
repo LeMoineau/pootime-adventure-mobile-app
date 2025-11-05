@@ -1,32 +1,20 @@
-import { Modal, ModalProps, Text, View } from "react-native";
+import { Text } from "react-native";
 import SettingsPage from "../elements/SettingsPage";
 import SettingsHeader from "../elements/SettingsHeader";
 import { SettingsScrollView } from "../elements/SettingsScrollView";
 import useModals from "../../../common/hooks/use-modals";
 import ConfirmModal from "../../../common/components/modals/primitives/ConfirmModal";
-import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
-import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
-import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
-import { useResourcesStore } from "../../../common/stores/resources.store";
 import { useNavigationType } from "../../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
-import { useVillageStore } from "../../../common/stores/village.store";
-import { useFirebase } from "../../../common/stores/firebase/firebase.store";
-import { useUserAuth } from "../../../common/hooks/firebase/use-user-auth";
-import { useEffect, useState } from "react";
-import StandardButton from "../../../common/components/buttons/StandardButton";
-import { colors } from "../../../common/utils/color-utils";
-import { style } from "../../../common/utils/style-utils";
-import ExpoIcon from "../../../common/components/icons/ExpoIcon";
 import useMassiveStoreLoader from "../../../common/hooks/admin/user-massive-store-loader";
 import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
+import { useUserDataTable } from "../../../common/hooks/firestore/use-user-data-table";
 
 export default function AccountSettings() {
   const { isVisible, show, hide } = useModals<
     "confirm-reset" | "confirm-disconnect"
   >();
   const navigator: useNavigationType = useNavigation();
-  const { massiveStoreReset } = useMassiveStoreLoader();
   const {
     user,
     isConnected,
@@ -35,6 +23,9 @@ export default function AccountSettings() {
     createAnonymousAccount,
     disconnect,
   } = useAuthentication();
+  const { create: createUserData } = useUserDataTable();
+  const { massiveStoreReset, generateUserDataFromStores } =
+    useMassiveStoreLoader();
 
   return (
     <>
@@ -97,7 +88,9 @@ export default function AccountSettings() {
               hasRightArrow: true,
               disabled: isConnected,
               onPress: () => {
-                createAnonymousAccount();
+                createAnonymousAccount(async (user) => {
+                  await createUserData(user.uid, generateUserDataFromStores());
+                });
               },
             },
             {

@@ -16,7 +16,6 @@ import Alert from "../../../common/components/text/Alert";
 
 export default function RegisterPage() {
   const navigator: useNavigationType = useNavigation();
-  const { getAuth } = useFirebase();
   const { authError, createAccountWithEmailAndPassword } = useUserAuth();
   const {
     email,

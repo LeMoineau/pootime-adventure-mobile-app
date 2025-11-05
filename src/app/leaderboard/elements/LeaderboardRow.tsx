@@ -17,17 +17,29 @@ export default function LeaderboardRow({
 }) {
   return (
     <>
-      <View style={[style.flexRow, style.border, { flex: 1 }]}>
+      <View
+        style={[
+          style.flexRow,
+          style.border,
+          style.itemsCenter,
+          style.wFull,
+          {
+            borderLeftWidth: 0,
+            borderRightWidth: 0,
+            flex: 1,
+            paddingHorizontal: 10,
+            gap: 15,
+            maxWidth: "100%",
+            boxSizing: "border-box",
+          },
+        ]}
+      >
         <View
           style={[
-            style.hFull,
             style.flexCol,
             style.justifyCenter,
             style.itemsCenter,
-            style.border,
             {
-              borderWidth: 0,
-              borderRightWidth: 1,
               backgroundColor:
                 rank === 1
                   ? colors.yellow[400]
@@ -35,25 +47,43 @@ export default function LeaderboardRow({
                   ? colors.yellow[300]
                   : rank === 3
                   ? colors.yellow[200]
-                  : colors.gray[50],
-              width: 40,
+                  : colors.transparent,
+              width: 50,
+              height: 50,
+              borderRadius: 5,
+              boxSizing: "border-box",
+              flex: 0,
             },
           ]}
         >
-          <Text style={[style.textMd, style.textBold, {}]}>{rank}</Text>
+          <Text
+            style={[
+              style.textMd,
+              style.textBold,
+              {
+                color: rank > 3 ? colors.white : colors.gray[50],
+                fontWeight: 900,
+                textShadowRadius: 2,
+                textShadowColor: colors.black,
+                textShadowOffset: { width: 0, height: rank > 3 ? 0 : 1 },
+              },
+            ]}
+          >
+            {rank}
+          </Text>
         </View>
         <View
           style={[
             style.flexRow,
-            style.wFull,
             style.justifyBetween,
             style.itemsCenter,
             {
               flex: 1,
-              padding: 10,
-              maxWidth: "100%",
+              paddingVertical: 10,
               overflow: "hidden",
-              backgroundColor: isYou ? colors.baseBackgroundColor : undefined,
+              boxSizing: "border-box",
+              maxWidth: "100%",
+              gap: 10,
             },
           ]}
         >
@@ -63,9 +93,10 @@ export default function LeaderboardRow({
               style.itemsCenter,
               style.hFull,
               {
-                flexGrow: 0,
+                flex: 1,
+                gap: 10,
+                boxSizing: "border-box",
                 overflow: "hidden",
-                maxWidth: "70%",
               },
             ]}
           >
@@ -77,33 +108,26 @@ export default function LeaderboardRow({
               expression={isYou ? undefined : userData.style.expression}
               head={isYou ? undefined : userData.style.head}
             ></PooCreatureBadge>
-            <View style={[{ width: 10 }]}></View>
-            <View style={[style.flexCol, {}]}>
-              <Text
-                style={[
-                  { fontSize: 17, fontWeight: "600", overflow: "hidden" },
-                ]}
-                numberOfLines={1}
-              >
-                {userData.style.name}
-              </Text>
-              {isYou && (
-                <Text
-                  style={[
-                    {
-                      fontSize: 13,
-                      overflow: "hidden",
-                      opacity: 0.5,
-                    },
-                  ]}
-                  numberOfLines={1}
-                >
-                  {isYou && "(Vous)"}
-                </Text>
-              )}
-            </View>
+            <Text
+              style={[{ fontSize: 17, fontWeight: "600", overflow: "hidden" }]}
+              numberOfLines={1}
+            >
+              {userData.style.name}
+            </Text>
           </View>
-          {trailing}
+          <View
+            style={[
+              {
+                backgroundColor: colors.gray[300],
+                paddingHorizontal: 10,
+                paddingVertical: 7,
+                borderRadius: 5,
+                boxSizing: "border-box",
+              },
+            ]}
+          >
+            {trailing}
+          </View>
         </View>
       </View>
     </>

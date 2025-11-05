@@ -7,14 +7,14 @@ import {
   signOut,
   UserCredential,
 } from "firebase/auth";
-import { useUserData } from "./use-user-data";
 import { useFirebase } from "../../stores/firebase/firebase.store";
 import { useState } from "react";
 import { FirebaseError } from "firebase/app";
 import useMassiveStoreLoader from "../admin/user-massive-store-loader";
+import { useUserDataTable } from "../firestore/use-user-data-table";
 
 export function useUserAuth() {
-  const { saveUserData } = useUserData();
+  const { update } = useUserDataTable();
   const { getAuth, syncCurrentUser } = useFirebase();
   const { generateUserDataFromStores } = useMassiveStoreLoader();
 
@@ -40,7 +40,7 @@ export function useUserAuth() {
     if (!getAuth().currentUser) return;
     try {
       const userData = generateUserDataFromStores();
-      await saveUserData(getAuth().currentUser!.uid, userData);
+      await update(getAuth().currentUser!.uid, userData);
     } catch (e) {
       console.error("error while saving current state in user", e);
     }

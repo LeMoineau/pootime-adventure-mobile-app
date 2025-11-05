@@ -15,6 +15,8 @@ import { ItemsLeaderboardable } from "../../common/config/constants/Leaderboard"
 import { Resources } from "../../common/config/constants/Resources";
 import { useFirebase } from "../../common/stores/firebase/firebase.store";
 import { useAuthentication } from "../../common/hooks/firebase/use-authentification";
+import { useLeaderboardTable } from "../../common/hooks/firestore/use-leaderboard-table";
+import { MathUtils } from "../../common/utils/math-utils";
 
 export default function LeaderboardPage() {
   const {
@@ -28,6 +30,7 @@ export default function LeaderboardPage() {
   >(["asc", "asc"]);
   const { currentUser } = useFirebase();
   const { user } = useAuthentication();
+  const {} = useLeaderboardTable();
 
   useEffect(() => {
     fetchTropheesBoard("asc");
@@ -105,9 +108,20 @@ export default function LeaderboardPage() {
                         <TextWithResourceIcon
                           key={`trophees-item-${index}`}
                           resource={resource}
-                          text={ud.resources[resource]}
+                          text={MathUtils.convertToReduceStrFormat(
+                            ud.resources[resource]
+                          )}
                           fontSize={20}
-                          textStyle={[{ fontWeight: "500" }]}
+                          textStyle={[
+                            {
+                              fontWeight: "800",
+                              color: colors.gray[50],
+                              textShadowRadius: 2,
+                              textShadowColor: colors.black,
+                              textShadowOffset: { width: 0, height: 1 },
+                              marginRight: 5,
+                            },
+                          ]}
                         ></TextWithResourceIcon>
                       }
                     ></LeaderboardRow>

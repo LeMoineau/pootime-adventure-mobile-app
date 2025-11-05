@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useUserData } from "../firebase/use-user-data";
 import { UserDataWithUid } from "../../types/firebase/UserData";
 import { LeaderboardDirection } from "../../types/leaderboard/LeaderboardDirection";
+import { useUserDataTable } from "../firestore/use-user-data-table";
 
 export default function useLeaderboard() {
-  const { getUserDatasOrderBy } = useUserData();
+  const { fetchManyOrderBy } = useUserDataTable();
 
   const [tropheesBoard, setTropheeBoard] = useState<{
     [key in LeaderboardDirection]?: UserDataWithUid[];
@@ -17,7 +17,7 @@ export default function useLeaderboard() {
 
   const fetchTropheesBoard = async (direction: LeaderboardDirection) => {
     if (!tropheesBoard[direction]) {
-      const newBoard = await getUserDatasOrderBy(
+      const newBoard = await fetchManyOrderBy(
         "resources.pooTrophee",
         direction
       );
@@ -30,10 +30,7 @@ export default function useLeaderboard() {
 
   const fetchPooCoinsBoard = async (direction: LeaderboardDirection) => {
     if (!pooCoinsBoard[direction]) {
-      const newBoard = await getUserDatasOrderBy(
-        "resources.pooCoins",
-        direction
-      );
+      const newBoard = await fetchManyOrderBy("resources.pooCoins", direction);
       setPooCoinsBoard({
         ...pooCoinsBoard,
         [direction]: newBoard,

@@ -16,7 +16,6 @@ export function useAuthentication() {
 
   useEffect(() => {
     const unsubscribeFromAuthStatuChanged = onAuthStateChanged(auth, (user) => {
-      console.log("user", user);
       if (user) {
         setUser(user);
       } else {
@@ -38,9 +37,10 @@ export function useAuthentication() {
     }
   };
 
-  const createAnonymousAccount = async () => {
+  const createAnonymousAccount = async (onSuccess?: (user: User) => void) => {
     try {
-      await signInAnonymously(auth);
+      const userCredential = await signInAnonymously(auth);
+      onSuccess && onSuccess(userCredential.user);
     } catch (e) {
       if (e instanceof FirebaseError) _handleAuthError(e.code);
     }
