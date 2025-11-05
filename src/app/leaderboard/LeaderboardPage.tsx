@@ -103,7 +103,7 @@ export default function LeaderboardPage() {
                       rank={index + 1}
                       userData={ud}
                       key={index}
-                      isYou={ud.uid === currentUser?.uid}
+                      isYou={ud.uid === user?.uid}
                       trailing={
                         <TextWithResourceIcon
                           key={`trophees-item-${index}`}

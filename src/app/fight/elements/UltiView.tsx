@@ -1,6 +1,5 @@
 import { Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import StarIcon from "../../../common/components/icons/resources/star";
 import { colors } from "../../../common/utils/color-utils";
 
 export default function UltiView({
@@ -108,22 +107,21 @@ export default function UltiView({
           ]}
         >
           <Text style={[style.textBold, style.textMd, { color: colors.white }]}>
-            Unlock at{" "}
+            Débloqué au{" "}
           </Text>
           <Text
             style={[
-              style.textBold,
               style.textMd,
               {
                 color: colors.white,
-                fontStyle: "italic",
                 backgroundColor: colors.baseProgressColor,
                 paddingHorizontal: 10,
+                paddingVertical: 3,
                 borderRadius: 7,
               },
             ]}
           >
-            Level {unlockLevel}
+            Niveau {unlockLevel}
           </Text>
         </View>
       )}

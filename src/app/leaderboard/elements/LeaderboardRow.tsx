@@ -3,6 +3,7 @@ import { style } from "../../../common/utils/style-utils";
 import PooCreatureBadge from "../../../common/components/misc/poo-creature/PooCreatureBadge";
 import UserData from "../../../common/types/firebase/UserData";
 import { colors } from "../../../common/utils/color-utils";
+import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 
 export default function LeaderboardRow({
   userData,
@@ -15,6 +16,8 @@ export default function LeaderboardRow({
   trailing: React.ReactNode;
   rank: number;
 }) {
+  const { name } = usePooCreatureStyleStore();
+
   return (
     <>
       <View
@@ -31,6 +34,7 @@ export default function LeaderboardRow({
             gap: 15,
             maxWidth: "100%",
             boxSizing: "border-box",
+            backgroundColor: isYou ? colors.gray[100] : colors.transparent,
           },
         ]}
       >
@@ -112,7 +116,7 @@ export default function LeaderboardRow({
               style={[{ fontSize: 17, fontWeight: "600", overflow: "hidden" }]}
               numberOfLines={1}
             >
-              {userData.style.name}
+              {isYou ? name : userData.style.name}
             </Text>
           </View>
           <View

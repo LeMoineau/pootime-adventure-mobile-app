@@ -1,7 +1,13 @@
 import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
-import { Animated, View, TouchableOpacity } from "react-native";
+import {
+  Animated,
+  View,
+  TouchableOpacity,
+  useWindowDimensions,
+} from "react-native";
 import { style } from "../../utils/style-utils";
-import { colors } from "../../utils/color-utils";
+
+const FOCUSED_TAB_OFFSET = 50;
 
 export default function AppBottomBar({
   state,
@@ -41,6 +47,11 @@ export default function AppBottomBar({
       },
     },
   ];
+  const { width } = useWindowDimensions();
+  const nbTab = state.routes.length;
+  const standardWidth = width / nbTab - FOCUSED_TAB_OFFSET / nbTab;
+  const focusedWidth = standardWidth + FOCUSED_TAB_OFFSET;
+
   return (
     <View
       style={[
@@ -48,10 +59,12 @@ export default function AppBottomBar({
         style.justifyCenter,
         style.itemsCenter,
         {
-          width: "100%",
+          width,
           height: 70,
           elevation: 0,
-          backgroundColor: colors.baseBackgroundColor,
+          backgroundColor: "rgba(0, 0, 0, 0.25)",
+          borderTopWidth: 1,
+          borderTopColor: "rgba(0, 0, 0, 0.1)",
         },
       ]}
     >
@@ -79,26 +92,34 @@ export default function AppBottomBar({
         };
 
         const inputRange = state.routes.map((_, i) => i);
-        const imageOpacity = position.interpolate({
-          inputRange,
-          outputRange: inputRange.map((i) => (i === index ? 1 : 0.2)),
-        });
-        const bgColor = position.interpolate({
-          inputRange,
-          outputRange: inputRange.map((i) =>
-            i === index ? "#4a9fff" : "rgba(0, 0, 0, 0.2)"
-          ),
-        });
 
         return (
           <Animated.View
             key={index}
             style={[
-              style.wFull,
               style.hFull,
               {
-                flex: 1,
-                backgroundColor: bgColor,
+                width: isFocused ? focusedWidth : standardWidth,
+                // transform: [
+                //   {
+                //     scaleX: isFocused
+                //       ? 1
+                //       : position.interpolate({
+                //           inputRange,
+                //           outputRange: inputRange.map((i) =>
+                //             i === index ? focusedWidth / standardWidth : 1
+                //           ),
+                //         }),
+                //   },
+                // ],
+                backgroundColor: position.interpolate({
+                  inputRange,
+                  outputRange: inputRange.map((i) =>
+                    i === index ? "#4a9fff" : "transparent"
+                  ),
+                }),
+                borderLeftWidth: index !== 0 ? 1 : 0,
+                borderLeftColor: "rgba(0, 0, 0, 0.1)",
               },
             ]}
           >
@@ -116,6 +137,7 @@ export default function AppBottomBar({
                 style.itemsCenter,
                 style.hFull,
                 style.wFull,
+                { paddingBottom: 5 },
               ]}
             >
               <Animated.Image
@@ -124,13 +146,20 @@ export default function AppBottomBar({
                   {
                     height: 50,
                     width: "100%",
-                    opacity: imageOpacity,
                     transform: [
                       {
                         scale: position.interpolate({
                           inputRange,
                           outputRange: inputRange.map((i) =>
-                            i === index ? 1.1 : 0.8
+                            i === index ? 1.1 : 0.9
+                          ),
+                        }),
+                      },
+                      {
+                        translateY: position.interpolate({
+                          inputRange,
+                          outputRange: inputRange.map((i) =>
+                            i === index ? 0 : 15
                           ),
                         }),
                       },
@@ -143,7 +172,8 @@ export default function AppBottomBar({
                 style={{
                   textTransform: "uppercase",
                   textShadowColor: "black",
-                  textShadowRadius: 5,
+                  textShadowRadius: 2,
+                  textShadowOffset: { width: 0, height: 1 },
                   color: "white",
                   fontWeight: "bold",
                   marginTop: 5,

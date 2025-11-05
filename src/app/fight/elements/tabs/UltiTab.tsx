@@ -3,14 +3,10 @@ import { style } from "../../../../common/utils/style-utils";
 import { ItemInStore } from "../../../../common/types/itemInStore";
 import UltiView from "../UltiView";
 import IconFromImage from "../../../../common/components/icons/IconFromImage";
-import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
-import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import { Ultis } from "../../../../common/types/Ultis";
 
 export default function UltiTab() {
-  const { spend } = useResourcesStore();
-  const { unlock, isUnlocked } = useItemsUnlockedStore();
   const { ultiSelected, level, selectUlti } = usePooCreatureStatsStore();
 
   return (
