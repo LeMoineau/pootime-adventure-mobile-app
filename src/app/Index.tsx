@@ -25,6 +25,7 @@ import LeaderboardPage from "./leaderboard/LeaderboardPage";
 import LoginPage from "./settings/account/LoginPage";
 import RegisterPage from "./settings/account/RegisterPage";
 import EventPosterOverlay from "./event-posters/EventPosterOverlay";
+import CacheProvider from "../common/contexts/CacheProvider";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -32,75 +33,77 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
-      <NavigationContainer>
-        <StatusBar hidden />
-        <Stack.Navigator
-          initialRouteName="App"
-          screenOptions={{ headerShown: false }}
-        >
-          <Stack.Screen name="App" component={MainPage} />
-          <Stack.Screen
-            name="Inventory"
-            component={InventoryPage}
-            options={{
-              presentation: "transparentModal",
-              animation: "fade_from_bottom",
-            }}
-          />
-          <Stack.Screen
-            name="OnlineArena"
-            component={OnlineArena}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="EntityArena"
-            component={EntityArena}
-          ></Stack.Screen>
+      <CacheProvider>
+        <NavigationContainer>
+          <StatusBar hidden />
+          <Stack.Navigator
+            initialRouteName="App"
+            screenOptions={{ headerShown: false }}
+          >
+            <Stack.Screen name="App" component={MainPage} />
+            <Stack.Screen
+              name="Inventory"
+              component={InventoryPage}
+              options={{
+                presentation: "transparentModal",
+                animation: "fade_from_bottom",
+              }}
+            />
+            <Stack.Screen
+              name="OnlineArena"
+              component={OnlineArena}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="EntityArena"
+              component={EntityArena}
+            ></Stack.Screen>
 
-          {/* SETTINGS PAGES */}
-          <Stack.Screen name="Settings" component={Settings}></Stack.Screen>
-          <Stack.Screen
-            name="AccountSettings"
-            component={AccountSettings}
-          ></Stack.Screen>
-          <Stack.Screen name="LoginPage" component={LoginPage}></Stack.Screen>
-          <Stack.Screen
-            name="RegisterPage"
-            component={RegisterPage}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="DevSettings"
-            component={DevSettings}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="EventSettings"
-            component={EventSettings}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="DonationSettings"
-            component={DonationSettings}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="TutoSettings"
-            component={TutoSettings}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="StructureInfos"
-            component={StructureInfosPage}
-            options={{
-              presentation: "transparentModal",
-              animation: "slide_from_bottom",
-            }}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="LeaderboardPage"
-            component={LeaderboardPage}
-            options={{
-              presentation: "transparentModal",
-              animation: "slide_from_bottom",
-            }}
-          ></Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
+            {/* SETTINGS PAGES */}
+            <Stack.Screen name="Settings" component={Settings}></Stack.Screen>
+            <Stack.Screen
+              name="AccountSettings"
+              component={AccountSettings}
+            ></Stack.Screen>
+            <Stack.Screen name="LoginPage" component={LoginPage}></Stack.Screen>
+            <Stack.Screen
+              name="RegisterPage"
+              component={RegisterPage}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="DevSettings"
+              component={DevSettings}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="EventSettings"
+              component={EventSettings}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="DonationSettings"
+              component={DonationSettings}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="TutoSettings"
+              component={TutoSettings}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="StructureInfos"
+              component={StructureInfosPage}
+              options={{
+                presentation: "transparentModal",
+                animation: "slide_from_bottom",
+              }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="LeaderboardPage"
+              component={LeaderboardPage}
+              options={{
+                presentation: "transparentModal",
+                animation: "slide_from_bottom",
+              }}
+            ></Stack.Screen>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </CacheProvider>
     </>
   );
 }

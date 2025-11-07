@@ -6,8 +6,6 @@ export default function App() {
   // const { initApp, getAuth, userIsPersisted } = useFirebase();
   // const { saveCurrentStateInUser, createAnonymousAccount } = useUserAuth();
 
-  // console.log("salut app");
-
   // const saveCurrentStateWhenAppClosed = async () => {
   //   if (!getAuth().currentUser) return;
   //   await saveCurrentStateInUser();
@@ -23,7 +21,6 @@ export default function App() {
   //     }
   //   });
   //   return () => {
-  //     console.log("fin");
   //     saveCurrentStateWhenAppClosed();
   //   };
   // }, []);

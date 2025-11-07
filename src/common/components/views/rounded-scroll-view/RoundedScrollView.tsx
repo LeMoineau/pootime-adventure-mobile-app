@@ -1,21 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, StyleProp, View, ViewStyle } from "react-native";
 import { style } from "../../../utils/style-utils";
 import { colors } from "../../../utils/color-utils";
 import RoundedScrollViewTabSelector from "./RoundedScrollViewTabSelector";
+
+export type RoundedScrollViewTab = {
+  icon: React.ReactNode;
+  content: React.ReactNode;
+};
 
 export default function RoundedScrollView({
   tabs,
   endTabs,
   defaultTab,
   containerStyle,
+  onTabChange,
 }: {
-  tabs: { icon: React.ReactNode; content: React.ReactNode }[];
-  endTabs?: { icon: React.ReactNode; content: React.ReactNode }[];
+  tabs: RoundedScrollViewTab[];
+  endTabs?: RoundedScrollViewTab[];
   defaultTab?: number;
   containerStyle?: StyleProp<ViewStyle>;
+  onTabChange?: (props: {
+    tabIndex: number;
+    tab: RoundedScrollViewTab;
+  }) => void;
 }) {
   const [tabSelected, setTabSelected] = useState<number>(defaultTab ?? 0);
+
+  useEffect(() => {
+    if (onTabChange) {
+      onTabChange({ tabIndex: tabSelected, tab: tabs[tabSelected] });
+    }
+  }, [tabSelected]);
 
   return (
     <View

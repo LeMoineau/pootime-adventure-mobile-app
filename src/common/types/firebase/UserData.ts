@@ -11,6 +11,6 @@ export default interface UserData {
   itemsUnlocked: DataInStorage.ItemsUnlocked;
 }
 
-export interface UserDataWithUid extends UserData {
+export interface IdentifiedUserData extends UserData {
   uid: string;
 }

@@ -83,4 +83,6 @@ export namespace DefaultValues {
 
   export const MIN_PASSWORD_LENGTH = 8;
   export const MAX_LOGIN_FIELD_LENGTH = 255;
+
+  export const CACHE_AVAILABILITY_DURATION_IN_SECOND = 10 * 60;
 }

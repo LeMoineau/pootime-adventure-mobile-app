@@ -3,30 +3,52 @@ import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 import ExpoIcon from "../../../common/components/icons/ExpoIcon";
 import React, { useState } from "react";
-import UserData, {
-  UserDataWithUid,
-} from "../../../common/types/firebase/UserData";
+import { IdentifiedUserData } from "../../../common/types/firebase/UserData";
 import { LeaderboardDirection } from "../../../common/types/leaderboard/LeaderboardDirection";
+import LeaderboardRow from "./LeaderboardRow";
+import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
+import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
+import { MathUtils } from "../../../common/utils/math-utils";
+import { Resources } from "../../../common/config/constants/Resources";
 
 export default function LeaderboardBoard({
-  boardDirection,
   title,
-  rows,
-  filterIcon,
-  onFilterPress,
-  item,
+  directionChangerIcon,
+  onDirectionChange,
+  resourceDescribed,
+  items,
+  leaderboardSize,
 }: {
-  boardDirection: LeaderboardDirection;
   title: string;
-  rows: UserDataWithUid[];
-  filterIcon: React.ReactNode;
-  onFilterPress?: (newDirection: LeaderboardDirection) => void;
-  item: (userData: UserDataWithUid, index: number) => React.ReactNode;
+  directionChangerIcon: React.ReactNode;
+  onDirectionChange?: (newDirection: LeaderboardDirection) => void;
+  resourceDescribed: Resources;
+  items?: { asc: IdentifiedUserData[]; desc: IdentifiedUserData[] };
+  leaderboardSize: number;
 }) {
+  const { user } = useAuthentication();
+  const [direction, setDirection] = useState<LeaderboardDirection>("desc");
+
+  const calculateRank = (index: number) => {
+    if (index > 0 && items) {
+      let _index = index;
+      while (
+        _index > 0 &&
+        items[direction][_index].resources[resourceDescribed] ===
+          items[direction][_index - 1].resources[resourceDescribed]
+      ) {
+        _index -= 1;
+      }
+      return direction === "asc" ? leaderboardSize - _index : _index + 1;
+    } else {
+      return direction === "asc" ? leaderboardSize - index : index + 1;
+    }
+  };
+
   return (
     <>
       <View>
-        <View
+        <Pressable
           style={[
             style.flexRow,
             style.justifyBetween,
@@ -39,24 +61,52 @@ export default function LeaderboardBoard({
               backgroundColor: colors.gray[100],
             },
           ]}
+          onPress={() => {
+            const newDirection = direction === "asc" ? "desc" : "asc";
+            setDirection(newDirection);
+            onDirectionChange && onDirectionChange(newDirection);
+          }}
         >
           <Text> {title} </Text>
-          <Pressable
+          <View
             style={[style.flexRow, style.itemsCenter, { paddingHorizontal: 5 }]}
-            onPress={() => {
-              onFilterPress &&
-                onFilterPress(boardDirection === "asc" ? "desc" : "asc");
-            }}
           >
-            {filterIcon}
+            {directionChangerIcon}
             <View style={[{ width: 10 }]}></View>
             <ExpoIcon
-              name={boardDirection === "asc" ? "sort-asc" : "sort-desc"}
+              name={direction === "asc" ? "sort-asc" : "sort-desc"}
               size={20}
             ></ExpoIcon>
-          </Pressable>
-        </View>
-        {rows.map(item)}
+          </View>
+        </Pressable>
+        {(items?.[direction] ?? []).map((ud, index) => (
+          <LeaderboardRow
+            rank={calculateRank(index)}
+            userData={ud}
+            key={index}
+            isYou={ud.uid === user?.uid}
+            trailing={
+              <TextWithResourceIcon
+                key={`trophees-item-${index}`}
+                resource={resourceDescribed}
+                text={MathUtils.convertToReduceStrFormat(
+                  ud.resources[resourceDescribed]
+                )}
+                fontSize={20}
+                textStyle={[
+                  {
+                    fontWeight: "800",
+                    color: colors.gray[50],
+                    textShadowRadius: 2,
+                    textShadowColor: colors.black,
+                    textShadowOffset: { width: 0, height: 1 },
+                    marginRight: 5,
+                  },
+                ]}
+              ></TextWithResourceIcon>
+            }
+          ></LeaderboardRow>
+        ))}
       </View>
     </>
   );

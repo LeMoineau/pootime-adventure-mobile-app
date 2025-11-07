@@ -1,14 +1,16 @@
 import { Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import PooCreatureBadge from "../../../common/components/misc/poo-creature/PooCreatureBadge";
-import StandardButton from "../../../common/components/buttons/StandardButton";
 import { colors } from "../../../common/utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
-import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
-import ResourceIcon from "../../../common/components/icons/ResourceIcon";
+import { Resources } from "../../../common/config/constants/Resources";
+import ResourceLeaderboardedRank from "../../../common/components/icons/ResourceLeaderboardedRank";
+
+const RESOURCE_LEADERBOARDED: Resources[] = ["pooTrophee", "pooCoins"];
 
 export default function LeaderboardSubHeader() {
   const { name } = usePooCreatureStyleStore();
+
   return (
     <>
       <View style={[{ paddingVertical: 20, width: "100%" }]}>
@@ -33,70 +35,12 @@ export default function LeaderboardSubHeader() {
               {name}
             </Text>
             <View style={[style.flexRow, { gap: 5 }]}>
-              <ResourceIcon resource="pooTrophee" size={22}></ResourceIcon>
-              <Text
-                style={[
-                  style.textBold,
-                  {
-                    fontSize: 15,
-                    color: colors.white,
-                    textShadowColor: colors.black,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 0, height: 0 },
-                  },
-                ]}
-              >
-                100
-              </Text>
-              <Text
-                style={[
-                  style.textBold,
-                  {
-                    position: "relative",
-                    left: -5,
-                    top: -5,
-                    fontSize: 13,
-                    color: colors.white,
-                    textShadowColor: colors.black,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 0, height: 0 },
-                  },
-                ]}
-              >
-                e
-              </Text>
-              <ResourceIcon resource="pooCoins" size={22}></ResourceIcon>
-              <Text
-                style={[
-                  style.textBold,
-                  {
-                    fontSize: 15,
-                    color: colors.white,
-                    textShadowColor: colors.black,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 0, height: 0 },
-                  },
-                ]}
-              >
-                26
-              </Text>
-              <Text
-                style={[
-                  style.textBold,
-                  {
-                    position: "relative",
-                    left: -5,
-                    top: -5,
-                    fontSize: 13,
-                    color: colors.white,
-                    textShadowColor: colors.black,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 0, height: 0 },
-                  },
-                ]}
-              >
-                e
-              </Text>
+              {RESOURCE_LEADERBOARDED.map((r, index) => (
+                <ResourceLeaderboardedRank
+                  resource={r}
+                  key={index}
+                ></ResourceLeaderboardedRank>
+              ))}
             </View>
           </View>
         </View>
