@@ -6,7 +6,6 @@ import PooCoinIcon from "../../../common/components/icons/resources/pooCoin";
 import PenIcon from "../../../common/components/icons/pen";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
-import { useShallow } from "zustand/react/shallow";
 import WoolIcon from "../../../common/components/icons/resources/wool";
 
 export default function EditorTopBar() {

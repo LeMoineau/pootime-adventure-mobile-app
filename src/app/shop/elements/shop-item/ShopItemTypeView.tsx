@@ -1,16 +1,16 @@
 import { Image, View } from "react-native";
 import {
   BuyableItem,
-  BuyableItemValue,
   isResourceItemValue,
   isStringItemValue,
 } from "../../../../common/types/shop/UnlockableItems";
 import { style } from "../../../../common/utils/style-utils";
-import { PooHeads } from "../../../../common/types/PooHeads";
 import { CurveUtils } from "../../../../common/utils/curve-utils";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
 import { MathUtils } from "../../../../common/utils/math-utils";
+import { BuyableItemValue } from "../../../../common/types/shop/BuyableItem";
+import { PooHeads } from "../../../../common/types/PooHeads";
 
 export default function ShopItemTypeView({
   itemType,

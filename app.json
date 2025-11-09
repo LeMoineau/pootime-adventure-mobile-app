@@ -23,6 +23,16 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
+    "plugins": [
+      "expo-system-ui",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3020955535400199~5556255643",
+          "iosAppId": "ca-app-pub-3020955535400199~5556255643"
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "eebb6ee4-7931-4b76-a028-0dba660e4515"

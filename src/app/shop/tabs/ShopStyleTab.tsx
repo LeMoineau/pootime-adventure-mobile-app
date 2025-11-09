@@ -1,22 +1,22 @@
 import { ScrollView, View } from "react-native";
-import PooCreature from "../../../../../common/components/misc/poo-creature/PooCreature";
-import ShopItemView from "../../item-view/ShopItemView";
-import ShopSectionTitle from "../../ShopSectionTitle";
+import PooCreature from "../../../common/components/misc/poo-creature/PooCreature";
+import ShopItemView from "../elements/shop-item/ShopItemView";
+import ShopSectionTitle from "../elements/ShopSectionTitle";
 import {
   BuyableItem,
   isStyleUnlockableItem,
-} from "../../../../../common/types/shop/UnlockableItems";
-import { style } from "../../../../../common/utils/style-utils";
+} from "../../../common/types/shop/UnlockableItems";
+import { style } from "../../../common/utils/style-utils";
 import {
   isMultiPricesShopItem,
   isSinglePriceShopItem,
-} from "../../../../../common/types/shop/ShopItem";
-import { colors } from "../../../../../common/utils/color-utils";
+} from "../../../common/types/shop/ShopItem";
+import { colors } from "../../../common/utils/color-utils";
 import {
   FreeTransaction,
   Transaction,
-} from "../../../../../common/types/shop/Transaction";
-import ShopItems from "../../../../../common/config/constants/ShopItems";
+} from "../../../common/types/shop/Transaction";
+import ShopItems from "../../../common/config/constants/ShopItems";
 
 export default function ShopStyleTab({
   onUnlockedItemPress,

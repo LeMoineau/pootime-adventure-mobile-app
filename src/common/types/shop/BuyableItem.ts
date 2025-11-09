@@ -21,3 +21,12 @@ export type PooExpressionUrl = string;
 
 export type ResourcesItemValue = { resource: Resources; number: number };
 export type ResourcesItem = "resources";
+
+export function isResourcesItemValue(
+  shopItemValue: BuyableItemValue
+): shopItemValue is ResourcesItemValue {
+  return (
+    (shopItemValue as any).resource !== undefined &&
+    (shopItemValue as any).number !== undefined
+  );
+}

@@ -4,7 +4,7 @@ import useAnimatedValue from "../../../common/hooks/use-animated-value";
 import { useEffect, useState } from "react";
 import { style } from "../../../common/utils/style-utils";
 import StandardButton from "../../../common/components/buttons/StandardButton";
-import ShopItemTypeView from "./item-view/ShopItemTypeView";
+import ShopItemTypeView from "./shop-item/ShopItemTypeView";
 import {
   isMultiResourcesTransaction,
   isSingleResourceTransaction,
