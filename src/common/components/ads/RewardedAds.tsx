@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Platform } from "react-native";
+import { Button, Platform, Text } from "react-native";
 import {
   RewardedAd,
   RewardedAdEventType,
@@ -9,7 +9,7 @@ import {
 const adUnitId = __DEV__
   ? TestIds.REWARDED
   : Platform.select({
-      android: "ca-app-pub-3020955535400199/9303928963",
+      android: "ca-app-pub-3020955535400199/9415609606",
     });
 
 const rewarded = RewardedAd.createForAdRequest(adUnitId!);
@@ -48,11 +48,14 @@ export default function RewardedAds({ onReward }: { onReward?: () => void }) {
   }
 
   return (
-    <Button
-      title="Show Rewarded Ad"
-      onPress={() => {
-        rewarded.show();
-      }}
-    />
+    <>
+      <Text>un text de test</Text>
+      <Button
+        title="Show Rewarded Ad"
+        onPress={() => {
+          rewarded.show();
+        }}
+      />
+    </>
   );
 }
