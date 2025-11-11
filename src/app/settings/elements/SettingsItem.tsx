@@ -5,6 +5,7 @@ import ExpoIcon, {
   AllIconNames,
 } from "../../../common/components/icons/ExpoIcon";
 import { colors } from "../../../common/utils/color-utils";
+import { useState } from "react";
 
 export interface SettingsItemProps {
   icon?: AllIconNames;
@@ -16,6 +17,8 @@ export interface SettingsItemProps {
   variant?: "standard" | "error" | "fade" | "success";
 }
 
+const MAX_SUBLABEL_MINIMIZED_LENGTH = 200;
+
 export default function SettingsItem({
   icon,
   label,
@@ -25,6 +28,10 @@ export default function SettingsItem({
   onPress,
   variant,
 }: {} & SettingsItemProps) {
+  const [maximazed, setMaximazed] = useState(false);
+  const subLabelTooBig =
+    subLabel && subLabel.length > MAX_SUBLABEL_MINIMIZED_LENGTH;
+
   return (
     <Pressable
       style={[
@@ -66,16 +73,38 @@ export default function SettingsItem({
           style.flexRow,
           style.itemsCenter,
           style.hFull,
-          { flex: 1, paddingRight: 10 },
+          { flex: 1, paddingRight: 0 },
         ]}
       >
         {icon && <ExpoIcon name={icon} size={20}></ExpoIcon>}
         <View style={[{ flex: 1, marginLeft: icon ? 15 : 0 }]}>
           <Text style={[{ color: colors.black, fontSize: 17 }]}>{label}</Text>
           {subLabel && (
-            <Text style={[style.textSm, { color: colors.black, opacity: 0.5 }]}>
-              {subLabel}
-            </Text>
+            <View style={[style.flexRow, { flex: 1 }]}>
+              <Text
+                style={[
+                  style.textSm,
+                  { flex: 1, color: colors.black, opacity: 0.5 },
+                ]}
+              >
+                {subLabelTooBig && !maximazed
+                  ? `${subLabel.substring(0, MAX_SUBLABEL_MINIMIZED_LENGTH)}...`
+                  : subLabel}
+              </Text>
+              {subLabelTooBig && (
+                <Pressable
+                  style={[{ padding: 10 }]}
+                  onPress={() => {
+                    setMaximazed(!maximazed);
+                  }}
+                >
+                  <ExpoIcon
+                    name={!maximazed ? "chevron-down" : "chevron-up"}
+                    size={15}
+                  ></ExpoIcon>
+                </Pressable>
+              )}
+            </View>
           )}
         </View>
       </View>

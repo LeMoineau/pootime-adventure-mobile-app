@@ -45,6 +45,7 @@ export default function CacheProvider({ children }: { children: ReactNode }) {
   return (
     <CacheContext.Provider
       value={{
+        cache: cache.current,
         put,
         get,
         remove,
