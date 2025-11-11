@@ -9,8 +9,13 @@ import { useNavigation } from "@react-navigation/native";
 import useMassiveStoreLoader from "../../../common/hooks/admin/user-massive-store-loader";
 import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
 import { useUserDataTable } from "../../../common/hooks/firestore/use-user-data-table";
+import { useEffect } from "react";
 
-export default function AccountSettings() {
+export default function AccountSettings({
+  route,
+}: {
+  route: { params?: { updateUser: boolean } };
+}) {
   const { isVisible, show, hide } = useModals<
     "confirm-reset" | "confirm-disconnect"
   >();
@@ -26,6 +31,10 @@ export default function AccountSettings() {
   const { create: createUserData } = useUserDataTable();
   const { massiveStoreReset, generateUserDataFromStores } =
     useMassiveStoreLoader();
+
+  useEffect(() => {
+    console.log("update user", route.params?.updateUser);
+  }, [route.params?.updateUser]);
 
   return (
     <>
@@ -63,29 +72,31 @@ export default function AccountSettings() {
         <SettingsScrollView
           title="Synchronisation des données"
           items={[
-            {
-              icon: "google",
-              label: "Lier à Google",
-              disabled: true,
-              hasRightArrow: true,
-              onPress: () => show("confirm-disconnect"),
-            },
+            // {
+            //   icon: "google",
+            //   label: "Lier à Google",
+            //   disabled: true,
+            //   hasRightArrow: true,
+            //   onPress: () => show("confirm-disconnect"),
+            // },
             {
               icon: "account-circle",
               label: "Se connecter",
+              disabled: user && !user.isAnonymous,
               hasRightArrow: true,
               onPress: () => navigator.navigate("LoginPage"),
             },
             {
               icon: "person-add-alt-1",
               label: "Se créer un compte",
+              disabled: user && !user.isAnonymous,
               hasRightArrow: true,
               onPress: () => navigator.navigate("RegisterPage"),
             },
             {
               icon: "person-4",
               label: "Créer un compte anonyme",
-              hasRightArrow: true,
+              hasRightArrow: false,
               disabled: isConnected,
               onPress: () => {
                 createAnonymousAccount(async (user) => {

@@ -24,7 +24,7 @@ export type ParamListBase = {
   OnlineArena: { room: ServerTypes.Room };
   EntityArena: { zoneIndex: number };
   Settings: undefined;
-  AccountSettings: undefined;
+  AccountSettings: { updateUser: boolean } | undefined;
   DevSettings: undefined;
   EventSettings: undefined;
   DonationSettings: undefined;

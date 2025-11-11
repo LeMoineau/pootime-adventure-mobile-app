@@ -1,40 +1,63 @@
 import { useNavigation } from "@react-navigation/native";
 import { useNavigationType } from "../../../common/types/navigation/NavigationTypes";
-import { useFirebase } from "../../../common/stores/firebase/firebase.store";
 import SettingsPage from "../elements/SettingsPage";
 import SettingsHeader from "../elements/SettingsHeader";
-import { SettingsScrollView } from "../elements/SettingsScrollView";
-import { Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import InputField from "../../../common/components/fields/InputField";
-import StandardButton from "../../../common/components/buttons/StandardButton";
-import { colors } from "../../../common/utils/color-utils";
-import useAccountFormValidation from "../../../common/hooks/settings/account/use-account-form-validation";
 import FormInputField from "../../../common/components/fields/FormInputField";
-import { useUserAuth } from "../../../common/hooks/firebase/use-user-auth";
-import Alert from "../../../common/components/text/Alert";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
+import { colors } from "../../../common/utils/color-utils";
 
 export default function RegisterPage() {
   const navigator: useNavigationType = useNavigation();
-  const { authError, createAccountWithEmailAndPassword } = useUserAuth();
-  const {
-    email,
-    password,
-    confirmPassword,
-    emailError,
-    passwordError,
-    confirmPasswordError,
-    setEmail,
-    setPassword,
-    setConfirmPassword,
-    validateEmail,
-    validatePassword,
-    validateConfirmPassword,
-    validateRegisterForm,
-  } = useAccountFormValidation();
+  const { authError, createAccountWithEmailAndPassword } = useAuthentication();
+
+  const userSchema = z
+    .object({
+      email: z
+        .string()
+        .email({ message: "Please enter a valid email address." }),
+      password: z
+        .string()
+        .min(6, { message: "Password must be at least 6 characters." }),
+      confirmPassword: z.string(),
+    })
+    .superRefine(({ confirmPassword, password }, ctx) => {
+      if (confirmPassword !== password) {
+        ctx.addIssue({
+          code: "custom",
+          message: "The passwords did not match",
+          path: ["confirmPassword"],
+        });
+      }
+    });
+
+  type UserFormType = z.infer<typeof userSchema>;
+
+  const { control, handleSubmit } = useForm<UserFormType>({
+    resolver: zodResolver(userSchema),
+  });
+
+  const onSubmit: SubmitHandler<UserFormType> = (data: UserFormType) => {
+    createAccountWithEmailAndPassword(
+      data.email,
+      data.password,
+      () => {
+        navigator.navigate("AccountSettings", { updateUser: true });
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
+  };
 
   return (
-    <>
+    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
+    <SafeAreaView edges={{ top: "off" }} style={{ flex: 1 }}>
       <SettingsPage
         header={
           <SettingsHeader
@@ -47,60 +70,71 @@ export default function RegisterPage() {
           style={[
             style.flexCol,
             style.wFull,
-            { flex: 1, padding: 20, paddingTop: 0 },
+            style.justifyBetween,
+            { flex: 1, gap: 20, paddingHorizontal: 10 },
           ]}
         >
-          {authError && authError.length > 0 && (
-            <>
-              <Alert content={authError} variant="error"></Alert>
-              <View style={[{ height: 20 }]}></View>
-            </>
+          <Controller
+            control={control}
+            render={({
+              field: { onChange, onBlur, value },
+              fieldState: { error },
+            }) => (
+              <FormInputField
+                errorText={error?.message}
+                label="Adresse mail"
+                placeholder="Entrez votre adresse mail..."
+                onBlur={onBlur}
+                onChange={onChange}
+              />
+            )}
+            name="email"
+          />
+          <Controller
+            control={control}
+            render={({
+              field: { onChange, onBlur, value },
+              fieldState: { error },
+            }) => (
+              <FormInputField
+                errorText={error?.message}
+                label="Mot de passe"
+                placeholder="Entrez votre mot de passe..."
+                onBlur={onBlur}
+                onChange={onChange}
+                secureTextEntry
+                textContentType="password"
+                showVisibilityBtn
+              />
+            )}
+            name="password"
+          />
+          <Controller
+            control={control}
+            render={({
+              field: { onChange, onBlur, value },
+              fieldState: { error },
+            }) => (
+              <FormInputField
+                errorText={error?.message}
+                label="Confirmer le mot de passe"
+                placeholder="Entrez votre mot de passe..."
+                onBlur={onBlur}
+                onChange={onChange}
+                secureTextEntry
+                textContentType="password"
+                showVisibilityBtn
+              />
+            )}
+            name="confirmPassword"
+          />
+          <View style={{ height: 0 }}></View>
+          <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+          {authError && (
+            <Text style={[{ color: colors.error }]}>{authError}</Text>
           )}
-          <View style={[{ height: 20 }]}></View>
-          <FormInputField
-            label="Adresse mail"
-            textContentType="emailAddress"
-            onBlur={validateEmail}
-            errorText={emailError}
-            onChange={setEmail}
-          ></FormInputField>
-          <View style={[{ height: 20 }]}></View>
-          <FormInputField
-            label="Mot de passe"
-            textContentType="password"
-            secureTextEntry
-            onBlur={validatePassword}
-            errorText={passwordError}
-            onChange={setPassword}
-          ></FormInputField>
-          <View style={[{ height: 20 }]}></View>
-          <FormInputField
-            label="Confirmer mot de passe"
-            textContentType="password"
-            secureTextEntry
-            onBlur={validateConfirmPassword}
-            errorText={confirmPasswordError}
-            onChange={setConfirmPassword}
-          ></FormInputField>
-          <View style={[{ height: 20 }]}></View>
-          <StandardButton
-            style={[{ flex: 1, marginTop: 15 }]}
-            bgColor={colors.baseProgressColor}
-            viewStyle={[style.roundedFull, { paddingVertical: 15 }]}
-            textColor={colors.white}
-            textStyle={[{ fontSize: 17, fontWeight: "500" }]}
-            onPress={async () => {
-              if (validateRegisterForm()) {
-                await createAccountWithEmailAndPassword(email, password, () => {
-                  navigator.goBack();
-                });
-              }
-            }}
-          >
-            Créer son compte
-          </StandardButton>
         </View>
       </SettingsPage>
-    </>
+    </SafeAreaView>
   );
 }

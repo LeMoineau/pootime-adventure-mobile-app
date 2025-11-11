@@ -31,6 +31,14 @@
           "androidAppId": "ca-app-pub-3020955535400199~5556255643",
           "iosAppId": "ca-app-pub-3020955535400199~5556255643"
         }
+      ],
+      [
+        "expo-navigation-bar",
+        {
+          "visibility": "hidden",
+          "behavior": "inset-swipe",
+          "position": "relative"
+        }
       ]
     ],
     "extra": {

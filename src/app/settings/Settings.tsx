@@ -7,18 +7,25 @@ import { SettingsScrollView } from "./elements/SettingsScrollView";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
 import { SettingsItemProps } from "./elements/SettingsItem";
-import SettingsPage from "./elements/SettingsPage";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
-import { LinearGradient } from "expo-linear-gradient";
 import { style } from "../../common/utils/style-utils";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
+import * as NavigationBar from "expo-navigation-bar";
 
 export default function Settings() {
   const { unlock, isUnlocked } = useItemsUnlockedStore();
   const [counterDev, setCounterDev] = useState(0);
   const navigator: useNavigationType = useNavigation();
   const { name } = usePooCreatureStyleStore();
+
+  useEffect(() => {
+    NavigationBar.setVisibilityAsync("visible");
+
+    return () => {
+      NavigationBar.setVisibilityAsync("hidden");
+    };
+  }, []);
 
   useEffect(() => {
     if (counterDev >= 7) {

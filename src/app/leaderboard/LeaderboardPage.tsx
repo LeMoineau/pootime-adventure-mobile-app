@@ -11,6 +11,9 @@ import { ItemsLeaderboardable } from "../../common/config/constants/Leaderboard"
 import { Resources } from "../../common/config/constants/Resources";
 import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
 import { IdentifiedUserData } from "../../common/types/firebase/UserData";
+import * as NavigationBar from "expo-navigation-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { View } from "react-native";
 
 const LEADERBOARD_TAB_INFOS = [
   {
@@ -43,6 +46,11 @@ export default function LeaderboardPage() {
     count().then((size) => {
       setLeaderboardSize(size);
     });
+    NavigationBar.setVisibilityAsync("visible");
+
+    return () => {
+      NavigationBar.setVisibilityAsync("hidden");
+    };
   }, []);
 
   const handleTabChange = async (tabIndex: number) => {
@@ -66,17 +74,27 @@ export default function LeaderboardPage() {
   };
 
   return (
-    <>
+    <SafeAreaView
+      edges={{ top: "off", bottom: "additive" }}
+      style={[{ flex: 1 }]}
+    >
       <CustomPage
-        bgColor={colors.baseBackgroundColor}
+        bgColor={colors.gray[100]}
         style={[
           style.flexCol,
           style.justifyCenter,
           style.itemsCenter,
-          { padding: 0, paddingTop: 20 },
+          { padding: 0 },
         ]}
       >
-        <LeaderboardSubHeader></LeaderboardSubHeader>
+        <View
+          style={[
+            style.wFull,
+            { paddingTop: 20, backgroundColor: colors.baseBackgroundColor },
+          ]}
+        >
+          <LeaderboardSubHeader></LeaderboardSubHeader>
+        </View>
         <RoundedScrollView
           defaultTab={0}
           onTabChange={({ tabIndex }) => {
@@ -100,6 +118,6 @@ export default function LeaderboardPage() {
           )}
         ></RoundedScrollView>
       </CustomPage>
-    </>
+    </SafeAreaView>
   );
 }
