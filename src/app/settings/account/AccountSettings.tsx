@@ -9,12 +9,12 @@ import { useNavigation } from "@react-navigation/native";
 import useMassiveStoreLoader from "../../../common/hooks/admin/user-massive-store-loader";
 import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
 import { useUserDataTable } from "../../../common/hooks/firestore/use-user-data-table";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function AccountSettings({
   route,
 }: {
-  route: { params?: { updateUser: boolean } };
+  route?: { params?: { updateUser: boolean } };
 }) {
   const { isVisible, show, hide } = useModals<
     "confirm-reset" | "confirm-disconnect"
@@ -28,13 +28,14 @@ export default function AccountSettings({
     createAnonymousAccount,
     disconnect,
   } = useAuthentication();
-  const { create: createUserData } = useUserDataTable();
+  const { update } = useUserDataTable();
   const { massiveStoreReset, generateUserDataFromStores } =
     useMassiveStoreLoader();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log("update user", route.params?.updateUser);
-  }, [route.params?.updateUser]);
+    console.log("update user", route?.params?.updateUser);
+  }, [route?.params?.updateUser]);
 
   return (
     <>
@@ -52,7 +53,9 @@ export default function AccountSettings({
             {
               icon: isConnected ? "check" : "close",
               label: isConnected
-                ? `Connecté ${isAnonymous ? "(Anonyme)" : ""}`
+                ? `Connecté ${
+                    isAnonymous ? "(Anonyme)" : "(" + user?.email + ")"
+                  }`
                 : "Non connecté",
               subLabel: isConnected
                 ? `ID: #${user?.uid}`
@@ -97,11 +100,28 @@ export default function AccountSettings({
               icon: "person-4",
               label: "Créer un compte anonyme",
               hasRightArrow: false,
-              disabled: isConnected,
+              disabled: isConnected || loading,
               onPress: () => {
-                createAnonymousAccount(async (user) => {
-                  await createUserData(user.uid, generateUserDataFromStores());
-                });
+                if (!loading) {
+                  setLoading(true);
+                  createAnonymousAccount(() => {
+                    setLoading(false);
+                  });
+                }
+              },
+            },
+            {
+              icon: "save-alt",
+              label: "Sauvegarder ses données",
+              hasRightArrow: false,
+              disabled: !isConnected || loading,
+              onPress: () => {
+                if (user && !loading) {
+                  setLoading(true);
+                  update(user.uid, generateUserDataFromStores()).then(() => {
+                    setLoading(false);
+                  });
+                }
               },
             },
             {

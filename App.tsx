@@ -1,29 +1,32 @@
 import { useEffect } from "react";
 import "./src/common/config/firebaseConfig";
 import Index from "./src/app/Index";
+import { AppState } from "react-native";
+import useMassiveStoreLoader from "./src/common/hooks/admin/user-massive-store-loader";
+import { useUserDataTable } from "./src/common/hooks/firestore/use-user-data-table";
+import { useAuthentication } from "./src/common/hooks/firebase/use-authentification";
 
 export default function App() {
-  // const { initApp, getAuth, userIsPersisted } = useFirebase();
-  // const { saveCurrentStateInUser, createAnonymousAccount } = useUserAuth();
+  const { generateUserDataFromStores } = useMassiveStoreLoader();
+  const { update: updateUserData } = useUserDataTable();
+  const { user } = useAuthentication();
 
-  // const saveCurrentStateWhenAppClosed = async () => {
-  //   if (!getAuth().currentUser) return;
-  //   await saveCurrentStateInUser();
-  // };
+  const handleStateChange = (appState: string) => {
+    if (appState.match(/inactive|background/) && user && !__DEV__) {
+      updateUserData(user.uid, generateUserDataFromStores());
+      console.log("saved");
+    }
+  };
 
-  // useEffect(() => {
-  //   initApp();
-  //   userIsPersisted().then((userPersisted) => {
-  //     if (!userPersisted) {
-  //       createAnonymousAccount().then(async () => {
-  //         await saveCurrentStateInUser();
-  //       });
-  //     }
-  //   });
-  //   return () => {
-  //     saveCurrentStateWhenAppClosed();
-  //   };
-  // }, []);
+  useEffect(() => {
+    if (user) {
+      const listener = AppState.addEventListener("change", handleStateChange);
+
+      return () => {
+        listener.remove();
+      };
+    }
+  }, [user]);
 
   return <Index></Index>;
 }

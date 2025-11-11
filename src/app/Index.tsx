@@ -136,7 +136,7 @@ export function MainPage() {
         tabBar={(props) => <AppBottomBar {...props} />}
         style={[{ backgroundColor: colors.transparent }]}
       >
-        <Tab.Screen name="Leaderboard" component={LeaderboardPage} />
+        <Tab.Screen name="Fight" component={PooFight} />
         <Tab.Screen name="Battle" component={PooFight} />
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Village" component={VillagePage} />
