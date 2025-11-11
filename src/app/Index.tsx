@@ -2,7 +2,6 @@ import * as React from "react";
 import Home from "./home/Home";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import PooFight from "./fight/PooFight";
 import { StatusBar } from "expo-status-bar";
 import { colors } from "../common/utils/color-utils";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -28,6 +27,8 @@ import EventPosterOverlay from "./event-posters/EventPosterOverlay";
 import CacheProvider from "../common/contexts/CacheProvider";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as NavigationBar from "expo-navigation-bar";
+import PooStats from "./stats/PooStats";
+import PooFight from "./fight/PooFight";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -137,7 +138,7 @@ export function MainPage() {
         style={[{ backgroundColor: colors.transparent }]}
       >
         <Tab.Screen name="Fight" component={PooFight} />
-        <Tab.Screen name="Battle" component={PooFight} />
+        <Tab.Screen name="Stats" component={PooStats} />
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Village" component={VillagePage} />
         <Tab.Screen name="Shop" component={ShopPage} />

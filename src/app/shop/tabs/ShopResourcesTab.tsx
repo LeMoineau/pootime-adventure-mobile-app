@@ -1,20 +1,12 @@
 import { ScrollView, View } from "react-native";
-import ShopItemView from "../elements/shop-item/ShopItemView";
-import {
-  isMultiPricesShopItem,
-  isSinglePriceShopItem,
-} from "../../../common/types/shop/ShopItem";
+import { isSinglePriceShopItem } from "../../../common/types/shop/ShopItem";
 import { style } from "../../../common/utils/style-utils";
-import { Transaction } from "../../../common/types/shop/Transaction";
 import ShopItems from "../../../common/config/constants/ShopItems";
 import ConverterShopItem from "../elements/converter-item/ConverterShopItem";
-import { useState } from "react";
+import RewardedAds from "../../../common/components/ads/RewardedAds";
+import BannerAds from "../../../common/components/ads/BannerAds";
 
-export default function ShopResourcesTab({
-  onBuyableItemPress,
-}: {
-  onBuyableItemPress?: (transaction: Transaction) => void;
-}) {
+export default function ShopResourcesTab() {
   return (
     <ScrollView>
       <View
@@ -23,6 +15,7 @@ export default function ShopResourcesTab({
           { flex: 1, flexWrap: "wrap", padding: 10, gap: 10 },
         ]}
       >
+        <RewardedAds></RewardedAds>
         {ShopItems.resources!.items.map((shopItem, index) => {
           return isSinglePriceShopItem(shopItem) ? (
             <ConverterShopItem
@@ -33,6 +26,7 @@ export default function ShopResourcesTab({
             <></>
           );
         })}
+        <BannerAds></BannerAds>
       </View>
     </ScrollView>
   );
