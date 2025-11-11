@@ -141,22 +141,22 @@ const ShopItems: {
   },
   resources: {
     items: [
-      {
-        item: {
-          resource: "stars",
-          number: 1,
-        },
-        resource: "pooCoins",
-        price: 1,
-      },
-      {
-        item: {
-          resource: "pooCoins",
-          number: 1,
-        },
-        resource: "stars",
-        price: 1,
-      },
+      // {
+      //   item: {
+      //     resource: "stars",
+      //     number: 1,
+      //   },
+      //   resource: "pooCoins",
+      //   price: 1,
+      // },
+      // {
+      //   item: {
+      //     resource: "pooCoins",
+      //     number: 1,
+      //   },
+      //   resource: "stars",
+      //   price: 1,
+      // },
       {
         item: {
           resource: "stars",

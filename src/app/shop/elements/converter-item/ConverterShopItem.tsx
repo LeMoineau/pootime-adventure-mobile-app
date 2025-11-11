@@ -1,18 +1,14 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { style } from "../../../../common/utils/style-utils";
 import Slider from "@react-native-community/slider";
 import { colors } from "../../../../common/utils/color-utils";
 import { useState } from "react";
-import ShopItemTypeView from "../shop-item/ShopItemTypeView";
 import { SinglePriceShopItem } from "../../../../common/types/shop/ShopItem";
 import StandardButton from "../../../../common/components/buttons/StandardButton";
 import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
 import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
-import {
-  isResourcesItemValue,
-  ResourcesItemValue,
-} from "../../../../common/types/shop/BuyableItem";
+import { isResourcesItemValue } from "../../../../common/types/shop/BuyableItem";
 import { isResourceItemValue } from "../../../../common/types/shop/UnlockableItems";
 import { MathUtils } from "../../../../common/utils/math-utils";
 
@@ -34,8 +30,6 @@ export default function ConverterShopItem({
     get(shopItem.resource) / (shopItem.price === 0 ? 1 : shopItem.price)
   );
   const canBuyAtLeastOne = maxQuantityPossible >= 1;
-
-  console.log(maxQuantityPossible, get(shopItem.resource), shopItem.price);
 
   const handleBuy = () => {
     const item = shopItem.item;

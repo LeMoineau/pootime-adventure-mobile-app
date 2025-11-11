@@ -7,8 +7,8 @@ import {
 import { style } from "../../../common/utils/style-utils";
 import { Transaction } from "../../../common/types/shop/Transaction";
 import ShopItems from "../../../common/config/constants/ShopItems";
-import BannerAd from "../../../common/components/ads/BannerAd";
 import ConverterShopItem from "../elements/converter-item/ConverterShopItem";
+import { useState } from "react";
 
 export default function ShopResourcesTab({
   onBuyableItemPress,
@@ -33,7 +33,6 @@ export default function ShopResourcesTab({
             <></>
           );
         })}
-        <BannerAd></BannerAd>
       </View>
     </ScrollView>
   );
