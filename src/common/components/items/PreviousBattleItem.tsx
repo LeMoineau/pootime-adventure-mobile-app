@@ -21,19 +21,34 @@ export default function PreviousBattleItem() {
           },
         ]}
       >
-        <Text
-          style={[
-            {
-              color: colors.white,
-              fontWeight: "600",
-              paddingHorizontal: 20,
-              paddingVertical: 5,
-              textTransform: "uppercase",
-            },
-          ]}
+        <View
+          style={[style.flexRow, style.justifyBetween, style.itemsCenter, {}]}
         >
-          Victoire
-        </Text>
+          <Text
+            style={[
+              {
+                color: colors.white,
+                fontWeight: "600",
+                paddingHorizontal: 20,
+                paddingVertical: 5,
+                textTransform: "uppercase",
+              },
+            ]}
+          >
+            Victoire
+          </Text>
+          <Text
+            style={[
+              {
+                color: colors.white,
+                paddingRight: 20,
+                fontSize: 12,
+              },
+            ]}
+          >
+            14/11/2025
+          </Text>
+        </View>
         <View
           style={[
             style.border,

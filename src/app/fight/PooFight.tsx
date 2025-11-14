@@ -1,4 +1,10 @@
-import { Button, RefreshControl, ScrollView, View } from "react-native";
+import {
+  Button,
+  RefreshControl,
+  ScrollView,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { style } from "../../common/utils/style-utils";
 import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/PooCreatureRankSubHeader";
@@ -7,16 +13,24 @@ import { colors } from "../../common/utils/color-utils";
 import TitleWithDivider from "../../common/components/text/TitleWithDivider";
 import PreviousBattleItem from "../../common/components/items/PreviousBattleItem";
 import ExpoIcon from "../../common/components/icons/ExpoIcon";
-import { LinearGradient } from "expo-linear-gradient";
+import Gradient, {
+  GradientDirection,
+} from "../../common/components/misc/Gradient";
 
 export default function PooFight() {
+  const { width } = useWindowDimensions();
   return (
     <CustomPage>
       <ScrollView
         style={[
           style.wFull,
           style.flexCol,
-          { flex: 1, backgroundColor: colors.white },
+          {
+            flex: 1,
+            backgroundColor: colors.white,
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+          },
         ]}
       >
         <View
@@ -49,6 +63,7 @@ export default function PooFight() {
             Previous Battles
           </TitleWithDivider>
           <PreviousBattleItem></PreviousBattleItem>
+          <View style={{ height: 150 }}></View>
         </View>
       </ScrollView>
       <View
@@ -57,14 +72,29 @@ export default function PooFight() {
           style.itemsCenter,
           {
             position: "absolute",
-            bottom: 20,
+            bottom: 0,
             gap: 10,
             paddingHorizontal: 20,
             zIndex: 10,
+            paddingBottom: 20,
           },
         ]}
       >
         {/* TODO: ajouter linear-gradient */}
+        <Gradient
+          direction={GradientDirection.BOTTOM_TO_TOP}
+          from={colors.gray[800]}
+          style={[
+            {
+              position: "absolute",
+              width,
+              height: "250%",
+              bottom: -50,
+              opacity: 0.7,
+              pointerEvents: "none",
+            },
+          ]}
+        ></Gradient>
         <StandardButton
           style={[{ flex: 1 }]}
           viewStyle={[style.border, { borderColor: colors.indigo[600] }]}
