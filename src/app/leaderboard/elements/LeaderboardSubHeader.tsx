@@ -4,7 +4,7 @@ import PooCreatureBadge from "../../../common/components/misc/poo-creature/PooCr
 import { colors } from "../../../common/utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { Resources } from "../../../common/config/constants/Resources";
-import ResourceLeaderboardedRank from "../../../common/components/icons/ResourceLeaderboardedRank";
+import ResourceRank from "../../../common/components/text/ResourceRank";
 
 const RESOURCE_LEADERBOARDED: Resources[] = ["pooTrophee", "pooCoins"];
 
@@ -36,10 +36,7 @@ export default function LeaderboardSubHeader() {
             </Text>
             <View style={[style.flexRow, { gap: 5 }]}>
               {RESOURCE_LEADERBOARDED.map((r, index) => (
-                <ResourceLeaderboardedRank
-                  resource={r}
-                  key={index}
-                ></ResourceLeaderboardedRank>
+                <ResourceRank resource={r} key={index}></ResourceRank>
               ))}
             </View>
           </View>

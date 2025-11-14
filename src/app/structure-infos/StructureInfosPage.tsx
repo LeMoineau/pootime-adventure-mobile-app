@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import { useVillageStore } from "../../common/stores/village.store";
 import StructureIcon from "../../common/components/icons/StructureIcon";
 import StructureInfosBuildTab from "./elements/tabs/StructureInfosBuildTab";
+import * as NavigationBar from "expo-navigation-bar";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -31,6 +32,11 @@ export default function StructureInfosPage() {
 
   useEffect(() => {
     select(route.params.structureName);
+    NavigationBar.setVisibilityAsync("visible");
+
+    return () => {
+      NavigationBar.setVisibilityAsync("hidden");
+    };
   }, []);
 
   return (

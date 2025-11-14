@@ -3,8 +3,8 @@ import { isSinglePriceShopItem } from "../../../common/types/shop/ShopItem";
 import { style } from "../../../common/utils/style-utils";
 import ShopItems from "../../../common/config/constants/ShopItems";
 import ConverterShopItem from "../elements/converter-item/ConverterShopItem";
-import RewardedAds from "../../../common/components/ads/RewardedAds";
-import BannerAds from "../../../common/components/ads/BannerAds";
+// import RewardedAds from "../../../common/components/ads/RewardedAds";
+// import BannerAds from "../../../common/components/ads/BannerAds";
 
 export default function ShopResourcesTab() {
   return (
@@ -15,7 +15,7 @@ export default function ShopResourcesTab() {
           { flex: 1, flexWrap: "wrap", padding: 10, gap: 10 },
         ]}
       >
-        <RewardedAds></RewardedAds>
+        {/* <RewardedAds></RewardedAds> */}
         {ShopItems.resources!.items.map((shopItem, index) => {
           return isSinglePriceShopItem(shopItem) ? (
             <ConverterShopItem
@@ -26,7 +26,7 @@ export default function ShopResourcesTab() {
             <></>
           );
         })}
-        <BannerAds></BannerAds>
+        {/* <BannerAds></BannerAds> */}
       </View>
     </ScrollView>
   );

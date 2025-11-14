@@ -28,30 +28,47 @@ export default function VillagePage() {
         <VillageTopBar></VillageTopBar>
         <View
           style={[
-            style.flexRow,
-            style.justifyCenter,
-            style.itemsCenter,
-            style.rounded,
+            style.wFull,
             {
               flex: 1,
-              flexWrap: "wrap",
-              paddingTop: 50,
+              backgroundColor: "#79593cff",
+              height: 50,
+              paddingBottom: 50,
+              borderRadius: 20,
+              marginTop: 20,
+              marginBottom: 5,
             },
           ]}
         >
-          {Object.keys(Structures).map((key, index) => {
-            const structureName = key as StructureName;
-            const structure = Structures[structureName];
-            return (
-              <StructureView
-                key={`structure-${key}-${index}`}
-                structure={structure}
-                onStructurePress={() =>
-                  navigator.navigate("StructureInfos", { structureName })
-                }
-              ></StructureView>
-            );
-          })}
+          <View
+            style={[
+              style.flexRow,
+              style.justifyCenter,
+              style.itemsCenter,
+              style.rounded,
+              {
+                flex: 1,
+                flexWrap: "wrap",
+                paddingTop: 0,
+                backgroundColor: "#a4dd7fff",
+                borderRadius: 20,
+              },
+            ]}
+          >
+            {Object.keys(Structures).map((key, index) => {
+              const structureName = key as StructureName;
+              const structure = Structures[structureName];
+              return (
+                <StructureView
+                  key={`structure-${key}-${index}`}
+                  structure={structure}
+                  onStructurePress={() =>
+                    navigator.navigate("StructureInfos", { structureName })
+                  }
+                ></StructureView>
+              );
+            })}
+          </View>
         </View>
       </CustomPage>
     </>

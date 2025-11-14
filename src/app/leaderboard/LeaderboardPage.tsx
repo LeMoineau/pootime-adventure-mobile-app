@@ -14,6 +14,7 @@ import { IdentifiedUserData } from "../../common/types/firebase/UserData";
 import * as NavigationBar from "expo-navigation-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native";
+import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/PooCreatureRankSubHeader";
 
 const LEADERBOARD_TAB_INFOS = [
   {
@@ -93,7 +94,7 @@ export default function LeaderboardPage() {
             { paddingTop: 20, backgroundColor: colors.baseBackgroundColor },
           ]}
         >
-          <LeaderboardSubHeader></LeaderboardSubHeader>
+          <PooCreatureRankSubHeader></PooCreatureRankSubHeader>
         </View>
         <RoundedScrollView
           defaultTab={0}
