@@ -1,12 +1,12 @@
 import { Modal, ModalProps, Text, View } from "react-native";
-import { style } from "../../../../../../common/utils/style-utils";
-import { colors } from "../../../../../../common/utils/color-utils";
+import { style } from "../../../common/utils/style-utils";
+import { colors } from "../../../common/utils/color-utils";
 import React, { useState } from "react";
-import { useBattleStore } from "../../../../../../common/stores/battle/online-battle.store";
-import PlusIcon from "../../../../../../common/components/icons/plus";
-import InputField from "../../../../../../common/components/fields/InputField";
-import PillButton from "../../../../../../common/components/buttons/PillButton";
-import { ServerTypes } from "../../../../../../common/types/battle/online-battle/ServerTypes";
+import { useBattleStore } from "../../../common/stores/battle/online-battle.store";
+import PlusIcon from "../../../common/components/icons/plus";
+import InputField from "../../../common/components/fields/InputField";
+import PillButton from "../../../common/components/buttons/PillButton";
+import { ServerTypes } from "../../../common/types/battle/online-battle/ServerTypes";
 
 export default function PrivateFightModal({
   room,

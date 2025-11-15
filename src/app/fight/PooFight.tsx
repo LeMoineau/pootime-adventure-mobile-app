@@ -1,4 +1,9 @@
-import { ScrollView, useWindowDimensions, View } from "react-native";
+import {
+  RefreshControl,
+  ScrollView,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { style } from "../../common/utils/style-utils";
 import StandardButton from "../../common/components/buttons/StandardButton";
@@ -15,16 +20,17 @@ import usePreviousBattles from "../../common/hooks/battle/use-previous-battles";
 import NoPreviousBattleItem from "../../common/components/items/NoPreviousBattleItem";
 import PooCreatureTropheeSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureTropheeSubHeader";
 import useBattleRooms from "../../common/hooks/battle/use-battle-rooms";
-import ServerWaitingModal from "../home/elements/buttons/home-battle-button/modals/ServerWaitingModal";
-import WaitForFightModal from "../home/elements/buttons/home-battle-button/modals/WaitForFightModal";
-import PrivateFightModal from "../home/elements/buttons/home-battle-button/modals/PrivateFightModal";
+import ServerWaitingModal from "./modals/ServerWaitingModal";
+import WaitForFightModal from "./modals/WaitForFightModal";
+import PrivateFightModal from "./modals/PrivateFightModal";
 import { useEffect } from "react";
 
 export default function PooFight() {
   const { width } = useWindowDimensions();
   const stats = usePooCreatureStatsStore();
   const pooStyle = usePooCreatureStyleStore();
-  const { previousBattles, pushPreviousBattle } = usePreviousBattles();
+  const { previousBattles, pushPreviousBattle, refreshPreviousBattles } =
+    usePreviousBattles();
   const {
     room,
     connect,
@@ -49,6 +55,14 @@ export default function PooFight() {
             borderTopRightRadius: 20,
           },
         ]}
+        refreshControl={
+          <RefreshControl
+            refreshing={false}
+            onRefresh={() => {
+              refreshPreviousBattles();
+            }}
+          ></RefreshControl>
+        }
       >
         <View
           style={{

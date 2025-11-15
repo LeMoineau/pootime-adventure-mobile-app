@@ -1,6 +1,6 @@
 import { ActivityIndicator, ModalProps, Text } from "react-native";
-import PlainModal from "../../../../../../common/components/modals/primitives/PlainModal";
-import { style } from "../../../../../../common/utils/style-utils";
+import PlainModal from "../../../common/components/modals/primitives/PlainModal";
+import { style } from "../../../common/utils/style-utils";
 
 export default function ServerWaitingModal({ ...props }: {} & ModalProps) {
   return (
