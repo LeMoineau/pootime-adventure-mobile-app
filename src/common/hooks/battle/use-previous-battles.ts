@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import useStorage from "../use-storage";
 import { StorageKeys } from "../../config/StorageKeys";
+import { BattleFinalState } from "../../types/battle/BattleFinalState";
 
 export default function usePreviousBattles() {
   const { getJson, saveJson } = useStorage();
-  const [previousBattles, setPreviousBattles] = useState<any[]>([]);
+  const [previousBattles, setPreviousBattles] = useState<BattleFinalState[]>(
+    []
+  );
 
   useEffect(() => {
     _loadPreviousBattles();
@@ -22,5 +25,10 @@ export default function usePreviousBattles() {
     _loadPreviousBattles();
   };
 
-  return { previousBattles, refreshPreviousBattles };
+  const pushPreviousBattle = (newBattle: BattleFinalState) => {
+    saveJson(StorageKeys.PREVIOUS_BATTLES, [newBattle, ...previousBattles]);
+    setPreviousBattles([newBattle, ...previousBattles]);
+  };
+
+  return { previousBattles, refreshPreviousBattles, pushPreviousBattle };
 }

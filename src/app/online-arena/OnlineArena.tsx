@@ -1,25 +1,21 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
 import Arena from "../../common/components/views/arena/Arena";
 import useOnlineBattle from "../../common/hooks/battle/use-online-battle";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
 import { useResourcesStore } from "../../common/stores/resources.store";
-import {
-  useNavigationType,
-  useRouteType,
-} from "../../common/types/navigation/NavigationTypes";
+import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import BattleFinishRewardModal from "./modals/BattleFinishRewardModal";
-import { useBattleStore } from "../../common/stores/battle/online-battle.store";
 import { View } from "react-native";
 import NodeShadow from "../../common/components/views/arena/elements/NodeShadow";
+import { useEffect } from "react";
 
 export default function OnlineArena() {
-  const route: useRouteType<"OnlineArena"> = useRoute();
   const navigator: useNavigationType = useNavigation();
   const {
     socketId,
-    battleBegin,
+    isBattleBeginning,
     battleEnding,
     advState,
     advStyle,
@@ -28,16 +24,22 @@ export default function OnlineArena() {
     hit,
     spell,
     reset,
-  } = useOnlineBattle({ room: route.params.room });
-  const { disconnect } = useBattleStore();
+    disconnect,
+  } = useOnlineBattle();
   const { level, pv } = usePooCreatureStatsStore();
   const { name } = usePooCreatureStyleStore();
   const { earn } = useResourcesStore();
 
+  useEffect(() => {
+    return () => {
+      disconnect();
+    };
+  }, []);
+
   return (
     <>
       <Arena
-        battleBegin={battleBegin}
+        battleBegin={isBattleBeginning}
         advData={
           advState &&
           advStyle &&
@@ -76,10 +78,10 @@ export default function OnlineArena() {
         }
         noAdvNodeShadow
         onHit={() => {
-          battleBegin && hit();
+          isBattleBeginning && hit();
         }}
         onSpell={(u) => {
-          battleBegin &&
+          isBattleBeginning &&
             ownState?.currentMana &&
             ownState?.currentMana >= u.mana &&
             spell(u);
@@ -102,7 +104,6 @@ export default function OnlineArena() {
             earn("stars", starEarn);
             earn("pooCoins", pooCoinEarn);
             reset();
-            disconnect();
             navigator.navigate("App");
           }}
         ></BattleFinishRewardModal>

@@ -1,4 +1,4 @@
-import { Modal, ModalProps, Pressable, Text, View } from "react-native";
+import { Modal, ModalProps, Text, View } from "react-native";
 import { style } from "../../../../../../common/utils/style-utils";
 import { colors } from "../../../../../../common/utils/color-utils";
 import React, { useState } from "react";
@@ -9,32 +9,16 @@ import PillButton from "../../../../../../common/components/buttons/PillButton";
 import { ServerTypes } from "../../../../../../common/types/battle/online-battle/ServerTypes";
 
 export default function PrivateFightModal({
-  openRoom,
+  room,
+  onCreateRoomBtnPress,
+  onJoinRoomBtnPress,
   ...props
-}: { openRoom: (room: ServerTypes.Room) => void } & ModalProps) {
-  const [roomId, setRoomId] = useState("");
-  const [ownRoomId, setOwnRoomId] = useState("");
-  const {
-    createARoom,
-    joinARoom,
-    whenPlayerJoinYourRoom,
-    whenFindTheRoom,
-    whenRoomCreated,
-  } = useBattleStore();
-
-  whenRoomCreated((room) => {
-    setOwnRoomId(room.id);
-  });
-
-  whenPlayerJoinYourRoom((room) => {
-    openRoom(room);
-    setOwnRoomId("");
-  });
-
-  whenFindTheRoom((room) => {
-    openRoom(room);
-    setRoomId("");
-  });
+}: {
+  room?: ServerTypes.Room;
+  onCreateRoomBtnPress?: () => void;
+  onJoinRoomBtnPress?: (code: string) => void;
+} & ModalProps) {
+  const [roomCode, setRoomCode] = useState("");
 
   return (
     <Modal animationType="slide" transparent {...props}>
@@ -61,18 +45,17 @@ export default function PrivateFightModal({
             stylePressable={[{ position: "absolute", top: -10, right: -10 }]}
             styleView={[{ backgroundColor: colors.red[500] }]}
             onPress={(evt) => {
-              setOwnRoomId("");
               props.onRequestClose && props.onRequestClose(evt);
             }}
           >
             <PlusIcon
               size={35}
               fill={colors.white}
-              strokeColor={colors.red[200]}
+              strokeColor={colors.white}
               style={[{ transform: [{ rotateZ: "45deg" }] }]}
             ></PlusIcon>
           </PillButton>
-          {ownRoomId.length <= 0 && (
+          {!!!room ? (
             <>
               <Text style={[style.textCenter, { marginBottom: 10 }]}>
                 Vous pouvez rejoindre la partie d'un.e ami.e en tapant le code
@@ -84,7 +67,7 @@ export default function PrivateFightModal({
                   paddingVertical={10}
                   placeholder="ABCD"
                   style={{ width: 100 }}
-                  onChange={setRoomId}
+                  onChange={setRoomCode}
                 ></InputField>
                 <PillButton
                   stylePressable={[{ marginLeft: 10 }]}
@@ -96,7 +79,7 @@ export default function PrivateFightModal({
                     },
                   ]}
                   onPress={() => {
-                    joinARoom(roomId);
+                    onJoinRoomBtnPress && onJoinRoomBtnPress(roomCode);
                   }}
                 >
                   <Text
@@ -123,7 +106,7 @@ export default function PrivateFightModal({
                   },
                 ]}
                 onPress={() => {
-                  createARoom();
+                  onCreateRoomBtnPress && onCreateRoomBtnPress();
                 }}
               >
                 <Text
@@ -137,8 +120,7 @@ export default function PrivateFightModal({
                 </Text>
               </PillButton>
             </>
-          )}
-          {ownRoomId.length > 0 && (
+          ) : (
             <>
               <Text style={[style.textCenter]}>Code de votre room</Text>
               <View
@@ -153,7 +135,7 @@ export default function PrivateFightModal({
                   },
                 ]}
               >
-                <Text style={[style.textBold, style.textLg]}>{ownRoomId}</Text>
+                <Text style={[style.textBold, style.textLg]}>{room.id}</Text>
               </View>
               <Text style={[style.textCenter, { marginTop: 20 }]}>
                 En attente de joueur pour commencer...

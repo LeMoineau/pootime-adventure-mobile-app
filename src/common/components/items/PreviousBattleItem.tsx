@@ -3,20 +3,13 @@ import { style } from "../../utils/style-utils";
 import { colors } from "../../utils/color-utils";
 import PooCreatureBadge from "../misc/poo-creature/PooCreatureBadge";
 import PooCreatureStatsTable from "../misc/poo-creature/PooCreatureStatsTable";
-import { PooCreatureStats } from "../../types/PooCreatureStats";
-import { PooCreatureStyle } from "../../types/PooCreatureStyle";
-import { Ultis } from "../../types/Ultis";
-import { Image } from "expo-image";
-import assets from "../../config/assets";
 import UltiItem from "./UltiItem";
+import { BattleFinalState } from "../../types/battle/BattleFinalState";
 
 export default function PreviousBattleItem({
-  players,
+  battle,
 }: {
-  players: [
-    { stats: PooCreatureStats; style: PooCreatureStyle },
-    { stats: PooCreatureStats; style: PooCreatureStyle }
-  ];
+  battle: BattleFinalState;
 }) {
   return (
     <View
@@ -29,7 +22,7 @@ export default function PreviousBattleItem({
         style={[
           style.wFull,
           {
-            backgroundColor: colors.green[400],
+            backgroundColor: battle.win ? colors.green[400] : colors.red[400],
           },
         ]}
       >
@@ -47,7 +40,7 @@ export default function PreviousBattleItem({
               },
             ]}
           >
-            Victoire
+            {battle.win ? "Victoire" : "Défaite"}
           </Text>
           <Text
             style={[
@@ -58,7 +51,7 @@ export default function PreviousBattleItem({
               },
             ]}
           >
-            14/11/2025
+            {battle.date}
           </Text>
         </View>
         <View
@@ -77,7 +70,7 @@ export default function PreviousBattleItem({
           >
             <PooCreatureBadge
               size={50}
-              {...players[0].style}
+              {...battle.own.style}
             ></PooCreatureBadge>
             <View style={[style.flexRow, { flex: 1, gap: 5 }]}>
               <Text
@@ -85,19 +78,19 @@ export default function PreviousBattleItem({
                 numberOfLines={1}
                 style={{ flex: 1, textAlign: "left", fontWeight: "600" }}
               >
-                {players[0].style.name}
+                {battle.own.style.name}
               </Text>
               <Text
                 lineBreakMode="clip"
                 numberOfLines={1}
                 style={{ flex: 1, textAlign: "right", fontWeight: "600" }}
               >
-                {players[1].style.name}
+                {battle.adv.style.name}
               </Text>
             </View>
             <PooCreatureBadge
               size={50}
-              {...players[1].style}
+              {...battle.adv.style}
             ></PooCreatureBadge>
           </View>
           <View style={[style.flexRow, {}]}>
@@ -110,10 +103,10 @@ export default function PreviousBattleItem({
               }}
             >
               <PooCreatureStatsTable
-                stats={players[0].stats}
+                stats={battle.own.stats}
               ></PooCreatureStatsTable>
               <UltiItem
-                ulti={players[1].stats.ultiSelected ?? undefined}
+                ulti={battle.adv.stats.ultiSelected ?? undefined}
               ></UltiItem>
             </View>
             <View
@@ -125,10 +118,10 @@ export default function PreviousBattleItem({
               }}
             >
               <PooCreatureStatsTable
-                stats={players[1].stats}
+                stats={battle.adv.stats}
               ></PooCreatureStatsTable>
               <UltiItem
-                ulti={players[1].stats.ultiSelected ?? undefined}
+                ulti={battle.adv.stats.ultiSelected ?? undefined}
               ></UltiItem>
             </View>
           </View>

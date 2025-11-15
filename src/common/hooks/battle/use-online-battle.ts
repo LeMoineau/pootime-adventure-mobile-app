@@ -1,31 +1,23 @@
 import { useEffect, useState } from "react";
-import { useBattleStore } from "../../stores/battle/online-battle.store";
 import { useImmer } from "use-immer";
 import { ServerTypes } from "../../types/battle/online-battle/ServerTypes";
-import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
+import { getSocket } from "../../config/socket";
+import { SocketEvents } from "../../types/SocketEvents";
+import { UltiDetails } from "../../types/Ultis";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
+import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 
-const useOnlineBattle = ({ room }: { room: ServerTypes.Room }) => {
-  const {
-    getSocketId,
-    sendPlayerInfos,
-    hit,
-    spell,
-    whenRoomReady,
-    whenBattleBegin,
-    whenBattleStateUpdated,
-    whenBattleFinish,
-  } = useBattleStore();
-  const pooCreatureStatsStore = usePooCreatureStatsStore();
-  const pooCreatureStyleStore = usePooCreatureStyleStore();
+const useOnlineBattle = () => {
+  const socket = getSocket();
+  const style = usePooCreatureStyleStore();
+  const stats = usePooCreatureStatsStore();
 
   const [advStyle, setAdvStyle] = useState<ServerTypes.PlayerStyle>();
   const [advStats, setAdvStats] = useState<ServerTypes.PlayerStats>();
-  const [battleBegin, setBattleBegin] = useState<boolean>(false);
-  const [battleEnding, updateBattleEnding] = useImmer<
+  const [isBattleBeginning, setIsBattleBeginning] = useState<boolean>(false);
+  const [battleEnding, updateBattleEnding] = useState<
     ServerTypes.BattleEnding | undefined
   >(undefined);
-
   const [advState, updateAdvState] = useImmer<
     ServerTypes.PlayerState | undefined
   >(undefined);
@@ -33,51 +25,71 @@ const useOnlineBattle = ({ room }: { room: ServerTypes.Room }) => {
     ServerTypes.PlayerState | undefined
   >(undefined);
 
-  const socketId = getSocketId();
-
   useEffect(() => {
-    whenRoomReady((r) => {
-      for (let p of r.players) {
-        if (r.battleState[p] === undefined) {
-          continue;
-        }
-        if (p !== socketId) {
-          setAdvStyle(r.battleState[p].style);
-          setAdvStats(r.battleState[p].stats);
-          updateAdvState(r.battleState[p].currentState);
-        } else {
-          updateOwnState(r.battleState[p].currentState);
-        }
+    socket.on(SocketEvents.ROOM_READY, _roomReady);
+    socket.on(SocketEvents.BATTLE_BEGIN, _battleBegin);
+    socket.on(SocketEvents.UPDATE_BATTLE_STATE, _battleStateUpdate);
+    socket.on(SocketEvents.BATTLE_FINISH, _battleFinish);
+
+    socket.emit(SocketEvents.SEND_PLAYER_INFOS, { ...style }, { ...stats });
+
+    return () => {
+      socket.off(SocketEvents.ROOM_READY, _roomReady);
+      socket.off(SocketEvents.BATTLE_BEGIN, _battleBegin);
+      socket.off(SocketEvents.UPDATE_BATTLE_STATE, _battleStateUpdate);
+      socket.off(SocketEvents.BATTLE_FINISH, _battleFinish);
+    };
+  }, [socket]);
+
+  const _roomReady = (r: ServerTypes.Room) => {
+    console.log("room ready", r);
+    for (let p of r.players) {
+      if (r.battleState[p] === undefined) {
+        continue;
       }
-    });
-
-    whenBattleBegin(() => {
-      setBattleBegin(true);
-    });
-
-    whenBattleStateUpdated((updates) => {
-      for (let u of updates) {
-        if (u.target === socketId) {
-          updateOwnState((state) => {
-            return { ...state, ...u.update };
-          });
-        } else {
-          updateAdvState((state) => {
-            return { ...state, ...u.update };
-          });
-        }
+      if (p !== socket.id) {
+        setAdvStyle(r.battleState[p].style);
+        setAdvStats(r.battleState[p].stats);
+        updateAdvState(r.battleState[p].currentState);
+      } else {
+        updateOwnState(r.battleState[p].currentState);
       }
-    });
+    }
+  };
 
-    whenBattleFinish((battleEnding) => {
-      updateBattleEnding(battleEnding);
-    });
+  const _battleBegin = () => {
+    setIsBattleBeginning(true);
+  };
 
-    sendPlayerInfos({ ...pooCreatureStyleStore }, { ...pooCreatureStatsStore });
-  }, [room]);
+  const _battleStateUpdate = (updates: ServerTypes.BattleUpdatePayload) => {
+    for (let u of updates) {
+      if (u.target === socket.id) {
+        updateOwnState((state) => {
+          return { ...state, ...u.update };
+        });
+      } else {
+        updateAdvState((state) => {
+          return { ...state, ...u.update };
+        });
+      }
+    }
+  };
+
+  const _battleFinish = (battleEnding: ServerTypes.BattleEnding) => {
+    console.log("battle finish", battleEnding);
+    updateBattleEnding(battleEnding);
+  };
+
+  const hit = () => {
+    socket.emit(SocketEvents.HIT);
+  };
+
+  const spell = (ulti: UltiDetails) => {
+    socket.emit(SocketEvents.SPELL, ulti);
+  };
 
   const reset = () => {
-    setBattleBegin(false);
+    setIsBattleBeginning(false);
     updateBattleEnding(undefined);
     setAdvStyle(undefined);
     setAdvStats(undefined);
@@ -85,17 +97,22 @@ const useOnlineBattle = ({ room }: { room: ServerTypes.Room }) => {
     updateOwnState(undefined);
   };
 
+  const disconnect = () => {
+    socket.disconnect();
+  };
+
   return {
-    socketId,
+    socketId: socket.id!,
     advStyle,
     advStats,
-    battleBegin,
+    isBattleBeginning,
     battleEnding,
     advState,
     ownState,
     hit,
     spell,
     reset,
+    disconnect,
   };
 };
 

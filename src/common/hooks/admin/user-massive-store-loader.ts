@@ -1,9 +1,11 @@
+import { StorageKeys } from "../../config/StorageKeys";
 import { useItemsUnlockedStore } from "../../stores/items-unlocked.store";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { useResourcesStore } from "../../stores/resources.store";
 import { useVillageStore } from "../../stores/village.store";
 import UserData from "../../types/firebase/UserData";
+import useStorage from "../use-storage";
 
 export default function useMassiveStoreLoader() {
   const itemsUnlockedStore = useItemsUnlockedStore();
@@ -11,6 +13,7 @@ export default function useMassiveStoreLoader() {
   const pooCreatureStyleStore = usePooCreatureStyleStore();
   const resourcesStore = useResourcesStore();
   const villageStore = useVillageStore();
+  const { saveJson } = useStorage();
 
   const massiveLoadFromUserData = async (userData: UserData) => {
     await itemsUnlockedStore.loadData(userData.itemsUnlocked);
@@ -26,6 +29,7 @@ export default function useMassiveStoreLoader() {
     await pooCreatureStyleStore.resetData();
     await resourcesStore.resetData();
     await villageStore.resetData();
+    await saveJson(StorageKeys.PREVIOUS_BATTLES, []);
   };
 
   /**

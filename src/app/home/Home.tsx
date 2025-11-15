@@ -2,7 +2,6 @@ import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import HomeTopBar from "./elements/navigation/HomeTopBar";
 import CustomPage from "../../common/components/navigation/CustomPage";
-import EventsModalHandler from "./elements/EventsModalHandler";
 import HomeBattleButton from "./elements/buttons/home-battle-button/HomeBattleButton";
 import PooCreatureView from "./elements/PooCreatureView";
 
@@ -30,7 +29,6 @@ export default function Home() {
           ]}
         >
           <PooCreatureView></PooCreatureView>
-          {/* <EventsModalHandler></EventsModalHandler> */}
         </View>
         <HomeBattleButton></HomeBattleButton>
       </View>

@@ -5,6 +5,7 @@ import { AppState } from "react-native";
 import useMassiveStoreLoader from "./src/common/hooks/admin/user-massive-store-loader";
 import { useUserDataTable } from "./src/common/hooks/firestore/use-user-data-table";
 import { useAuthentication } from "./src/common/hooks/firebase/use-authentification";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   const { generateUserDataFromStores } = useMassiveStoreLoader();
@@ -28,5 +29,9 @@ export default function App() {
     }
   }, [user]);
 
-  return <Index></Index>;
+  return (
+    <SafeAreaProvider>
+      <Index></Index>
+    </SafeAreaProvider>
+  );
 }

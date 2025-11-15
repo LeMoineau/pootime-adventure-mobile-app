@@ -173,10 +173,10 @@ export default function HomeBattleButton() {
           disconnect();
           hide("battle-waiting");
         }}
-        openRoom={(room) => {
-          navigator.navigate("OnlineArena", { room });
-          hide("battle-waiting");
-        }}
+        // openRoom={(room) => {
+        //   navigator.navigate("OnlineArena", { room });
+        //   hide("battle-waiting");
+        // }}
       ></WaitForFightModal>
 
       {/* PRIVATE FIGHT MODAL */}
@@ -186,10 +186,10 @@ export default function HomeBattleButton() {
           disconnect();
           hide("private-battle");
         }}
-        openRoom={(room) => {
-          navigator.navigate("OnlineArena", { room });
-          hide("private-battle");
-        }}
+        // openRoom={(room) => {
+        //   navigator.navigate("OnlineArena", { room });
+        //   hide("private-battle");
+        // }}
       ></PrivateFightModal>
 
       {/* CHOOSE ZONE MODAL */}

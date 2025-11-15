@@ -1,13 +1,6 @@
-import {
-  Button,
-  RefreshControl,
-  ScrollView,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ScrollView, useWindowDimensions, View } from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { style } from "../../common/utils/style-utils";
-import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
 import StandardButton from "../../common/components/buttons/StandardButton";
 import { colors } from "../../common/utils/color-utils";
 import TitleWithDivider from "../../common/components/text/TitleWithDivider";
@@ -21,12 +14,27 @@ import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style
 import usePreviousBattles from "../../common/hooks/battle/use-previous-battles";
 import NoPreviousBattleItem from "../../common/components/items/NoPreviousBattleItem";
 import PooCreatureTropheeSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureTropheeSubHeader";
+import useBattleRooms from "../../common/hooks/battle/use-battle-rooms";
+import ServerWaitingModal from "../home/elements/buttons/home-battle-button/modals/ServerWaitingModal";
+import WaitForFightModal from "../home/elements/buttons/home-battle-button/modals/WaitForFightModal";
+import PrivateFightModal from "../home/elements/buttons/home-battle-button/modals/PrivateFightModal";
+import { useEffect } from "react";
 
 export default function PooFight() {
   const { width } = useWindowDimensions();
   const stats = usePooCreatureStatsStore();
   const pooStyle = usePooCreatureStyleStore();
-  const { previousBattles } = usePreviousBattles();
+  const { previousBattles, pushPreviousBattle } = usePreviousBattles();
+  const {
+    room,
+    connect,
+    disconnect,
+    isVisible,
+    show,
+    hide,
+    createARoom,
+    joinARoom,
+  } = useBattleRooms({ onBattleFinish: pushPreviousBattle });
 
   return (
     <CustomPage>
@@ -75,13 +83,8 @@ export default function PooFight() {
             Dernière battailles
           </TitleWithDivider>
           {previousBattles.length > 0 ? (
-            previousBattles.map((b) => (
-              <PreviousBattleItem
-                players={[
-                  { stats: { ...stats }, style: { ...pooStyle } },
-                  { stats: { ...stats }, style: { ...pooStyle } },
-                ]}
-              ></PreviousBattleItem>
+            previousBattles.map((b, index) => (
+              <PreviousBattleItem key={index} battle={b}></PreviousBattleItem>
             ))
           ) : (
             <NoPreviousBattleItem></NoPreviousBattleItem>
@@ -103,7 +106,6 @@ export default function PooFight() {
           },
         ]}
       >
-        {/* TODO: ajouter linear-gradient */}
         <Gradient
           direction={GradientDirection.BOTTOM_TO_TOP}
           from={colors.gray[800]}
@@ -112,6 +114,7 @@ export default function PooFight() {
               position: "absolute",
               width,
               height: "250%",
+              left: 0,
               bottom: -50,
               opacity: 0.7,
               pointerEvents: "none",
@@ -128,6 +131,10 @@ export default function PooFight() {
             color: colors.white,
             textTransform: "uppercase",
           }}
+          onPress={() => {
+            connect();
+            show("waiting-server-for-queue");
+          }}
         >
           Combattre en ligne
         </StandardButton>
@@ -136,6 +143,10 @@ export default function PooFight() {
           viewStyle={[style.border, { borderColor: colors.amber[600] }]}
           bgColor={colors.amber[400]}
           textStyle={{ fontSize: 16 }}
+          onPress={() => {
+            connect();
+            show("waiting-server-for-private");
+          }}
         >
           <ExpoIcon
             name="lock-outline"
@@ -144,6 +155,40 @@ export default function PooFight() {
           ></ExpoIcon>
         </StandardButton>
       </View>
+
+      {/* SERVER WAITING MODAL */}
+      <ServerWaitingModal
+        visible={
+          isVisible("waiting-server-for-queue") ||
+          isVisible("waiting-server-for-private")
+        }
+        onRequestClose={() => {
+          hide("waiting-server-for-queue");
+          hide("waiting-server-for-private");
+          disconnect();
+        }}
+      ></ServerWaitingModal>
+
+      {/* WAITING FOR FIGHT MODAL */}
+      <WaitForFightModal
+        visible={isVisible("battle-waiting")}
+        onRequestClose={() => {
+          hide("battle-waiting");
+          disconnect();
+        }}
+      ></WaitForFightModal>
+
+      {/* PRIVATE FIGHT MODAL */}
+      <PrivateFightModal
+        visible={isVisible("private-battle")}
+        room={room}
+        onCreateRoomBtnPress={createARoom}
+        onJoinRoomBtnPress={joinARoom}
+        onRequestClose={() => {
+          hide("private-battle");
+          disconnect();
+        }}
+      ></PrivateFightModal>
     </CustomPage>
   );
 }
