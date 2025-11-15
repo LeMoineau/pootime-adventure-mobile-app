@@ -8,5 +8,5 @@ export const StorageKeys = {
   POO_CREATURE_STATS: "poo-creature-stats",
   ITEMS_UNLOCKED: "items-unlocked",
   VILLAGE: "poo-village",
-  USER_IS_PERSISTED: "user-is-persisted",
+  PREVIOUS_BATTLES: "previous-battles",
 };

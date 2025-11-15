@@ -1,10 +1,10 @@
 import { Text, View } from "react-native";
-import PooCreatureBadge from "./PooCreatureBadge";
-import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
-import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
-import { Resources } from "../../../config/constants/Resources";
-import ResourceRank from "../../text/ResourceRank";
+import PooCreatureBadge from "../PooCreatureBadge";
+import { style } from "../../../../utils/style-utils";
+import { colors } from "../../../../utils/color-utils";
+import { usePooCreatureStyleStore } from "../../../../stores/poo-creature-style.store";
+import { Resources } from "../../../../config/constants/Resources";
+import ResourceRank from "../../../text/ResourceRank";
 
 const RESOURCE_RANKED: Resources[] = ["pooTrophee", "pooCoins"];
 

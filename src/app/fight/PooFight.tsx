@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { style } from "../../common/utils/style-utils";
-import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/PooCreatureRankSubHeader";
+import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
 import StandardButton from "../../common/components/buttons/StandardButton";
 import { colors } from "../../common/utils/color-utils";
 import TitleWithDivider from "../../common/components/text/TitleWithDivider";
@@ -16,9 +16,18 @@ import ExpoIcon from "../../common/components/icons/ExpoIcon";
 import Gradient, {
   GradientDirection,
 } from "../../common/components/misc/Gradient";
+import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
+import usePreviousBattles from "../../common/hooks/battle/use-previous-battles";
+import NoPreviousBattleItem from "../../common/components/items/NoPreviousBattleItem";
+import PooCreatureTropheeSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureTropheeSubHeader";
 
 export default function PooFight() {
   const { width } = useWindowDimensions();
+  const stats = usePooCreatureStatsStore();
+  const pooStyle = usePooCreatureStyleStore();
+  const { previousBattles } = usePreviousBattles();
+
   return (
     <CustomPage>
       <ScrollView
@@ -39,7 +48,7 @@ export default function PooFight() {
             backgroundColor: colors.baseBackgroundColor,
           }}
         >
-          <PooCreatureRankSubHeader></PooCreatureRankSubHeader>
+          <PooCreatureTropheeSubHeader></PooCreatureTropheeSubHeader>
           <View
             style={{
               backgroundColor: colors.white,
@@ -59,10 +68,24 @@ export default function PooFight() {
             gap: 10,
           }}
         >
-          <TitleWithDivider viewStyle={{ marginBottom: 10 }}>
-            Previous Battles
+          <TitleWithDivider
+            viewStyle={{ marginBottom: 10 }}
+            textStyle={{ fontWeight: "500" }}
+          >
+            Dernière battailles
           </TitleWithDivider>
-          <PreviousBattleItem></PreviousBattleItem>
+          {previousBattles.length > 0 ? (
+            previousBattles.map((b) => (
+              <PreviousBattleItem
+                players={[
+                  { stats: { ...stats }, style: { ...pooStyle } },
+                  { stats: { ...stats }, style: { ...pooStyle } },
+                ]}
+              ></PreviousBattleItem>
+            ))
+          ) : (
+            <NoPreviousBattleItem></NoPreviousBattleItem>
+          )}
           <View style={{ height: 150 }}></View>
         </View>
       </ScrollView>
@@ -103,9 +126,10 @@ export default function PooFight() {
             fontSize: 16,
             fontWeight: "600",
             color: colors.white,
+            textTransform: "uppercase",
           }}
         >
-          FIGHT ONLINE
+          Combattre en ligne
         </StandardButton>
         <StandardButton
           style={[{ flex: 0 }]}

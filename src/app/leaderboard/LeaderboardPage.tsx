@@ -14,7 +14,7 @@ import { IdentifiedUserData } from "../../common/types/firebase/UserData";
 import * as NavigationBar from "expo-navigation-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native";
-import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/PooCreatureRankSubHeader";
+import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
 
 const LEADERBOARD_TAB_INFOS = [
   {

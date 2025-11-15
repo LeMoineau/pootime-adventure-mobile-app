@@ -39,6 +39,12 @@
           "behavior": "inset-swipe",
           "position": "relative"
         }
+      ],
+      [
+        "expo-asset",
+        {
+          "assets": ["./assets/icons"]
+        }
       ]
     ],
     "extra": {

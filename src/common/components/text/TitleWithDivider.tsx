@@ -1,4 +1,4 @@
-import { StyleProp, Text, View, ViewStyle } from "react-native";
+import { StyleProp, Text, TextStyle, View, ViewStyle } from "react-native";
 import { style } from "../../utils/style-utils";
 import Divider from "./Divider";
 import { colors } from "../../utils/color-utils";
@@ -8,7 +8,7 @@ export default function TitleWithDivider({
   textStyle,
   children,
 }: {
-  textStyle?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
   viewStyle?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
 }) {
