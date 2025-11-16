@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 import ExpoIcon from "../../../common/components/icons/ExpoIcon";
@@ -18,6 +18,7 @@ export default function LeaderboardBoard({
   resourceDescribed,
   items,
   leaderboardSize,
+  loading,
 }: {
   title: string;
   directionChangerIcon: React.ReactNode;
@@ -25,6 +26,7 @@ export default function LeaderboardBoard({
   resourceDescribed: Resources;
   items?: { asc: IdentifiedUserData[]; desc: IdentifiedUserData[] };
   leaderboardSize: number;
+  loading?: boolean;
 }) {
   const { user } = useAuthentication();
   const [direction, setDirection] = useState<LeaderboardDirection>("desc");
@@ -46,40 +48,44 @@ export default function LeaderboardBoard({
   };
 
   return (
-    <>
-      <View>
-        <Pressable
-          style={[
-            style.flexRow,
-            style.justifyBetween,
-            style.itemsCenter,
-            style.wFull,
-            style.borderBottom,
-            {
-              height: 40,
-              paddingHorizontal: 10,
-              backgroundColor: colors.gray[100],
-            },
-          ]}
-          onPress={() => {
-            const newDirection = direction === "asc" ? "desc" : "asc";
-            setDirection(newDirection);
-            onDirectionChange && onDirectionChange(newDirection);
-          }}
+    <View>
+      <Pressable
+        style={[
+          style.flexRow,
+          style.justifyBetween,
+          style.itemsCenter,
+          style.wFull,
+          style.borderBottom,
+          {
+            height: 40,
+            paddingHorizontal: 10,
+            backgroundColor: colors.gray[100],
+          },
+        ]}
+        onPress={() => {
+          const newDirection = direction === "asc" ? "desc" : "asc";
+          setDirection(newDirection);
+          onDirectionChange && onDirectionChange(newDirection);
+        }}
+      >
+        <Text> {title} </Text>
+        <View
+          style={[style.flexRow, style.itemsCenter, { paddingHorizontal: 5 }]}
         >
-          <Text> {title} </Text>
-          <View
-            style={[style.flexRow, style.itemsCenter, { paddingHorizontal: 5 }]}
-          >
-            {directionChangerIcon}
-            <View style={[{ width: 10 }]}></View>
-            <ExpoIcon
-              name={direction === "asc" ? "sort-asc" : "sort-desc"}
-              size={20}
-            ></ExpoIcon>
-          </View>
-        </Pressable>
-        {(items?.[direction] ?? []).map((ud, index) => (
+          {directionChangerIcon}
+          <View style={[{ width: 10 }]}></View>
+          <ExpoIcon
+            name={direction === "asc" ? "sort-asc" : "sort-desc"}
+            size={20}
+          ></ExpoIcon>
+        </View>
+      </Pressable>
+      {loading ? (
+        <View style={[{ paddingTop: 20 }]}>
+          <ActivityIndicator size="large"></ActivityIndicator>
+        </View>
+      ) : (
+        (items?.[direction] ?? []).map((ud, index) => (
           <LeaderboardRow
             rank={calculateRank(index)}
             userData={ud}
@@ -106,8 +112,8 @@ export default function LeaderboardBoard({
               ></TextWithResourceIcon>
             }
           ></LeaderboardRow>
-        ))}
-      </View>
-    </>
+        ))
+      )}
+    </View>
   );
 }

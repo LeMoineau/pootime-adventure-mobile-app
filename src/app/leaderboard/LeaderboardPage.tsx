@@ -6,14 +6,13 @@ import PooTropheeIcon from "../../common/components/icons/resources/PooTropheeIc
 import PooCoinIcon from "../../common/components/icons/resources/pooCoin";
 import { useEffect, useState } from "react";
 import LeaderboardBoard from "./elements/LeaderboardBoard";
-import LeaderboardSubHeader from "./elements/LeaderboardSubHeader";
 import { ItemsLeaderboardable } from "../../common/config/constants/Leaderboard";
 import { Resources } from "../../common/config/constants/Resources";
 import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
 import { IdentifiedUserData } from "../../common/types/firebase/UserData";
 import * as NavigationBar from "expo-navigation-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View } from "react-native";
+import { RefreshControl, View } from "react-native";
 import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
 
 const LEADERBOARD_TAB_INFOS = [
@@ -34,7 +33,7 @@ const LEADERBOARD_TAB_INFOS = [
 ];
 
 export default function LeaderboardPage() {
-  const { fetch, count } = useUserDataTable();
+  const { loading, fetch, count } = useUserDataTable();
   const [leaderboards, setLeaderboards] = useState<
     {
       resource: Resources;
@@ -54,19 +53,21 @@ export default function LeaderboardPage() {
     };
   }, []);
 
-  const handleTabChange = async (tabIndex: number) => {
+  const handleTabChange = async (tabIndex: number, forceRefresh?: boolean) => {
     const targetResource = LEADERBOARD_TAB_INFOS[tabIndex].resource;
     const asc = await fetch({
       orderBy: {
         fieldPath: `resources.${LEADERBOARD_TAB_INFOS[tabIndex].resource}`,
         direction: "asc",
       },
+      forceRefresh,
     });
     const desc = await fetch({
       orderBy: {
         fieldPath: `resources.${LEADERBOARD_TAB_INFOS[tabIndex].resource}`,
         direction: "desc",
       },
+      forceRefresh,
     });
     setLeaderboards([
       ...leaderboards.filter((l) => l.resource !== targetResource),
@@ -102,7 +103,7 @@ export default function LeaderboardPage() {
             handleTabChange(tabIndex);
           }}
           tabs={LEADERBOARD_TAB_INFOS.map(
-            ({ icon, title, directionChangerIcon, resource }) => ({
+            ({ icon, title, directionChangerIcon, resource }, index) => ({
               icon,
               content: (
                 <LeaderboardBoard
@@ -113,7 +114,16 @@ export default function LeaderboardPage() {
                   items={
                     leaderboards.find((l) => l.resource === resource)?.items
                   }
+                  loading={loading}
                 ></LeaderboardBoard>
+              ),
+              controlRefresh: (
+                <RefreshControl
+                  refreshing={false}
+                  onRefresh={() => {
+                    handleTabChange(index, true);
+                  }}
+                ></RefreshControl>
               ),
             })
           )}

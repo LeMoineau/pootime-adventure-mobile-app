@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, StyleProp, View, ViewStyle } from "react-native";
+import {
+  RefreshControlProps,
+  ScrollView,
+  StyleProp,
+  View,
+  ViewStyle,
+} from "react-native";
 import { style } from "../../../utils/style-utils";
 import { colors } from "../../../utils/color-utils";
 import RoundedScrollViewTabSelector from "./RoundedScrollViewTabSelector";
@@ -7,6 +13,7 @@ import RoundedScrollViewTabSelector from "./RoundedScrollViewTabSelector";
 export type RoundedScrollViewTab = {
   icon: React.ReactNode;
   content: React.ReactNode;
+  controlRefresh?: React.ReactElement<RefreshControlProps>;
 };
 
 export default function RoundedScrollView({
@@ -91,7 +98,12 @@ export default function RoundedScrollView({
       {tabs.map((tab, index) => {
         return (
           tabSelected === index && (
-            <ScrollView key={`tab-${index}`}>{tab.content}</ScrollView>
+            <ScrollView
+              key={`tab-${index}`}
+              refreshControl={tab.controlRefresh}
+            >
+              {tab.content}
+            </ScrollView>
           )
         );
       })}
@@ -99,7 +111,10 @@ export default function RoundedScrollView({
         endTabs.map((tab, index) => {
           return (
             tabSelected === tabs.length + index && (
-              <ScrollView key={`tab-${tabs.length + index}`}>
+              <ScrollView
+                key={`tab-${tabs.length + index}`}
+                refreshControl={tab.controlRefresh}
+              >
                 {tab.content}
               </ScrollView>
             )

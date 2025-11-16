@@ -17,13 +17,14 @@ import {
   WhereFilterOp,
   getCountFromServer,
 } from "firebase/firestore";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CacheContext } from "../../contexts/contexts";
 
 const firestore = getFirestore(getApp());
 
 export function useUserDataTable() {
   const { get: getFromCache, put: putInCache } = useContext(CacheContext);
+  const [loading, setLoading] = useState(false);
 
   /**
    * Get the specified user data by its id
@@ -31,7 +32,9 @@ export function useUserDataTable() {
    * @returns UserData if find, else undefined
    */
   const get = async (uid: string): Promise<UserData | undefined> => {
+    setLoading(true);
     const snap = await getDoc(doc(firestore, "user-data", uid));
+    setLoading(false);
     if (snap.exists()) {
       return snap.data() as UserData;
     }
@@ -42,6 +45,7 @@ export function useUserDataTable() {
     wheres?: [{ fieldPath: string; operator: WhereFilterOp; value: any }];
     orderBy?: { fieldPath: string; direction: OrderByDirection };
     limit?: number;
+    forceRefresh?: boolean;
   }): Promise<IdentifiedUserData[]> => {
     let constraints: QueryConstraint[] = [];
 
@@ -67,11 +71,13 @@ export function useUserDataTable() {
     const cacheKey = JSON.stringify(constraints);
     const cachedResponse = getFromCache(cacheKey);
 
-    if (cachedResponse) {
+    if (cachedResponse && !!!props?.forceRefresh) {
       return cachedResponse;
     } else {
       const q = query(collection(firestore, "user-data"), ...constraints);
+      setLoading(true);
       const snap = await getDocs(q);
+      setLoading(false);
       const response = snap.docs.map(
         (d) => d.exists() && { ...d.data(), uid: d.id }
       ) as IdentifiedUserData[];
@@ -108,14 +114,16 @@ export function useUserDataTable() {
     if (cachedResponse !== undefined) {
       return cachedResponse;
     } else {
+      setLoading(true);
       const snap = await getCountFromServer(
         query(collection(firestore, "user-data"), ...constraints)
       );
+      setLoading(false);
       const nb = snap.data().count;
       putInCache(cacheKey, nb);
       return nb;
     }
   };
 
-  return { get, update, create, fetch, count: _count };
+  return { loading, get, update, create, fetch, count: _count };
 }
