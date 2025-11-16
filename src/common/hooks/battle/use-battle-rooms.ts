@@ -9,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import { BattleFinalState } from "../../types/battle/BattleFinalState";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
+import { DateUtils } from "../../utils/date-utils";
 
 export default function useBattleRooms(props?: {
   onBattleFinish?: (newBattle: BattleFinalState) => void;
@@ -100,7 +101,7 @@ export default function useBattleRooms(props?: {
       const advSocketId = finalRoomState.players.find((p) => p !== socket.id)!;
       props.onBattleFinish({
         win: battleEnding[socket.id].victoryState === "winner",
-        date: new Date().toString(),
+        date: DateUtils.toDDMMYYYFormat(new Date()),
         own: { style, stats },
         adv: {
           style: finalRoomState.battleState[advSocketId].style,

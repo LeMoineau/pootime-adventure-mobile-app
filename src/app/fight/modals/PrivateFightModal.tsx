@@ -61,12 +61,13 @@ export default function PrivateFightModal({
                 Vous pouvez rejoindre la partie d'un.e ami.e en tapant le code
                 de sa room
               </Text>
-              <View style={[style.flexRow]}>
+              <View style={[style.flexRow, style.itemsCenter]}>
                 <InputField
                   paddingHorizontal={20}
                   paddingVertical={10}
                   placeholder="ABCD"
-                  style={{ width: 100 }}
+                  style={{ width: 120 }}
+                  textInputStyle={{ fontWeight: "500", textAlign: "center" }}
                   onChange={setRoomCode}
                 ></InputField>
                 <PillButton
@@ -76,6 +77,7 @@ export default function PrivateFightModal({
                       paddingHorizontal: 20,
                       paddingVertical: 10,
                       backgroundColor: colors.teal[400],
+                      width: 100,
                     },
                   ]}
                   onPress={() => {
@@ -86,7 +88,7 @@ export default function PrivateFightModal({
                     style={[
                       style.textMd,
                       style.textBold,
-                      { color: colors.white },
+                      { color: colors.white, textAlign: "center" },
                     ]}
                   >
                     Join
@@ -113,7 +115,7 @@ export default function PrivateFightModal({
                   style={[
                     style.textMd,
                     style.textBold,
-                    { color: colors.white },
+                    { color: colors.white, width: 170, textAlign: "center" },
                   ]}
                 >
                   Créer une room

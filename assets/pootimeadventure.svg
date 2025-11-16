@@ -400,15 +400,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142137"
-     inkscape:cx="809.70752"
-     inkscape:cy="1014.7318"
+     inkscape:zoom="2.8284274"
+     inkscape:cx="967.74157"
+     inkscape:cy="1003.621"
      inkscape:document-units="mm"
      inkscape:current-layer="g1173"
      inkscape:document-rotation="0"
      showgrid="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1001"
+     inkscape:window-width="1700"
+     inkscape:window-height="881"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
@@ -799,28 +799,46 @@
            style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.0619;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
       </g>
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\attaque.png"
          id="path1813"
          d="m 255.3229,436.5625 6.61459,-13.22917 7.9375,-2.64583 v 7.9375 l -10.58334,10.58333 z"
          style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\attaque.png"
          id="path1817"
          d="m 256.9104,437.88541 8.99584,-12.17083"
          style="fill:#ffd42a;fill-rule:evenodd;stroke:#000000;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stroke-miterlimit:4;stroke-dasharray:none" />
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\attaque.png"
          sodipodi:nodetypes="ccccccc"
          id="path1819"
          d="m 259.29165,439.20833 3.17501,2.11667 -2.11666,2.91042 -11.11251,-7.40835 2.11666,-2.91041 3.96875,2.64584 z"
          style="fill:#b2520f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\attaque.png"
          sodipodi:nodetypes="ccccc"
          id="path1821"
          d="m 252.94166,440.53125 -3.43959,4.23333 3.43958,2.38125 2.91042,-4.49791 z"
          style="fill:#7c390a;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\defense.png"
          id="path1825"
          d="M 287.07289,461.69792 V 451.11458"
          style="fill:#33cbef;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       <g
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\defense.png"
          id="g1867">
         <path
            style="fill:#33cbef;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
@@ -834,6 +852,9 @@
            sodipodi:nodetypes="cccc" />
       </g>
       <g
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\mana.png"
          id="g1893">
         <path
            style="fill:#22efcb;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.96;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
@@ -877,11 +898,17 @@
            d="m 249.89884,461.54789 a 1.4552078,1.4552078 0 0 1 -1.43722,1.47282 1.4552078,1.4552078 0 0 1 -1.47298,-1.43706 1.4552078,1.4552078 0 0 1 1.43692,-1.47313 1.4552078,1.4552078 0 0 1 1.47327,1.43676" />
       </g>
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\pv.png"
          sodipodi:nodetypes="ccccc"
          id="path1863"
          d="m 298.97914,477.57292 c -1.58748,-0.79375 -4.76248,-4.49792 -5.29166,-6.61458 -1.05832,-3.17501 3.96876,-5.02709 5.29168,-1.58751 1.32291,-3.43958 6.35,-1.5875 5.29166,1.5875 -0.52916,2.11667 -3.70416,5.82084 -5.29168,6.61459 z"
          style="fill:#fd170b;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.46;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       <g
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\resMana.png"
          transform="translate(-31.750003,27.781247)"
          id="g1867-7">
         <path
@@ -896,6 +923,9 @@
            style="fill:#88f6bf;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       </g>
       <g
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\resMana.png"
          transform="translate(1.7199737,21.799774)"
          id="g1893-7">
         <path
@@ -940,6 +970,9 @@
            style="fill:#22efcb;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.880003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       </g>
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\recupMana.png"
          d="m 238.12502,474.92996 a 6.8794403,6.8794403 0 0 1 -4.35901,6.48511 6.8794403,6.8794403 0 0 1 -7.61003,-1.77341"
          sodipodi:arc-type="arc"
          sodipodi:open="true"
@@ -953,6 +986,9 @@
          id="path1943"
          style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.26538;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\recupMana.png"
          style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.26538;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
          id="path1943-9"
          sodipodi:type="arc"
@@ -966,14 +1002,23 @@
          sodipodi:arc-type="arc"
          d="m 224.47063,476.20263 a 6.8794403,6.8794403 0 0 1 3.94122,-7.46022 6.8794403,6.8794403 0 0 1 8.2044,1.96874" />
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\recupMana.png"
          id="path1960"
          d="m 236.80207,468.84167 v 2.11667 l -1.85208,-1e-5"
          style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.96;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       <path
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\recupMana.png"
          id="path1962"
          d="m 227.80624,479.425 h -1.85209 l 1e-5,2.11667"
          style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.960001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
       <g
+         inkscape:export-ydpi="400"
+         inkscape:export-xdpi="400"
+         inkscape:export-filename="D:\Prog\NodeJS\PooTimeAdventure\pootime-adventure-mobile-app\assets\icons\recupMana.png"
          transform="matrix(0.67121664,0,0,0.67121664,76.366905,156.13007)"
          id="g1970">
         <path
