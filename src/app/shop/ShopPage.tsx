@@ -56,11 +56,7 @@ export default function ShopPage() {
                   style={[{ transform: [{ translateY: 5 }] }]}
                 ></PooCoinsConverterIcon>
               ),
-              tab: (
-                <ShopResourcesTab
-                  onBuyableItemPress={beginTrade}
-                ></ShopResourcesTab>
-              ),
+              tab: <ShopResourcesTab></ShopResourcesTab>,
             },
           ]}
         ></ShopScrollView>

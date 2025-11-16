@@ -5,14 +5,23 @@ import ExpoIcon from "../../common/components/icons/ExpoIcon";
 import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
 import { useResourcesStore } from "../../common/stores/resources.store";
-import ResourceIcon from "../../common/components/icons/ResourceIcon";
 import { Resources } from "../../common/config/constants/Resources";
 import { style } from "../../common/utils/style-utils";
-import { MathUtils } from "../../common/utils/math-utils";
+import InventoryItem from "../../common/components/items/slot/InventorySlotItem";
+import * as NavigationBar from "expo-navigation-bar";
+import { useEffect } from "react";
 
 export default function InventoryPage() {
   const navigator: useNavigationType = useNavigation();
-  const { inventory, get } = useResourcesStore();
+  const { inventory } = useResourcesStore();
+
+  useEffect(() => {
+    NavigationBar.setVisibilityAsync("visible");
+
+    return () => {
+      NavigationBar.setVisibilityAsync("hidden");
+    };
+  }, []);
 
   return (
     <CustomPage
@@ -82,43 +91,12 @@ export default function InventoryPage() {
               },
             ]}
           >
-            {Object.keys(inventory).map((resource, index) => {
-              if (get(resource as Resources) <= 0) return;
-              return (
-                <View
-                  key={`inventory-item-${resource}-${index}`}
-                  style={[
-                    style.flexRow,
-                    style.justifyCenter,
-                    style.itemsCenter,
-                    { padding: 10, width: 60, height: 60 },
-                  ]}
-                >
-                  <ResourceIcon
-                    resource={resource as Resources}
-                    size={40}
-                  ></ResourceIcon>
-                  <Text
-                    style={[
-                      style.textShadowMd,
-                      {
-                        position: "absolute",
-                        bottom: 0,
-                        right: 0,
-                        fontWeight: "700",
-                        color: colors.white,
-                      },
-                    ]}
-                  >
-                    {get(resource as Resources) >= 1000000
-                      ? MathUtils.convertToReduceStrFormat(
-                          get(resource as Resources)
-                        )
-                      : get(resource as Resources)}
-                  </Text>
-                </View>
-              );
-            })}
+            {Object.keys(inventory).map((resource, index) => (
+              <InventoryItem
+                resource={resource as Resources}
+                key={index}
+              ></InventoryItem>
+            ))}
           </View>
         </ScrollView>
       </View>

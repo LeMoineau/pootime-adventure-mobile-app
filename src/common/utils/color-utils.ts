@@ -3,6 +3,8 @@ let tmpColors = {
   transparent: "transparent",
   baseProgressColor: "#4a9fff",
   baseBackgroundColor: "#FFE5A3",
+  villageGrass: "#a4dd7fff",
+  villageDirt: "#79593cff",
   black: "#000",
   white: "#fff",
   slate: {

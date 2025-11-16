@@ -8,7 +8,19 @@ import { useEffect, useState } from "react";
 import { useAuthentication } from "../../hooks/firebase/use-authentification";
 import ResourceIcon from "../icons/ResourceIcon";
 
-export default function ResourceRank({ resource }: { resource: Resources }) {
+/**
+ *
+ * @param resource Resource to get the rank
+ * @param value Optional value from whom get the rank (if not set, will get current player value)
+ * @returns
+ */
+export default function ResourceRank({
+  resource,
+  value,
+}: {
+  resource: Resources;
+  value?: number;
+}) {
   const { user } = useAuthentication();
   const { get } = useResourcesStore();
   const { loading, count } = useUserDataTable();
@@ -21,7 +33,7 @@ export default function ResourceRank({ resource }: { resource: Resources }) {
           {
             fieldPath: `resources.${resource}`,
             operator: ">",
-            value: get(resource),
+            value: value ?? get(resource),
           },
         ],
       }).then((res) => {

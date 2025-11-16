@@ -5,11 +5,7 @@ import {
   ResourcesItemValue,
 } from "./BuyableItem";
 
-export type UnlockableItems =
-  | "events"
-  | "ultis"
-  | "options"
-  | StyleUnlockableItem;
+export type UnlockableItems = "events" | "options" | StyleUnlockableItem;
 
 export type StyleUnlockableItem = "bodyColors" | "heads" | "expressions";
 
@@ -19,7 +15,6 @@ export function isUnlockableItem(
   return (
     isStyleUnlockableItem(itemType) ||
     itemType === "events" ||
-    itemType === "ultis" ||
     itemType === "options"
   );
 }

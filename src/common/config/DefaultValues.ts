@@ -46,11 +46,10 @@ export namespace DefaultValues {
 
   //ItemUnlocked
   export const ItemsUnlocked: DataInStorage.ItemsUnlocked = {
-    bodyColors: {},
-    heads: {},
-    expressions: {},
-    ultis: {},
-    events: {},
+    bodyColors: [],
+    heads: [],
+    expressions: [],
+    events: [],
     options: { dev: false },
   };
 
@@ -79,7 +78,7 @@ export namespace DefaultValues {
     },
   };
 
-  export const FETCHING_LIMIT = 20;
+  export const FETCHING_LIMIT = 10;
 
   export const MIN_PASSWORD_LENGTH = 8;
   export const MAX_LOGIN_FIELD_LENGTH = 255;

@@ -5,7 +5,6 @@ import { UnlockableItems } from "../types/shop/UnlockableItems";
 import { DefaultValues } from "../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../types/dataInStorage";
-import { useState } from "react";
 
 type Store = {
   loading: boolean;
@@ -22,7 +21,9 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   getJson(StorageKeys.ITEMS_UNLOCKED).then(async (json: any) => {
     const baseValues = {
       ...DefaultValues.ItemsUnlocked,
-      ...json,
+      ...(DataInStorage.isItemsUnlocked(json)
+        ? json
+        : DataInStorage.convertOldItemsUnlockedToNewType(json)),
     };
     set(baseValues);
     set({ loading: false });
@@ -35,9 +36,18 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
     if (isUnlocked(item, name) && value === undefined) {
       return;
     }
-    set({
-      [item]: { ...get()[item], [name]: value === undefined ? true : value },
-    });
+    if (item === "options") {
+      set({
+        options: {
+          ...get().options,
+          [name]: value === undefined ? true : value,
+        },
+      });
+    } else {
+      set({
+        [item]: [...get()[item], name],
+      });
+    }
     await addItemInObjectInJson(
       StorageKeys.ITEMS_UNLOCKED,
       item,
@@ -47,7 +57,8 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   };
 
   const isUnlocked = (item: UnlockableItems, name: string): boolean => {
-    return get()[item][name] === true;
+    if (item === "options") return get().options[name] === true;
+    return get()[item].includes(name);
   };
 
   const resetData = async () => {

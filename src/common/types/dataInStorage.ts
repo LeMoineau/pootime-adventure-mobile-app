@@ -7,11 +7,34 @@ export namespace DataInStorage {
   export interface PooCreatureStats extends Stats {}
 
   export interface ItemsUnlocked {
-    bodyColors: { [color: string]: boolean };
-    heads: { [head: string]: boolean };
-    expressions: { [expression: string]: boolean };
-    ultis: { [ulti: string]: boolean };
-    events: { [event: string]: boolean };
+    bodyColors: string[];
+    heads: string[];
+    expressions: string[];
+    events: string[];
     options: { [option: string]: any };
+  }
+
+  export function isItemsUnlocked(json: any): json is ItemsUnlocked {
+    return (
+      json.bodyColor &&
+      Array.isArray(json.bodyColor) &&
+      json.heads &&
+      Array.isArray(json.heads) &&
+      json.expressions &&
+      Array.isArray(json.expressions) &&
+      json.events &&
+      Array.isArray(json.events) &&
+      json.options
+    );
+  }
+
+  export function convertOldItemsUnlockedToNewType(json: any): ItemsUnlocked {
+    return {
+      bodyColors: [...Object.keys(json.bodyColors)],
+      heads: [...Object.keys(json.heads)],
+      expressions: [...Object.keys(json.expressions)],
+      events: [...Object.keys(json.events)],
+      options: json.options,
+    };
   }
 }

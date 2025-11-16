@@ -7,15 +7,21 @@ export default function TitleWithDivider({
   viewStyle,
   textStyle,
   children,
+  hideLeftDivider,
 }: {
   textStyle?: StyleProp<TextStyle>;
   viewStyle?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
+  hideLeftDivider?: boolean;
 }) {
   return (
     <View style={[style.flexRow, style.itemsCenter, { gap: 10 }, viewStyle]}>
-      <Divider style={{ backgroundColor: colors.black }}></Divider>
-      <Text style={[{ textTransform: "uppercase" }, textStyle]}>
+      {!hideLeftDivider && (
+        <Divider style={{ backgroundColor: colors.black }}></Divider>
+      )}
+      <Text
+        style={[{ textTransform: "uppercase", maxWidth: "90%" }, textStyle]}
+      >
         {children}
       </Text>
       <Divider style={{ backgroundColor: colors.black }}></Divider>

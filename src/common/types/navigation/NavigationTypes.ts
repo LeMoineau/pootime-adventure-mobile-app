@@ -16,7 +16,8 @@ export type RouteName =
   | "StructureInfos"
   | "LeaderboardPage"
   | "LoginPage"
-  | "RegisterPage";
+  | "RegisterPage"
+  | "PlayerInfos";
 
 export type ParamListBase = {
   Inventory: undefined;
@@ -33,6 +34,7 @@ export type ParamListBase = {
   LeaderboardPage: undefined;
   LoginPage: undefined;
   RegisterPage: undefined;
+  PlayerInfos: { uid: string };
 };
 
 export type useNavigationType = NavigationProp<ParamListBase>;

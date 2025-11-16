@@ -9,7 +9,10 @@ import { CurveUtils } from "../../../../common/utils/curve-utils";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
 import { MathUtils } from "../../../../common/utils/math-utils";
-import { BuyableItemValue } from "../../../../common/types/shop/BuyableItem";
+import {
+  BuyableItemValue,
+  PooHeadName,
+} from "../../../../common/types/shop/BuyableItem";
 import { PooHeads } from "../../../../common/types/PooHeads";
 
 export default function ShopItemTypeView({
@@ -41,7 +44,7 @@ export default function ShopItemTypeView({
       {/* HEADS */}
       {itemType === "heads" &&
         isStringItemValue(itemValue) &&
-        PooHeads[itemValue]({
+        PooHeads[itemValue as PooHeadName]({
           fillColor: CurveUtils.calculateHeadColor(level),
           style: {
             width: 80,

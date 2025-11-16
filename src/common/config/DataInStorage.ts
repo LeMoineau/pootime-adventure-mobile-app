@@ -12,11 +12,10 @@ export namespace DataInStorage {
   export interface PooCreatureStats extends Stats {}
 
   export interface ItemsUnlocked {
-    bodyColors: { [color: string]: boolean };
-    heads: { [head: string]: boolean };
-    expressions: { [expression: string]: boolean };
-    ultis: { [ulti: string]: boolean };
-    events: { [event: string]: boolean };
+    bodyColors: string[];
+    heads: string[];
+    expressions: string[];
+    events: string[];
     options: { [option: string]: any };
   }
 

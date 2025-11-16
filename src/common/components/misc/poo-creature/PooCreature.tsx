@@ -10,7 +10,7 @@ import { CurveUtils } from "../../../utils/curve-utils";
 import { PooHeadName } from "../../../types/shop/BuyableItem";
 
 export default function PooCreature({
-  width,
+  width = 200,
   height,
   behind,
   onlyHead,

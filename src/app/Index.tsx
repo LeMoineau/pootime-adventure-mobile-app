@@ -29,6 +29,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as NavigationBar from "expo-navigation-bar";
 import PooStats from "./stats/PooStats";
 import PooFight from "./fight/PooFight";
+import PlayerInfosPage from "./player-infos/PlayerInfosPage";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -106,6 +107,14 @@ export default function App() {
                 options={{
                   presentation: "transparentModal",
                   animation: "slide_from_bottom",
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="PlayerInfos"
+                component={PlayerInfosPage}
+                options={{
+                  presentation: "transparentModal",
+                  animation: "slide_from_right",
                 }}
               ></Stack.Screen>
             </Stack.Navigator>

@@ -31,7 +31,7 @@ export default function VillagePage() {
             style.wFull,
             {
               flex: 1,
-              backgroundColor: "#79593cff",
+              backgroundColor: colors.villageGrass,
               height: 50,
               paddingBottom: 50,
               borderRadius: 20,
@@ -50,7 +50,7 @@ export default function VillagePage() {
                 flex: 1,
                 flexWrap: "wrap",
                 paddingTop: 0,
-                backgroundColor: "#a4dd7fff",
+                backgroundColor: colors.villageGrass,
                 borderRadius: 20,
               },
             ]}

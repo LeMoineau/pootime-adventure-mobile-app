@@ -4,7 +4,6 @@ import { style } from "../../../common/utils/style-utils";
 import StructureIcon from "../../../common/components/icons/StructureIcon";
 import { Structure } from "../../../common/types/village/Structure";
 import { useVillageStore } from "../../../common/stores/village.store";
-import { colors } from "../../../common/utils/color-utils";
 import StructureCase from "./StructureCase";
 
 export default function StructureView({

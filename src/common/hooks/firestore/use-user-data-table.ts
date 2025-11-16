@@ -27,18 +27,30 @@ export function useUserDataTable() {
   const [loading, setLoading] = useState(false);
 
   /**
-   * Get the specified user data by its id
+   * Get the specified user data by its id and save it in cache
    * @param uid user data id
+   * @param forceRefresh force the request and save the new value in cache
    * @returns UserData if find, else undefined
    */
-  const get = async (uid: string): Promise<UserData | undefined> => {
-    setLoading(true);
-    const snap = await getDoc(doc(firestore, "user-data", uid));
-    setLoading(false);
-    if (snap.exists()) {
-      return snap.data() as UserData;
+  const get = async (
+    uid: string,
+    forceRefresh?: boolean
+  ): Promise<IdentifiedUserData | undefined> => {
+    const cacheKey = `get:user-data:${uid}`;
+    const cachedResponse = getFromCache(cacheKey);
+
+    if (!!cachedResponse && !!!forceRefresh) {
+      return cachedResponse;
+    } else {
+      setLoading(true);
+      const snap = await getDoc(doc(firestore, "user-data", uid));
+      setLoading(false);
+      if (snap.exists()) {
+        const response = { ...(snap.data() as UserData), uid };
+        putInCache(cacheKey, response);
+        return response;
+      }
     }
-    return;
   };
 
   const fetch = async (props?: {
