@@ -8,11 +8,13 @@ export default function PooCreatureHead({
   bodyColor,
   expression,
   head,
+  level,
 }: {
   size?: number;
   bodyColor?: string;
   expression?: string;
   head?: PooHeadName;
+  level?: number;
 }) {
   return (
     <View style={[style.overflowHidden, { width: size, height: size }]}>
@@ -22,6 +24,7 @@ export default function PooCreatureHead({
         bodyColorProps={bodyColor}
         expressionProps={expression}
         headProps={head}
+        levelProps={level}
       ></PooCreature>
     </View>
   );

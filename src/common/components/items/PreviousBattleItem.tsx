@@ -71,6 +71,7 @@ export default function PreviousBattleItem({
             <PooCreatureBadge
               size={50}
               {...battle.own.style}
+              level={battle.own.stats.level}
             ></PooCreatureBadge>
             <View style={[style.flexRow, { flex: 1, gap: 5 }]}>
               <Text
@@ -91,6 +92,7 @@ export default function PreviousBattleItem({
             <PooCreatureBadge
               size={50}
               {...battle.adv.style}
+              level={battle.adv.stats.level}
             ></PooCreatureBadge>
           </View>
           <View style={[style.flexRow, {}]}>

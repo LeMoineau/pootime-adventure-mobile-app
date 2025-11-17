@@ -120,6 +120,7 @@ export default function LeaderboardRow({
             bodyColor={isYou ? undefined : userData.style.bodyColor}
             expression={isYou ? undefined : userData.style.expression}
             head={isYou ? undefined : userData.style.head}
+            level={isYou ? undefined : userData.stats.level}
           ></PooCreatureBadge>
           <Text
             style={[{ fontSize: 17, fontWeight: "600", overflow: "hidden" }]}

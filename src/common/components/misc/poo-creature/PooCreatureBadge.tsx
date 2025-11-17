@@ -18,6 +18,7 @@ export default function PooCreatureBadge({
   bodyColor,
   expression,
   head,
+  level,
 }: {
   showInfos?: boolean;
   size?: number;
@@ -30,6 +31,7 @@ export default function PooCreatureBadge({
   bodyColor?: string;
   expression?: string;
   head?: PooHeadName;
+  level?: number;
 }) {
   const { name, bodyColor: bodyColorFromStore } = usePooCreatureStyleStore();
   return (
@@ -58,6 +60,7 @@ export default function PooCreatureBadge({
           bodyColor={bodyColor}
           expression={expression}
           head={head}
+          level={level}
         ></PooCreatureHead>
       </View>
       {showInfos && (
