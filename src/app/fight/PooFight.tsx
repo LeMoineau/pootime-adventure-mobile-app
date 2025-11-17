@@ -40,6 +40,7 @@ export default function PooFight() {
     hide,
     createARoom,
     joinARoom,
+    resetRoom,
   } = useBattleRooms({ onBattleFinish: pushPreviousBattle });
 
   return (
@@ -200,6 +201,7 @@ export default function PooFight() {
         onJoinRoomBtnPress={joinARoom}
         onRequestClose={() => {
           hide("private-battle");
+          resetRoom();
           disconnect();
         }}
       ></PrivateFightModal>

@@ -95,8 +95,7 @@ export default function useBattleRooms(props?: {
     battleEnding: ServerTypes.BattleEnding,
     finalRoomState: ServerTypes.Room
   ) => {
-    console.log("battle finished", room, battleEnding);
-    // disconnect();
+    resetRoom();
     if (socket && socket.id && props?.onBattleFinish) {
       const advSocketId = finalRoomState.players.find((p) => p !== socket.id)!;
       props.onBattleFinish({
@@ -122,6 +121,10 @@ export default function useBattleRooms(props?: {
     socket?.emit(SocketEvents.JOIN_A_ROOM, roomCode);
   };
 
+  const resetRoom = () => {
+    setRoom(undefined);
+  };
+
   return {
     socket: socket,
     isConnected: !!socket,
@@ -133,5 +136,6 @@ export default function useBattleRooms(props?: {
     hide,
     createARoom,
     joinARoom,
+    resetRoom,
   };
 }
