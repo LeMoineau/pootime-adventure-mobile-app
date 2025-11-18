@@ -10,6 +10,7 @@ import { BattleFinalState } from "../../types/battle/BattleFinalState";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { DateUtils } from "../../utils/date-utils";
+import { useResourcesStore } from "../../stores/resources.store";
 
 export default function useBattleRooms(props?: {
   onBattleFinish?: (newBattle: BattleFinalState) => void;
@@ -24,6 +25,7 @@ export default function useBattleRooms(props?: {
   const navigator: useNavigationType = useNavigation();
   const style = usePooCreatureStyleStore();
   const stats = usePooCreatureStatsStore();
+  const { get } = useResourcesStore();
   const [socket, setSocket] = useState<Socket | undefined>(globalSocket);
   const [room, setRoom] = useState<ServerTypes.Room>();
 
@@ -63,7 +65,7 @@ export default function useBattleRooms(props?: {
   };
 
   const _joinBattleQueue = () => {
-    socket?.emit(SocketEvents.JOIN_THE_QUEUE);
+    socket?.emit(SocketEvents.JOIN_THE_QUEUE, get("pooTrophee"));
     hide("waiting-server-for-queue");
     show("battle-waiting");
   };

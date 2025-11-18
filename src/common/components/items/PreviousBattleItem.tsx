@@ -108,7 +108,7 @@ export default function PreviousBattleItem({
                 stats={battle.own.stats}
               ></PooCreatureStatsTable>
               <UltiItem
-                ulti={battle.adv.stats.ultiSelected ?? undefined}
+                ulti={battle.own.stats.ultiSelected ?? undefined}
               ></UltiItem>
             </View>
             <View
