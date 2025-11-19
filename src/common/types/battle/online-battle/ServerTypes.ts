@@ -34,8 +34,9 @@ export namespace ServerTypes {
   }
   export type BattleUpdatePayload = BattleUpdate[];
   export interface BattleRewards {
-    stars: number;
     pooCoins: number;
+    stars?: number;
+    pooTrophees?: number;
   }
   export type PlayerVictoryState = "winner" | "loser";
   export interface BattleEnding {

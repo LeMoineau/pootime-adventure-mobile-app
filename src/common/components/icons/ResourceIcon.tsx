@@ -32,7 +32,7 @@ export default function ResourceIcon({
         <GlassIcon height={size}></GlassIcon>
       ) : resource === "snow" ? (
         <SnowIcon width={size}></SnowIcon>
-      ) : resource === "pooTrophee" ? (
+      ) : ["pooTrophee", "pooTrophees"].includes(resource) ? (
         <PooTropheeIcon height={size}></PooTropheeIcon>
       ) : (
         <CosmicPowderIcon width={size}></CosmicPowderIcon>

@@ -10,6 +10,7 @@ import BattleFinishRewardModal from "./modals/BattleFinishRewardModal";
 import { View } from "react-native";
 import NodeShadow from "../../common/components/views/arena/elements/NodeShadow";
 import { useEffect } from "react";
+import { Resources } from "../../common/config/constants/Resources";
 
 export default function OnlineArena() {
   const navigator: useNavigationType = useNavigation();
@@ -23,12 +24,13 @@ export default function OnlineArena() {
     ownState,
     hit,
     spell,
+    collectRewards,
     reset,
     disconnect,
   } = useOnlineBattle();
   const { level, pv } = usePooCreatureStatsStore();
   const { name } = usePooCreatureStyleStore();
-  const { earn } = useResourcesStore();
+  const { get } = useResourcesStore();
 
   useEffect(() => {
     return () => {
@@ -90,19 +92,18 @@ export default function OnlineArena() {
       {battleEnding && (
         <BattleFinishRewardModal
           visible={battleEnding !== undefined}
-          rewards={[
-            { resource: "stars", number: battleEnding[socketId].rewards.stars },
-            {
-              resource: "pooCoins",
-              number: battleEnding[socketId].rewards.pooCoins,
-            },
-          ]}
+          rewards={
+            battleEnding[socketId].rewards.pooTrophees !== undefined &&
+            battleEnding[socketId].rewards.pooTrophees < 0 &&
+            get("pooTrophee") <= 0
+              ? []
+              : Object.entries(battleEnding[socketId].rewards).map(
+                  ([k, i]) => ({ resource: k as Resources, number: i })
+                )
+          }
           winner={battleEnding[socketId].victoryState === "winner"}
           onRequestClose={async () => {
-            const starEarn = battleEnding[socketId].rewards.stars;
-            const pooCoinEarn = battleEnding[socketId].rewards.pooCoins;
-            earn("stars", starEarn);
-            earn("pooCoins", pooCoinEarn);
+            collectRewards(battleEnding[socketId].rewards);
             reset();
             navigator.navigate("App");
           }}

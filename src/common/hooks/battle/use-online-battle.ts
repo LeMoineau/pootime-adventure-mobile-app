@@ -6,11 +6,14 @@ import { SocketEvents } from "../../types/SocketEvents";
 import { UltiDetails } from "../../types/Ultis";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
+import { BattleReward } from "../../types/battle/online-battle/BattleReward";
+import { useResourcesStore } from "../../stores/resources.store";
 
 const useOnlineBattle = () => {
   const socket = getSocket();
   const style = usePooCreatureStyleStore();
   const stats = usePooCreatureStatsStore();
+  const { earn, get } = useResourcesStore();
 
   const [advStyle, setAdvStyle] = useState<ServerTypes.PlayerStyle>();
   const [advStats, setAdvStats] = useState<ServerTypes.PlayerStats>();
@@ -88,6 +91,27 @@ const useOnlineBattle = () => {
     socket.emit(SocketEvents.SPELL, ulti);
   };
 
+  const collectRewards = (rewards: ServerTypes.BattleRewards) => {
+    //pour empecher la generation infini de ressource
+    if (
+      rewards.pooTrophees === undefined ||
+      rewards.pooTrophees >= 0 ||
+      get("pooTrophee") > 0
+    ) {
+      earn("pooCoins", rewards.pooCoins);
+      if (rewards.stars) {
+        earn("stars", rewards.stars);
+      }
+      if (rewards.pooTrophees) {
+        if (get("pooTrophee") + rewards.pooTrophees < 0) {
+          earn("pooTrophee", -get("pooTrophee"));
+        } else {
+          earn("pooTrophee", rewards.pooTrophees);
+        }
+      }
+    }
+  };
+
   const reset = () => {
     setIsBattleBeginning(false);
     updateBattleEnding(undefined);
@@ -111,6 +135,7 @@ const useOnlineBattle = () => {
     ownState,
     hit,
     spell,
+    collectRewards,
     reset,
     disconnect,
   };

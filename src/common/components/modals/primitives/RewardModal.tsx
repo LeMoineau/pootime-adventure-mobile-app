@@ -59,23 +59,25 @@ export default function RewardModal({
                 },
               ]}
             >
-              {rewards.map((reward, index) => (
-                <View
-                  key={`reward-${index}`}
-                  style={[
-                    style.flexRow,
-                    style.justifyCenter,
-                    style.itemsCenter,
-                    { flex: 1 },
-                  ]}
-                >
-                  <TextWithResourceIcon
-                    resource={reward.resource}
-                    text={reward.number}
-                    fontSize={18}
-                  ></TextWithResourceIcon>
-                </View>
-              ))}
+              {rewards
+                .filter((r) => r.number !== 0)
+                .map((reward, index) => (
+                  <View
+                    key={`reward-${index}`}
+                    style={[
+                      style.flexRow,
+                      style.justifyCenter,
+                      style.itemsCenter,
+                      { flex: 1 },
+                    ]}
+                  >
+                    <TextWithResourceIcon
+                      resource={reward.resource}
+                      text={reward.number}
+                      fontSize={18}
+                    ></TextWithResourceIcon>
+                  </View>
+                ))}
             </View>
           )}
 

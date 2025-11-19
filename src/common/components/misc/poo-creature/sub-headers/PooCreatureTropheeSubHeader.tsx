@@ -56,10 +56,7 @@ export default function PooCreatureTropheeSubHeader() {
                   style.textBold,
                   {
                     fontSize: 15,
-                    color: colors.white,
-                    textShadowColor: colors.black,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 0, height: 0 },
+                    color: colors.black,
                   },
                 ]}
               ></TextWithResourceIcon>

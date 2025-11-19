@@ -27,8 +27,6 @@ import { useEffect } from "react";
 
 export default function PooFight() {
   const { width } = useWindowDimensions();
-  const stats = usePooCreatureStatsStore();
-  const pooStyle = usePooCreatureStyleStore();
   const { previousBattles, pushPreviousBattle, refreshPreviousBattles } =
     usePreviousBattles();
   const {
@@ -98,9 +96,11 @@ export default function PooFight() {
             Dernière battailles
           </TitleWithDivider>
           {previousBattles.length > 0 ? (
-            previousBattles.map((b, index) => (
-              <PreviousBattleItem key={index} battle={b}></PreviousBattleItem>
-            ))
+            previousBattles
+              .filter((_, i) => i < 5)
+              .map((b, index) => (
+                <PreviousBattleItem key={index} battle={b}></PreviousBattleItem>
+              ))
           ) : (
             <NoPreviousBattleItem></NoPreviousBattleItem>
           )}
