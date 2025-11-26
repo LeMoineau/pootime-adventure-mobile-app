@@ -1,5 +1,4 @@
-import { StructureName } from "../../config/constants/Structures";
-import { Resources } from "../../config/constants/Resources";
+import { StructureName } from "../../common/config/constants/Structures";
 import { StructureCost, UpgradeCost } from "./StructureCost";
 
 export interface Structure {

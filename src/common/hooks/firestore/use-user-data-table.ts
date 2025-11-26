@@ -19,8 +19,7 @@ import {
 } from "firebase/firestore";
 import { useContext, useState } from "react";
 import { CacheContext } from "../../contexts/contexts";
-
-const firestore = getFirestore(getApp());
+import { firestore } from "../../config/firebaseConfig";
 
 export function useUserDataTable() {
   const { get: getFromCache, put: putInCache } = useContext(CacheContext);

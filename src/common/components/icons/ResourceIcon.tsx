@@ -1,4 +1,4 @@
-import { Resources } from "../../config/constants/Resources";
+import { Resources } from "../../common/config/constants/Resources";
 import PooCoinIcon from "./resources/pooCoin";
 import WoolIcon from "./resources/wool";
 import StarIcon from "./resources/star";

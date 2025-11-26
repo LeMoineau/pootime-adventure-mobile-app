@@ -2,7 +2,6 @@ import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   EmailAuthProvider,
-  getAuth,
   linkWithCredential,
   onAuthStateChanged,
   signInAnonymously,
@@ -14,8 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { useUserDataTable } from "../firestore/use-user-data-table";
 import useMassiveStoreLoader from "../admin/user-massive-store-loader";
-
-const auth = getAuth();
+import { auth } from "../../config/firebaseConfig";
 
 export function useAuthentication() {
   const [user, setUser] = useState<User>();

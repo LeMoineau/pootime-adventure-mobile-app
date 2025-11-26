@@ -78,7 +78,6 @@ export default function useMassiveStoreLoader() {
         expressions: itemsUnlockedStore.getItemsByCategories("expressions"),
         heads: itemsUnlockedStore.getItemsByCategories("heads"),
         options: itemsUnlockedStore.getItemsByCategories("options"),
-        ultis: itemsUnlockedStore.getItemsByCategories("ultis"),
       },
     };
   };

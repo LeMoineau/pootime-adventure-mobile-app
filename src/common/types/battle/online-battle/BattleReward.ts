@@ -1,4 +1,4 @@
-import { Resources } from "../../../config/constants/Resources";
+import { Resources } from "../../../common/config/constants/Resources";
 
 export type BattleReward = {
   resource: Resources;

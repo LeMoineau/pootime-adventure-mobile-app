@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { StructureName } from "../../../config/constants/Structures";
+import { StructureName } from "../../../common/config/constants/Structures";
 import { style } from "../../../utils/style-utils";
 import { colors } from "../../../utils/color-utils";
 import StructureIcon from "../../icons/StructureIcon";

@@ -3,7 +3,7 @@ import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../config/StorageKeys";
 import { DataInStorage } from "../types/dataInStorage";
 import { DefaultValues } from "../config/DefaultValues";
-import { Resources } from "../config/constants/Resources";
+import { Resources } from "../common/config/constants/Resources";
 import { ObjectUtils } from "../utils/object-utils";
 import { Inventory } from "../types/resources/Inventory";
 

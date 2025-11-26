@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { StructureName } from "../../config/constants/Structures";
+import { StructureName } from "../../common/config/constants/Structures";
 import { useVillageStore } from "../../stores/village.store";
 import ToiletIcon from "./village/toilet/Toilet";
 import UnderConstructionIcon from "./village/under-construction/UnderConstruction";

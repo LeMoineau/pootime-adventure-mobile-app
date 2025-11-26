@@ -1,6 +1,6 @@
 import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { ServerTypes } from "../battle/online-battle/ServerTypes";
-import { StructureName } from "../../config/constants/Structures";
+import { StructureName } from "../../common/config/constants/Structures";
 
 export type RouteName =
   | "App"
