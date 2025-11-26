@@ -8,7 +8,7 @@ import { useVillageStore } from "../../../common/stores/village.store";
 import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
 import ExpoIcon from "../../../common/components/icons/ExpoIcon";
 import ConfirmModal from "../../../common/components/modals/primitives/ConfirmModal";
-import useModals from "../../../common/hooks/use-modals";
+import useModals from "../../../common/hooks/ui/use-modals";
 import { UpgradeCost } from "../../../common/types/village/StructureCost";
 import useStructure from "../../village/hooks/use-structure";
 import { useEffect } from "react";

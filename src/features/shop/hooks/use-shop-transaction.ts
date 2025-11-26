@@ -1,20 +1,23 @@
 import { useState } from "react";
-import { FreeTransaction, Transaction } from "../types/shop/Transaction";
+import {
+  FreeTransaction,
+  Transaction,
+} from "../../../common/types/shop/Transaction";
+import { useItemsUnlockedStore } from "../../../common/stores/items-unlocked.store";
+import { useResourcesStore } from "../../../common/stores/resources.store";
+import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import {
   isMultiPricesShopItem,
   isSinglePriceShopItem,
-} from "../types/shop/ShopItem";
-import { useItemsUnlockedStore } from "../stores/items-unlocked.store";
-import { useResourcesStore } from "../stores/resources.store";
-import { usePooCreatureStyleStore } from "../stores/poo-creature-style.store";
+} from "../../../common/types/shop/ShopItem";
 import {
   isResourceItemValue,
   isResourcesItem,
   isStringItemValue,
   isStyleUnlockableItem,
   isUnlockableItem,
-} from "../types/shop/UnlockableItems";
-import { convertUnlockedItemToStyleKeys } from "../types/poo-creature-style/StyleKeys";
+} from "../../../common/types/shop/UnlockableItems";
+import { convertUnlockedItemToStyleKeys } from "../../../common/types/poo-creature-style/StyleKeys";
 
 const useShopTransaction = () => {
   const [isTransactioning, setIsTransactioning] = useState(false);

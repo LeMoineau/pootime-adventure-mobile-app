@@ -10,7 +10,7 @@ import {
 import { colors as colorsUtils } from "../../utils/color-utils";
 import { style } from "../../utils/style-utils";
 import { useEffect, useRef, useState } from "react";
-import useAnimatedValue from "../../hooks/use-animated-value";
+import useAnimatedValue from "../../hooks/ui/use-animated-value";
 
 export default function GradientButton({
   children,

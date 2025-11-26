@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ServerTypes } from "../../../common/types/battle/online-battle/ServerTypes";
 import { Socket } from "socket.io-client";
 import { SocketEvents } from "../../../common/types/SocketEvents";
-import useModals from "../../../common/hooks/use-modals";
+import useModals from "../../../common/hooks/ui/use-modals";
 import { BattleFinalState } from "../../../common/types/battle/BattleFinalState";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";

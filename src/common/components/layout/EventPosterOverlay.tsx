@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useModals from "../../hooks/use-modals";
+import useModals from "../../hooks/ui/use-modals";
 import { useItemsUnlockedStore } from "../../stores/items-unlocked.store";
 import EventPosterModalMatcher from "../modals/event/EventPosterModalMatcher";
 import { EVENT_POSTERS } from "../../config/constants/event-posters";

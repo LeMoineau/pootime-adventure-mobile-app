@@ -1,6 +1,6 @@
 import { Animated, Pressable, View } from "react-native";
 import { colors } from "../../../common/utils/color-utils";
-import useAnimatedValue from "../../../common/hooks/use-animated-value";
+import useAnimatedValue from "../../../common/hooks/ui/use-animated-value";
 import { useEffect, useState } from "react";
 import { style } from "../../../common/utils/style-utils";
 import StandardButton from "../../../common/components/buttons/StandardButton";

@@ -7,7 +7,7 @@ import Divider from "../../../../../common/components/text/Divider";
 import StandardButton from "../../../../../common/components/buttons/StandardButton";
 import { useState } from "react";
 import { useVillageStore } from "../../../../../common/stores/village.store";
-import useModals from "../../../../../common/hooks/use-modals";
+import useModals from "../../../../../common/hooks/ui/use-modals";
 import ConfirmModal from "../../../../../common/components/modals/primitives/ConfirmModal";
 import RewardModal from "../../../../../common/components/modals/primitives/RewardModal";
 import { BattleReward } from "../../../../../common/types/battle/online-battle/BattleReward";

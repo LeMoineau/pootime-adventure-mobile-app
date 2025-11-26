@@ -1,5 +1,13 @@
 import { useEffect, useRef } from "react";
 
+/**
+ * Lance un callback des que {currentValue} est modifié.
+ *
+ * Si {currentValue} est un object, on va faire une vérification profonde
+ * @param currentValue
+ * @param onChange
+ * @returns
+ */
 const useChangingDetection = <T>(
   currentValue: T,
   onChange?: (previousValue: T, changedValue: T) => void

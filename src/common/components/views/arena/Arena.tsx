@@ -7,7 +7,6 @@ import {
 } from "react-native";
 import { style } from "../../../utils/style-utils";
 import CustomPage from "../../navigation/CustomPage";
-import PooCreature from "../../misc/poo-creature/PooCreature";
 import PVPanel from "./elements/PVPanel";
 import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.store";
 import UltiButton from "./elements/UltiButton";
@@ -15,10 +14,10 @@ import { UltiDetails, Ultis } from "../../../types/Ultis";
 import ReadyGoText from "./elements/ReadyGoText";
 import { colors } from "../../../utils/color-utils";
 import { DefaultValues } from "../../../config/DefaultValues";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PlayerNode from "./elements/PlayerNode";
 import AdvNode from "./elements/AdvNode";
-import useChangingDetection from "../../../hooks/use-changing-detection";
+import useChangingDetection from "../../../hooks/ui/use-changing-detection";
 
 export default function Arena({
   onHit,
@@ -59,7 +58,7 @@ export default function Arena({
 
   const playerAnimation = new Animated.Value(0);
   const advAnimation = new Animated.Value(0);
-  const {} = useChangingDetection(playerData?.currentPv, (prev, _) => {
+  useChangingDetection(playerData?.currentPv, (prev, _) => {
     if (prev !== undefined) {
       advAnimation.setValue(1);
     }

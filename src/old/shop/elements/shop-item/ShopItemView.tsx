@@ -1,4 +1,5 @@
 import { Animated, Pressable, useWindowDimensions, View } from "react-native";
+import { Resources } from "../../../../config/constants/Resources";
 import {
   isStringItemValue,
   isUnlockableItem,
@@ -18,7 +19,6 @@ import {
   BuyableItem,
   BuyableItemValue,
 } from "../../../../common/types/shop/BuyableItem";
-import { Resources } from "../../../../common/config/constants/Resources";
 
 export default function ShopItemView({
   item,

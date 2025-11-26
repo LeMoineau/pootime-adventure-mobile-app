@@ -1,9 +1,10 @@
-import { Image, Linking, Modal, ModalProps, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { SettingsScrollView } from "../../features/settings/components/SettingsScrollView";
 import { router } from "expo-router";
+import * as Linking from "expo-linking";
 
 export default function DonationSettings() {
   return (
@@ -43,8 +44,8 @@ export default function DonationSettings() {
             { fontSize: 13, paddingHorizontal: 20, marginBottom: 15 },
           ]}
         >
-          Indie Developer 🧙‍♂️ loving to create mobile app, websites and software
-          ✨
+          Un p'tit dev rigolo 🧙‍♂️ qui porte le nom d'un des éléments les plus
+          commun sur Terre ✨
         </Text>
       </View>
       <View style={[{ height: 20 }]}></View>

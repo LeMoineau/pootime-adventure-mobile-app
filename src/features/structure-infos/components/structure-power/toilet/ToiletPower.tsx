@@ -7,7 +7,7 @@ import TabText from "../../TabText";
 import Divider from "../../../../../common/components/text/Divider";
 import ToiletTimer from "./ToiletTimer";
 import { useRef, useState } from "react";
-import useModals from "../../../../../common/hooks/use-modals";
+import useModals from "../../../../../common/hooks/ui/use-modals";
 import PooingRewardModal from "./PooingRewardModal";
 import { BattleReward } from "../../../../../common/types/battle/online-battle/BattleReward";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";

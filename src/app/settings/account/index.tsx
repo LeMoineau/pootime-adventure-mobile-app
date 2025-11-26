@@ -1,5 +1,5 @@
 import { Text } from "react-native";
-import useModals from "../../../common/hooks/use-modals";
+import useModals from "../../../common/hooks/ui/use-modals";
 import ConfirmModal from "../../../common/components/modals/primitives/ConfirmModal";
 import useMassiveStoreLoader from "../../../common/hooks/admin/user-massive-store-loader";
 import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";

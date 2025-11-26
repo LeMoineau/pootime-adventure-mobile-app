@@ -1,16 +1,19 @@
+import { GestureResponderEvent, Modal, ModalProps, View } from "react-native";
+import SettingsPage from "../../features/settings/components/SettingsPage";
+import SettingsHeader from "../../features/settings/components/SettingsHeader";
+import { SettingsScrollView } from "../../features/settings/components/SettingsScrollView";
 import useModals from "../../common/hooks/ui/use-modals";
-import { EVENT_POSTERS } from "../../common/config/constants/event-posters";
+import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
+import { useNavigation } from "@react-navigation/native";
+import { EVENT_POSTERS } from "../../config/constants/event-posters";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { EventPoster } from "../../common/types/event-posters/EventPoster";
 import EventPosterModalMatcher from "../../common/components/modals/event/EventPosterModalMatcher";
-import SettingsPage from "../../features/settings/components/SettingsPage";
-import SettingsHeader from "../../features/settings/components/SettingsHeader";
-import { SettingsScrollView } from "../../features/settings/components/SettingsScrollView";
-import { router } from "expo-router";
 
-export default function EventSettingsScreen() {
+export default function EventSettings() {
   const { isVisible, show, hide } = useModals<"posterModal">();
+  const navigator: useNavigationType = useNavigation();
   const [selectedPoster, setSelectedPoster] = useState<EventPoster>();
 
   useEffect(() => {
@@ -25,7 +28,7 @@ export default function EventSettingsScreen() {
         header={
           <SettingsHeader
             title="Evenements"
-            onPressBack={router.back}
+            onPressBack={navigator.goBack}
           ></SettingsHeader>
         }
       >
@@ -39,7 +42,7 @@ export default function EventSettingsScreen() {
               .toString()}`,
             hasRightArrow: true,
             onPress: () => {
-              setSelectedPoster({ ...p });
+              setSelectedPoster(p);
             },
           }))}
         ></SettingsScrollView>

@@ -3,8 +3,8 @@ import StandardButton from "../../../../common/components/buttons/StandardButton
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
-import useAnimatedValue from "../../../../common/hooks/use-animated-value";
-import useModals from "../../../../common/hooks/use-modals";
+import useAnimatedValue from "../../../../common/hooks/ui/use-animated-value";
+import useModals from "../../../../common/hooks/ui/use-modals";
 import { useNavigationType } from "../../../../common/types/navigation/NavigationTypes";
 import { useNavigation } from "@react-navigation/native";
 import ChooseZoneModal from "../ChooseZoneModal";
