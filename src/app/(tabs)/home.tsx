@@ -2,10 +2,14 @@ import { View } from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { style } from "../../common/utils/style-utils";
 import PooCreatureView from "../../features/home/components/HomePooCreature";
-import HomeBattleButton from "../../features/home/components/buttons/HomeBattleButton";
 import HomeTopBar from "../../features/home/components/HomeTopBar";
+import StandardButton from "../../common/components/buttons/StandardButton";
+import { colors } from "../../common/utils/color-utils";
+import { useRouter } from "expo-router";
 
 export default function HomeTab() {
+  const router = useRouter();
+
   return (
     <CustomPage>
       <View
@@ -15,7 +19,7 @@ export default function HomeTab() {
           style.flexCol,
           style.justifyBetween,
           style.itemsCenter,
-          { paddingHorizontal: 20 },
+          { paddingHorizontal: 20, paddingBottom: 20 },
         ]}
       >
         <HomeTopBar></HomeTopBar>
@@ -30,7 +34,23 @@ export default function HomeTab() {
         >
           <PooCreatureView></PooCreatureView>
         </View>
-        <HomeBattleButton></HomeBattleButton>
+        <StandardButton
+          style={[{ width: "100%" }]}
+          viewStyle={[style.border, { borderColor: colors.emerald[600] }]}
+          bgColor={colors.emerald[400]}
+          textStyle={{
+            fontSize: 16,
+            fontWeight: "600",
+            color: colors.white,
+            textTransform: "uppercase",
+          }}
+          onPress={() => {
+            router.push("adventure-zone-selector");
+          }}
+        >
+          Partir à l'aventure
+        </StandardButton>
+        {/* <HomeBattleButton></HomeBattleButton> */}
       </View>
     </CustomPage>
   );

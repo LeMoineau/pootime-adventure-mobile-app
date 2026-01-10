@@ -1,4 +1,4 @@
-import { ColorValue, Text, View } from "react-native";
+import { ColorValue, StyleProp, Text, View, ViewStyle } from "react-native";
 import { style } from "../../../utils/style-utils";
 import PooCreatureHead from "./PooCreatureHead";
 import { colors } from "../../../utils/color-utils";
@@ -19,6 +19,7 @@ export default function PooCreatureBadge({
   expression,
   head,
   level,
+  viewStyle,
 }: {
   showInfos?: boolean;
   size?: number;
@@ -32,6 +33,7 @@ export default function PooCreatureBadge({
   expression?: string;
   head?: PooHeadName;
   level?: number;
+  viewStyle?: StyleProp<ViewStyle>;
 }) {
   const { name, bodyColor: bodyColorFromStore } = usePooCreatureStyleStore();
   return (
@@ -53,6 +55,7 @@ export default function PooCreatureBadge({
               : backgroundColor ?? colors.white,
             overflow: "hidden",
           },
+          viewStyle,
         ]}
       >
         <PooCreatureHead

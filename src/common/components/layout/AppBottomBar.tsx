@@ -41,7 +41,7 @@ export default function AppBottomBar({
       },
     },
     {
-      title: "Edit",
+      title: "Shop",
       image: {
         uri: "https://bigstones.fr/pootime-adventure/pooedit.png",
       },
@@ -175,7 +175,7 @@ export default function AppBottomBar({
                   textShadowRadius: 2,
                   textShadowOffset: { width: 0, height: 1 },
                   color: "white",
-                  fontWeight: "bold",
+                  fontWeight: 800,
                   marginTop: 5,
                   marginBottom: 5,
                   transform: [

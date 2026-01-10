@@ -1,5 +1,4 @@
 import { View, useWindowDimensions } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import HomeProfileButton from "./buttons/HomeProfileButton";
 import { style } from "../../../common/utils/style-utils";
 import StandardButton from "../../../common/components/buttons/StandardButton";
