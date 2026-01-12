@@ -4,13 +4,12 @@ import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../config/StorageKeys";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../config/DataInStorage";
-import { StructureName } from "../common/config/constants/Structures";
-import { useResourcesStore } from "./resources.store";
-import { UpgradeCost, UpgradeInfos } from "../types/village/StructureCost";
+import { UpgradeInfos } from "../types/village/StructureCost";
 import {
   StructureDetail,
   StructureDetailName,
 } from "../types/village/StructureDetail";
+import { StructureName } from "../config/constants/Structures";
 
 type Store = {
   selectedStructureName?: StructureName;

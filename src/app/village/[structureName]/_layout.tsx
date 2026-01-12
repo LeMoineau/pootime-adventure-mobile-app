@@ -18,7 +18,7 @@ import StructureInfosMainTab from "../../../features/structure-infos/components/
 import StructureInfosUpgradeTab from "../../../features/structure-infos/components/tabs/StructureInfosUpgradeTab";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { NavigationContainer } from "@react-navigation/native";
-import { DataInStorage } from "../../../config/DataInStorage";
+import { DataInStorage } from "../../../common/config/DataInStorage";
 
 const Tab = createMaterialTopTabNavigator();
 

@@ -50,7 +50,6 @@ export default function HomeTab() {
         >
           Partir à l'aventure
         </StandardButton>
-        {/* <HomeBattleButton></HomeBattleButton> */}
       </View>
     </CustomPage>
   );

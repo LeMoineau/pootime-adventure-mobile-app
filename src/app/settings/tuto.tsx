@@ -1,4 +1,4 @@
-import { Modal, ModalProps, Text, View } from "react-native";
+import { Text } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import PooUltiIcon from "../../common/components/icons/pooUlti";
 import SettingsPage from "../../features/settings/components/SettingsPage";
