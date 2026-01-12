@@ -45,13 +45,6 @@ export default function Layout() {
               animation: "slide_from_bottom",
             }}
           ></Stack.Screen>
-          <Stack.Screen
-            name="inventory"
-            options={{
-              presentation: "transparentModal",
-              animation: "fade_from_bottom",
-            }}
-          />
         </Stack>
       </CacheProvider>
     </SafeAreaView>

@@ -16,7 +16,8 @@ type Store = {
 } & DataInStorage.ItemsUnlocked;
 
 export const useItemsUnlockedStore = create<Store>((set, get) => {
-  const { getJson, addItemInObjectInJson, saveJson } = useStorage();
+  const { getJson, addItemInObjectInJson, saveJson, saveItemInJson } =
+    useStorage();
 
   getJson(StorageKeys.ITEMS_UNLOCKED).then(async (json: any) => {
     const baseValues = {
@@ -37,23 +38,18 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
       return;
     }
     if (item === "options") {
-      set({
-        options: {
-          ...get().options,
-          [name]: value === undefined ? true : value,
-        },
-      });
+      const newOptions = { ...get().options };
+      newOptions[name] = value === undefined ? true : value;
+      set({ options: newOptions });
+      saveItemInJson(StorageKeys.ITEMS_UNLOCKED, "options", newOptions);
     } else {
+      const newItems = [...get()[item]];
+      newItems.push(name);
       set({
-        [item]: [...get()[item], name],
+        [item]: newItems,
       });
+      saveItemInJson(StorageKeys.ITEMS_UNLOCKED, item, newItems);
     }
-    await addItemInObjectInJson(
-      StorageKeys.ITEMS_UNLOCKED,
-      item,
-      name,
-      value === undefined ? true : value
-    );
   };
 
   const isUnlocked = (item: UnlockableItems, name: string): boolean => {

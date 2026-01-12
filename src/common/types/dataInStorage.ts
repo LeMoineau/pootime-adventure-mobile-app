@@ -16,8 +16,8 @@ export namespace DataInStorage {
 
   export function isItemsUnlocked(json: any): json is ItemsUnlocked {
     return (
-      json.bodyColor &&
-      Array.isArray(json.bodyColor) &&
+      json.bodyColors &&
+      Array.isArray(json.bodyColors) &&
       json.heads &&
       Array.isArray(json.heads) &&
       json.expressions &&

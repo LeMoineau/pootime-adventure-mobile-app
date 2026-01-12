@@ -24,14 +24,24 @@ import ShopItems from "../../common/config/constants/ShopItems";
 import BodyColorSlotItem from "../../common/components/items/slot/BodyColorSlotItem";
 import HeadSlotItem from "../../common/components/items/slot/HeadSlotItem";
 import ExpressionSlotItem from "../../common/components/items/slot/ExpressionSlotItem";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import PlayerInfosSubHeader from "../../features/player-infos/components/PlayerInfosSubHeader";
 import { isFreeShopItem } from "../../common/types/shop/ShopItem";
+import useMassiveStoreLoader from "../../common/hooks/admin/user-massive-store-loader";
+import useBackHandler from "../../common/hooks/ui/useBackHandler";
 
 export default function PlayerInfosPage() {
   const { loading, get } = useUserDataTable();
   const [userData, setUserData] = useState<IdentifiedUserData>();
-  const { uid } = useLocalSearchParams<{ uid: string }>();
+  const { uid, yourself } = useLocalSearchParams<{
+    uid: string;
+    yourself?: string;
+  }>();
+  const { generateUserDataFromStores } = useMassiveStoreLoader();
+
+  useBackHandler(() => {
+    router.back();
+  });
 
   useEffect(() => {
     NavigationBar.setVisibilityAsync("visible");
@@ -39,10 +49,12 @@ export default function PlayerInfosPage() {
 
   useEffect(() => {
     loadUserData();
-  }, [uid]);
+  }, [uid, yourself]);
 
   const loadUserData = (forceRefresh?: boolean) => {
-    if (uid) {
+    if (yourself && uid) {
+      setUserData({ ...generateUserDataFromStores(), uid });
+    } else if (uid) {
       get(uid, forceRefresh).then((res) => {
         if (res) {
           console.log("user data", res);

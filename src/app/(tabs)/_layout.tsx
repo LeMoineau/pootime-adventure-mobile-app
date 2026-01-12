@@ -11,17 +11,22 @@ import StatsTab from "./stats";
 import ShopTab from "./shop";
 import { NavigationContainer } from "@react-navigation/native";
 import AppBottomBar from "../../common/components/layout/AppBottomBar";
+import { usePathname } from "expo-router";
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function TabLayout() {
-  useEffect(() => {
-    NavigationBar.setVisibilityAsync("hidden");
+  const path = usePathname();
 
-    return () => {
-      NavigationBar.setVisibilityAsync("visible");
-    };
-  }, []);
+  useEffect(() => {
+    if (path === "/") {
+      NavigationBar.setVisibilityAsync("hidden");
+
+      return () => {
+        NavigationBar.setVisibilityAsync("visible");
+      };
+    }
+  }, [path]);
 
   return (
     <>

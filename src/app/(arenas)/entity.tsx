@@ -1,29 +1,20 @@
 import { useEffect } from "react";
 import Arena from "../../common/components/views/arena/Arena";
-import useEntityBattleStore from "../../common/stores/battle/entity-battle.store";
 import { colors } from "../../common/utils/color-utils";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import EntityView from "../../features/entity-arena/components/EntityView";
-import EntityBattleRewardModal from "../../features/entity-arena/components/modals/EntityBattleRewardModal";
-import { router, useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import EntityZones from "../../common/config/constants/EntityZones";
+import useEntityBattle from "../../features/entity-arena/hooks/use-entity-battle";
+import * as NavigationBar from "expo-navigation-bar";
+import useModal from "../../common/hooks/ui/use-modal";
+import CustomRewardModal from "../../common/components/modals/primitives/CustomRewardModal";
+import LoseAgainstEntityModal from "../../features/entity-arena/components/LoseAgainstEntityModal";
+import WinAgainstEntityModal from "../../features/entity-arena/components/WinAgainstEntityModal";
 
 export default function EntityArena() {
-  const {
-    battleBegin,
-    battleFinish,
-    entity,
-    currentEntityState,
-    currentPlayerState,
-    winner,
-    rewards,
-    startNewBattle,
-    playerHit,
-    playerSpell,
-    reset,
-  } = useEntityBattleStore();
   const {
     pv,
     level,
@@ -36,7 +27,20 @@ export default function EntityArena() {
     currentExp,
   } = usePooCreatureStatsStore();
   const { name } = usePooCreatureStyleStore();
-  const { earn } = useResourcesStore();
+  const { earnMany } = useResourcesStore();
+  const {
+    battleBegin,
+    battleFinish,
+    entity,
+    currentEntityState,
+    currentPlayerState,
+    winner,
+    rewards,
+    startNewBattle,
+    playerHit,
+    playerSpell,
+  } = useEntityBattle();
+  const { modalContainer, openModal } = useModal();
 
   const { zoneIndex } = useLocalSearchParams<{ zoneIndex: string }>();
 
@@ -55,6 +59,46 @@ export default function EntityArena() {
       });
     }
   }, [zoneIndex]);
+
+  useEffect(() => {
+    if (battleFinish) {
+      if (winner === "entity" && entity) {
+        openModal(
+          <LoseAgainstEntityModal
+            {...{ entity, zoneIndex: parseInt(zoneIndex) }}
+          ></LoseAgainstEntityModal>
+        );
+      } else if (winner === "player") {
+        const winModal = (
+          <WinAgainstEntityModal
+            zoneIndex={parseInt(zoneIndex)}
+          ></WinAgainstEntityModal>
+        );
+        if (rewards && rewards.length > 0) {
+          openModal(
+            <CustomRewardModal
+              visible={true}
+              rewards={rewards}
+              onPressEarnBtn={() => {
+                earnMany(rewards.map((r) => [r.resource, r.number]));
+                openModal(winModal);
+              }}
+            ></CustomRewardModal>
+          );
+        } else {
+          openModal(winModal);
+        }
+      }
+    }
+  }, [battleFinish]);
+
+  useEffect(() => {
+    NavigationBar.setVisibilityAsync("hidden");
+
+    return () => {
+      NavigationBar.setVisibilityAsync("visible");
+    };
+  }, []);
 
   return (
     <>
@@ -85,21 +129,7 @@ export default function EntityArena() {
           }
         ></Arena>
       )}
-      {entity && winner && rewards && (
-        <EntityBattleRewardModal
-          visible={battleFinish}
-          rewards={rewards}
-          winner={winner}
-          entity={entity}
-          onCollectingRewards={(rewards) => {
-            for (let r of rewards) {
-              earn(r.resource, r.number);
-            }
-            reset();
-            router.dismissTo("(tabs)/home");
-          }}
-        ></EntityBattleRewardModal>
-      )}
+      {modalContainer}
     </>
   );
 }

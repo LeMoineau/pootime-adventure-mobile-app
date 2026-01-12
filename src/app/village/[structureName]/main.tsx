@@ -13,9 +13,7 @@ export default function StructureInfosMainTab() {
     setStructName(structName);
   }, [structName]);
 
-  const { structureName } = useLocalSearchParams();
-
-  console.log(structureName);
+  const { structureName } = useLocalSearchParams<{ structureName: string }>();
 
   return (
     <>

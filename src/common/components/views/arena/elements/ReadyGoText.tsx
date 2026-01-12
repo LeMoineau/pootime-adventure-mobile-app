@@ -13,7 +13,6 @@ export default function ReadyGoText({
   const { width } = useWindowDimensions();
   const translateValueReady = new Animated.Value(0);
   const animValueGo = new Animated.Value(0);
-  const [hide, setHide] = useState(false);
 
   useEffect(() => {
     if (!battleReady) {
@@ -29,9 +28,6 @@ export default function ReadyGoText({
     if (!battleBegin) {
       return;
     }
-    setTimeout(() => {
-      setHide(true);
-    }, 1500);
     translateValueReady.setValue(1);
     Animated.sequence([
       Animated.timing(translateValueReady, {
@@ -57,65 +53,67 @@ export default function ReadyGoText({
 
   return (
     <>
-      {!hide && (
-        <>
-          <Animated.Text
-            style={[
-              style.textBold,
-              style.text2Xl,
-              style.wFull,
-              style.textCenter,
-              style.textShadowMd,
+      <Animated.Text
+        style={[
+          style.textBold,
+          style.textCenter,
+          {
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            width,
+            color: colors.white,
+            fontSize: 70,
+            textShadowColor: colors.black,
+            textShadowRadius: 5,
+            textShadowOffset: { width: 0, height: 2 },
+            opacity: translateValueReady.interpolate({
+              inputRange: [0, 1, 2],
+              outputRange: [0, 1, 0],
+            }),
+            transform: [
               {
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                color: colors.white,
-                opacity: translateValueReady.interpolate({
-                  inputRange: [0, 1, 2],
-                  outputRange: [0, 1, 0],
+                translateX: translateValueReady.interpolate({
+                  inputRange: [0, 2],
+                  outputRange: [width / 2, -width / 2],
                 }),
-                transform: [
-                  {
-                    translateX: translateValueReady.interpolate({
-                      inputRange: [0, 2],
-                      outputRange: [width / 2, -width / 2],
-                    }),
-                  },
-                ],
               },
-            ]}
-          >
-            READY?
-          </Animated.Text>
-          <Animated.Text
-            style={[
-              style.textBold,
-              style.text2Xl,
-              style.wFull,
-              style.textCenter,
-              style.textShadowMd,
+              { translateY: "-50%" },
+            ],
+          },
+        ]}
+      >
+        READY?
+      </Animated.Text>
+      <Animated.Text
+        style={[
+          style.textBold,
+          style.textCenter,
+          {
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            width,
+            opacity: animValueGo,
+            color: colors.white,
+            fontSize: 70,
+            textShadowColor: colors.black,
+            textShadowRadius: 5,
+            textShadowOffset: { width: 0, height: 2 },
+            transform: [
               {
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                opacity: animValueGo,
-                color: colors.white,
-                transform: [
-                  {
-                    scale: animValueGo.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: [0, 2],
-                    }),
-                  },
-                ],
+                scale: animValueGo.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [0, 2],
+                }),
               },
-            ]}
-          >
-            GO!!!
-          </Animated.Text>
-        </>
-      )}
+              { translateY: "-50%" },
+            ],
+          },
+        ]}
+      >
+        GO!!!
+      </Animated.Text>
     </>
   );
 }

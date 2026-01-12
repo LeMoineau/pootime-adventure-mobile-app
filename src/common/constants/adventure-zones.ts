@@ -16,7 +16,7 @@ export const AdventureZones = [
     name: "Expédition à la banquise",
     desc: "Une plaine tranquille et verdoyante",
     icon: assets.banquiseZone,
-    unlockLevel: 0,
+    unlockLevel: 5,
     style: {
       iconHeight: 280,
       mainColor: colors.blue[200],
@@ -26,7 +26,7 @@ export const AdventureZones = [
     name: "Le cosmos Rosé",
     desc: "Une plaine tranquille et verdoyante",
     icon: assets.cosmosZone,
-    unlockLevel: 0,
+    unlockLevel: 9,
     style: {
       iconHeight: 280,
       mainColor: colors.pink[300],
@@ -36,7 +36,7 @@ export const AdventureZones = [
     name: "The EndGame",
     desc: "Une plaine tranquille et verdoyante",
     icon: assets.godPoulpeZone,
-    unlockLevel: 0,
+    unlockLevel: 12,
     style: {
       iconHeight: 350,
       mainColor: colors.yellow[400],

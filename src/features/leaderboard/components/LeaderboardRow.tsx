@@ -24,7 +24,7 @@ export default function LeaderboardRow({
       onPress={() => {
         router.push({
           pathname: "/player/[uid]",
-          params: { uid: userData.uid },
+          params: { uid: userData.uid, yourself: isYou ? "true" : undefined },
         });
       }}
       activeOpacity={0.5}

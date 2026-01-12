@@ -1,15 +1,15 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../config/StorageKeys";
-import { DataInStorage } from "../types/dataInStorage";
 import { DefaultValues } from "../config/DefaultValues";
-import { Resources } from "../common/config/constants/Resources";
 import { ObjectUtils } from "../utils/object-utils";
 import { Inventory } from "../types/resources/Inventory";
+import { Resources } from "../config/constants/Resources";
 
 type Store = {
   inventory: Inventory;
   earn: (resource: Resources, val: number) => Promise<void>;
+  earnMany: (earnings: [Resources, number][]) => void;
   spend: (
     resource: Resources,
     val: number,
@@ -38,7 +38,7 @@ export const useResourcesStore = create<Store>((set, get) => {
     };
     set({ inventory: baseValues });
     if (json === null || !ObjectUtils.equals(json, baseValues)) {
-      await saveJson(StorageKeys.INVENTORY, baseValues);
+      saveJson(StorageKeys.INVENTORY, baseValues);
     }
   });
 
@@ -58,7 +58,16 @@ export const useResourcesStore = create<Store>((set, get) => {
         [resource]: state.inventory[resource] + val,
       },
     }));
-    await saveItemInJson(StorageKeys.INVENTORY, resource, _get(resource));
+    saveItemInJson(StorageKeys.INVENTORY, resource, _get(resource));
+  };
+
+  const earnMany = (earnings: [Resources, number][]) => {
+    const newInv = { ...get().inventory };
+    for (let e of earnings) {
+      newInv[e[0]] += e[1];
+    }
+    set({ inventory: newInv });
+    saveJson(StorageKeys.INVENTORY, newInv);
   };
 
   const spend = async (
@@ -67,17 +76,14 @@ export const useResourcesStore = create<Store>((set, get) => {
     onSuccess?: (newVal: number) => void,
     onFailed?: (val: number) => void
   ) => {
-    if (_get(resource) >= val) {
-      set((state) => ({
-        inventory: {
-          ...get().inventory,
-          [resource]: state.inventory[resource] - val,
-        },
-      }));
-      await saveItemInJson(StorageKeys.INVENTORY, resource, _get(resource));
-      onSuccess && onSuccess(_get(resource));
+    let currentInv = { ...get().inventory };
+    if (currentInv[resource] >= val) {
+      currentInv[resource] -= val;
+      set({ inventory: currentInv });
+      saveJson(StorageKeys.INVENTORY, currentInv);
+      onSuccess && onSuccess(currentInv[resource]);
     } else {
-      onFailed && onFailed(_get(resource));
+      onFailed && onFailed(currentInv[resource]);
     }
   };
 
@@ -88,22 +94,22 @@ export const useResourcesStore = create<Store>((set, get) => {
     onFailed?: () => void
   ) => {
     if (resources.length !== vals.length) {
+      console.error(
+        `resources array ${resources} and vals array ${vals} have not the same size`
+      );
       onFailed && onFailed();
       return;
     }
-    let index = 0;
-    for (let r of resources) {
-      if (_get(r) < vals[index]) {
+    let newInv = { ...get().inventory };
+    for (let i = 0; i < resources.length; i++) {
+      if (newInv[resources[i]] < vals[i]) {
         onFailed && onFailed();
         return;
       }
-      index++;
+      newInv[resources[i]] -= vals[i];
     }
-    index = 0;
-    for (let r of resources) {
-      await spend(r, vals[index]);
-      index++;
-    }
+    set({ inventory: newInv });
+    saveJson(StorageKeys.INVENTORY, newInv);
     onSuccess && onSuccess();
   };
 
@@ -124,6 +130,7 @@ export const useResourcesStore = create<Store>((set, get) => {
   return {
     inventory: DefaultValues.Inventory,
     earn,
+    earnMany,
     spend,
     spendMany,
     resetData,

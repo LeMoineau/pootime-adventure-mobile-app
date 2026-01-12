@@ -1,10 +1,10 @@
 import { StyleProp, Text, View, ViewStyle } from "react-native";
-import { Resources } from "../../../common/config/constants/Resources";
 import { useResourcesStore } from "../../../stores/resources.store";
 import { style } from "../../../utils/style-utils";
 import ResourceIcon from "../../icons/ResourceIcon";
 import { MathUtils } from "../../../utils/math-utils";
 import { colors } from "../../../utils/color-utils";
+import { Resources } from "../../../config/constants/Resources";
 
 export default function InventorySlotItem({
   resource,
@@ -39,7 +39,7 @@ export default function InventorySlotItem({
             position: "absolute",
             bottom: 0,
             right: 0,
-            fontWeight: "700",
+            fontWeight: 800,
             color: _value > 0 ? colors.white : colors.gray[700],
           },
         ]}

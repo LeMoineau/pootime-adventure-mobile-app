@@ -4,10 +4,12 @@ import { style } from "../../../common/utils/style-utils";
 import StandardButton from "../../../common/components/buttons/StandardButton";
 import ExpoIcon from "../../../common/components/icons/ExpoIcon";
 import { useRouter } from "expo-router";
+import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
 
 export default function HomeTopBar() {
   const { width } = useWindowDimensions();
   const router = useRouter();
+  const { user } = useAuthentication();
 
   return (
     <>
@@ -25,7 +27,12 @@ export default function HomeTopBar() {
         ]}
       >
         <HomeProfileButton
-          onPress={() => router.push("/leaderboard")}
+          onPress={() => {
+            router.push({
+              pathname: "/player/[uid]",
+              params: { uid: "yourself", yourself: "true" },
+            });
+          }}
         ></HomeProfileButton>
         <StandardButton
           viewStyle={[
@@ -35,11 +42,11 @@ export default function HomeTopBar() {
             style.itemsCenter,
             { width: 70, flex: 1, marginHorizontal: 5, padding: 0 },
           ]}
-          onPress={() => router.push("/inventory")}
+          onPress={() => router.push("/leaderboard")}
         >
           <ExpoIcon
             style={[{ width: 30, height: 30 }]}
-            name="inventory"
+            name="trophy-outline"
             size={30}
           ></ExpoIcon>
         </StandardButton>
