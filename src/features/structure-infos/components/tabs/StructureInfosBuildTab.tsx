@@ -1,15 +1,15 @@
 import { ScrollView, Text, View } from "react-native";
-import { style } from "../../../../common/utils/style-utils";
-import { colors } from "../../../../common/utils/color-utils";
-import { useResourcesStore } from "../../../../common/stores/resources.store";
-import { useVillageStore } from "../../../../common/stores/village.store";
-import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
-import TransferButton from "../../../../common/components/buttons/TransferButton";
-import useStructure from "../../../village/hooks/use-structure";
-import { Resources } from "../../../../common/config/constants/Resources";
 import { useEffect } from "react";
 import TabTitle from "../TabTitle";
 import TabText from "../TabText";
+import { useVillageStore } from "../../../../common/stores/village.store";
+import { useResourcesStore } from "../../../../common/stores/resources.store";
+import useStructure from "../../../(tabs)/village/hooks/use-structure";
+import { style } from "../../../../common/utils/style-utils";
+import { colors } from "../../../../common/utils/color-utils";
+import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
+import TransferButton from "../../../../common/components/buttons/TransferButton";
+import { Resources } from "../../../../common/config/constants/Resources";
 
 export default function StructureInfosBuildTab() {
   const { selectedStructureName: structName, build } = useVillageStore();
@@ -79,7 +79,7 @@ export default function StructureInfosBuildTab() {
             if (!struct || !struct.buildingCost || !structName) return;
             await spendMany(
               Object.keys(struct.buildingCost) as Resources[],
-              Object.values(struct.buildingCost),
+              Object.values(struct.buildingCost) as number[],
               async () => {
                 await build(structName);
               }

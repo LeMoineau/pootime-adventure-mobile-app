@@ -1,12 +1,12 @@
 import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import FightTopBar from "../../features/stats/components/StatsTopBar";
+import FightTopBar from "../../features/(tabs)/stats/components/StatsTopBar";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
 import StatsIcons from "../../common/components/icons/stats";
 import PooUltiIcon from "../../common/components/icons/pooUlti";
-import UltiTab from "../../features/stats/components/tabs/UltiTab";
+import UltiTab from "../../features/(tabs)/stats/components/tabs/UltiTab";
 import CustomPage from "../../common/components/navigation/CustomPage";
-import StatsManager from "../../features/stats/components/tabs/StatsManager";
+import StatsManager from "../../features/(tabs)/stats/components/tabs/StatsManager";
 
 export default function StatsTab() {
   return (

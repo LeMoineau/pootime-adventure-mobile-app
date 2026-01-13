@@ -14,13 +14,13 @@ import ExpoIcon from "../../common/components/icons/ExpoIcon";
 import Gradient, {
   GradientDirection,
 } from "../../common/components/misc/Gradient";
-import usePreviousBattles from "../../features/fight/hooks/use-previous-battles";
+import usePreviousBattles from "../../features/(tabs)/fight/hooks/use-previous-battles";
 import NoPreviousBattleItem from "../../common/components/items/NoPreviousBattleItem";
 import PooCreatureTropheeSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureTropheeSubHeader";
-import useBattleRooms from "../../features/fight/hooks/use-battle-rooms";
-import ServerWaitingModal from "../../features/fight/components/ServerWaitingModal";
-import WaitForFightModal from "../../features/fight/components/WaitForFightModal";
-import PrivateFightModal from "../../features/fight/components/PrivateFightModal";
+import useBattleRooms from "../../features/(tabs)/fight/hooks/use-battle-rooms";
+import ServerWaitingModal from "../../features/(tabs)/fight/components/ServerWaitingModal";
+import WaitForFightModal from "../../features/(tabs)/fight/components/WaitForFightModal";
+import PrivateFightModal from "../../features/(tabs)/fight/components/PrivateFightModal";
 
 export default function FightTab() {
   const { width } = useWindowDimensions();

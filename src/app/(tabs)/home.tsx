@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { style } from "../../common/utils/style-utils";
-import PooCreatureView from "../../features/home/components/HomePooCreature";
-import HomeTopBar from "../../features/home/components/HomeTopBar";
+import PooCreatureView from "../../features/(tabs)/home/components/HomePooCreature";
+import HomeTopBar from "../../features/(tabs)/home/components/HomeTopBar";
 import StandardButton from "../../common/components/buttons/StandardButton";
 import { colors } from "../../common/utils/color-utils";
 import { useRouter } from "expo-router";

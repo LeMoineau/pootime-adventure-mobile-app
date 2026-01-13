@@ -13,16 +13,19 @@ export namespace DefaultValues {
   };
 
   //Stats
-  export const PooCreatureStats: DataInStorage.PooCreatureStats = {
-    level: 1,
-    currentExp: 0,
+  export const EntityStats = {
+    pv: 20,
     attaque: 1,
     defense: 1,
-    pv: 20,
     mana: 0,
     resMana: 0,
     recupMana: 0,
+  };
+  export const PooCreatureStats: DataInStorage.PooCreatureStats = {
+    level: 1,
+    currentExp: 0,
     ultiSelected: "",
+    ...EntityStats,
   };
 
   //PooHeadColor

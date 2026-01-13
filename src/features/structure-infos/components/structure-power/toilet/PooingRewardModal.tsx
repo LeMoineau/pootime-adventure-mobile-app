@@ -3,7 +3,7 @@ import { usePooCreatureStyleStore } from "../../../../../common/stores/poo-creat
 import RewardModal from "../../../../../common/components/modals/primitives/RewardModal";
 import { style } from "../../../../../common/utils/style-utils";
 import { colors } from "../../../../../common/utils/color-utils";
-import { BattleReward } from "../../../../../common/types/battle/online-battle/BattleReward";
+import { BattleReward } from "../../../../../common/types/battle/BattleReward";
 
 export default function PooingRewardModal({
   rewards,

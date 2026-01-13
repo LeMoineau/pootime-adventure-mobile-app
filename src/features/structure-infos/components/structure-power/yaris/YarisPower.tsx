@@ -10,7 +10,7 @@ import { useVillageStore } from "../../../../../common/stores/village.store";
 import useModals from "../../../../../common/hooks/ui/use-modals";
 import ConfirmModal from "../../../../../common/components/modals/primitives/ConfirmModal";
 import RewardModal from "../../../../../common/components/modals/primitives/RewardModal";
-import { BattleReward } from "../../../../../common/types/battle/online-battle/BattleReward";
+import { BattleReward } from "../../../../../common/types/battle/BattleReward";
 import { VillageUtils } from "../../../../../common/utils/village-utils";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
 

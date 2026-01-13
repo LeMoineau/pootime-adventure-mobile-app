@@ -1,9 +1,10 @@
 import { ScrollView, Text, View } from "react-native";
-import { useVillageStore } from "../../../../common/stores/village.store";
-import { style } from "../../../../common/utils/style-utils";
-import useStructure from "../../../village/hooks/use-structure";
+
 import { useEffect } from "react";
 import StructurePower from "../structure-power/StructurePower";
+import { useVillageStore } from "../../../../common/stores/village.store";
+import useStructure from "../../../(tabs)/village/hooks/use-structure";
+import { style } from "../../../../common/utils/style-utils";
 
 export default function StructureInfosMainTab() {
   const { selectedStructureName: structName, get } = useVillageStore();

@@ -1,5 +1,5 @@
 import { EntityType } from "../../../config/constants/EntityTypes";
-import { BattleReward } from "../online-battle/BattleReward";
+import { BattleReward } from "../BattleReward";
 
 export interface Entity {
   name: string;
@@ -12,7 +12,7 @@ export interface Entity {
   rewards?: BattleReward;
 }
 
-export type EntityBattleWinner = "player" | "entity";
+export type EntityBattleWinner = "player" | "monster";
 
 export interface EntityState {
   currentPv: number;

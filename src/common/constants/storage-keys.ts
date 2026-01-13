@@ -1,5 +1,5 @@
 /**
- * DON'T TOUCH. IT COULD RESULT IN DATA LOSS
+ * DON'T DELETE OR MODIFY, ONLY ADD. IT COULD RESULT IN DATA LOSS
  */
 export const StorageKeys = {
   RESOURCES: "poo-resources", //old storage key for resources

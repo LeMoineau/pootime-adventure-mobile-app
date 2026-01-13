@@ -2,7 +2,7 @@ import { Modal, ModalProps, Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
 import StandardButton from "../../buttons/StandardButton";
 import { colors } from "../../../utils/color-utils";
-import { BattleReward } from "../../../types/battle/online-battle/BattleReward";
+import { BattleReward } from "../../../types/battle/BattleReward";
 import TextWithResourceIcon from "../../text/TextWithResourceIcon";
 import TextWithSubShadow from "../../text/TextWithSubShadow";
 

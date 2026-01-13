@@ -1,7 +1,7 @@
 import { ColorValue, View } from "react-native";
 import CustomModal from "./CustomModal";
 import { colors } from "../../../utils/color-utils";
-import { BattleReward } from "../../../types/battle/online-battle/BattleReward";
+import { BattleReward } from "../../../types/battle/BattleReward";
 import { style } from "../../../utils/style-utils";
 import TextWithResourceIcon from "../../text/TextWithResourceIcon";
 

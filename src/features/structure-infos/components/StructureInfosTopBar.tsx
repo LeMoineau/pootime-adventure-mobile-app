@@ -2,7 +2,6 @@ import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 import { Animated, TouchableOpacity, View } from "react-native";
 import { colors } from "../../../common/utils/color-utils";
 import { style } from "../../../common/utils/style-utils";
-import ExpoIcon from "../../../common/components/icons/ExpoIcon";
 import React from "react";
 
 export default function StructureInfosTopBar({

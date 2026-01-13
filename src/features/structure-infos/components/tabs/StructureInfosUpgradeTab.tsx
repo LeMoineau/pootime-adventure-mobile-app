@@ -1,16 +1,14 @@
 import { ScrollView, Text, View } from "react-native";
-import { colors } from "../../../../common/utils/color-utils";
-import { style } from "../../../../common/utils/style-utils";
-import StandardButton from "../../../../common/components/buttons/StandardButton";
-import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
-import { useVillageStore } from "../../../../common/stores/village.store";
-import { VillageUtils } from "../../../../common/utils/village-utils";
-import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
-import { useResourcesStore } from "../../../../common/stores/resources.store";
 import StructureUpgradeButton from "../StructureUpgradeButton";
-import { Resources } from "../../../../common/config/constants/Resources";
-import useStructure from "../../../village/hooks/use-structure";
 import { useEffect } from "react";
+import { useVillageStore } from "../../../../common/stores/village.store";
+import { useResourcesStore } from "../../../../common/stores/resources.store";
+import useStructure from "../../../(tabs)/village/hooks/use-structure";
+import { style } from "../../../../common/utils/style-utils";
+import { colors } from "../../../../common/utils/color-utils";
+import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
+import { Resources } from "../../../../common/config/constants/Resources";
+import { StructureCost } from "../../../../common/types/village/StructureCost";
 
 export default function StructureInfosUpgradeTab() {
   const { selectedStructureName: structName, get, upgrade } = useVillageStore();
@@ -81,7 +79,7 @@ export default function StructureInfosUpgradeTab() {
             if (!structName) return;
             await spendMany(
               Object.keys(upgradeCost.cost) as Resources[],
-              Object.values(upgradeCost.cost),
+              Object.values(upgradeCost.cost) as number[],
               async () => {
                 await upgrade(structName, upgradeCost);
               }

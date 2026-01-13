@@ -10,8 +10,8 @@ import ExpoIcon from "../../../common/components/icons/ExpoIcon";
 import ConfirmModal from "../../../common/components/modals/primitives/ConfirmModal";
 import useModals from "../../../common/hooks/ui/use-modals";
 import { UpgradeCost } from "../../../common/types/village/StructureCost";
-import useStructure from "../../village/hooks/use-structure";
 import { useEffect } from "react";
+import useStructure from "../../(tabs)/village/hooks/use-structure";
 
 export default function StructureUpgradeButton({
   onUpgrade,

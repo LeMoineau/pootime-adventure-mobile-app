@@ -1,7 +1,6 @@
 import { ScrollView, Text, View } from "react-native";
 import { useVillageStore } from "../../../common/stores/village.store";
 import { useResourcesStore } from "../../../common/stores/resources.store";
-import useStructure from "../../../features/village/hooks/use-structure";
 import { useEffect } from "react";
 import TabTitle from "../../../features/structure-infos/components/TabTitle";
 import TabText from "../../../features/structure-infos/components/TabText";
@@ -10,6 +9,7 @@ import TextWithResourceIcon from "../../../common/components/text/TextWithResour
 import { colors } from "../../../common/utils/color-utils";
 import TransferButton from "../../../common/components/buttons/TransferButton";
 import { Resources } from "../../../common/config/constants/Resources";
+import useStructure from "../../../features/(tabs)/village/hooks/use-structure";
 
 export default function StructureInfosBuildTab() {
   const { selectedStructureName: structName, build } = useVillageStore();

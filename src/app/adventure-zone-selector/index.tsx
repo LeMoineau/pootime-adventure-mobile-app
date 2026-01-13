@@ -6,10 +6,10 @@ import CustomPage from "../../common/components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
 import { style } from "../../common/utils/style-utils";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
-import { AdventureZones } from "../../common/constants/adventure-zones";
 import AdventureZoneSelectorHeader from "../../features/adventure-zone-selector/components/AdventureZoneSelectorHeader";
 import AdventureZoneItem from "../../features/adventure-zone-selector/components/AdventureZoneItem";
 import { router } from "expo-router";
+import { zones } from "../../common/constants/battle/adventure-zones";
 
 export default function LeaderboarAdventureZoneSelectorScreen() {
   const { level } = usePooCreatureStatsStore();
@@ -45,7 +45,7 @@ export default function LeaderboarAdventureZoneSelectorScreen() {
           stickyHeaderIndices={[0]}
         >
           <AdventureZoneSelectorHeader></AdventureZoneSelectorHeader>
-          {AdventureZones.map((z, index) => {
+          {zones.map((z, index) => {
             return (
               <AdventureZoneItem
                 key={index}
@@ -53,17 +53,15 @@ export default function LeaderboarAdventureZoneSelectorScreen() {
                 zoneSelected={zoneSelected === index}
                 zoneUnlocked={level >= z.unlockLevel}
                 nextZoneUnlocked={
-                  level >=
-                  AdventureZones[(index + 1) % AdventureZones.length]
-                    .unlockLevel
+                  level >= zones[(index + 1) % zones.length].unlockLevel
                 }
-                lastZone={index === AdventureZones.length - 1}
+                lastZone={index === zones.length - 1}
                 onIconPress={() => {
                   setZoneSelected(zoneSelected === index ? undefined : index);
                 }}
                 onGoingBtnPress={() => {
                   router.push({
-                    pathname: "/(arenas)/entity",
+                    pathname: "/(arenas)/monster",
                     params: { zoneIndex: index },
                   });
                 }}

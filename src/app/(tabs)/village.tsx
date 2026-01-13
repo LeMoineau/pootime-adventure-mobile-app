@@ -3,9 +3,9 @@ import CustomPage from "../../common/components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
 import { Structures } from "../../common/config/constants/Structures";
 import { style } from "../../common/utils/style-utils";
-import VillageTopBar from "../../features/village/components/VillageTopBar";
 import { useRouter } from "expo-router";
-import StructureView from "../../features/village/components/StructureView";
+import VillageTopBar from "../../features/(tabs)/village/components/VillageTopBar";
+import StructureView from "../../features/(tabs)/village/components/StructureView";
 
 export default function VillageTab() {
   const router = useRouter();

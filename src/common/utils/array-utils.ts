@@ -1,3 +1,5 @@
+import { MathUtils } from "./math-utils";
+
 export namespace ArrayUtils {
   export function pushAndReturn<T>(array: T[], item: T): T[] {
     array.push(item);
@@ -21,5 +23,10 @@ export namespace ArrayUtils {
 
   export function createArray(length: number): number[] {
     return Array.from({ length: length }, (_, index) => index);
+  }
+
+  export function getRandomItem<T>(arr: T[]): T {
+    const index = MathUtils.getRandomInt(arr.length);
+    return arr[index];
   }
 }

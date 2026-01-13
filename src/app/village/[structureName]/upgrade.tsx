@@ -2,12 +2,12 @@ import { ScrollView, Text, View } from "react-native";
 import { useEffect } from "react";
 import { useVillageStore } from "../../../common/stores/village.store";
 import { useResourcesStore } from "../../../common/stores/resources.store";
-import useStructure from "../../../features/village/hooks/use-structure";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
 import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
 import StructureUpgradeButton from "../../../features/structure-infos/components/StructureUpgradeButton";
 import { Resources } from "../../../common/config/constants/Resources";
+import useStructure from "../../../features/(tabs)/village/hooks/use-structure";
 
 export default function StructureInfosUpgradeTab() {
   const { selectedStructureName: structName, upgrade } = useVillageStore();

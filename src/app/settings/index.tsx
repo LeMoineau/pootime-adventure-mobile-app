@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store";
-import { BackHandler, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import PooCreatureBadge from "../../common/components/misc/poo-creature/PooCreatureBadge";
-import { useNavigationType } from "../../common/types/navigation/NavigationTypes";
-import { useNavigation } from "@react-navigation/native";
 import CustomPage from "../../common/components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
 import { style } from "../../common/utils/style-utils";

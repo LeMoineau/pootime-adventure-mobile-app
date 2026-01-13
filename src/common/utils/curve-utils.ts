@@ -1,5 +1,5 @@
 import { DefaultValues } from "../config/DefaultValues";
-import { BattleReward } from "../types/battle/online-battle/BattleReward";
+import { BattleReward } from "../types/battle/BattleReward";
 
 export namespace CurveUtils {
   export function calculateRewardsPooing(elapsedTime: number): BattleReward {
