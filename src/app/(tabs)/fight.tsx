@@ -21,11 +21,15 @@ import useBattleRooms from "../../features/(tabs)/fight/hooks/use-battle-rooms";
 import ServerWaitingModal from "../../features/(tabs)/fight/components/ServerWaitingModal";
 import WaitForFightModal from "../../features/(tabs)/fight/components/WaitForFightModal";
 import PrivateFightModal from "../../features/(tabs)/fight/components/PrivateFightModal";
+import { LegendList } from "@legendapp/list";
+import { DefaultValues } from "../../common/config/DefaultValues";
 
 export default function FightTab() {
   const { width } = useWindowDimensions();
   const { previousBattles, pushPreviousBattle, refreshPreviousBattles } =
-    usePreviousBattles();
+    usePreviousBattles({
+      maxPreviousBattleSize: 3,
+    });
   const {
     room,
     connect,
@@ -92,15 +96,15 @@ export default function FightTab() {
           >
             Dernière battailles
           </TitleWithDivider>
-          {previousBattles.length > 0 ? (
-            previousBattles
-              .filter((_, i) => i < 5)
-              .map((b, index) => (
-                <PreviousBattleItem key={index} battle={b}></PreviousBattleItem>
-              ))
-          ) : (
-            <NoPreviousBattleItem></NoPreviousBattleItem>
-          )}
+          <LegendList
+            data={previousBattles}
+            renderItem={({ item }) => (
+              <PreviousBattleItem battle={item}></PreviousBattleItem>
+            )}
+            ListEmptyComponent={<NoPreviousBattleItem></NoPreviousBattleItem>}
+            keyExtractor={(_, index) => `${index}`}
+            recycleItems
+          />
           <View style={{ height: 150 }}></View>
         </View>
       </ScrollView>

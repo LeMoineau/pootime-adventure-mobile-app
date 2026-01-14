@@ -11,7 +11,7 @@ import { PooCreatureStats } from "../types/PooCreatureStats";
 
 export type PooCreatureStatsStore = {
   incrStat: (stat: StatType) => Promise<void>;
-  selectUlti: (ulti: string) => Promise<void>;
+  toggleUlti: (ulti: string) => Promise<void>;
   resetData: () => Promise<void>;
   calculateAllStarsSpent: () => number;
   getStat: (stat: keyof PooCreatureStats) => any;
@@ -59,12 +59,13 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       );
     };
 
-    const selectUlti = async (ulti: string) => {
-      set({ ultiSelected: ulti });
+    const toggleUlti = async (ulti: string) => {
+      const ultiSelected = get().ultiSelected === ulti ? "" : ulti;
+      set({ ultiSelected });
       await saveItemInJson(
         StorageKeys.POO_CREATURE_STATS,
         "ultiSelected",
-        ulti
+        ultiSelected
       );
     };
 
@@ -100,7 +101,7 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
     return {
       ...DefaultValues.PooCreatureStats,
       incrStat,
-      selectUlti,
+      toggleUlti,
       resetData,
       calculateAllStarsSpent,
       getStat,

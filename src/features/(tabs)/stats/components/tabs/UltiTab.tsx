@@ -7,7 +7,7 @@ import { usePooCreatureStatsStore } from "../../../../../common/stores/poo-creat
 import { Ultis } from "../../../../../common/types/Ultis";
 
 export default function UltiTab() {
-  const { ultiSelected, level, selectUlti } = usePooCreatureStatsStore();
+  const { ultiSelected, level, toggleUlti } = usePooCreatureStatsStore();
 
   return (
     <View style={[style.flexCol]}>
@@ -25,7 +25,7 @@ export default function UltiTab() {
             selected={ultiSelected === item.name}
             onPress={async () => {
               if (level >= ulti.unlockLevel) {
-                await selectUlti(item.name);
+                await toggleUlti(item.name);
               }
             }}
           ></UltiView>

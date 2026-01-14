@@ -15,7 +15,12 @@ export default function PreviousBattleItem({
     <View
       style={[
         style.border,
-        { backgroundColor: colors.white, borderRadius: 10, overflow: "hidden" },
+        {
+          backgroundColor: colors.white,
+          borderRadius: 10,
+          overflow: "hidden",
+          marginBottom: 10,
+        },
       ]}
     >
       <View

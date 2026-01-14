@@ -1,7 +1,6 @@
 import { BattleReward } from "../../../types/battle/BattleReward";
 import { MonsterState } from "../../../types/battle/entities/MonsterState";
 import { Entity, EntityProps } from "../Entity";
-import { Player } from "../Player";
 
 export interface MonsterProps extends EntityProps {
   freqAttaque: number;

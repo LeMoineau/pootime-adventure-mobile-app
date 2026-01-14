@@ -5,7 +5,7 @@ import { Zone } from "../../../../common/models/zones/Zone";
 import { Monster } from "../../../../common/models/entities/monsters/Monster";
 import { MonsterState } from "../../../../common/types/battle/entities/MonsterState";
 import { PlayerState } from "../../../../common/types/battle/entities/PlayerState";
-import { Player } from "../../../../common/models/entities/Player";
+import { Player } from "../../../../common/models/entities/players/Player";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import cloneService from "../../../../common/services/clone.service";
 

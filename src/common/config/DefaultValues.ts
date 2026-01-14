@@ -87,4 +87,6 @@ export namespace DefaultValues {
   export const MAX_LOGIN_FIELD_LENGTH = 255;
 
   export const CACHE_AVAILABILITY_DURATION_IN_SECOND = 10 * 60;
+
+  export const MAX_PREVIOUS_BATTLE_SAVED = 25;
 }

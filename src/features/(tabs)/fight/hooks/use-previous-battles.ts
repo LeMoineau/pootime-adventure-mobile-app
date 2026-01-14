@@ -3,7 +3,9 @@ import useStorage from "../../../../common/hooks/use-storage";
 import { BattleFinalState } from "../../../../common/types/battle/BattleFinalState";
 import { StorageKeys } from "../../../../common/constants/storage-keys";
 
-export default function usePreviousBattles() {
+export default function usePreviousBattles(props?: {
+  maxPreviousBattleSize: number;
+}) {
   const { getJson, saveJson } = useStorage();
   const [previousBattles, setPreviousBattles] = useState<BattleFinalState[]>(
     []
@@ -26,8 +28,15 @@ export default function usePreviousBattles() {
   };
 
   const pushPreviousBattle = (newBattle: BattleFinalState) => {
-    saveJson(StorageKeys.PREVIOUS_BATTLES, [newBattle, ...previousBattles]);
-    setPreviousBattles([newBattle, ...previousBattles]);
+    let newList = [newBattle, ...previousBattles];
+    if (
+      props?.maxPreviousBattleSize !== undefined &&
+      previousBattles.length >= props.maxPreviousBattleSize
+    ) {
+      newList = newList.splice(0, props.maxPreviousBattleSize);
+    }
+    saveJson(StorageKeys.PREVIOUS_BATTLES, newList);
+    setPreviousBattles(newList);
   };
 
   return { previousBattles, refreshPreviousBattles, pushPreviousBattle };

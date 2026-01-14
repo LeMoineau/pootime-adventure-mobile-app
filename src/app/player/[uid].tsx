@@ -57,7 +57,6 @@ export default function PlayerInfosPage() {
     } else if (uid) {
       get(uid, forceRefresh).then((res) => {
         if (res) {
-          console.log("user data", res);
           setUserData(res);
         }
       });

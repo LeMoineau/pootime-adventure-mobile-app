@@ -43,7 +43,6 @@ export default function StructureInfosLayout() {
 
   useEffect(() => {
     if (structureName) {
-      console.log("structname", structureName);
       setStructure(get(structureName));
     }
   }, [structureName]);

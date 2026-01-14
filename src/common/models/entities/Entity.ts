@@ -1,7 +1,7 @@
 import { DefaultValues } from "../../config/DefaultValues";
 import { xpNeededForNextLevel } from "../../constants/stats/level";
 import { ultis } from "../../constants/stats/ultis";
-import { UltiDetails, UltiType } from "../../types/Ultis";
+import { UltiDetails } from "../../types/Ultis";
 
 export interface EntityProps {
   name: string;
@@ -34,16 +34,16 @@ export class Entity {
 
   constructor({
     name,
-    level,
     pv = DefaultValues.EntityStats.pv,
     attaque = DefaultValues.EntityStats.attaque,
     defense = DefaultValues.EntityStats.defense,
     mana = DefaultValues.EntityStats.mana,
     recupMana = DefaultValues.EntityStats.recupMana,
     resMana = DefaultValues.EntityStats.resMana,
+    level,
     currentPv,
-    currentMana,
-    ultiSelected,
+    currentMana = 0,
+    ultiSelected = null,
   }: EntityProps) {
     this.name = name;
     this.pv = pv;
@@ -54,8 +54,8 @@ export class Entity {
     this.resMana = resMana;
     this.level = level ?? this._calculateLevelFromStats();
     this.currentPv = currentPv ?? this.pv;
-    this.currentMana = currentMana ?? this.mana;
-    this.ultiSelected = ultiSelected ?? null;
+    this.currentMana = currentMana;
+    this.ultiSelected = ultiSelected;
   }
 
   /**
@@ -123,7 +123,7 @@ export class Entity {
       if (ulti) {
         if (ulti.rage) this.rage = ulti.rage;
         entity.receiveSpell(ulti);
-        entity.loseMana(ulti.mana);
+        this.loseMana(ulti.mana);
       }
     }
   }
