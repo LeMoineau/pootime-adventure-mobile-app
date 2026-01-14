@@ -3,8 +3,10 @@ import {
   Modal,
   NativeSyntheticEvent,
   Pressable,
+  StyleProp,
   Text,
   View,
+  ViewStyle,
 } from "react-native";
 import React from "react";
 import { style } from "../../../utils/style-utils";
@@ -12,6 +14,8 @@ import { colors } from "../../../utils/color-utils";
 import TextWithSubShadow from "../../text/TextWithSubShadow";
 import StandardButton from "../../buttons/StandardButton";
 import Color from "color";
+import PillButton from "../../buttons/PillButton";
+import PlusIcon from "../../icons/plus";
 
 interface ModalActionBtn {
   text: string;
@@ -28,6 +32,7 @@ export default function CustomModal({
   actionsBtns = [],
   closeWhenPressingTransparentOverlay,
   children,
+  containerStyle,
   onRequestClose,
 }: {
   visible: boolean;
@@ -37,6 +42,7 @@ export default function CustomModal({
   actionsBtns?: ModalActionBtn[];
   closeWhenPressingTransparentOverlay?: boolean;
   children?: React.ReactNode;
+  containerStyle?: StyleProp<ViewStyle>;
   onRequestClose?: (event: NativeSyntheticEvent<any>) => void;
 }) {
   return (
@@ -74,6 +80,10 @@ export default function CustomModal({
               gap: 10,
             },
           ]}
+          onStartShouldSetResponder={() => true}
+          onTouchEnd={(evt) => {
+            evt.stopPropagation();
+          }}
         >
           <TextWithSubShadow style={{ fontSize: 20, textAlign: "center" }}>
             {title}
@@ -94,6 +104,7 @@ export default function CustomModal({
                 borderColor: colors.gray[300],
                 gap: 20,
               },
+              containerStyle,
             ]}
           >
             {desc && <Text>{desc}</Text>}
