@@ -28,7 +28,7 @@ export default function FightTab() {
   const { width } = useWindowDimensions();
   const { previousBattles, pushPreviousBattle, refreshPreviousBattles } =
     usePreviousBattles({
-      maxPreviousBattleSize: 3,
+      maxPreviousBattleSize: DefaultValues.MAX_PREVIOUS_BATTLE_SAVED,
     });
   const {
     room,

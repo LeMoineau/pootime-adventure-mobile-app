@@ -96,6 +96,12 @@ export default function IndexScreen() {
                   hasRightArrow: true,
                   onPress: () => router.push("/settings/donation"),
                 },
+                {
+                  icon: "bug-report",
+                  label: "Signaler un bug",
+                  hasRightArrow: true,
+                  onPress: () => router.push("/settings/bug-report"),
+                },
                 ...(isUnlocked("options", "dev")
                   ? ([
                       {
