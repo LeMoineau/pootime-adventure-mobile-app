@@ -1,37 +1,38 @@
 import { ColorValue, View } from "react-native";
-import CustomModal from "./CustomModal";
+import CustomModal, { CustomModalProps } from "./CustomModal";
 import { colors } from "../../../utils/color-utils";
 import { BattleReward } from "../../../types/battle/BattleReward";
 import { style } from "../../../utils/style-utils";
 import TextWithResourceIcon from "../../text/TextWithResourceIcon";
 
+export interface CustomRewardModalProps extends CustomModalProps {
+  rewards: BattleReward;
+  onPressEarnBtn?: (r: BattleReward) => void;
+  dontCloseModalOnPressingEarnBtn?: boolean;
+}
+
 export default function CustomRewardModal({
-  visible,
-  title = "Récompense !",
   desc = "",
   mainColor = colors.primary,
   rewards,
   onPressEarnBtn,
-}: {
-  visible: boolean;
-  title?: string;
-  desc?: string;
-  mainColor?: ColorValue;
-  rewards: BattleReward;
-  onPressEarnBtn?: (r: BattleReward) => void;
-}) {
+  dontCloseModalOnPressingEarnBtn,
+  ...props
+}: CustomRewardModalProps) {
   return (
     <CustomModal
-      {...{ visible, title, desc, mainColor }}
+      desc={desc}
+      mainColor={mainColor}
       actionsBtns={[
         {
           text: "Collecter",
-          dontCloseModalOnPress: true,
+          dontCloseModalOnPress: dontCloseModalOnPressingEarnBtn,
           onPress: () => {
             onPressEarnBtn && onPressEarnBtn(rewards);
           },
         },
       ]}
+      {...props}
     >
       <View
         style={[

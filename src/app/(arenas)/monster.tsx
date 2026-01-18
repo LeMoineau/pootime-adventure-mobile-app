@@ -46,7 +46,7 @@ export default function MonsterArena() {
         openModal(
           <LoseAgainstEntityModal
             {...{ monster, zoneIndex: parseInt(zoneIndex) }}
-          ></LoseAgainstEntityModal>
+          ></LoseAgainstEntityModal>,
         );
       } else if (winner === "player") {
         const winModal = (
@@ -57,13 +57,15 @@ export default function MonsterArena() {
         if (rewards && rewards.length > 0) {
           openModal(
             <CustomRewardModal
+              title="Victoire !"
+              desc={`Voici votre récompense pour avoir battu ${monster?.name} !`}
               visible={true}
               rewards={rewards}
               onPressEarnBtn={() => {
                 earnMany(rewards.map((r) => [r.resource, r.number]));
                 openModal(winModal);
               }}
-            ></CustomRewardModal>
+            ></CustomRewardModal>,
           );
         } else {
           openModal(winModal);

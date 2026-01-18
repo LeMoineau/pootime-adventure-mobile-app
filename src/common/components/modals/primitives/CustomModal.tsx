@@ -5,6 +5,7 @@ import {
   Pressable,
   StyleProp,
   Text,
+  useWindowDimensions,
   View,
   ViewStyle,
 } from "react-native";
@@ -14,14 +15,25 @@ import { colors } from "../../../utils/color-utils";
 import TextWithSubShadow from "../../text/TextWithSubShadow";
 import StandardButton from "../../buttons/StandardButton";
 import Color from "color";
-import PillButton from "../../buttons/PillButton";
-import PlusIcon from "../../icons/plus";
+import { he } from "zod/v4/locales";
 
-interface ModalActionBtn {
+export interface ModalActionBtn {
   text: string;
   color?: ColorValue;
   dontCloseModalOnPress?: boolean;
   onPress?: () => void;
+}
+
+export interface CustomModalProps {
+  visible: boolean;
+  title: string;
+  desc?: string;
+  mainColor?: ColorValue;
+  actionsBtns?: ModalActionBtn[];
+  closeWhenPressingTransparentOverlay?: boolean;
+  children?: React.ReactNode;
+  containerStyle?: StyleProp<ViewStyle>;
+  onRequestClose?: () => void;
 }
 
 export default function CustomModal({
@@ -34,17 +46,9 @@ export default function CustomModal({
   children,
   containerStyle,
   onRequestClose,
-}: {
-  visible: boolean;
-  title: string;
-  desc?: string;
-  mainColor?: ColorValue;
-  actionsBtns?: ModalActionBtn[];
-  closeWhenPressingTransparentOverlay?: boolean;
-  children?: React.ReactNode;
-  containerStyle?: StyleProp<ViewStyle>;
-  onRequestClose?: (event: NativeSyntheticEvent<any>) => void;
-}) {
+}: CustomModalProps) {
+  const { width, height } = useWindowDimensions();
+
   return (
     <Modal
       animationType="fade"
@@ -58,11 +62,17 @@ export default function CustomModal({
         style={[
           style.justifyCenter,
           style.itemsCenter,
-          { flex: 1, padding: 20, backgroundColor: "rgba(0, 0, 0, 0.5)" },
+          {
+            maxWidth: width,
+            maxHeight: height,
+            flex: 1,
+            padding: 20,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          },
         ]}
-        onPress={(evt) => {
+        onPress={() => {
           if (closeWhenPressingTransparentOverlay) {
-            onRequestClose && onRequestClose(evt);
+            onRequestClose && onRequestClose();
           }
         }}
       >
@@ -102,12 +112,12 @@ export default function CustomModal({
                 backgroundColor: colors.white,
                 borderRadius: 5,
                 borderColor: colors.gray[300],
-                gap: 20,
+                gap: 10,
               },
               containerStyle,
             ]}
           >
-            {desc && <Text>{desc}</Text>}
+            {desc && <Text style={{ textAlign: "center" }}>{desc}</Text>}
             {children}
             <View
               style={{
@@ -136,11 +146,11 @@ export default function CustomModal({
                     .darken(0.2)
                     .toString()}
                   textStyle={[{ flex: 1, fontSize: 15, fontWeight: "500" }]}
-                  onPress={(evt) => {
+                  onPress={() => {
                     btn.onPress && btn.onPress();
                     !btn.dontCloseModalOnPress &&
                       onRequestClose &&
-                      onRequestClose(evt);
+                      onRequestClose();
                   }}
                 >
                   {btn.text}

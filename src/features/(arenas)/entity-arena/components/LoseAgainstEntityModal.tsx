@@ -16,6 +16,7 @@ export default function LoseAgainstEntityModal({
       title="Perdu !"
       desc={`Vous avez perdu contre ${monster.name}`}
       mainColor={colors.red[400]}
+      containerStyle={{ gap: 20 }}
       actionsBtns={[
         {
           text: "Quitter",

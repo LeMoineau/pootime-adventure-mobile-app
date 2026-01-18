@@ -8,6 +8,7 @@ import { colors } from "../../../../common/utils/color-utils";
 import { style } from "../../../../common/utils/style-utils";
 import ResourceIcon from "../../../../common/components/icons/ResourceIcon";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
+import CustomConfirmModal from "../../../../common/components/modals/primitives/CustomConfirmModal";
 
 export default function ResetStatsButton() {
   const { earn } = useResourcesStore();
@@ -34,29 +35,23 @@ export default function ResetStatsButton() {
       >
         Reset
       </StandardButton>
-      <ConfirmModal
+      <CustomConfirmModal
+        title="Réinitialiser ses stats"
         visible={isVisible("confirm")}
         onRequestClose={() => hide("confirm")}
-        onConfirm={async () => {
-          await earn("stars", calculateAllStarsSpent());
-          await resetData();
+        containerStyle={{ gap: 20 }}
+        onConfirmBtnPress={() => {
+          earn("stars", calculateAllStarsSpent());
+          resetData();
         }}
       >
-        <View
-          style={[
-            style.flexRow,
-            style.flexWrap,
-            style.justifyCenter,
-            style.itemsCenter,
-            style.wFull,
-          ]}
-        >
-          <Text>Are you sure to reset all your statistics ?</Text>
-          <Text>(You will earn {calculateAllStarsSpent()} </Text>
-          <ResourceIcon size={20} resource="stars"></ResourceIcon>
-          <Text>)</Text>
-        </View>
-      </ConfirmModal>
+        <Text style={{ textAlign: "center", textAlignVertical: "center" }}>
+          Êtes-vous sûr de vouloir réinitialiser vos stats ? (Vous allez
+          récupérer {calculateAllStarsSpent()}
+          {"  "}
+          <ResourceIcon size={20} resource="stars"></ResourceIcon> )
+        </Text>
+      </CustomConfirmModal>
     </>
   );
 }

@@ -6,9 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -45,9 +43,7 @@
       [
         "expo-asset",
         {
-          "assets": [
-            "./assets/icons"
-          ]
+          "assets": ["./assets/icons"]
         }
       ],
       "expo-router"

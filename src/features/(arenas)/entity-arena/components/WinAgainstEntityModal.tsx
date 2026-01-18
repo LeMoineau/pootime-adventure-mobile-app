@@ -13,6 +13,7 @@ export default function WinAgainstEntityModal({
       title="Bravo !"
       desc={`Vous avez gagné !`}
       mainColor={colors.green[400]}
+      containerStyle={{ gap: 20 }}
       actionsBtns={[
         {
           text: "Quitter",

@@ -1,62 +1,60 @@
-import { ModalProps, Text } from "react-native";
 import { usePooCreatureStyleStore } from "../../../../../common/stores/poo-creature-style.store";
-import RewardModal from "../../../../../common/components/modals/primitives/RewardModal";
-import { style } from "../../../../../common/utils/style-utils";
 import { colors } from "../../../../../common/utils/color-utils";
-import { BattleReward } from "../../../../../common/types/battle/BattleReward";
+import CustomRewardModal, {
+  CustomRewardModalProps,
+} from "../../../../../common/components/modals/primitives/CustomRewardModal";
+import { useEffect, useRef, useState } from "react";
+import CustomModal from "../../../../../common/components/modals/primitives/CustomModal";
 
 export default function PooingRewardModal({
   rewards,
-  onCollectingRewards,
+  onPressEarnBtn,
   ...props
-}: {
-  rewards: BattleReward;
-  onCollectingRewards: (rewards: BattleReward) => void;
-} & ModalProps) {
+}: Omit<CustomRewardModalProps, "title">) {
   const { name } = usePooCreatureStyleStore();
+  const [emptyReward, setEmptyReward] = useState(true);
 
-  const emptyReward = () => {
+  useEffect(() => {
     for (let r of rewards) {
-      if (r.number > 0) return false;
+      if (r.number > 0) {
+        setEmptyReward(false);
+        return;
+      }
     }
-    return true;
-  };
+    setEmptyReward(true);
+  }, [rewards]);
 
-  return (
-    <RewardModal
-      rewards={rewards}
-      onCollectingRewards={onCollectingRewards}
-      {...props}
-    >
-      <Text
-        style={[
-          style.textXl,
-          style.textBold,
+  if (emptyReward) {
+    return (
+      <CustomModal
+        title="Mince..."
+        desc="Il semblerait que vous ne soyez pas resté assez longtemps aux toilettes... 👀"
+        mainColor={colors.red[400]}
+        visible={props.visible}
+        closeWhenPressingTransparentOverlay
+        containerStyle={{ gap: 20 }}
+        actionsBtns={[
           {
-            marginTop: 10,
-            marginBottom: 20,
-            color: emptyReward() ? colors.red[400] : colors.green[500],
+            text: "Fermer",
+            color: colors.red[400],
+            onPress: () => {
+              props.onRequestClose && props.onRequestClose();
+            },
           },
         ]}
-      >
-        {emptyReward() ? "Mince..." : "Congratulation 🎉"}
-      </Text>
-      {emptyReward() ? (
-        <Text style={[style.textCenter]}>
-          Il semblerait que vous ne soyez pas resté assez longtemps aux
-          toilettes... 👀
-        </Text>
-      ) : (
-        <>
-          <Text style={[style.textSm, style.textCenter]}>
-            Vous avez posé une belle pêche !
-          </Text>
-          <Text style={[style.textSm, style.textCenter]}>
-            Voici ce que <Text style={[style.textBold]}>{name}</Text> a trouvé
-            pendant ce temps là !
-          </Text>
-        </>
-      )}
-    </RewardModal>
+        onRequestClose={props.onRequestClose}
+      ></CustomModal>
+    );
+  }
+
+  return (
+    <CustomRewardModal
+      title={"Succès !"}
+      desc={`Vous avez posé une belle pêche ! Voici ce que ${name} a trouvé pendant ce temps là !`}
+      rewards={rewards}
+      onPressEarnBtn={onPressEarnBtn}
+      onRequestClose={props.onRequestClose}
+      {...props}
+    ></CustomRewardModal>
   );
 }

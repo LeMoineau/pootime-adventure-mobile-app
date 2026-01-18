@@ -1,7 +1,7 @@
 import { io, Socket } from "socket.io-client";
 
 const SOCKET_SERVER_URL = __DEV__
-  ? "http://10.119.31.167:3000/"
+  ? "http://localhost:3000/"
   : "https://pootime-adventure-battle-server.onrender.com/";
 
 export let globalSocket: Socket | undefined = undefined;

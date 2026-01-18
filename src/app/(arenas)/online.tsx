@@ -96,11 +96,11 @@ export default function OnlineArenaScreen() {
             get("pooTrophee") <= 0
               ? []
               : Object.entries(battleEnding[socketId].rewards).map(
-                  ([k, i]) => ({ resource: k as Resources, number: i })
+                  ([k, i]) => ({ resource: k as Resources, number: i }),
                 )
           }
           winner={battleEnding[socketId].victoryState === "winner"}
-          onRequestClose={async () => {
+          onPressEarnBtn={() => {
             collectRewards(battleEnding[socketId].rewards);
             reset();
             router.dismissTo("(tabs)/fight");

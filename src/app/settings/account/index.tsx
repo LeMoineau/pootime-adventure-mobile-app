@@ -9,6 +9,7 @@ import SettingsPage from "../../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../../features/settings/components/SettingsHeader";
 import { SettingsScrollView } from "../../../features/settings/components/SettingsScrollView";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import CustomConfirmModal from "../../../common/components/modals/primitives/CustomConfirmModal";
 
 export default function AccountSettings() {
   const { isVisible, show, hide } = useModals<
@@ -140,31 +141,26 @@ export default function AccountSettings() {
           ]}
         ></SettingsScrollView>
       </SettingsPage>
-      <ConfirmModal
+      <CustomConfirmModal
         visible={isVisible("confirm-reset")}
-        onConfirm={async () => {
-          await massiveStoreReset();
+        title="Suppresion des données"
+        desc="Êtes-vous sûr de vouloir supprimer toutes vos données ? (Cette action est irréversible)"
+        containerStyle={{ gap: 20 }}
+        onConfirmBtnPress={() => {
+          massiveStoreReset();
         }}
         onRequestClose={() => hide("confirm-reset")}
-      >
-        <Text>
-          Etes-vous sûr de vouloir supprimer toutes vos données ? (Cette action
-          est irréversible)
-        </Text>
-      </ConfirmModal>
-      <ConfirmModal
+      ></CustomConfirmModal>
+      <CustomConfirmModal
         visible={isVisible("confirm-disconnect")}
-        onConfirm={async () => {
-          await disconnect();
-          await massiveStoreReset();
+        title="Déconnexion"
+        desc="Êtes-vous sûr de vouloir vous déconnecter ? (Vos données ne seront plus sauvegardées)"
+        containerStyle={{ gap: 20 }}
+        onConfirmBtnPress={() => {
+          massiveStoreReset();
         }}
         onRequestClose={() => hide("confirm-disconnect")}
-      >
-        <Text>
-          Etes-vous sûr de vouloir vous déconnecter ? Vos données ne seront plus
-          sauvegardées.
-        </Text>
-      </ConfirmModal>
+      ></CustomConfirmModal>
     </>
   );
 }

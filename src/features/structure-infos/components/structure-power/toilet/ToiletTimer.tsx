@@ -6,6 +6,7 @@ import { style } from "../../../../../common/utils/style-utils";
 import { useEffect } from "react";
 import { colors } from "../../../../../common/utils/color-utils";
 import ConfirmModal from "../../../../../common/components/modals/primitives/ConfirmModal";
+import CustomConfirmModal from "../../../../../common/components/modals/primitives/CustomConfirmModal";
 
 export default function ToiletTimer({
   isPlaying,
@@ -85,22 +86,21 @@ export default function ToiletTimer({
           ></Animated.View>
         </View>
       </View>
-      <ConfirmModal
+      <CustomConfirmModal
         visible={wantToStop}
-        onRequestClose={() => onCancelStoping && onCancelStoping()}
-        onConfirm={() => {
+        desc={`Avez-vous fini de "faire vos affaires" ? (En dessous de 1 minute, vous ne récupérez aucune récompense)`}
+        onConfirmBtnPress={() => {
           onConfirmStoping &&
             onConfirmStoping(
-              elapsedTime + (alreadyElapsedTime ? alreadyElapsedTime / 1000 : 0)
+              elapsedTime +
+                (alreadyElapsedTime ? alreadyElapsedTime / 1000 : 0),
             );
           reset();
           animValue.setValue(0);
         }}
-      >
-        <Text style={[style.textCenter]}>
-          Have you finish pooing ? (time under 1min don't earn anything)
-        </Text>
-      </ConfirmModal>
+        containerStyle={{ gap: 20 }}
+        onRequestClose={() => onCancelStoping && onCancelStoping()}
+      ></CustomConfirmModal>
     </>
   );
 }

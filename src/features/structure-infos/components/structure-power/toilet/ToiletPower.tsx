@@ -19,7 +19,7 @@ export default function ToiletPower({}: { dateNow: number }) {
   const { get, saveDetail, getDetail, hasDetail, eraseDetail } =
     useVillageStore();
   const [timerPlaying, setTimerPlaying] = useState(
-    hasDetail("toilet", "pooStartingTimer")
+    hasDetail("toilet", "pooStartingTimer"),
   );
   const [pooingRewards, setPooingRewards] = useState<BattleReward>();
   const { isVisible, show, hide } = useModals<"confirm" | "reward">();
@@ -56,7 +56,7 @@ export default function ToiletPower({}: { dateNow: number }) {
           onConfirmStoping={(elapsedTime) => {
             const reward = VillageUtils.calculateToiletRewards(
               elapsedTime,
-              get("toilet").level
+              get("toilet").level,
             );
             setPooingRewards(reward);
             setTimerPlaying(false);
@@ -88,7 +88,7 @@ export default function ToiletPower({}: { dateNow: number }) {
       <PooingRewardModal
         visible={isVisible("reward")}
         onRequestClose={() => hide("reward")}
-        onCollectingRewards={async (rewards) => {
+        onPressEarnBtn={async (rewards) => {
           for (let r of rewards) {
             await earn(r.resource, r.number);
           }
