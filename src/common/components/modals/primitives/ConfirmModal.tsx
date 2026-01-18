@@ -16,7 +16,7 @@ export default function ConfirmModal({
   onConfirm?: () => void;
   onCancel?: () => void;
   confirmButton?: (
-    onPress?: (evt: GestureResponderEvent) => void
+    onPress?: (evt: GestureResponderEvent) => void,
   ) => React.ReactNode;
 } & ModalProps) {
   return (
