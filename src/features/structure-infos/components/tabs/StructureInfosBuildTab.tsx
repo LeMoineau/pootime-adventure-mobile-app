@@ -24,8 +24,8 @@ export default function StructureInfosBuildTab() {
   return (
     <>
       <ScrollView style={[{ padding: 10 }]}>
-        <TabTitle>Building</TabTitle>
-        <TabText>Resources needed for building this structure</TabText>
+        <TabTitle>Construire</TabTitle>
+        <TabText>Ressources nécessaires pour construire ce bâtiment</TabText>
 
         {/* NEEDED RESOURCES */}
         <View
@@ -85,11 +85,7 @@ export default function StructureInfosBuildTab() {
               }
             );
           }}
-          confirmModalChildren={
-            <View>
-              <Text>Are you sure to build this mysterious structure ?</Text>
-            </View>
-          }
+          confirmModalDesc="Êtes-vous sûr de vouloir construire ce bâtiment mystérieux ?"
           leftChildren={
             <View
               style={[

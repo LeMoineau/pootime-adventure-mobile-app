@@ -5,7 +5,7 @@ import { style } from "../../utils/style-utils";
 import useModals from "../../hooks/ui/use-modals";
 import ExpoIcon from "../icons/ExpoIcon";
 import { colors } from "../../utils/color-utils";
-import ConfirmModal from "../modals/primitives/ConfirmModal";
+import CustomConfirmModal from "../modals/primitives/CustomConfirmModal";
 
 export default function TransferButton({
   leftChildren,
@@ -14,7 +14,7 @@ export default function TransferButton({
   onPress,
   showConfirmModal,
   confirmModalCondition,
-  confirmModalChildren,
+  confirmModalDesc,
   onConfirm,
   onCancel,
 }: {
@@ -24,7 +24,7 @@ export default function TransferButton({
   onPress?: () => void;
   showConfirmModal?: boolean;
   confirmModalCondition?: () => boolean;
-  confirmModalChildren?: React.ReactNode;
+  confirmModalDesc?: string;
   onConfirm?: () => void;
   onCancel?: () => void;
 }) {
@@ -63,14 +63,13 @@ export default function TransferButton({
         </View>
       </StandardButton>
       {showConfirmModal && (
-        <ConfirmModal
+        <CustomConfirmModal
           visible={isVisible("confirm")}
           onRequestClose={() => hide("confirm")}
-          onConfirm={() => onConfirm && onConfirm()}
-          onCancel={() => onCancel && onCancel()}
-        >
-          {confirmModalChildren}
-        </ConfirmModal>
+          desc={confirmModalDesc}
+          onConfirmBtnPress={onConfirm}
+          onCancelBtnPress={onCancel}
+        ></CustomConfirmModal>
       )}
     </>
   );

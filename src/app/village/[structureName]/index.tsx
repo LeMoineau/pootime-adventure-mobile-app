@@ -22,7 +22,7 @@ import { DataInStorage } from "../../../common/config/DataInStorage";
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function StructureInfosLayout() {
+export default function StructureInfosPage() {
   const router = useRouter();
   const { structureName } = useLocalSearchParams<{
     structureName: StructureName;

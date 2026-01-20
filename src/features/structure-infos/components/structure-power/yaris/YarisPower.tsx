@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { style } from "../../../../../common/utils/style-utils";
 import TabTitle from "../../TabTitle";
 import { colors } from "../../../../../common/utils/color-utils";
@@ -8,11 +8,12 @@ import StandardButton from "../../../../../common/components/buttons/StandardBut
 import { useState } from "react";
 import { useVillageStore } from "../../../../../common/stores/village.store";
 import useModals from "../../../../../common/hooks/ui/use-modals";
-import ConfirmModal from "../../../../../common/components/modals/primitives/ConfirmModal";
-import RewardModal from "../../../../../common/components/modals/primitives/RewardModal";
 import { BattleReward } from "../../../../../common/types/battle/BattleReward";
 import { VillageUtils } from "../../../../../common/utils/village-utils";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
+import CustomConfirmModal from "../../../../../common/components/modals/primitives/CustomConfirmModal";
+import CustomRewardModal from "../../../../../common/components/modals/primitives/CustomRewardModal";
+import CustomModal from "../../../../../common/components/modals/primitives/CustomModal";
 
 export default function YarisPower() {
   const { get, hasDetail, saveDetail, getDetail, eraseDetail } =
@@ -22,7 +23,7 @@ export default function YarisPower() {
   );
   const [yarisReward, setYarisReward] = useState<BattleReward>();
   const { isVisible, show, hide } = useModals<"confirm" | "reward">();
-  const { earn } = useResourcesStore();
+  const { earnMany } = useResourcesStore();
 
   return (
     <>
@@ -76,10 +77,12 @@ export default function YarisPower() {
           {!yarisHasLeft ? "Lancer vrooomir le moteur" : "Se réveiller"}
         </StandardButton>
       </View>
-      <ConfirmModal
+      <CustomConfirmModal
         visible={isVisible("confirm")}
         onRequestClose={() => hide("confirm")}
-        onConfirm={() => {
+        title="Se réveiller"
+        desc="Es-tu sûr de vouloir te réveiller ? (en dessous de 15min, ne rapporte rien)"
+        onConfirmBtnPress={() => {
           const elapsedTime =
             Date.now() -
             new Date(
@@ -95,26 +98,28 @@ export default function YarisPower() {
           show("reward");
           hide("confirm");
         }}
-      >
-        <Text>
-          Es-tu sûr de vouloir te réveiller ? (en dessous de 15min, ne rapporte
-          rien)
-        </Text>
-      </ConfirmModal>
-      <RewardModal
-        visible={isVisible("reward")}
-        onRequestClose={() => hide("reward")}
-        onCollectingRewards={async (rewards) => {
-          for (let r of rewards) {
-            await earn(r.resource, r.number);
-          }
-        }}
-        rewards={yarisReward ?? []}
-      >
-        <Text style={[style.textCenter, {}]}>
-          Voici tous ce qu'à trouvé votre Yaris pendant son expédition !
-        </Text>
-      </RewardModal>
+      ></CustomConfirmModal>
+      {yarisReward ? (
+        <CustomRewardModal
+          visible={isVisible("reward")}
+          onRequestClose={() => hide("reward")}
+          title="Récompenses"
+          desc="Voici tous ce qu'à trouvé votre Yaris pendant son expédition !"
+          rewards={yarisReward}
+          onPressEarnBtn={() => {
+            earnMany(
+              yarisReward.map(({ resource, number }) => [resource, number])
+            );
+          }}
+        ></CustomRewardModal>
+      ) : (
+        <CustomModal
+          visible={isVisible("reward")}
+          onRequestClose={() => hide("reward")}
+          title="Récompenses"
+          desc="Mince... Vous n'avez pas dormi assez longtemps pour recevoir des récompenses..."
+        ></CustomModal>
+      )}
     </>
   );
 }

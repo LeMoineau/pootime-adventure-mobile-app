@@ -1,18 +1,19 @@
 import { ActivityIndicator, Modal, ModalProps, Text, View } from "react-native";
 import { style } from "../../../../common/utils/style-utils";
 import React from "react";
-import CustomModal, {
-  CustomModalProps,
-} from "../../../../common/components/modals/primitives/CustomModal";
+import CustomModal from "../../../../common/components/modals/primitives/CustomModal";
 
 export default function WaitForFightModal({
   visible,
   onRequestClose,
-}: CustomModalProps) {
+}: {
+  visible: boolean;
+  onRequestClose: () => void;
+}) {
   return (
     <CustomModal
       visible={visible}
-      title="Chargement..."
+      title={"Chargement..."}
       closeWhenPressingTransparentOverlay
       onRequestClose={onRequestClose}
     >

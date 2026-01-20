@@ -8,7 +8,6 @@ import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
 import { Resources } from "../../../../common/config/constants/Resources";
-import { StructureCost } from "../../../../common/types/village/StructureCost";
 
 export default function StructureInfosUpgradeTab() {
   const { selectedStructureName: structName, get, upgrade } = useVillageStore();
@@ -23,10 +22,10 @@ export default function StructureInfosUpgradeTab() {
     <>
       <ScrollView style={[{ padding: 10 }]}>
         <Text style={[{ fontSize: 15, fontWeight: "500", letterSpacing: 0.5 }]}>
-          Upgrade
+          Amélioration
         </Text>
         <Text style={[{ fontSize: 12, marginBottom: 10 }]}>
-          Resources needed for next upgrade
+          Ressources nécessaire pour le prochain niveau
         </Text>
 
         {/* NEEDED RESOURCES */}

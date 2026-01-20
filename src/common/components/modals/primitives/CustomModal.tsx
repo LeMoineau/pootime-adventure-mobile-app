@@ -1,7 +1,6 @@
 import {
   ColorValue,
   Modal,
-  NativeSyntheticEvent,
   Pressable,
   StyleProp,
   Text,
@@ -112,7 +111,7 @@ export default function CustomModal({
                 backgroundColor: colors.white,
                 borderRadius: 5,
                 borderColor: colors.gray[300],
-                gap: 10,
+                gap: 20,
               },
               containerStyle,
             ]}

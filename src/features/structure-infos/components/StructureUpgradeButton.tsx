@@ -7,11 +7,11 @@ import { useResourcesStore } from "../../../common/stores/resources.store";
 import { useVillageStore } from "../../../common/stores/village.store";
 import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
 import ExpoIcon from "../../../common/components/icons/ExpoIcon";
-import ConfirmModal from "../../../common/components/modals/primitives/ConfirmModal";
 import useModals from "../../../common/hooks/ui/use-modals";
 import { UpgradeCost } from "../../../common/types/village/StructureCost";
 import { useEffect } from "react";
 import useStructure from "../../(tabs)/village/hooks/use-structure";
+import CustomConfirmModal from "../../../common/components/modals/primitives/CustomConfirmModal";
 
 export default function StructureUpgradeButton({
   onUpgrade,
@@ -109,10 +109,14 @@ export default function StructureUpgradeButton({
         </StandardButton>
       )}
       {structName && (
-        <ConfirmModal
+        <CustomConfirmModal
           visible={isVisible("confirm")}
+          title="Améliorer"
+          desc={`Êtes-vous sûr de vouloir améliorer le bâtiment "${
+            VillageUtils.getStructureData(structName).name
+          }" ?`}
           onRequestClose={() => hide("confirm")}
-          onConfirm={() => {
+          onConfirmBtnPress={() => {
             structName &&
               onUpgrade &&
               onUpgrade(
@@ -122,14 +126,7 @@ export default function StructureUpgradeButton({
                 )!
               );
           }}
-        >
-          <View>
-            <Text style={[style.textCenter, {}]}>
-              Are you sure to upgrade the structure "
-              {VillageUtils.getStructureData(structName).name}" ?
-            </Text>
-          </View>
-        </ConfirmModal>
+        ></CustomConfirmModal>
       )}
     </>
   );

@@ -26,7 +26,9 @@ export default function StructureInfosMainTab() {
       >
         {structName && get(structName).level <= 0 ? (
           <View style={[{ flex: 1 }]}>
-            <Text>You need to build the structure to use it !</Text>
+            <Text style={{ textAlign: "center" }}>
+              Vous devez avoir construit le bâtiment pour pouvoir l'utiliser !
+            </Text>
           </View>
         ) : (
           <ScrollView style={[{ width: "100%" }]}>
