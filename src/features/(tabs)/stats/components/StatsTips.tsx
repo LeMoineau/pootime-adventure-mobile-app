@@ -10,7 +10,7 @@ export default function StatsTips() {
         style.flexWrap,
         style.justifyCenter,
         style.itemsCenter,
-        { width: "100%", marginTop: 10 },
+        { width: "100%", marginTop: 20 },
       ]}
     >
       <Text style={[style.textBold, style.textSm, style.textCenter]}>

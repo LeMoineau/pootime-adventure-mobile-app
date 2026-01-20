@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import FightTopBar from "../../features/(tabs)/stats/components/StatsTopBar";
+import StatsTopBar from "../../features/(tabs)/stats/components/StatsTopBar";
 import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
 import StatsIcons from "../../common/components/icons/stats";
 import PooUltiIcon from "../../common/components/icons/pooUlti";
@@ -20,7 +20,7 @@ export default function StatsTab() {
           { paddingTop: 10, paddingHorizontal: 10 },
         ]}
       >
-        <FightTopBar></FightTopBar>
+        <StatsTopBar></StatsTopBar>
         <RoundedScrollView
           defaultTab={0}
           tabs={[

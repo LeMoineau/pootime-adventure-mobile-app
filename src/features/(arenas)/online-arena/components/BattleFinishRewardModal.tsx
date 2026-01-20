@@ -16,11 +16,7 @@ export default function BattleFinishRewardModal({
   return (
     <CustomRewardModal
       visible={visible}
-      title={
-        winner
-          ? "You'rrrre the WINNER ! 🎊"
-          : "Oups.. Vous avez glissé chef!.. 🥀"
-      }
+      title={winner ? "Gagner ! 🎊" : "Perdu... 🥀"}
       desc={
         winner
           ? "Bravo ! Voici la récompense de votre incroyable réussite !"

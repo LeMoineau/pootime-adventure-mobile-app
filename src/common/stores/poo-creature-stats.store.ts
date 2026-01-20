@@ -10,11 +10,12 @@ import { CurveUtils } from "../utils/curve-utils";
 import { PooCreatureStats } from "../types/PooCreatureStats";
 
 export type PooCreatureStatsStore = {
-  incrStat: (stat: StatType) => Promise<void>;
+  incrStat: (stat: StatType, val?: number) => Promise<void>;
   toggleUlti: (ulti: string) => Promise<void>;
   resetData: () => Promise<void>;
   calculateAllStarsSpent: () => number;
   getStat: (stat: keyof PooCreatureStats) => any;
+  resetStat: (stat: keyof PooCreatureStats) => any;
   loadData: (data: DataInStorage.PooCreatureStats) => Promise<void>;
 } & DataInStorage.PooCreatureStats;
 
@@ -33,15 +34,16 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       }
     });
 
-    const incrStat = async (stat: StatType) => {
-      const gain = MathUtils.calculateGainStat(stat, get()[stat]);
-      set((state) => ({ [stat]: state[stat] + gain }));
+    const incrStat = async (stat: StatType, val: number = 1) => {
+      let mult = 1;
+      if (stat === "pv" || stat === "mana") mult = 5;
+      set((state) => ({ [stat]: state[stat] - -val * mult }));
       await saveItemInJson(StorageKeys.POO_CREATURE_STATS, stat, get()[stat]);
-      await _incrExp();
+      await _incrExp(val);
     };
 
-    const _incrExp = async () => {
-      let currentExp = get().currentExp + 1;
+    const _incrExp = async (val: number = 1) => {
+      let currentExp = get().currentExp + val;
       if (currentExp >= CurveUtils.calculateExpNeedForNextLevel(get().level)) {
         set((state) => ({ level: state.level + 1, currentExp: 0 }));
       } else {
@@ -50,12 +52,12 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       await saveItemInJson(
         StorageKeys.POO_CREATURE_STATS,
         "level",
-        get().level
+        get().level,
       );
       await saveItemInJson(
         StorageKeys.POO_CREATURE_STATS,
         "currentExp",
-        get().currentExp
+        get().currentExp,
       );
     };
 
@@ -65,14 +67,14 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       await saveItemInJson(
         StorageKeys.POO_CREATURE_STATS,
         "ultiSelected",
-        ultiSelected
+        ultiSelected,
       );
     };
 
     const resetData = async () => {
       await saveJson(
         StorageKeys.POO_CREATURE_STATS,
-        DefaultValues.PooCreatureStats
+        DefaultValues.PooCreatureStats,
       );
       set({ ...DefaultValues.PooCreatureStats });
     };
@@ -98,6 +100,15 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       return get()[stat];
     };
 
+    const resetStat = async (stat: keyof PooCreatureStats) => {
+      set({ [stat]: DefaultValues.PooCreatureStats[stat] });
+      await saveItemInJson(
+        StorageKeys.POO_CREATURE_STATS,
+        stat,
+        `${DefaultValues.PooCreatureStats[stat]}`,
+      );
+    };
+
     return {
       ...DefaultValues.PooCreatureStats,
       incrStat,
@@ -106,6 +117,7 @@ export const usePooCreatureStatsStore = create<PooCreatureStatsStore>(
       calculateAllStarsSpent,
       getStat,
       loadData,
+      resetStat,
     };
-  }
+  },
 );

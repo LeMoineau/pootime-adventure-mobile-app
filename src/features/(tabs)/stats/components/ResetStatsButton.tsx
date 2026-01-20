@@ -44,11 +44,18 @@ export default function ResetStatsButton() {
           resetData();
         }}
       >
-        <Text style={{ textAlign: "center", textAlignVertical: "center" }}>
-          Êtes-vous sûr de vouloir réinitialiser vos stats ? (Vous allez
-          récupérer {calculateAllStarsSpent()}
-          {"  "}
-          <ResourceIcon size={20} resource="stars"></ResourceIcon> )
+        <Text
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            textAlignVertical: "center",
+          }}
+        >
+          Êtes-vous sûr de vouloir réinitialiser vos stats ? ( Vous allez
+          récupérer {calculateAllStarsSpent()}{" "}
+          <ResourceIcon size={12} resource="stars"></ResourceIcon> )
         </Text>
       </CustomConfirmModal>
     </>

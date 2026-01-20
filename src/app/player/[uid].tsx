@@ -20,7 +20,7 @@ import InventoryItem from "../../common/components/items/slot/InventorySlotItem"
 import { Resources } from "../../common/config/constants/Resources";
 import { StructureName } from "../../common/config/constants/Structures";
 import StructureSlotItem from "../../common/components/items/slot/StructureSlotItem";
-import ShopItems from "../../common/config/constants/ShopItems";
+import ShopItems from "../../common/constants/shop/shop-items";
 import BodyColorSlotItem from "../../common/components/items/slot/BodyColorSlotItem";
 import HeadSlotItem from "../../common/components/items/slot/HeadSlotItem";
 import ExpressionSlotItem from "../../common/components/items/slot/ExpressionSlotItem";
@@ -296,7 +296,7 @@ export default function PlayerInfosPage() {
                     hideLeftDivider
                     viewStyle={{ paddingTop: 30, paddingBottom: 10 }}
                   >
-                    Expression débloquées
+                    Visages débloquées
                   </TitleWithDivider>
                   <View
                     style={[

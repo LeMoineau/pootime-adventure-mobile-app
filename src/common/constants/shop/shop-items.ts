@@ -9,7 +9,7 @@ const ShopItems: {
   };
 } = {
   bodyColors: {
-    sectionTitle: "Body Color",
+    sectionTitle: "Couleur",
     items: [
       { item: colors.baseBodyColor },
       { item: colors.red[300] },
@@ -36,7 +36,7 @@ const ShopItems: {
     ],
   },
   heads: {
-    sectionTitle: "Head",
+    sectionTitle: "Tête",
     items: [
       { item: "classic" },
       {
@@ -73,7 +73,7 @@ const ShopItems: {
     ],
   },
   expressions: {
-    sectionTitle: "Face",
+    sectionTitle: "Visage",
     items: [
       { item: "https://bigstones.fr/pootime-adventure/expressions/smile.png" },
 
