@@ -10,6 +10,7 @@ import StandardButton from "../buttons/StandardButton";
 import ExpoIcon from "../icons/ExpoIcon";
 import useAnimatedValue from "../../hooks/ui/use-animated-value";
 import { DefaultValues } from "../../config/DefaultValues";
+import { useShallow } from "zustand/react/shallow";
 
 export default function StatIncrementorItem({
   stat,
@@ -26,7 +27,14 @@ export default function StatIncrementorItem({
     incrStat: _incrStat,
     ..._stats
   } = usePooCreatureStatsStore();
-  const { get, spend, earn } = useResourcesStore();
+  const { stars, spend, earn } = useResourcesStore(
+    useShallow(({ inventory, spend, earn }) => ({
+      stars: inventory.stars,
+      spend,
+      earn,
+    })),
+  );
+
   const { animValue, setEnabled } = useAnimatedValue({
     duration: 100,
   });
@@ -60,16 +68,16 @@ export default function StatIncrementorItem({
 
   const incrStat = (val: number | "max") => {
     if (val === "max") {
-      val = get("stars");
+      val = stars;
     }
-    if (val <= 0 || val > get("stars")) return;
+    if (val <= 0 || val > stars) return;
     spend("stars", val, () => {
       _incrStat(stat, val);
     });
   };
 
   const purchasable = (val: number) => {
-    return val <= get("stars");
+    return val <= stars;
   };
 
   return (
