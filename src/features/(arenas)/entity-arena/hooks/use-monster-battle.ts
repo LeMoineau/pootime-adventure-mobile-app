@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { EntityBattleWinner } from "../../../../common/types/battle/entity-battle/EntityBattleTypes";
 import { BattleReward } from "../../../../common/types/battle/BattleReward";
 import { Zone } from "../../../../common/models/zones/Zone";
 import { Monster } from "../../../../common/models/entities/monsters/Monster";
@@ -8,6 +7,8 @@ import { PlayerState } from "../../../../common/types/battle/entities/PlayerStat
 import { Player } from "../../../../common/models/entities/players/Player";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import cloneService from "../../../../common/services/clone.service";
+
+export type EntityBattleWinner = "player" | "monster";
 
 export default function useMonsterBattle() {
   const {
@@ -85,17 +86,17 @@ export default function useMonsterBattle() {
   };
 
   const _updateBattleState = (
-    newEntityState: MonsterState,
-    newPlayerState: PlayerState
+    newMonsterState: MonsterState,
+    newPlayerState: PlayerState,
   ) => {
-    setMonsterState(newEntityState);
+    setMonsterState(newMonsterState);
     setPlayerState(newPlayerState);
-    _checkVictory(newEntityState, newPlayerState);
+    _checkVictory(newMonsterState, newPlayerState);
   };
 
   const _checkVictory = (
     entityState: MonsterState,
-    playerState: PlayerState
+    playerState: PlayerState,
   ) => {
     if (
       !battleFinish &&
