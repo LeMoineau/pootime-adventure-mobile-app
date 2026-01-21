@@ -6,7 +6,7 @@ import { ObjectUtils } from "../utils/object-utils";
 import { Inventory } from "../types/resources/Inventory";
 import { Resources } from "../config/constants/Resources";
 
-type Store = {
+export type ResourceStore = {
   inventory: Inventory;
   earn: (resource: Resources, val: number) => Promise<void>;
   earnMany: (earnings: [Resources, number][]) => void;
@@ -14,20 +14,20 @@ type Store = {
     resource: Resources,
     val: number,
     onSuccess?: (newVal: number) => void,
-    onFailed?: (val: number) => void
+    onFailed?: (val: number) => void,
   ) => Promise<void>;
   spendMany: (
     resources: Resources[],
     vals: number[],
     onSuccess?: () => void,
-    onFailed?: () => void
+    onFailed?: () => void,
   ) => Promise<void>;
   resetData: () => Promise<void>;
   get: (resource: Resources) => number;
   loadData: (data: Inventory) => Promise<void>;
 };
 
-export const useResourcesStore = create<Store>((set, get) => {
+export const useResourcesStore = create<ResourceStore>((set, get) => {
   const { getJson, saveJson, saveItemInJson, removeItem } = useStorage();
 
   getJson(StorageKeys.INVENTORY).then(async (json) => {
@@ -74,7 +74,7 @@ export const useResourcesStore = create<Store>((set, get) => {
     resource: Resources,
     val: number,
     onSuccess?: (newVal: number) => void,
-    onFailed?: (val: number) => void
+    onFailed?: (val: number) => void,
   ) => {
     let currentInv = { ...get().inventory };
     if (currentInv[resource] >= val) {
@@ -91,11 +91,11 @@ export const useResourcesStore = create<Store>((set, get) => {
     resources: Resources[],
     vals: number[],
     onSuccess?: () => void,
-    onFailed?: () => void
+    onFailed?: () => void,
   ) => {
     if (resources.length !== vals.length) {
       console.error(
-        `resources array ${resources} and vals array ${vals} have not the same size`
+        `resources array ${resources} and vals array ${vals} have not the same size`,
       );
       onFailed && onFailed();
       return;

@@ -7,23 +7,23 @@ import { Resources } from "../config/constants/Resources";
 export namespace VillageUtils {
   export function getUpgradeCostOf(
     structureName: StructureName,
-    currentLevel: number
+    currentLevel: number,
   ): UpgradeCost | undefined {
     return Structures[structureName].upgradeCosts.find(
-      (c) => c.fromLevel === currentLevel
+      (c) => c.fromLevel === currentLevel,
     );
   }
 
   export function hasUpgradeFrom(
     structureName: StructureName,
-    currentLevel: number
+    currentLevel: number,
   ): boolean {
     return getUpgradeCostOf(structureName, currentLevel) !== undefined;
   }
 
   export function iterateOnUpgradeCostOf(
     structureName: StructureName,
-    currentLevel: number
+    currentLevel: number,
   ): [Resources, number][] {
     const cost = getUpgradeCostOf(structureName, currentLevel);
     if (!cost) return [];
@@ -39,7 +39,7 @@ export namespace VillageUtils {
 
   export function calculateToiletRewards(
     elapsedTime: number,
-    toiletLevel: number
+    toiletLevel: number,
   ): BattleReward {
     let starEarn = 0;
     let pooCoinsEarn = 0;
@@ -59,11 +59,11 @@ export namespace VillageUtils {
 
   export function calculateYarisRewards(
     elapsedTime: number,
-    yarisLevel: number
+    yarisLevel: number,
   ): BattleReward {
     const calculateResourceReward = (
       value: number,
-      resource: Resources
+      resource: Resources,
     ): number => {
       return value > maxValues[resource]! ? maxValues[resource]! : value;
     };

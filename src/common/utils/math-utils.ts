@@ -1,18 +1,7 @@
 import { NumberProp } from "react-native-svg";
 import { CustomSvgProps } from "../types/CustomSvgProps";
-import { StatType } from "../types/StatType";
 
 export namespace MathUtils {
-  export function calculateGainStat(
-    stat: StatType,
-    currentValue: number
-  ): number {
-    if (stat === "pv" || stat === "mana") {
-      return 5;
-    }
-    return 1;
-  }
-
   export function getRandomInt(max: number, min?: number) {
     return (min ?? 0) + Math.floor(Math.random() * (min ? max - min + 1 : max));
   }
@@ -20,7 +9,7 @@ export namespace MathUtils {
   export function divideToMaxFixed(
     val: number,
     divider: number,
-    maxFixed: number
+    maxFixed: number,
   ): number {
     return (
       Math.floor((val / divider) * Math.pow(10, maxFixed)) /
@@ -41,7 +30,7 @@ export namespace MathUtils {
   export function calculateSvgWidth(
     width: number,
     height: number,
-    props: CustomSvgProps
+    props: CustomSvgProps,
   ): NumberProp {
     if (props.height && !props.width && typeof props.height === "number") {
       return (width * props.height) / height;
@@ -52,7 +41,7 @@ export namespace MathUtils {
   export function calculateSvgHeight(
     width: number,
     height: number,
-    props: CustomSvgProps
+    props: CustomSvgProps,
   ): NumberProp {
     if (props.width && !props.height && typeof props.width === "number") {
       return (height * props.width) / width;
@@ -63,7 +52,7 @@ export namespace MathUtils {
   export function calculateSvgDimension(
     width: number,
     height: number,
-    props: CustomSvgProps
+    props: CustomSvgProps,
   ): { width: NumberProp; height: NumberProp } {
     return {
       width: calculateSvgWidth(width, height, props),

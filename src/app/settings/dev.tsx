@@ -11,7 +11,7 @@ import { DefaultValues } from "../../common/config/DefaultValues";
 
 export default function DevSettings() {
   const itemsUnlocked = useItemsUnlockedStore();
-  const { inventory } = useResourcesStore();
+  const inventory = useResourcesStore((state) => state.inventory);
   const { cache } = useContext(CacheContext);
 
   return (
