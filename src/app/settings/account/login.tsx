@@ -7,8 +7,8 @@ import { z } from "zod";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuthentication } from "../../../hooks/firebase/use-authentification";
 import { colors } from "../../../utils/color-utils";
-import SettingsPage from "../../../features/settings/components/SettingsPage";
-import SettingsHeader from "../../../features/settings/components/SettingsHeader";
+import SettingsPage from "../../../components/features/settings/components/SettingsPage";
+import SettingsHeader from "../../../components/features/settings/components/SettingsHeader";
 import { router } from "expo-router";
 
 export default function LoginPage() {

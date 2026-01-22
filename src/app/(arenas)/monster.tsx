@@ -4,14 +4,14 @@ import { colors } from "../../utils/color-utils";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { useResourcesStore } from "../../stores/resources.store";
 import { useLocalSearchParams } from "expo-router";
-import useMonsterBattle from "../../features/(arenas)/entity-arena/hooks/use-monster-battle";
+import useMonsterBattle from "../../components/features/(arenas)/entity-arena/hooks/use-monster-battle";
 import * as NavigationBar from "expo-navigation-bar";
 import useModal from "../../hooks/ui/use-modal";
 import CustomRewardModal from "../../components/common/modals/primitives/CustomRewardModal";
-import LoseAgainstEntityModal from "../../features/(arenas)/entity-arena/components/LoseAgainstEntityModal";
-import WinAgainstEntityModal from "../../features/(arenas)/entity-arena/components/WinAgainstEntityModal";
+import LoseAgainstEntityModal from "../../components/features/(arenas)/entity-arena/components/LoseAgainstEntityModal";
+import WinAgainstEntityModal from "../../components/features/(arenas)/entity-arena/components/WinAgainstEntityModal";
 import { zones } from "../../constants/battle/adventure-zones";
-import MonsterView from "../../features/(arenas)/entity-arena/components/MonsterView";
+import MonsterView from "../../components/features/(arenas)/entity-arena/components/MonsterView";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 
 export default function MonsterArena() {

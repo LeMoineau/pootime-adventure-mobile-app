@@ -1,6 +1,6 @@
 import PooCreature from "../../components/common/misc/poo-creature/PooCreature";
 import Arena from "../../components/common/views/arena/Arena";
-import useOnlineBattle from "../../features/(arenas)/online-arena/hooks/use-online-battle";
+import useOnlineBattle from "../../components/features/(arenas)/online-arena/hooks/use-online-battle";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { useResourcesStore } from "../../stores/resources.store";
@@ -8,7 +8,7 @@ import { View } from "react-native";
 import NodeShadow from "../../components/common/views/arena/elements/NodeShadow";
 import { useEffect } from "react";
 import { Resources } from "../../config/constants/Resources";
-import BattleFinishRewardModal from "../../features/(arenas)/online-arena/components/BattleFinishRewardModal";
+import BattleFinishRewardModal from "../../components/features/(arenas)/online-arena/components/BattleFinishRewardModal";
 import { router } from "expo-router";
 
 export default function OnlineArenaScreen() {

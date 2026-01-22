@@ -1,8 +1,8 @@
 import { Text } from "react-native";
 import { style } from "../../utils/style-utils";
 import PooUltiIcon from "../../components/common/icons/pooUlti";
-import SettingsPage from "../../features/settings/components/SettingsPage";
-import SettingsHeader from "../../features/settings/components/SettingsHeader";
+import SettingsPage from "../../components/features/settings/components/SettingsPage";
+import SettingsHeader from "../../components/features/settings/components/SettingsHeader";
 import { router } from "expo-router";
 
 export default function TutoSettings() {
