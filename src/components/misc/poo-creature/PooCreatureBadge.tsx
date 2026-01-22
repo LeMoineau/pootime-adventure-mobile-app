@@ -1,7 +1,7 @@
 import { ColorValue, StyleProp, Text, View, ViewStyle } from "react-native";
-import { style } from "../../../common/utils/style-utils";
+import { style } from "../../../utils/style-utils";
 import PooCreatureHead from "./PooCreatureHead";
-import { colors } from "../../../common/utils/color-utils";
+import { colors } from "../../../utils/color-utils";
 import LevelProgressBar from "../../fields/LevelProgressBar";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { PooHeadName } from "../../../types/shop/BuyableItem";

@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import StandardButton from "../../../../../components/buttons/StandardButton";
-import { style } from "../../../../../common/utils/style-utils";
-import { colors } from "../../../../../common/utils/color-utils";
+import { style } from "../../../../../utils/style-utils";
+import { colors } from "../../../../../utils/color-utils";
 import TabTitle from "../../TabTitle";
 import TabText from "../../TabText";
 import Divider from "../../../../../components/text/Divider";
@@ -11,7 +11,7 @@ import useModals from "../../../../../common/hooks/ui/use-modals";
 import PooingRewardModal from "./PooingRewardModal";
 import { BattleReward } from "../../../../../types/battle/BattleReward";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
-import { VillageUtils } from "../../../../../common/utils/village-utils";
+import { VillageUtils } from "../../../../../utils/village-utils";
 import { useVillageStore } from "../../../../../common/stores/village.store";
 
 export default function ToiletPower({}: { dateNow: number }) {

@@ -6,7 +6,7 @@ import useModals from "../../../../common/hooks/ui/use-modals";
 import { BattleFinalState } from "../../../../types/battle/BattleFinalState";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
-import { DateUtils } from "../../../../common/utils/date-utils";
+import { DateUtils } from "../../../../utils/date-utils";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { router } from "expo-router";
 import { globalSocket, refreshSocket } from "../../../../config/socket";

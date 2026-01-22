@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
-import { style } from "../../common/utils/style-utils";
+import { style } from "../../utils/style-utils";
 
 const FOCUSED_TAB_OFFSET = 50;
 

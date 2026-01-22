@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { style } from "../../../../../common/utils/style-utils";
+import { style } from "../../../../../utils/style-utils";
 import { ItemInStore } from "../../../../../types/itemInStore";
 import UltiView from "../UltiButton";
 import IconFromImage from "../../../../../components/icons/IconFromImage";

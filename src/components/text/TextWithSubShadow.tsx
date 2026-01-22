@@ -1,6 +1,6 @@
 import { StyleProp, Text, TextStyle } from "react-native";
-import { style as styleUtils } from "../../common/utils/style-utils";
-import { colors } from "../../common/utils/color-utils";
+import { style as styleUtils } from "../../utils/style-utils";
+import { colors } from "../../utils/color-utils";
 import React from "react";
 
 export default function TextWithSubShadow({

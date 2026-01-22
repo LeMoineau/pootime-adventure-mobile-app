@@ -1,4 +1,4 @@
-import { colors } from "../common/utils/color-utils";
+import { colors } from "../utils/color-utils";
 import { ColorPalette } from "color-curves";
 import { Inventory } from "../types/resources/Inventory";
 import { DataInStorage } from "./DataInStorage";

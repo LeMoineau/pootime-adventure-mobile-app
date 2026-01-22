@@ -1,4 +1,4 @@
-import { colors } from "../common/utils/color-utils";
+import { colors } from "../utils/color-utils";
 import { Resources } from "../config/constants/Resources";
 
 export namespace ItemInStore {

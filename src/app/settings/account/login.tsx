@@ -1,12 +1,12 @@
 import { Button, Text, View } from "react-native";
-import { style } from "../../../common/utils/style-utils";
+import { style } from "../../../utils/style-utils";
 import FormInputField from "../../../components/fields/FormInputField";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
-import { colors } from "../../../common/utils/color-utils";
+import { colors } from "../../../utils/color-utils";
 import SettingsPage from "../../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../../features/settings/components/SettingsHeader";
 import { router } from "expo-router";

@@ -4,11 +4,11 @@ import {
   isResourceItemValue,
   isStringItemValue,
 } from "../../../../../types/shop/UnlockableItems";
-import { style } from "../../../../../common/utils/style-utils";
-import { CurveUtils } from "../../../../../common/utils/curve-utils";
+import { style } from "../../../../../utils/style-utils";
+import { CurveUtils } from "../../../../../utils/curve-utils";
 import { usePooCreatureStatsStore } from "../../../../../common/stores/poo-creature-stats.store";
 import TextWithResourceIcon from "../../../../../components/text/TextWithResourceIcon";
-import { MathUtils } from "../../../../../common/utils/math-utils";
+import { MathUtils } from "../../../../../utils/math-utils";
 import {
   BuyableItemValue,
   PooHeadName,

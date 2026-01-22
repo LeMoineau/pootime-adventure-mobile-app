@@ -1,10 +1,10 @@
 import { View } from "react-native";
 import CustomPage from "../../components/navigation/CustomPage";
-import { style } from "../../common/utils/style-utils";
+import { style } from "../../utils/style-utils";
 import PooCreatureView from "../../features/(tabs)/home/components/HomePooCreature";
 import HomeTopBar from "../../features/(tabs)/home/components/HomeTopBar";
 import StandardButton from "../../components/buttons/StandardButton";
-import { colors } from "../../common/utils/color-utils";
+import { colors } from "../../utils/color-utils";
 import { useRouter } from "expo-router";
 
 export default function HomeTab() {

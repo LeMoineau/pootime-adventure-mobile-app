@@ -9,8 +9,8 @@ import {
   ViewStyle,
 } from "react-native";
 import React from "react";
-import { style } from "../../../common/utils/style-utils";
-import { colors } from "../../../common/utils/color-utils";
+import { style } from "../../../utils/style-utils";
+import { colors } from "../../../utils/color-utils";
 import TextWithSubShadow from "../../text/TextWithSubShadow";
 import StandardButton from "../../buttons/StandardButton";
 import Color from "color";

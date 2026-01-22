@@ -1,7 +1,7 @@
 import * as React from "react";
 import Svg, { Path, SvgProps } from "react-native-svg";
 import { CustomSvgProps } from "../../../types/CustomSvgProps";
-import { MathUtils } from "../../../common/utils/math-utils";
+import { MathUtils } from "../../../utils/math-utils";
 export default function LeaderboardIcon(props: SvgProps & CustomSvgProps) {
   return (
     <Svg

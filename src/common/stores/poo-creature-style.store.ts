@@ -2,7 +2,7 @@ import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../../config/StorageKeys";
 import { DefaultValues } from "../../config/DefaultValues";
-import { ObjectUtils } from "../utils/object-utils";
+import { ObjectUtils } from "../../utils/object-utils";
 import { DataInStorage } from "../../types/dataInStorage";
 import { StyleKeys } from "../../types/poo-creature-style/StyleKeys";
 

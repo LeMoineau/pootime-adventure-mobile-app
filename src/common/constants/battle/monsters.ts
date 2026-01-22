@@ -5,7 +5,7 @@ import { Pingoo } from "../../../models/entities/monsters/Pingoo";
 import { Poulpe } from "../../../models/entities/monsters/Poulpe";
 import { Sheep } from "../../../models/entities/monsters/Sheep";
 import { Tank } from "../../../models/entities/monsters/Tank";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../../utils/color-utils";
 
 /**
 const xpNeededForNextLevel = (l) => {return Math.round(1.5 + l * 1.2)}

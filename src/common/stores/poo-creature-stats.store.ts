@@ -3,10 +3,10 @@ import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../../config/StorageKeys";
 import { DefaultValues } from "../../config/DefaultValues";
 import { StatType } from "../../types/StatType";
-import { MathUtils } from "../utils/math-utils";
-import { ObjectUtils } from "../utils/object-utils";
+import { MathUtils } from "../../utils/math-utils";
+import { ObjectUtils } from "../../utils/object-utils";
 import { DataInStorage } from "../../types/dataInStorage";
-import { CurveUtils } from "../utils/curve-utils";
+import { CurveUtils } from "../../utils/curve-utils";
 import { PooCreatureStats } from "../../types/PooCreatureStats";
 
 export type PooCreatureStatsStore = {

@@ -1,8 +1,8 @@
 import { Text, View } from "react-native";
 import StandardButton from "../../../components/buttons/StandardButton";
-import { colors } from "../../../common/utils/color-utils";
-import { style } from "../../../common/utils/style-utils";
-import { VillageUtils } from "../../../common/utils/village-utils";
+import { colors } from "../../../utils/color-utils";
+import { style } from "../../../utils/style-utils";
+import { VillageUtils } from "../../../utils/village-utils";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import { useVillageStore } from "../../../common/stores/village.store";
 import TextWithResourceIcon from "../../../components/text/TextWithResourceIcon";

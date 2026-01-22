@@ -1,4 +1,4 @@
-import { JSONObject } from "../../types/JSONObject";
+import { JSONObject } from "../types/JSONObject";
 
 export namespace ObjectUtils {
   export function equals(obj1: JSONObject, obj2: JSONObject): boolean {

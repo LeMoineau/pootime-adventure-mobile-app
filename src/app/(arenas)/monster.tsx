@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Arena from "../../components/views/arena/Arena";
-import { colors } from "../../common/utils/color-utils";
+import { colors } from "../../utils/color-utils";
 import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import { useLocalSearchParams } from "expo-router";

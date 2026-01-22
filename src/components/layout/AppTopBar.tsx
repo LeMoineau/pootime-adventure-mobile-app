@@ -1,12 +1,12 @@
 import { View, useWindowDimensions } from "react-native";
-import { style } from "../../common/utils/style-utils";
+import { style } from "../../utils/style-utils";
 import NumberField from "../fields/NumberField";
 import StarIcon from "../icons/resources/star";
 import PooCoinIcon from "../icons/resources/pooCoin";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import LevelProgressBar from "../fields/LevelProgressBar";
 import { LinearGradient } from "expo-linear-gradient";
-import { colors } from "../../common/utils/color-utils";
+import { colors } from "../../utils/color-utils";
 
 export default function AppTopBar() {
   const { width } = useWindowDimensions();

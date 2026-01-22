@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import PooCreature from "./PooCreature";
-import { style } from "../../../common/utils/style-utils";
+import { style } from "../../../utils/style-utils";
 import { PooHeadName } from "../../../types/shop/BuyableItem";
 
 export default function PooCreatureHead({

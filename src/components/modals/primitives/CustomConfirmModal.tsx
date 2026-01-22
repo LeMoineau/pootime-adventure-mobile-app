@@ -1,4 +1,4 @@
-import { colors } from "../../../common/utils/color-utils";
+import { colors } from "../../../utils/color-utils";
 import CustomModal, { CustomModalProps } from "./CustomModal";
 
 export default function CustomConfirmModal({

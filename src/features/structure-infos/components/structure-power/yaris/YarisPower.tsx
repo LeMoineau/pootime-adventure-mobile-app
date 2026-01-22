@@ -1,7 +1,7 @@
 import { View } from "react-native";
-import { style } from "../../../../../common/utils/style-utils";
+import { style } from "../../../../../utils/style-utils";
 import TabTitle from "../../TabTitle";
-import { colors } from "../../../../../common/utils/color-utils";
+import { colors } from "../../../../../utils/color-utils";
 import TabText from "../../TabText";
 import Divider from "../../../../../components/text/Divider";
 import StandardButton from "../../../../../components/buttons/StandardButton";
@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useVillageStore } from "../../../../../common/stores/village.store";
 import useModals from "../../../../../common/hooks/ui/use-modals";
 import { BattleReward } from "../../../../../types/battle/BattleReward";
-import { VillageUtils } from "../../../../../common/utils/village-utils";
+import { VillageUtils } from "../../../../../utils/village-utils";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
 import CustomConfirmModal from "../../../../../components/modals/primitives/CustomConfirmModal";
 import CustomRewardModal from "../../../../../components/modals/primitives/CustomRewardModal";

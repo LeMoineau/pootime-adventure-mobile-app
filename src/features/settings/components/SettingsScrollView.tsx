@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from "react-native";
-import { style } from "../../../common/utils/style-utils";
-import { colors } from "../../../common/utils/color-utils";
+import { style } from "../../../utils/style-utils";
+import { colors } from "../../../utils/color-utils";
 import SettingsItem, { SettingsItemProps } from "./SettingsItem";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { useState } from "react";

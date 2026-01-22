@@ -1,5 +1,5 @@
 import { Text } from "react-native";
-import { colors } from "../../../../common/utils/color-utils";
+import { colors } from "../../../../utils/color-utils";
 
 export default function ShopSectionTitle({ children }: { children?: string }) {
   return (

@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import StandardButton from "../../../../components/buttons/StandardButton";
 import PooCreatureHead from "../../../../components/misc/poo-creature/PooCreatureHead";
-import { style } from "../../../../common/utils/style-utils";
+import { style } from "../../../../utils/style-utils";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
 import { useResourcesStore } from "../../../../common/stores/resources.store";

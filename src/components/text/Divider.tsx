@@ -1,5 +1,5 @@
 import { StyleProp, View, ViewStyle } from "react-native";
-import { style as StyleUtils } from "../../common/utils/style-utils";
+import { style as StyleUtils } from "../../utils/style-utils";
 
 export default function Divider({ style }: { style?: StyleProp<ViewStyle> }) {
   return (

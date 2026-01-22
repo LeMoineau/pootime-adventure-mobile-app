@@ -1,5 +1,5 @@
 import { Animated, View } from "react-native";
-import { colors } from "../../../../common/utils/color-utils";
+import { colors } from "../../../../utils/color-utils";
 import NodeShadow from "./NodeShadow";
 
 export default function AdvNode({

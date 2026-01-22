@@ -1,6 +1,6 @@
 import { StyleProp, Text, View, ViewStyle } from "react-native";
-import { style } from "../../common/utils/style-utils";
-import { colors } from "../../common/utils/color-utils";
+import { style } from "../../utils/style-utils";
+import { colors } from "../../utils/color-utils";
 import { Image } from "expo-image";
 import { Ultis } from "../../types/Ultis";
 import ExpoIcon from "../icons/ExpoIcon";

@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { colors } from "../../../../common/utils/color-utils";
+import { colors } from "../../../../utils/color-utils";
 
 export default function NodeShadow({ shadowColor }: { shadowColor?: string }) {
   return (

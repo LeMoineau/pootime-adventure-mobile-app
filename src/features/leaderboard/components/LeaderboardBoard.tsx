@@ -1,6 +1,6 @@
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
-import { style } from "../../../common/utils/style-utils";
-import { colors } from "../../../common/utils/color-utils";
+import { style } from "../../../utils/style-utils";
+import { colors } from "../../../utils/color-utils";
 import ExpoIcon from "../../../components/icons/ExpoIcon";
 import React, { useState } from "react";
 import { IdentifiedUserData } from "../../../types/firebase/UserData";
@@ -8,7 +8,7 @@ import { LeaderboardDirection } from "../../../types/leaderboard/LeaderboardDire
 import LeaderboardRow from "./LeaderboardRow";
 import TextWithResourceIcon from "../../../components/text/TextWithResourceIcon";
 import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
-import { MathUtils } from "../../../common/utils/math-utils";
+import { MathUtils } from "../../../utils/math-utils";
 import { Resources } from "../../../config/constants/Resources";
 
 export default function LeaderboardBoard({

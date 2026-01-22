@@ -1,5 +1,5 @@
 import { Image, Text, View } from "react-native";
-import { style } from "../../common/utils/style-utils";
+import { style } from "../../utils/style-utils";
 import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { SettingsScrollView } from "../../features/settings/components/SettingsScrollView";

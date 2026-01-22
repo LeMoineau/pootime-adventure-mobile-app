@@ -1,9 +1,9 @@
 import { StyleProp, Text, View, ViewStyle } from "react-native";
 import { useResourcesStore } from "../../../common/stores/resources.store";
-import { style } from "../../../common/utils/style-utils";
+import { style } from "../../../utils/style-utils";
 import ResourceIcon from "../../icons/ResourceIcon";
-import { MathUtils } from "../../../common/utils/math-utils";
-import { colors } from "../../../common/utils/color-utils";
+import { MathUtils } from "../../../utils/math-utils";
+import { colors } from "../../../utils/color-utils";
 import { Resources } from "../../../config/constants/Resources";
 
 export default function InventorySlotItem({

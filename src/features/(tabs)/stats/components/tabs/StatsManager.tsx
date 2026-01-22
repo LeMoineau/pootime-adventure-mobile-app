@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { style } from "../../../../../common/utils/style-utils";
+import { style } from "../../../../../utils/style-utils";
 import StatsTips from "../StatsTips";
 import StatIncrementorItem from "../../../../../components/items/StatIncrementorItem";
 import { useState } from "react";

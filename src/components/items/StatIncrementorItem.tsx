@@ -5,7 +5,7 @@ import { stats } from "../../common/constants/stats/stats";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import { useEffect } from "react";
-import { colors } from "../../common/utils/color-utils";
+import { colors } from "../../utils/color-utils";
 import StandardButton from "../buttons/StandardButton";
 import ExpoIcon from "../icons/ExpoIcon";
 import useAnimatedValue from "../../common/hooks/ui/use-animated-value";

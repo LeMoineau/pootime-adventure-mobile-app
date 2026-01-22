@@ -2,9 +2,9 @@ import { Animated, Easing, Text, View } from "react-native";
 import useTimer from "../../../../../common/hooks/use-timer";
 import TabTitle from "../../TabTitle";
 import useAnimatedValue from "../../../../../common/hooks/ui/use-animated-value";
-import { style } from "../../../../../common/utils/style-utils";
+import { style } from "../../../../../utils/style-utils";
 import { useEffect } from "react";
-import { colors } from "../../../../../common/utils/color-utils";
+import { colors } from "../../../../../utils/color-utils";
 import CustomConfirmModal from "../../../../../components/modals/primitives/CustomConfirmModal";
 
 export default function ToiletTimer({

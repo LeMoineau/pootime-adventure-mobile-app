@@ -1,6 +1,6 @@
 import * as React from "react";
 import Svg, { Path, SvgProps } from "react-native-svg";
-import { MathUtils } from "../../../common/utils/math-utils";
+import { MathUtils } from "../../../utils/math-utils";
 import { CustomSvgProps } from "../../../types/CustomSvgProps";
 
 export default function PooTropheeIcon(props: SvgProps & CustomSvgProps) {

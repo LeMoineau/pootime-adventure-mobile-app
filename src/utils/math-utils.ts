@@ -1,5 +1,5 @@
 import { NumberProp } from "react-native-svg";
-import { CustomSvgProps } from "../../types/CustomSvgProps";
+import { CustomSvgProps } from "../types/CustomSvgProps";
 
 export namespace MathUtils {
   export function getRandomInt(max: number, min?: number) {

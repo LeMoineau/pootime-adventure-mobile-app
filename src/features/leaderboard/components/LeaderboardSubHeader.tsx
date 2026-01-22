@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
-import { style } from "../../../common/utils/style-utils";
+import { style } from "../../../utils/style-utils";
 import PooCreatureBadge from "../../../components/misc/poo-creature/PooCreatureBadge";
-import { colors } from "../../../common/utils/color-utils";
+import { colors } from "../../../utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import ResourceRank from "../../../components/text/ResourceRank";
 import { Resources } from "../../../config/constants/Resources";

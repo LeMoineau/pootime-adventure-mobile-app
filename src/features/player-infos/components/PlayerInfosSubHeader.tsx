@@ -1,10 +1,10 @@
 import { Text, View } from "react-native";
-import { style } from "../../../common/utils/style-utils";
+import { style } from "../../../utils/style-utils";
 import LoadingText from "../../../components/text/LoadingText";
 import LevelProgressBar from "../../../components/fields/LevelProgressBar";
 import ResourceRank from "../../../components/text/ResourceRank";
 import SkeletonText from "../../../components/text/SkeletonText";
-import { colors } from "../../../common/utils/color-utils";
+import { colors } from "../../../utils/color-utils";
 
 export default function PlayerInfosSubHeader({
   name,

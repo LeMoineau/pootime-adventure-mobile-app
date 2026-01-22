@@ -1,9 +1,9 @@
 import { TextInput, View } from "react-native";
-import { style } from "../../common/utils/style-utils";
+import { style } from "../../utils/style-utils";
 import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { router } from "expo-router";
-import { colors } from "../../common/utils/color-utils";
+import { colors } from "../../utils/color-utils";
 import StandardButton from "../../components/buttons/StandardButton";
 
 export default function DonationSettings() {

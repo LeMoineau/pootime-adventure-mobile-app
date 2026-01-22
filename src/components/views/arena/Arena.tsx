@@ -5,14 +5,14 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import { style } from "../../../common/utils/style-utils";
+import { style } from "../../../utils/style-utils";
 import CustomPage from "../../navigation/CustomPage";
 import PVPanel from "./elements/PVPanel";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
 import UltiButton from "./elements/UltiButton";
 import { UltiDetails, Ultis } from "../../../types/Ultis";
 import ReadyGoText from "./elements/ReadyGoText";
-import { colors } from "../../../common/utils/color-utils";
+import { colors } from "../../../utils/color-utils";
 import { DefaultValues } from "../../../config/DefaultValues";
 import { useEffect } from "react";
 import PlayerNode from "./elements/PlayerNode";

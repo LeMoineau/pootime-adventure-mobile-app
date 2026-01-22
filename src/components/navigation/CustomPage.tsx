@@ -1,6 +1,6 @@
 import { View, useWindowDimensions } from "react-native";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
-import { colors } from "../../common/utils/color-utils";
+import { colors } from "../../utils/color-utils";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function CustomPage({

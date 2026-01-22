@@ -1,8 +1,8 @@
 import { Text, View } from "react-native";
 import React, { useState } from "react";
 import { ServerTypes } from "../../../../types/battle/online-battle/ServerTypes";
-import { style } from "../../../../common/utils/style-utils";
-import { colors } from "../../../../common/utils/color-utils";
+import { style } from "../../../../utils/style-utils";
+import { colors } from "../../../../utils/color-utils";
 import PillButton from "../../../../components/buttons/PillButton";
 import InputField from "../../../../components/fields/InputField";
 import CustomModal from "../../../../components/modals/primitives/CustomModal";

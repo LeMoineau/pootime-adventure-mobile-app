@@ -1,6 +1,6 @@
 import { Animated, Pressable, View } from "react-native";
 import useAnimatedValue from "../../../../common/hooks/ui/use-animated-value";
-import { style } from "../../../../common/utils/style-utils";
+import { style } from "../../../../utils/style-utils";
 import StructureIcon from "../../../../components/icons/StructureIcon";
 import { Structure } from "../../../../types/village/Structure";
 import { useVillageStore } from "../../../../common/stores/village.store";

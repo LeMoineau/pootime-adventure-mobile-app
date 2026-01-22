@@ -1,7 +1,7 @@
 import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 import { Animated, TouchableOpacity, View } from "react-native";
-import { colors } from "../../../common/utils/color-utils";
-import { style } from "../../../common/utils/style-utils";
+import { colors } from "../../../utils/color-utils";
+import { style } from "../../../utils/style-utils";
 import React from "react";
 
 export default function StructureInfosTopBar({
@@ -90,7 +90,7 @@ export default function StructureInfosTopBar({
                         translateX: position.interpolate({
                           inputRange,
                           outputRange: inputRange.map((i) =>
-                            i - index < 0 ? -50 : i - index > 0 ? 50 : 0
+                            i - index < 0 ? -50 : i - index > 0 ? 50 : 0,
                           ),
                         }),
                       },

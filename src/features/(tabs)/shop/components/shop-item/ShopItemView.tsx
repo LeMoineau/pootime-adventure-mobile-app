@@ -3,8 +3,8 @@ import {
   isStringItemValue,
   isUnlockableItem,
 } from "../../../../../types/shop/UnlockableItems";
-import { style } from "../../../../../common/utils/style-utils";
-import { colors } from "../../../../../common/utils/color-utils";
+import { style } from "../../../../../utils/style-utils";
+import { colors } from "../../../../../utils/color-utils";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
 import { useItemsUnlockedStore } from "../../../../../common/stores/items-unlocked.store";
 import TextWithResourceIcon from "../../../../../components/text/TextWithResourceIcon";

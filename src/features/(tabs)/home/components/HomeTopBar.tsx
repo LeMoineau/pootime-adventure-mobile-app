@@ -1,6 +1,6 @@
 import { View, useWindowDimensions } from "react-native";
 import HomeProfileButton from "./HomeProfileButton";
-import { style } from "../../../../common/utils/style-utils";
+import { style } from "../../../../utils/style-utils";
 import StandardButton from "../../../../components/buttons/StandardButton";
 import ExpoIcon from "../../../../components/icons/ExpoIcon";
 import { useRouter } from "expo-router";

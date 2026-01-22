@@ -5,10 +5,10 @@ import { SinglePriceShopItem } from "../../../../types/shop/ShopItem";
 import { isResourcesItemValue } from "../../../../types/shop/BuyableItem";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { isResourceItemValue } from "../../../../types/shop/UnlockableItems";
-import { style } from "../../../../common/utils/style-utils";
-import { colors } from "../../../../common/utils/color-utils";
+import { style } from "../../../../utils/style-utils";
+import { colors } from "../../../../utils/color-utils";
 import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
-import { MathUtils } from "../../../../common/utils/math-utils";
+import { MathUtils } from "../../../../utils/math-utils";
 import StandardButton from "../../../../components/buttons/StandardButton";
 import ExpoIcon from "../../../../components/icons/ExpoIcon";
 

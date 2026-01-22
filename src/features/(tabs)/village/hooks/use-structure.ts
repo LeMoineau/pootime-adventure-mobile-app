@@ -4,7 +4,7 @@ import { StructureName } from "../../../../config/constants/Structures";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { useVillageStore } from "../../../../common/stores/village.store";
 import { Structure } from "../../../../types/village/Structure";
-import { VillageUtils } from "../../../../common/utils/village-utils";
+import { VillageUtils } from "../../../../utils/village-utils";
 
 const useStructure = () => {
   const [structName, setStructName] = useState<StructureName>();

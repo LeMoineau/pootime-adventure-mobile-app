@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { style } from "../../common/utils/style-utils";
+import { style } from "../../utils/style-utils";
 import PooBodyEditIcon from "../../components/icons/ui/pooBodyEdit";
 import CustomPage from "../../components/navigation/CustomPage";
 import PooCoinsConverterIcon from "../../components/icons/ui/pooCoinsConverter";

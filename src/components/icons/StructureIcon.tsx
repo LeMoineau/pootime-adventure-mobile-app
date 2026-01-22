@@ -4,7 +4,7 @@ import { useVillageStore } from "../../common/stores/village.store";
 import ToiletIcon from "./village/toilet/Toilet";
 import UnderConstructionIcon from "./village/under-construction/UnderConstruction";
 import YarisIcon from "./village/yaris/Yaris";
-import { style } from "../../common/utils/style-utils";
+import { style } from "../../utils/style-utils";
 
 export default function StructureIcon({
   structureName,

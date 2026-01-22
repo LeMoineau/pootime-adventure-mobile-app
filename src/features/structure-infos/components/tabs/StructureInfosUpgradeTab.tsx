@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { useVillageStore } from "../../../../common/stores/village.store";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import useStructure from "../../../(tabs)/village/hooks/use-structure";
-import { style } from "../../../../common/utils/style-utils";
-import { colors } from "../../../../common/utils/color-utils";
+import { style } from "../../../../utils/style-utils";
+import { colors } from "../../../../utils/color-utils";
 import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
 import { Resources } from "../../../../config/constants/Resources";
 

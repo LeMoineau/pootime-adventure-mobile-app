@@ -5,9 +5,9 @@ import {
   View,
 } from "react-native";
 import CustomPage from "../../components/navigation/CustomPage";
-import { style } from "../../common/utils/style-utils";
+import { style } from "../../utils/style-utils";
 import StandardButton from "../../components/buttons/StandardButton";
-import { colors } from "../../common/utils/color-utils";
+import { colors } from "../../utils/color-utils";
 import TitleWithDivider from "../../components/text/TitleWithDivider";
 import PreviousBattleItem from "../../components/items/PreviousBattleItem";
 import ExpoIcon from "../../components/icons/ExpoIcon";
