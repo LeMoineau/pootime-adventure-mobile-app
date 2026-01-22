@@ -1,21 +1,18 @@
 import { router } from "expo-router";
-import CustomModal from "../../../../common/modals/primitives/CustomModal";
-import { colors } from "../../../../../utils/color-utils";
-import { Monster } from "../../../../../models/entities/monsters/Monster";
+import CustomModal from "../../../common/modals/primitives/CustomModal";
+import { colors } from "../../../../utils/color-utils";
 
-export default function LoseAgainstEntityModal({
-  monster,
+export default function WinAgainstEntityModal({
   zoneIndex,
 }: {
-  monster: Monster;
   zoneIndex: number;
 }) {
   return (
     <CustomModal
       visible={true}
-      title="Perdu !"
-      desc={`Vous avez perdu contre ${monster.name}`}
-      mainColor={colors.red[400]}
+      title="Bravo !"
+      desc={`Vous avez gagné !`}
+      mainColor={colors.green[400]}
       containerStyle={{ gap: 20 }}
       actionsBtns={[
         {

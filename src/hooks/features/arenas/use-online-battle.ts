@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
-import { ServerTypes } from "../../../../../types/battle/online-battle/ServerTypes";
-import { SocketEvents } from "../../../../../types/SocketEvents";
-import { UltiDetails } from "../../../../../types/Ultis";
-import { usePooCreatureStyleStore } from "../../../../../stores/poo-creature-style.store";
-import { usePooCreatureStatsStore } from "../../../../../stores/poo-creature-stats.store";
-import { useResourcesStore } from "../../../../../stores/resources.store";
-import { getSocket } from "../../../../../config/socket";
+import { ServerTypes } from "../../../types/battle/online-battle/ServerTypes";
+import { SocketEvents } from "../../../types/SocketEvents";
+import { UltiDetails } from "../../../types/Ultis";
+import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
+import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.store";
+import { useResourcesStore } from "../../../stores/resources.store";
+import { getSocket } from "../../../config/socket";
 
 const useOnlineBattle = () => {
   const socket = getSocket();

@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { BattleReward } from "../../../../../types/battle/BattleReward";
-import { Zone } from "../../../../../models/zones/Zone";
-import { Monster } from "../../../../../models/entities/monsters/Monster";
-import { MonsterState } from "../../../../../types/battle/entities/MonsterState";
-import { PlayerState } from "../../../../../types/battle/entities/PlayerState";
-import { Player } from "../../../../../models/entities/players/Player";
-import { usePooCreatureStatsStore } from "../../../../../stores/poo-creature-stats.store";
-import cloneService from "../../../../../services/clone.service";
+import { BattleReward } from "../../../types/battle/BattleReward";
+import { Zone } from "../../../models/zones/Zone";
+import { Monster } from "../../../models/entities/monsters/Monster";
+import { MonsterState } from "../../../types/battle/entities/MonsterState";
+import { PlayerState } from "../../../types/battle/entities/PlayerState";
+import { Player } from "../../../models/entities/players/Player";
+import { usePooCreatureStatsStore } from "../../../stores/poo-creature-stats.store";
+import cloneService from "../../../services/clone.service";
 
 export type EntityBattleWinner = "player" | "monster";
 
