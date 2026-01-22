@@ -3,7 +3,7 @@ import { style } from "../../../utils/style-utils";
 import LoadingText from "../../common/text/LoadingText";
 import ResourceRank from "../../common/text/ResourceRank";
 import SkeletonText from "../../common/text/SkeletonText";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 
 export default function PlayerInfosSubHeader({
   name,

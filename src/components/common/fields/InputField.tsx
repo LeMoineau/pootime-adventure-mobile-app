@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleProp, TextInput, TextStyle, View } from "react-native";
 import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 
 export default function InputField({

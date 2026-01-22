@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import { usePooCreatureStyleStore } from "../../../../../stores/poo-creature-style.store";
 import { style } from "../../../../../utils/style-utils";
 import PooCreatureBadge from "../PooCreatureBadge";
-import { colors } from "../../../../../utils/color-utils";
+import { colors } from "../../../../../constants/style/colors";
 import TextWithResourceIcon from "../../../text/TextWithResourceIcon";
 import { useResourcesStore } from "../../../../../stores/resources.store";
 

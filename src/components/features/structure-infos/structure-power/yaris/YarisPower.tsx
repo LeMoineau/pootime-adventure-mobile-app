@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { style } from "../../../../../utils/style-utils";
 import TabTitle from "../../TabTitle";
-import { colors } from "../../../../../utils/color-utils";
+import { colors } from "../../../../../constants/style/colors";
 import TabText from "../../TabText";
 import Divider from "../../../../common/text/Divider";
 import StandardButton from "../../../../common/buttons/StandardButton";

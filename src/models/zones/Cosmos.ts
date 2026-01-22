@@ -1,7 +1,7 @@
 import assets from "../../config/assets";
 import { monsters } from "../../constants/battle/monsters";
 import { ArrayUtils } from "../../utils/array-utils";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import { Gremlins } from "../entities/monsters/Gremlins";
 import { Monster } from "../entities/monsters/Monster";
 import { Poulpe } from "../entities/monsters/Poulpe";

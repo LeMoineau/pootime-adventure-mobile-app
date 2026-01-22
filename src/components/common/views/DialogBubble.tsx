@@ -1,6 +1,6 @@
 import { DimensionValue, StyleProp, View, ViewStyle } from "react-native";
 import Triangle from "react-native-triangle";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import { style } from "../../../utils/style-utils";
 
 export default function DialogBubble({

@@ -1,7 +1,7 @@
 import assets from "../../config/assets";
 import { monsters } from "../../constants/battle/monsters";
 import { ArrayUtils } from "../../utils/array-utils";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import { Monster } from "../entities/monsters/Monster";
 import { Pingoo } from "../entities/monsters/Pingoo";
 import { Tank } from "../entities/monsters/Tank";

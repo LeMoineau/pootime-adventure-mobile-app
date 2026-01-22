@@ -1,7 +1,7 @@
 import { StyleProp, Text, TextStyle, View, ViewStyle } from "react-native";
 import { style } from "../../../utils/style-utils";
 import Divider from "./Divider";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 
 export default function TitleWithDivider({
   viewStyle,

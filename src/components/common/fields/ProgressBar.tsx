@@ -1,7 +1,7 @@
 import { DimensionValue, Text, View } from "react-native";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 
 export interface ProgressBarProps {
   width?: DimensionValue;

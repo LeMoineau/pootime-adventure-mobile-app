@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import CustomPage from "../../components/common/navigation/CustomPage";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import { Structures } from "../../config/constants/Structures";
 import { style } from "../../utils/style-utils";
 import { useRouter } from "expo-router";

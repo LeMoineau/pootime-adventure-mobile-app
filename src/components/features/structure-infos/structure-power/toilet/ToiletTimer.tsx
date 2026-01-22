@@ -4,7 +4,7 @@ import TabTitle from "../../TabTitle";
 import useAnimatedValue from "../../../../../hooks/common/ui/use-animated-value";
 import { style } from "../../../../../utils/style-utils";
 import { useEffect } from "react";
-import { colors } from "../../../../../utils/color-utils";
+import { colors } from "../../../../../constants/style/colors";
 import CustomConfirmModal from "../../../../common/modals/primitives/CustomConfirmModal";
 
 export default function ToiletTimer({

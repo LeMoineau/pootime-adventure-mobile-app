@@ -4,7 +4,7 @@ import { style } from "../../utils/style-utils";
 import PooCreatureView from "../../components/features/(tabs)/home/HomePooCreature";
 import HomeTopBar from "../../components/features/(tabs)/home/HomeTopBar";
 import StandardButton from "../../components/common/buttons/StandardButton";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import { useRouter } from "expo-router";
 
 export default function HomeTab() {

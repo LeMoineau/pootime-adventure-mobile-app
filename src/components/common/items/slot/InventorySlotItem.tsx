@@ -3,7 +3,7 @@ import { useResourcesStore } from "../../../../stores/resources.store";
 import { style } from "../../../../utils/style-utils";
 import ResourceIcon from "../../icons/ResourceIcon";
 import { MathUtils } from "../../../../utils/math-utils";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import { Resources } from "../../../../config/constants/Resources";
 
 export default function InventorySlotItem({

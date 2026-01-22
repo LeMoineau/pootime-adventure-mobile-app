@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 
 export default function Alert({
   content,

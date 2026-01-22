@@ -1,6 +1,6 @@
 import CustomPage from "../../../components/common/navigation/CustomPage";
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import { style } from "../../../utils/style-utils";
 import {
   StructureName,

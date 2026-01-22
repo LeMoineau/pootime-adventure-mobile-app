@@ -9,7 +9,7 @@ import PooCoinIcon from "../../components/common/icons/resources/pooCoin";
 import { useUserDataTable } from "../../hooks/common/firestore/use-user-data-table";
 import { IdentifiedUserData } from "../../types/firebase/UserData";
 import CustomPage from "../../components/common/navigation/CustomPage";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import { style } from "../../utils/style-utils";
 import PooCreatureRankSubHeader from "../../components/common/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
 import RoundedScrollView from "../../components/common/views/rounded-scroll-view/RoundedScrollView";

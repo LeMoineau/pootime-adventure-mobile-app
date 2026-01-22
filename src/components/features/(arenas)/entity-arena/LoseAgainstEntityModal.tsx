@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import CustomModal from "../../../common/modals/primitives/CustomModal";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import { Monster } from "../../../../models/entities/monsters/Monster";
 
 export default function LoseAgainstEntityModal({

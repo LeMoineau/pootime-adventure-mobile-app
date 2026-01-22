@@ -1,6 +1,6 @@
 import { Image, View } from "react-native";
 import { style } from "../../../../../utils/style-utils";
-import { colors } from "../../../../../utils/color-utils";
+import { colors } from "../../../../../constants/style/colors";
 import PillButton from "../../../buttons/PillButton";
 import { UltiType } from "../../../../../types/Ultis";
 

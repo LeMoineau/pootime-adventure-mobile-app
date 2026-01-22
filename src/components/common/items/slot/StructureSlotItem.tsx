@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { StructureName } from "../../../../config/constants/Structures";
 import { style } from "../../../../utils/style-utils";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import StructureIcon from "../../icons/StructureIcon";
 
 export default function StructureSlotItem({

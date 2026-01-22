@@ -9,7 +9,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import useAnimatedValue from "../../../hooks/common/ui/use-animated-value";
 
 export default function StandardButton({

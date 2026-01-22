@@ -1,6 +1,6 @@
 import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 import { Animated, TouchableOpacity, View } from "react-native";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import { style } from "../../../utils/style-utils";
 import React from "react";
 

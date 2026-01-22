@@ -1,4 +1,4 @@
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import { BattleReward } from "../../../../types/battle/BattleReward";
 import CustomRewardModal from "../../../common/modals/primitives/CustomRewardModal";
 

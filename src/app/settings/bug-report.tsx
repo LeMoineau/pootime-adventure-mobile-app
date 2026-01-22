@@ -3,7 +3,7 @@ import { style } from "../../utils/style-utils";
 import SettingsPage from "../../components/features/settings/SettingsPage";
 import SettingsHeader from "../../components/features/settings/SettingsHeader";
 import { router } from "expo-router";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import StandardButton from "../../components/common/buttons/StandardButton";
 
 export default function DonationSettings() {

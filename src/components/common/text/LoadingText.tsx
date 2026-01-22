@@ -1,5 +1,5 @@
 import { StyleProp, Text, TextStyle, View, ViewStyle } from "react-native";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import SkeletonText from "./SkeletonText";
 
 export default function LoadingText({

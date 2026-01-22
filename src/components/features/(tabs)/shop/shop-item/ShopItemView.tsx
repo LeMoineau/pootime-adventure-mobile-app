@@ -4,7 +4,7 @@ import {
   isUnlockableItem,
 } from "../../../../../types/shop/UnlockableItems";
 import { style } from "../../../../../utils/style-utils";
-import { colors } from "../../../../../utils/color-utils";
+import { colors } from "../../../../../constants/style/colors";
 import { useResourcesStore } from "../../../../../stores/resources.store";
 import { useItemsUnlockedStore } from "../../../../../stores/items-unlocked.store";
 import TextWithResourceIcon from "../../../../common/text/TextWithResourceIcon";

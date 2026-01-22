@@ -7,7 +7,7 @@ import {
 import CustomPage from "../../components/common/navigation/CustomPage";
 import { style } from "../../utils/style-utils";
 import StandardButton from "../../components/common/buttons/StandardButton";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import TitleWithDivider from "../../components/common/text/TitleWithDivider";
 import PreviousBattleItem from "../../components/common/items/PreviousBattleItem";
 import ExpoIcon from "../../components/common/icons/ExpoIcon";

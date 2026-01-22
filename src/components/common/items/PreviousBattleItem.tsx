@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import PooCreatureBadge from "../misc/poo-creature/PooCreatureBadge";
 import PooCreatureStatsTable from "../misc/poo-creature/PooCreatureStatsTable";
 import UltiItem from "./UltiItem";

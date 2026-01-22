@@ -1,7 +1,7 @@
 import { StyleProp, Text, View, ViewStyle } from "react-native";
 import { style } from "../../../../utils/style-utils";
 import { PooCreatureStats } from "../../../../types/PooCreatureStats";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import StatIcon from "../../icons/StatIcon";
 
 export default function PooCreatureStatsTable({

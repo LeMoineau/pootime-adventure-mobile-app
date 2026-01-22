@@ -9,7 +9,7 @@ import {
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { style } from "../../../utils/style-utils";
 import React, { useEffect } from "react";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import { MathUtils } from "../../../utils/math-utils";
 
 export default function NumberField({

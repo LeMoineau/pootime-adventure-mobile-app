@@ -1,4 +1,4 @@
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import React from "react";
 import { Pressable } from "react-native";
 

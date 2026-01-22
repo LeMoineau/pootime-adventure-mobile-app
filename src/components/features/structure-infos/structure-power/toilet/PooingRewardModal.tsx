@@ -1,5 +1,5 @@
 import { usePooCreatureStyleStore } from "../../../../../stores/poo-creature-style.store";
-import { colors } from "../../../../../utils/color-utils";
+import { colors } from "../../../../../constants/style/colors";
 import CustomRewardModal, {
   CustomRewardModalProps,
 } from "../../../../common/modals/primitives/CustomRewardModal";

@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import { Resources } from "../../../config/constants/Resources";
 import { useResourcesStore } from "../../../stores/resources.store";
 import { useUserDataTable } from "../../../hooks/common/firestore/use-user-data-table";

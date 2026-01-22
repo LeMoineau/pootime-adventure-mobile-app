@@ -1,4 +1,4 @@
-import { colors } from "../../utils/color-utils";
+import { colors } from "../style/colors";
 import { ShopItem } from "../../types/shop/ShopItem";
 import { BuyableItem } from "../../types/shop/BuyableItem";
 

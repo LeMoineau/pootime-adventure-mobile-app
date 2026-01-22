@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import React, { useState } from "react";
 import { ServerTypes } from "../../../../types/battle/online-battle/ServerTypes";
 import { style } from "../../../../utils/style-utils";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import PillButton from "../../../common/buttons/PillButton";
 import InputField from "../../../common/fields/InputField";
 import CustomModal from "../../../common/modals/primitives/CustomModal";

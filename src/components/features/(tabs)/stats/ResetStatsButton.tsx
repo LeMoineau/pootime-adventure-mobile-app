@@ -3,7 +3,7 @@ import StandardButton from "../../../common/buttons/StandardButton";
 import ExpoIcon from "../../../common/icons/ExpoIcon";
 import useModals from "../../../../hooks/common/ui/use-modals";
 import { useResourcesStore } from "../../../../stores/resources.store";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import { style } from "../../../../utils/style-utils";
 import ResourceIcon from "../../../common/icons/ResourceIcon";
 import { usePooCreatureStatsStore } from "../../../../stores/poo-creature-stats.store";

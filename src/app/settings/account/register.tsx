@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuthentication } from "../../../hooks/common/firebase/use-authentification";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import SettingsPage from "../../../components/features/settings/SettingsPage";
 import SettingsHeader from "../../../components/features/settings/SettingsHeader";
 import { router } from "expo-router";

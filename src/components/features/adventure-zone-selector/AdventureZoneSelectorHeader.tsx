@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import PooCreatureBadge from "../../common/misc/poo-creature/PooCreatureBadge";
 import TextWithSubShadow from "../../common/text/TextWithSubShadow";
 

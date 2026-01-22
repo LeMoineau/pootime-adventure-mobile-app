@@ -12,7 +12,7 @@ import { usePooCreatureStatsStore } from "../../../../stores/poo-creature-stats.
 import UltiButton from "./elements/UltiButton";
 import { UltiDetails, Ultis } from "../../../../types/Ultis";
 import ReadyGoText from "./elements/ReadyGoText";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import { DefaultValues } from "../../../../config/DefaultValues";
 import { useEffect } from "react";
 import PlayerNode from "./elements/PlayerNode";

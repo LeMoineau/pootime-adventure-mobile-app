@@ -5,7 +5,7 @@ import { useVillageStore } from "../../../../stores/village.store";
 import { useResourcesStore } from "../../../../stores/resources.store";
 import useStructure from "../../../../hooks/features/structure-infos/use-structure";
 import { style } from "../../../../utils/style-utils";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import TextWithResourceIcon from "../../../common/text/TextWithResourceIcon";
 import { Resources } from "../../../../config/constants/Resources";
 

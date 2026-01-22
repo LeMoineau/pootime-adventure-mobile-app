@@ -1,6 +1,6 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 export default function RightArrow({
   size,
   fillColor,

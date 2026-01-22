@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { style } from "../../../utils/style-utils";
 import useModals from "../../../hooks/common/ui/use-modals";
 import ExpoIcon from "../icons/ExpoIcon";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 import CustomConfirmModal from "../modals/primitives/CustomConfirmModal";
 
 export default function TransferButton({

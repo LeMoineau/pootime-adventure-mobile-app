@@ -7,7 +7,7 @@ import {
   ViewProps,
   ViewStyle,
 } from "react-native";
-import { colors as colorsUtils } from "../../../utils/color-utils";
+import { colors as colorsUtils } from "../../../constants/style/colors";
 import { style } from "../../../utils/style-utils";
 import { useEffect, useRef, useState } from "react";
 import useAnimatedValue from "../../../hooks/common/ui/use-animated-value";

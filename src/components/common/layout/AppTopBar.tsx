@@ -6,7 +6,7 @@ import PooCoinIcon from "../icons/resources/pooCoin";
 import { useResourcesStore } from "../../../stores/resources.store";
 import LevelProgressBar from "../fields/LevelProgressBar";
 import { LinearGradient } from "expo-linear-gradient";
-import { colors } from "../../../utils/color-utils";
+import { colors } from "../../../constants/style/colors";
 
 export default function AppTopBar() {
   const { width } = useWindowDimensions();

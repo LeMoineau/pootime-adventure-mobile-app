@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { style } from "../../../../utils/style-utils";
 import { ArrayUtils } from "../../../../utils/array-utils";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 
 export default function PooHeadPalette({
   palette,

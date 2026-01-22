@@ -1,6 +1,6 @@
 import * as NavigationBar from "expo-navigation-bar";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import AppTopBar from "../../components/common/layout/AppTopBar";
 import EventPosterOverlay from "../../components/common/layout/EventPosterOverlay";
 import { useEffect } from "react";

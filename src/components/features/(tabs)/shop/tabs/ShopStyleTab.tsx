@@ -11,7 +11,7 @@ import {
   isMultiPricesShopItem,
   isSinglePriceShopItem,
 } from "../../../../../types/shop/ShopItem";
-import { colors } from "../../../../../utils/color-utils";
+import { colors } from "../../../../../constants/style/colors";
 import {
   FreeTransaction,
   Transaction,

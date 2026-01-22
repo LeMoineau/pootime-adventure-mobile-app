@@ -6,7 +6,7 @@ import { isResourcesItemValue } from "../../../../types/shop/BuyableItem";
 import { useResourcesStore } from "../../../../stores/resources.store";
 import { isResourceItemValue } from "../../../../types/shop/UnlockableItems";
 import { style } from "../../../../utils/style-utils";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import TextWithResourceIcon from "../../../common/text/TextWithResourceIcon";
 import { MathUtils } from "../../../../utils/math-utils";
 import StandardButton from "../../../common/buttons/StandardButton";

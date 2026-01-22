@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { style } from "../../../../utils/style-utils";
-import { colors } from "../../../../utils/color-utils";
+import { colors } from "../../../../constants/style/colors";
 import { Image } from "expo-image";
 
 export default function ExpressionSlotItem({

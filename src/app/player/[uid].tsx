@@ -7,7 +7,7 @@ import {
 import CustomPage from "../../components/common/navigation/CustomPage";
 import { style } from "../../utils/style-utils";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { colors } from "../../utils/color-utils";
+import { colors } from "../../constants/style/colors";
 import { useEffect, useState } from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { useUserDataTable } from "../../hooks/common/firestore/use-user-data-table";
