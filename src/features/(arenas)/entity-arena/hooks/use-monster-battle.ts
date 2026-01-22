@@ -6,7 +6,7 @@ import { MonsterState } from "../../../../types/battle/entities/MonsterState";
 import { PlayerState } from "../../../../types/battle/entities/PlayerState";
 import { Player } from "../../../../models/entities/players/Player";
 import { usePooCreatureStatsStore } from "../../../../stores/poo-creature-stats.store";
-import cloneService from "../../../../common/services/clone.service";
+import cloneService from "../../../../services/clone.service";
 
 export type EntityBattleWinner = "player" | "monster";
 
