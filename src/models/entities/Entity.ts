@@ -1,7 +1,7 @@
-import { DefaultValues } from "../../../config/DefaultValues";
-import { xpNeededForNextLevel } from "../../constants/stats/level";
-import { ultis } from "../../constants/stats/ultis";
-import { UltiDetails } from "../../../types/Ultis";
+import { DefaultValues } from "../../config/DefaultValues";
+import { xpNeededForNextLevel } from "../../common/constants/stats/level";
+import { ultis } from "../../common/constants/stats/ultis";
+import { UltiDetails } from "../../types/Ultis";
 
 export interface EntityProps {
   name: string;

@@ -1,10 +1,10 @@
-import { GodPoulpe } from "../../models/entities/monsters/GodPoulpe";
-import { Gremlins } from "../../models/entities/monsters/Gremlins";
-import { HorrorMask } from "../../models/entities/monsters/HorrorMask";
-import { Pingoo } from "../../models/entities/monsters/Pingoo";
-import { Poulpe } from "../../models/entities/monsters/Poulpe";
-import { Sheep } from "../../models/entities/monsters/Sheep";
-import { Tank } from "../../models/entities/monsters/Tank";
+import { GodPoulpe } from "../../../models/entities/monsters/GodPoulpe";
+import { Gremlins } from "../../../models/entities/monsters/Gremlins";
+import { HorrorMask } from "../../../models/entities/monsters/HorrorMask";
+import { Pingoo } from "../../../models/entities/monsters/Pingoo";
+import { Poulpe } from "../../../models/entities/monsters/Poulpe";
+import { Sheep } from "../../../models/entities/monsters/Sheep";
+import { Tank } from "../../../models/entities/monsters/Tank";
 import { colors } from "../../utils/color-utils";
 
 /**

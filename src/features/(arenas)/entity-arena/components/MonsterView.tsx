@@ -12,14 +12,14 @@ import { CutSheepIcon } from "../../../../components/icons/entities/sheep/cutShe
 import SheepIcon from "../../../../components/icons/entities/sheep/sheep";
 import TankIcon from "../../../../components/icons/entities/tank/Tank";
 import TankFaintedIcon from "../../../../components/icons/entities/tank/TankFainted";
-import { GodPoulpe } from "../../../../common/models/entities/monsters/GodPoulpe";
-import { Gremlins } from "../../../../common/models/entities/monsters/Gremlins";
-import { Monster } from "../../../../common/models/entities/monsters/Monster";
-import { Sheep } from "../../../../common/models/entities/monsters/Sheep";
-import { HorrorMask } from "../../../../common/models/entities/monsters/HorrorMask";
-import { Pingoo } from "../../../../common/models/entities/monsters/Pingoo";
-import { Poulpe } from "../../../../common/models/entities/monsters/Poulpe";
-import { Tank } from "../../../../common/models/entities/monsters/Tank";
+import { GodPoulpe } from "../../../../models/entities/monsters/GodPoulpe";
+import { Gremlins } from "../../../../models/entities/monsters/Gremlins";
+import { Monster } from "../../../../models/entities/monsters/Monster";
+import { Sheep } from "../../../../models/entities/monsters/Sheep";
+import { HorrorMask } from "../../../../models/entities/monsters/HorrorMask";
+import { Pingoo } from "../../../../models/entities/monsters/Pingoo";
+import { Poulpe } from "../../../../models/entities/monsters/Poulpe";
+import { Tank } from "../../../../models/entities/monsters/Tank";
 
 export default function MonsterView({
   monster,

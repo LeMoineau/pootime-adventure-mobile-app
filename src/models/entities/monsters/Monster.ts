@@ -1,5 +1,5 @@
-import { BattleReward } from "../../../../types/battle/BattleReward";
-import { MonsterState } from "../../../../types/battle/entities/MonsterState";
+import { BattleReward } from "../../../types/battle/BattleReward";
+import { MonsterState } from "../../../types/battle/entities/MonsterState";
 import { Entity, EntityProps } from "../Entity";
 
 export interface MonsterProps extends EntityProps {
