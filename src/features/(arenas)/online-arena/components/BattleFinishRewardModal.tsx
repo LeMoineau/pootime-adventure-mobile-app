@@ -1,6 +1,6 @@
 import { colors } from "../../../../utils/color-utils";
 import { BattleReward } from "../../../../types/battle/BattleReward";
-import CustomRewardModal from "../../../../components/modals/primitives/CustomRewardModal";
+import CustomRewardModal from "../../../../components/common/modals/primitives/CustomRewardModal";
 
 export default function BattleFinishRewardModal({
   visible,

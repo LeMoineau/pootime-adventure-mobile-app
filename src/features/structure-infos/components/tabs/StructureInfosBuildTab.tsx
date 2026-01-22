@@ -7,8 +7,8 @@ import { useResourcesStore } from "../../../../stores/resources.store";
 import useStructure from "../../../(tabs)/village/hooks/use-structure";
 import { style } from "../../../../utils/style-utils";
 import { colors } from "../../../../utils/color-utils";
-import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
-import TransferButton from "../../../../components/buttons/TransferButton";
+import TextWithResourceIcon from "../../../../components/common/text/TextWithResourceIcon";
+import TransferButton from "../../../../components/common/buttons/TransferButton";
 import { Resources } from "../../../../config/constants/Resources";
 
 export default function StructureInfosBuildTab() {

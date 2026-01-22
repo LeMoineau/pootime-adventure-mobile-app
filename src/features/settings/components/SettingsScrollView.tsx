@@ -4,7 +4,7 @@ import { colors } from "../../../utils/color-utils";
 import SettingsItem, { SettingsItemProps } from "./SettingsItem";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { useState } from "react";
-import ExpoIcon from "../../../components/icons/ExpoIcon";
+import ExpoIcon from "../../../components/common/icons/ExpoIcon";
 
 export function SettingsScrollView({
   title,

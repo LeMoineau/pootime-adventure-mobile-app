@@ -1,12 +1,12 @@
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
 import { colors } from "../../../utils/color-utils";
-import ExpoIcon from "../../../components/icons/ExpoIcon";
+import ExpoIcon from "../../../components/common/icons/ExpoIcon";
 import React, { useState } from "react";
 import { IdentifiedUserData } from "../../../types/firebase/UserData";
 import { LeaderboardDirection } from "../../../types/leaderboard/LeaderboardDirection";
 import LeaderboardRow from "./LeaderboardRow";
-import TextWithResourceIcon from "../../../components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../components/common/text/TextWithResourceIcon";
 import { useAuthentication } from "../../../hooks/firebase/use-authentification";
 import { MathUtils } from "../../../utils/math-utils";
 import { Resources } from "../../../config/constants/Resources";

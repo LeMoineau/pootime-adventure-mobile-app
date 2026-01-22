@@ -1,17 +1,17 @@
 import { Text, View } from "react-native";
-import StandardButton from "../../../components/buttons/StandardButton";
+import StandardButton from "../../../components/common/buttons/StandardButton";
 import { colors } from "../../../utils/color-utils";
 import { style } from "../../../utils/style-utils";
 import { VillageUtils } from "../../../utils/village-utils";
 import { useResourcesStore } from "../../../stores/resources.store";
 import { useVillageStore } from "../../../stores/village.store";
-import TextWithResourceIcon from "../../../components/text/TextWithResourceIcon";
-import ExpoIcon from "../../../components/icons/ExpoIcon";
+import TextWithResourceIcon from "../../../components/common/text/TextWithResourceIcon";
+import ExpoIcon from "../../../components/common/icons/ExpoIcon";
 import useModals from "../../../hooks/ui/use-modals";
 import { UpgradeCost } from "../../../types/village/StructureCost";
 import { useEffect } from "react";
 import useStructure from "../../(tabs)/village/hooks/use-structure";
-import CustomConfirmModal from "../../../components/modals/primitives/CustomConfirmModal";
+import CustomConfirmModal from "../../../components/common/modals/primitives/CustomConfirmModal";
 
 export default function StructureUpgradeButton({
   onUpgrade,

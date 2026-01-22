@@ -4,7 +4,7 @@ import {
   ScrollView,
   View,
 } from "react-native";
-import CustomPage from "../../components/navigation/CustomPage";
+import CustomPage from "../../components/common/navigation/CustomPage";
 import { style } from "../../utils/style-utils";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../utils/color-utils";
@@ -12,18 +12,18 @@ import { useEffect, useState } from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { useUserDataTable } from "../../hooks/firestore/use-user-data-table";
 import { IdentifiedUserData } from "../../types/firebase/UserData";
-import PooCreature from "../../components/misc/poo-creature/PooCreature";
-import PooCreatureStatsTable from "../../components/misc/poo-creature/PooCreatureStatsTable";
-import TitleWithDivider from "../../components/text/TitleWithDivider";
-import UltiItem from "../../components/items/UltiItem";
-import InventoryItem from "../../components/items/slot/InventorySlotItem";
+import PooCreature from "../../components/common/misc/poo-creature/PooCreature";
+import PooCreatureStatsTable from "../../components/common/misc/poo-creature/PooCreatureStatsTable";
+import TitleWithDivider from "../../components/common/text/TitleWithDivider";
+import UltiItem from "../../components/common/items/UltiItem";
+import InventoryItem from "../../components/common/items/slot/InventorySlotItem";
 import { Resources } from "../../config/constants/Resources";
 import { StructureName } from "../../config/constants/Structures";
-import StructureSlotItem from "../../components/items/slot/StructureSlotItem";
+import StructureSlotItem from "../../components/common/items/slot/StructureSlotItem";
 import ShopItems from "../../constants/shop/shop-items";
-import BodyColorSlotItem from "../../components/items/slot/BodyColorSlotItem";
-import HeadSlotItem from "../../components/items/slot/HeadSlotItem";
-import ExpressionSlotItem from "../../components/items/slot/ExpressionSlotItem";
+import BodyColorSlotItem from "../../components/common/items/slot/BodyColorSlotItem";
+import HeadSlotItem from "../../components/common/items/slot/HeadSlotItem";
+import ExpressionSlotItem from "../../components/common/items/slot/ExpressionSlotItem";
 import { router, useLocalSearchParams } from "expo-router";
 import PlayerInfosSubHeader from "../../features/player-infos/components/PlayerInfosSubHeader";
 import { isFreeShopItem } from "../../types/shop/ShopItem";

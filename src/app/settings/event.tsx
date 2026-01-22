@@ -3,7 +3,7 @@ import { EVENT_POSTERS } from "../../config/constants/event-posters";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { EventPoster } from "../../types/event-posters/EventPoster";
-import EventPosterModalMatcher from "../../components/modals/event/EventPosterModalMatcher";
+import EventPosterModalMatcher from "../../components/common/modals/event/EventPosterModalMatcher";
 import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { SettingsScrollView } from "../../features/settings/components/SettingsScrollView";

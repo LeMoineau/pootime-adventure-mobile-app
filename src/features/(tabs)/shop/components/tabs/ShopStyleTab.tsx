@@ -1,5 +1,5 @@
 import { ScrollView, View } from "react-native";
-import PooCreature from "../../../../../components/misc/poo-creature/PooCreature";
+import PooCreature from "../../../../../components/common/misc/poo-creature/PooCreature";
 import ShopItemView from "../shop-item/ShopItemView";
 import ShopSectionTitle from "../ShopSectionTitle";
 import {

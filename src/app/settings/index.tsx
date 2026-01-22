@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useItemsUnlockedStore } from "../../stores/items-unlocked.store";
 import { Pressable, Text, View } from "react-native";
-import PooCreatureBadge from "../../components/misc/poo-creature/PooCreatureBadge";
-import CustomPage from "../../components/navigation/CustomPage";
+import PooCreatureBadge from "../../components/common/misc/poo-creature/PooCreatureBadge";
+import CustomPage from "../../components/common/navigation/CustomPage";
 import { colors } from "../../utils/color-utils";
 import { style } from "../../utils/style-utils";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";

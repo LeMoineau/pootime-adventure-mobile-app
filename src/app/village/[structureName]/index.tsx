@@ -1,4 +1,4 @@
-import CustomPage from "../../../components/navigation/CustomPage";
+import CustomPage from "../../../components/common/navigation/CustomPage";
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import { colors } from "../../../utils/color-utils";
 import { style } from "../../../utils/style-utils";
@@ -6,11 +6,11 @@ import {
   StructureName,
   Structures,
 } from "../../../config/constants/Structures";
-import ExpoIcon from "../../../components/icons/ExpoIcon";
+import ExpoIcon from "../../../components/common/icons/ExpoIcon";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { useEffect, useState } from "react";
 import { useVillageStore } from "../../../stores/village.store";
-import StructureIcon from "../../../components/icons/StructureIcon";
+import StructureIcon from "../../../components/common/icons/StructureIcon";
 import * as NavigationBar from "expo-navigation-bar";
 import StructureInfosTopBar from "../../../features/structure-infos/components/StructureInfosTopBar";
 import StructureInfosBuildTab from "../../../features/structure-infos/components/tabs/StructureInfosBuildTab";

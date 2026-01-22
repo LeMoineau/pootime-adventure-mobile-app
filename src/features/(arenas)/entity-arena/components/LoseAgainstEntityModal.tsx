@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import CustomModal from "../../../../components/modals/primitives/CustomModal";
+import CustomModal from "../../../../components/common/modals/primitives/CustomModal";
 import { colors } from "../../../../utils/color-utils";
 import { Monster } from "../../../../models/entities/monsters/Monster";
 

@@ -1,10 +1,10 @@
 import { Text, View } from "react-native";
-import StandardButton from "../../../../../components/buttons/StandardButton";
+import StandardButton from "../../../../../components/common/buttons/StandardButton";
 import { style } from "../../../../../utils/style-utils";
 import { colors } from "../../../../../utils/color-utils";
 import TabTitle from "../../TabTitle";
 import TabText from "../../TabText";
-import Divider from "../../../../../components/text/Divider";
+import Divider from "../../../../../components/common/text/Divider";
 import ToiletTimer from "./ToiletTimer";
 import { useRef, useState } from "react";
 import useModals from "../../../../../hooks/ui/use-modals";

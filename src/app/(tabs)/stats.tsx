@@ -1,11 +1,11 @@
 import { View } from "react-native";
 import { style } from "../../utils/style-utils";
 import StatsTopBar from "../../features/(tabs)/stats/components/StatsTopBar";
-import RoundedScrollView from "../../components/views/rounded-scroll-view/RoundedScrollView";
-import StatsIcons from "../../components/icons/stats";
-import PooUltiIcon from "../../components/icons/pooUlti";
+import RoundedScrollView from "../../components/common/views/rounded-scroll-view/RoundedScrollView";
+import StatsIcons from "../../components/common/icons/stats";
+import PooUltiIcon from "../../components/common/icons/pooUlti";
 import UltiTab from "../../features/(tabs)/stats/components/tabs/UltiTab";
-import CustomPage from "../../components/navigation/CustomPage";
+import CustomPage from "../../components/common/navigation/CustomPage";
 import StatsManager from "../../features/(tabs)/stats/components/tabs/StatsManager";
 
 export default function StatsTab() {

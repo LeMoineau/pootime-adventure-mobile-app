@@ -6,7 +6,7 @@ import { useResourcesStore } from "../../../../stores/resources.store";
 import useStructure from "../../../(tabs)/village/hooks/use-structure";
 import { style } from "../../../../utils/style-utils";
 import { colors } from "../../../../utils/color-utils";
-import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../../components/common/text/TextWithResourceIcon";
 import { Resources } from "../../../../config/constants/Resources";
 
 export default function StructureInfosUpgradeTab() {

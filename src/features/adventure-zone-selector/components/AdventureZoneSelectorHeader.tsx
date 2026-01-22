@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { colors } from "../../../utils/color-utils";
-import PooCreatureBadge from "../../../components/misc/poo-creature/PooCreatureBadge";
-import TextWithSubShadow from "../../../components/text/TextWithSubShadow";
+import PooCreatureBadge from "../../../components/common/misc/poo-creature/PooCreatureBadge";
+import TextWithSubShadow from "../../../components/common/text/TextWithSubShadow";
 
 /**
  * Sticky header of aventure zone selector

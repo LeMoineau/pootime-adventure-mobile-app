@@ -1,8 +1,8 @@
 import { View } from "react-native";
-import InputField from "../../../../components/fields/InputField";
+import InputField from "../../../../components/common/fields/InputField";
 import { style } from "../../../../utils/style-utils";
 import { useVillageStore } from "../../../../stores/village.store";
-import ExpoIcon from "../../../../components/icons/ExpoIcon";
+import ExpoIcon from "../../../../components/common/icons/ExpoIcon";
 import { DefaultValues } from "../../../../config/DefaultValues";
 
 export default function VillageTopBar() {

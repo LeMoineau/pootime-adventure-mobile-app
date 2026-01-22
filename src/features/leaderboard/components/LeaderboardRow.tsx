@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { style } from "../../../utils/style-utils";
-import PooCreatureBadge from "../../../components/misc/poo-creature/PooCreatureBadge";
+import PooCreatureBadge from "../../../components/common/misc/poo-creature/PooCreatureBadge";
 import { IdentifiedUserData } from "../../../types/firebase/UserData";
 import { colors } from "../../../utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";

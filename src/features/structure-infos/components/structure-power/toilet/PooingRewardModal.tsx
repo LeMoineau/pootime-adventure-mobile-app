@@ -2,9 +2,9 @@ import { usePooCreatureStyleStore } from "../../../../../stores/poo-creature-sty
 import { colors } from "../../../../../utils/color-utils";
 import CustomRewardModal, {
   CustomRewardModalProps,
-} from "../../../../../components/modals/primitives/CustomRewardModal";
+} from "../../../../../components/common/modals/primitives/CustomRewardModal";
 import { useEffect, useRef, useState } from "react";
-import CustomModal from "../../../../../components/modals/primitives/CustomModal";
+import CustomModal from "../../../../../components/common/modals/primitives/CustomModal";
 
 export default function PooingRewardModal({
   rewards,

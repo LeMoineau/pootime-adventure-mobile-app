@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { style } from "../../../../../utils/style-utils";
 import { ItemInStore } from "../../../../../types/itemInStore";
 import UltiView from "../UltiButton";
-import IconFromImage from "../../../../../components/icons/IconFromImage";
+import IconFromImage from "../../../../../components/common/icons/IconFromImage";
 import { usePooCreatureStatsStore } from "../../../../../stores/poo-creature-stats.store";
 import { Ultis } from "../../../../../types/Ultis";
 

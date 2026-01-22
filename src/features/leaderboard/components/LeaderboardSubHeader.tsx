@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
-import PooCreatureBadge from "../../../components/misc/poo-creature/PooCreatureBadge";
+import PooCreatureBadge from "../../../components/common/misc/poo-creature/PooCreatureBadge";
 import { colors } from "../../../utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
-import ResourceRank from "../../../components/text/ResourceRank";
+import ResourceRank from "../../../components/common/text/ResourceRank";
 import { Resources } from "../../../config/constants/Resources";
 
 const RESOURCE_LEADERBOARDED: Resources[] = ["pooTrophee", "pooCoins"];

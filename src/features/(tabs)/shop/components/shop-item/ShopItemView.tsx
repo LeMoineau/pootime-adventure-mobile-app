@@ -7,7 +7,7 @@ import { style } from "../../../../../utils/style-utils";
 import { colors } from "../../../../../utils/color-utils";
 import { useResourcesStore } from "../../../../../stores/resources.store";
 import { useItemsUnlockedStore } from "../../../../../stores/items-unlocked.store";
-import TextWithResourceIcon from "../../../../../components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../../../components/common/text/TextWithResourceIcon";
 import {
   FreeTransaction,
   Transaction,

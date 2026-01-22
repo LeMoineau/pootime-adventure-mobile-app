@@ -1,10 +1,10 @@
 import { Image } from "expo-image";
 import { Pressable, Text, View } from "react-native";
-import TextWithSubShadow from "../../../components/text/TextWithSubShadow";
+import TextWithSubShadow from "../../../components/common/text/TextWithSubShadow";
 import { style } from "../../../utils/style-utils";
 import { colors } from "../../../utils/color-utils";
-import PooCreatureBadge from "../../../components/misc/poo-creature/PooCreatureBadge";
-import StandardButton from "../../../components/buttons/StandardButton";
+import PooCreatureBadge from "../../../components/common/misc/poo-creature/PooCreatureBadge";
+import StandardButton from "../../../components/common/buttons/StandardButton";
 
 export default function AdventureZoneItem({
   zone,

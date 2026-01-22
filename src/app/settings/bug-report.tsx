@@ -4,7 +4,7 @@ import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { router } from "expo-router";
 import { colors } from "../../utils/color-utils";
-import StandardButton from "../../components/buttons/StandardButton";
+import StandardButton from "../../components/common/buttons/StandardButton";
 
 export default function DonationSettings() {
   return (

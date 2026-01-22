@@ -4,17 +4,19 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import CustomPage from "../../components/navigation/CustomPage";
+import CustomPage from "../../components/common/navigation/CustomPage";
 import { style } from "../../utils/style-utils";
-import StandardButton from "../../components/buttons/StandardButton";
+import StandardButton from "../../components/common/buttons/StandardButton";
 import { colors } from "../../utils/color-utils";
-import TitleWithDivider from "../../components/text/TitleWithDivider";
-import PreviousBattleItem from "../../components/items/PreviousBattleItem";
-import ExpoIcon from "../../components/icons/ExpoIcon";
-import Gradient, { GradientDirection } from "../../components/misc/Gradient";
+import TitleWithDivider from "../../components/common/text/TitleWithDivider";
+import PreviousBattleItem from "../../components/common/items/PreviousBattleItem";
+import ExpoIcon from "../../components/common/icons/ExpoIcon";
+import Gradient, {
+  GradientDirection,
+} from "../../components/common/misc/Gradient";
 import usePreviousBattles from "../../features/(tabs)/fight/hooks/use-previous-battles";
-import NoPreviousBattleItem from "../../components/items/NoPreviousBattleItem";
-import PooCreatureTropheeSubHeader from "../../components/misc/poo-creature/sub-headers/PooCreatureTropheeSubHeader";
+import NoPreviousBattleItem from "../../components/common/items/NoPreviousBattleItem";
+import PooCreatureTropheeSubHeader from "../../components/common/misc/poo-creature/sub-headers/PooCreatureTropheeSubHeader";
 import useBattleRooms from "../../features/(tabs)/fight/hooks/use-battle-rooms";
 import ServerWaitingModal from "../../features/(tabs)/fight/components/ServerWaitingModal";
 import WaitForFightModal from "../../features/(tabs)/fight/components/WaitForFightModal";

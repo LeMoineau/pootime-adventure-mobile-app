@@ -1,7 +1,7 @@
 import { GestureResponderEvent, Text, View } from "react-native";
 import { style } from "../../../utils/style-utils";
-import PillButton from "../../../components/buttons/PillButton";
-import RightArrow from "../../../components/icons/rightArrow";
+import PillButton from "../../../components/common/buttons/PillButton";
+import RightArrow from "../../../components/common/icons/rightArrow";
 import { colors } from "../../../utils/color-utils";
 
 export default function SettingsHeader({

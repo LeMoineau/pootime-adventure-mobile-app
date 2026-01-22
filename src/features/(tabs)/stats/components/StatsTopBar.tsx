@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { style } from "../../../../utils/style-utils";
-import InputField from "../../../../components/fields/InputField";
+import InputField from "../../../../components/common/fields/InputField";
 import { usePooCreatureStyleStore } from "../../../../stores/poo-creature-style.store";
 import ResetStatsButton from "./ResetStatsButton";
 import { DefaultValues } from "../../../../config/DefaultValues";

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Arena from "../../components/views/arena/Arena";
+import Arena from "../../components/common/views/arena/Arena";
 import { colors } from "../../utils/color-utils";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { useResourcesStore } from "../../stores/resources.store";
@@ -7,7 +7,7 @@ import { useLocalSearchParams } from "expo-router";
 import useMonsterBattle from "../../features/(arenas)/entity-arena/hooks/use-monster-battle";
 import * as NavigationBar from "expo-navigation-bar";
 import useModal from "../../hooks/ui/use-modal";
-import CustomRewardModal from "../../components/modals/primitives/CustomRewardModal";
+import CustomRewardModal from "../../components/common/modals/primitives/CustomRewardModal";
 import LoseAgainstEntityModal from "../../features/(arenas)/entity-arena/components/LoseAgainstEntityModal";
 import WinAgainstEntityModal from "../../features/(arenas)/entity-arena/components/WinAgainstEntityModal";
 import { zones } from "../../constants/battle/adventure-zones";
