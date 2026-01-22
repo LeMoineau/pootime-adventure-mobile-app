@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import PooCreatureBadge from "../../../components/misc/poo-creature/PooCreatureBadge";
-import { IdentifiedUserData } from "../../../common/types/firebase/UserData";
+import { IdentifiedUserData } from "../../../types/firebase/UserData";
 import { colors } from "../../../common/utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { router } from "expo-router";

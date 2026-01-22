@@ -11,7 +11,7 @@ import { colors } from "../../common/utils/color-utils";
 import { useEffect, useState } from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
-import { IdentifiedUserData } from "../../common/types/firebase/UserData";
+import { IdentifiedUserData } from "../../types/firebase/UserData";
 import PooCreature from "../../components/misc/poo-creature/PooCreature";
 import PooCreatureStatsTable from "../../components/misc/poo-creature/PooCreatureStatsTable";
 import TitleWithDivider from "../../components/text/TitleWithDivider";
@@ -26,7 +26,7 @@ import HeadSlotItem from "../../components/items/slot/HeadSlotItem";
 import ExpressionSlotItem from "../../components/items/slot/ExpressionSlotItem";
 import { router, useLocalSearchParams } from "expo-router";
 import PlayerInfosSubHeader from "../../features/player-infos/components/PlayerInfosSubHeader";
-import { isFreeShopItem } from "../../common/types/shop/ShopItem";
+import { isFreeShopItem } from "../../types/shop/ShopItem";
 import useMassiveStoreLoader from "../../common/hooks/admin/user-massive-store-loader";
 import useBackHandler from "../../common/hooks/ui/useBackHandler";
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUserDataTable } from "../../../common/hooks/firestore/use-user-data-table";
-import { LeaderboardDirection } from "../../../common/types/leaderboard/LeaderboardDirection";
-import { IdentifiedUserData } from "../../../common/types/firebase/UserData";
+import { LeaderboardDirection } from "../../../types/leaderboard/LeaderboardDirection";
+import { IdentifiedUserData } from "../../../types/firebase/UserData";
 
 export default function useLeaderboard() {
   const { fetch } = useUserDataTable();

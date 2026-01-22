@@ -1,4 +1,4 @@
-import { Structure } from "../../types/village/Structure";
+import { Structure } from "../../../types/village/Structure";
 
 export type StructureName = "toilet" | "yaris";
 

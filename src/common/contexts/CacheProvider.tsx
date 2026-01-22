@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from "react";
-import { CacheMap } from "../types/contexts/Cache";
+import { CacheMap } from "../../types/contexts/Cache";
 import { DefaultValues } from "../config/DefaultValues";
 import { CacheContext } from "./contexts";
 
@@ -9,7 +9,7 @@ export default function CacheProvider({ children }: { children: ReactNode }) {
   const put = (
     key: string,
     value: any,
-    availabilityDurationInSecond?: number
+    availabilityDurationInSecond?: number,
   ) => {
     cache.current[key] = {
       value,

@@ -1,6 +1,6 @@
-import { Structure } from "../types/village/Structure";
-import { UpgradeCost } from "../types/village/StructureCost";
-import { BattleReward } from "../types/battle/BattleReward";
+import { Structure } from "../../types/village/Structure";
+import { UpgradeCost } from "../../types/village/StructureCost";
+import { BattleReward } from "../../types/battle/BattleReward";
 import { StructureName, Structures } from "../config/constants/Structures";
 import { Resources } from "../config/constants/Resources";
 

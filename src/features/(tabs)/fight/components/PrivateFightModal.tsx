@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import React, { useState } from "react";
-import { ServerTypes } from "../../../../common/types/battle/online-battle/ServerTypes";
+import { ServerTypes } from "../../../../types/battle/online-battle/ServerTypes";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import PillButton from "../../../../components/buttons/PillButton";

@@ -1,10 +1,10 @@
-import { PooCreatureStyle as Style } from "./../types/PooCreatureStyle";
-import { PooCreatureStats as Stats } from "./../types/PooCreatureStats";
+import { PooCreatureStyle as Style } from "../../types/PooCreatureStyle";
+import { PooCreatureStats as Stats } from "../../types/PooCreatureStats";
 import { StructureName } from "./constants/Structures";
 import {
   StructureDetail,
   StructureDetailName,
-} from "../types/village/StructureDetail";
+} from "../../types/village/StructureDetail";
 
 export namespace DataInStorage {
   export interface PooCreatureStyle extends Style {}

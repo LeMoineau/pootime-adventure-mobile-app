@@ -5,17 +5,17 @@ import ShopSectionTitle from "../ShopSectionTitle";
 import {
   BuyableItem,
   isStyleUnlockableItem,
-} from "../../../../../common/types/shop/UnlockableItems";
+} from "../../../../../types/shop/UnlockableItems";
 import { style } from "../../../../../common/utils/style-utils";
 import {
   isMultiPricesShopItem,
   isSinglePriceShopItem,
-} from "../../../../../common/types/shop/ShopItem";
+} from "../../../../../types/shop/ShopItem";
 import { colors } from "../../../../../common/utils/color-utils";
 import {
   FreeTransaction,
   Transaction,
-} from "../../../../../common/types/shop/Transaction";
+} from "../../../../../types/shop/Transaction";
 import ShopItems from "../../../../../common/constants/shop/shop-items";
 
 export default function ShopStyleTab({

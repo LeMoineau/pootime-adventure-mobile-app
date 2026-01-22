@@ -5,9 +5,9 @@ import PooBody from "../../icons/poo-creature/PooBody";
 import { style } from "../../../common/utils/style-utils";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
-import { PooHeads } from "../../../common/types/PooHeads";
+import { PooHeads } from "../../../types/PooHeads";
 import { CurveUtils } from "../../../common/utils/curve-utils";
-import { PooHeadName } from "../../../common/types/shop/BuyableItem";
+import { PooHeadName } from "../../../types/shop/BuyableItem";
 
 export default function PooCreature({
   width = 200,

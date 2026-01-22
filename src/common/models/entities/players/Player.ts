@@ -1,4 +1,4 @@
-import { PlayerState } from "../../../types/battle/entities/PlayerState";
+import { PlayerState } from "../../../../types/battle/entities/PlayerState";
 import { Entity, EntityProps } from "../Entity";
 
 export class Player extends Entity {

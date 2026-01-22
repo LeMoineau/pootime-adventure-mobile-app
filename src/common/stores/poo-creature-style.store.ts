@@ -3,8 +3,8 @@ import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../config/StorageKeys";
 import { DefaultValues } from "../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
-import { DataInStorage } from "../types/dataInStorage";
-import { StyleKeys } from "../types/poo-creature-style/StyleKeys";
+import { DataInStorage } from "../../types/dataInStorage";
+import { StyleKeys } from "../../types/poo-creature-style/StyleKeys";
 
 export type PooCreatureStyleStore = {
   update: (style: StyleKeys, name: string) => Promise<void>;
@@ -36,7 +36,7 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>(
     const resetData = async () => {
       await saveJson(
         StorageKeys.POO_CREATURE_STYLE,
-        DefaultValues.PooCreatureStyle
+        DefaultValues.PooCreatureStyle,
       );
       set({ ...DefaultValues.PooCreatureStyle });
     };
@@ -57,5 +57,5 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>(
       getStyle,
       loadData,
     };
-  }
+  },
 );

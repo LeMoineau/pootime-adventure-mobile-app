@@ -1,6 +1,6 @@
 import { Pressable, View } from "react-native";
 import { useState } from "react";
-import { Transaction } from "../../../../common/types/shop/Transaction";
+import { Transaction } from "../../../../types/shop/Transaction";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import ShopBuyConfirmModal from "./ShopBuyConfirmModal";
@@ -21,7 +21,7 @@ export default function ShopScrollView({
   onModalCancel?: () => void;
 }) {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(
-    defaultTabIndex ?? 0
+    defaultTabIndex ?? 0,
   );
 
   return (

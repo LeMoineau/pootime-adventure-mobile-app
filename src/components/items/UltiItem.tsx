@@ -2,7 +2,7 @@ import { StyleProp, Text, View, ViewStyle } from "react-native";
 import { style } from "../../common/utils/style-utils";
 import { colors } from "../../common/utils/color-utils";
 import { Image } from "expo-image";
-import { Ultis } from "../../common/types/Ultis";
+import { Ultis } from "../../types/Ultis";
 import ExpoIcon from "../icons/ExpoIcon";
 
 export default function UltiItem({

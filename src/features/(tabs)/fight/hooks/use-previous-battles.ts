@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useStorage from "../../../../common/hooks/use-storage";
-import { BattleFinalState } from "../../../../common/types/battle/BattleFinalState";
+import { BattleFinalState } from "../../../../types/battle/BattleFinalState";
 import { StorageKeys } from "../../../../common/constants/storage-keys";
 
 export default function usePreviousBattles(props?: {
@@ -8,7 +8,7 @@ export default function usePreviousBattles(props?: {
 }) {
   const { getJson, saveJson } = useStorage();
   const [previousBattles, setPreviousBattles] = useState<BattleFinalState[]>(
-    []
+    [],
   );
 
   useEffect(() => {

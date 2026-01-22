@@ -1,10 +1,10 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../config/StorageKeys";
-import { UnlockableItems } from "../types/shop/UnlockableItems";
+import { UnlockableItems } from "../../types/shop/UnlockableItems";
 import { DefaultValues } from "../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
-import { DataInStorage } from "../types/dataInStorage";
+import { DataInStorage } from "../../types/dataInStorage";
 
 type Store = {
   loading: boolean;
@@ -68,7 +68,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
   };
 
   const getItemsByCategories = (
-    categorie: keyof DataInStorage.ItemsUnlocked
+    categorie: keyof DataInStorage.ItemsUnlocked,
   ) => {
     return get()[categorie];
   };

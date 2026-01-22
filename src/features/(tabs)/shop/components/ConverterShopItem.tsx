@@ -1,10 +1,10 @@
 import { View } from "react-native";
 import Slider from "@react-native-community/slider";
 import { useState } from "react";
-import { SinglePriceShopItem } from "../../../../common/types/shop/ShopItem";
-import { isResourcesItemValue } from "../../../../common/types/shop/BuyableItem";
+import { SinglePriceShopItem } from "../../../../types/shop/ShopItem";
+import { isResourcesItemValue } from "../../../../types/shop/BuyableItem";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
-import { isResourceItemValue } from "../../../../common/types/shop/UnlockableItems";
+import { isResourceItemValue } from "../../../../types/shop/UnlockableItems";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";

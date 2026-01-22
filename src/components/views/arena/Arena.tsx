@@ -10,7 +10,7 @@ import CustomPage from "../../navigation/CustomPage";
 import PVPanel from "./elements/PVPanel";
 import { usePooCreatureStatsStore } from "../../../common/stores/poo-creature-stats.store";
 import UltiButton from "./elements/UltiButton";
-import { UltiDetails, Ultis } from "../../../common/types/Ultis";
+import { UltiDetails, Ultis } from "../../../types/Ultis";
 import ReadyGoText from "./elements/ReadyGoText";
 import { colors } from "../../../common/utils/color-utils";
 import { DefaultValues } from "../../../common/config/DefaultValues";

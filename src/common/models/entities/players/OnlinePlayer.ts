@@ -1,4 +1,4 @@
-import { PooCreatureStyle } from "../../../types/PooCreatureStyle";
+import { PooCreatureStyle } from "../../../../types/PooCreatureStyle";
 import { EntityProps } from "../Entity";
 import { Player } from "./Player";
 

@@ -1,4 +1,4 @@
-import { EventPoster } from "../../../common/types/event-posters/EventPoster";
+import { EventPoster } from "../../../types/event-posters/EventPoster";
 import AudreyBirthdayModal from "./AudreyBirthdayModal";
 import LouisBirthdayModal from "./LouisBirthdayModal";
 import { ModalProps } from "react-native";

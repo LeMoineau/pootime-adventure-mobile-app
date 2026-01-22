@@ -2,7 +2,7 @@ import { Image, View } from "react-native";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import PillButton from "../../../buttons/PillButton";
-import { UltiType } from "../../../../common/types/Ultis";
+import { UltiType } from "../../../../types/Ultis";
 
 export default function UltiButton({
   ultiSelected,

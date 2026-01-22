@@ -7,7 +7,7 @@ import { ItemsLeaderboardable } from "../../common/config/constants/Leaderboard"
 import { Resources } from "../../common/config/constants/Resources";
 import PooCoinIcon from "../../components/icons/resources/pooCoin";
 import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
-import { IdentifiedUserData } from "../../common/types/firebase/UserData";
+import { IdentifiedUserData } from "../../types/firebase/UserData";
 import CustomPage from "../../components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
 import { style } from "../../common/utils/style-utils";

@@ -2,7 +2,7 @@ import useModals from "../../common/hooks/ui/use-modals";
 import { EVENT_POSTERS } from "../../common/config/constants/event-posters";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { EventPoster } from "../../common/types/event-posters/EventPoster";
+import { EventPoster } from "../../types/event-posters/EventPoster";
 import EventPosterModalMatcher from "../../components/modals/event/EventPosterModalMatcher";
 import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";

@@ -3,7 +3,7 @@ import {
   BuyableItem,
   isResourceItemValue,
   isStringItemValue,
-} from "../../../../../common/types/shop/UnlockableItems";
+} from "../../../../../types/shop/UnlockableItems";
 import { style } from "../../../../../common/utils/style-utils";
 import { CurveUtils } from "../../../../../common/utils/curve-utils";
 import { usePooCreatureStatsStore } from "../../../../../common/stores/poo-creature-stats.store";
@@ -12,8 +12,8 @@ import { MathUtils } from "../../../../../common/utils/math-utils";
 import {
   BuyableItemValue,
   PooHeadName,
-} from "../../../../../common/types/shop/BuyableItem";
-import { PooHeads } from "../../../../../common/types/PooHeads";
+} from "../../../../../types/shop/BuyableItem";
+import { PooHeads } from "../../../../../types/PooHeads";
 
 export default function ShopItemTypeView({
   itemType,

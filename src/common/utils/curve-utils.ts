@@ -1,5 +1,5 @@
 import { DefaultValues } from "../config/DefaultValues";
-import { BattleReward } from "../types/battle/BattleReward";
+import { BattleReward } from "../../types/battle/BattleReward";
 
 export namespace CurveUtils {
   export function calculateRewardsPooing(elapsedTime: number): BattleReward {
@@ -20,7 +20,7 @@ export namespace CurveUtils {
 
   export function calculateHeadColor(level: number): string {
     return DefaultValues.PooHeadPalette.hexValueAt(
-      (level / DefaultValues.LevelMax) % 1
+      (level / DefaultValues.LevelMax) % 1,
     );
   }
 

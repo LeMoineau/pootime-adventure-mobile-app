@@ -4,11 +4,11 @@ import useStorage from "../hooks/use-storage";
 import { StorageKeys } from "../config/StorageKeys";
 import { ObjectUtils } from "../utils/object-utils";
 import { DataInStorage } from "../config/DataInStorage";
-import { UpgradeInfos } from "../types/village/StructureCost";
+import { UpgradeInfos } from "../../types/village/StructureCost";
 import {
   StructureDetail,
   StructureDetailName,
-} from "../types/village/StructureDetail";
+} from "../../types/village/StructureDetail";
 import { StructureName } from "../config/constants/Structures";
 
 type Store = {
@@ -18,24 +18,24 @@ type Store = {
   saveDetail: (
     structureName: StructureName,
     detailName: StructureDetailName,
-    detail: StructureDetail
+    detail: StructureDetail,
   ) => Promise<void>;
   getDetail: (
     structureName: StructureName,
-    detailName: StructureDetailName
+    detailName: StructureDetailName,
   ) => StructureDetail | undefined;
   hasDetail: (
     structureName: StructureName,
-    detailName: StructureDetailName
+    detailName: StructureDetailName,
   ) => boolean;
   eraseDetail: (
     structureName: StructureName,
-    detailName: StructureDetailName
+    detailName: StructureDetailName,
   ) => Promise<void>;
   build: (structureName: StructureName) => Promise<void>;
   upgrade: (
     structureName: StructureName,
-    upgradeInfos: UpgradeInfos
+    upgradeInfos: UpgradeInfos,
   ) => Promise<void>;
   select: (selectedStructureName: StructureName) => void;
   change: (key: "name", val: string) => Promise<void>;
@@ -64,7 +64,7 @@ export const useVillageStore = create<Store>((set, get) => {
   const saveDetail = async (
     structureName: StructureName,
     detailName: StructureDetailName,
-    detail: StructureDetail
+    detail: StructureDetail,
   ) => {
     const village = get();
     village.structures[structureName].details[detailName] = detail;
@@ -74,21 +74,21 @@ export const useVillageStore = create<Store>((set, get) => {
 
   const getDetail = (
     structureName: StructureName,
-    detailName: StructureDetailName
+    detailName: StructureDetailName,
   ): StructureDetail | undefined => {
     return get().structures[structureName].details[detailName];
   };
 
   const hasDetail = (
     structureName: StructureName,
-    detailName: StructureDetailName
+    detailName: StructureDetailName,
   ): boolean => {
     return get().structures[structureName].details[detailName] !== undefined;
   };
 
   const eraseDetail = async (
     structureName: StructureName,
-    detailName: StructureDetailName
+    detailName: StructureDetailName,
   ) => {
     const village = get();
     village.structures[structureName].details[detailName] = undefined;
@@ -98,7 +98,7 @@ export const useVillageStore = create<Store>((set, get) => {
 
   const upgrade = async (
     structureName: StructureName,
-    upgradeInfos: UpgradeInfos
+    upgradeInfos: UpgradeInfos,
   ) => {
     const json = await getJson(StorageKeys.VILLAGE);
     if (json !== null) {

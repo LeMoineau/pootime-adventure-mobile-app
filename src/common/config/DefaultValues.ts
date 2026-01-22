@@ -1,6 +1,6 @@
 import { colors } from "../utils/color-utils";
 import { ColorPalette } from "color-curves";
-import { Inventory } from "../types/resources/Inventory";
+import { Inventory } from "../../types/resources/Inventory";
 import { DataInStorage } from "./DataInStorage";
 
 export namespace DefaultValues {

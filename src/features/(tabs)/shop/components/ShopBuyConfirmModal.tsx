@@ -9,7 +9,7 @@ import {
   isMultiResourcesTransaction,
   isSingleResourceTransaction,
   Transaction,
-} from "../../../../common/types/shop/Transaction";
+} from "../../../../types/shop/Transaction";
 import ExpoIcon from "../../../../components/icons/ExpoIcon";
 import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
 

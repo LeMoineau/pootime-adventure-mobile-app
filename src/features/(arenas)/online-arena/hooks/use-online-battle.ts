@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
-import { ServerTypes } from "../../../../common/types/battle/online-battle/ServerTypes";
-import { SocketEvents } from "../../../../common/types/SocketEvents";
-import { UltiDetails } from "../../../../common/types/Ultis";
+import { ServerTypes } from "../../../../types/battle/online-battle/ServerTypes";
+import { SocketEvents } from "../../../../types/SocketEvents";
+import { UltiDetails } from "../../../../types/Ultis";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import { useResourcesStore } from "../../../../common/stores/resources.store";

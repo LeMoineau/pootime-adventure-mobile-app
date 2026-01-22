@@ -4,7 +4,7 @@ import PooCreatureHead from "./PooCreatureHead";
 import { colors } from "../../../common/utils/color-utils";
 import LevelProgressBar from "../../fields/LevelProgressBar";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
-import { PooHeadName } from "../../../common/types/shop/BuyableItem";
+import { PooHeadName } from "../../../types/shop/BuyableItem";
 
 export default function PooCreatureBadge({
   showInfos,

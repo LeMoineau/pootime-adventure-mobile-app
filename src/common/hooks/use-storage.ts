@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { JSONObject } from "../types/JSONObject";
+import { JSONObject } from "../../types/JSONObject";
 
 const useStorage = () => {
   const saveString = async (key: string, value: string) => {
@@ -25,7 +25,7 @@ const useStorage = () => {
   const saveItemInJson = async (
     key: string,
     keyJson: string,
-    value: string | number | boolean | JSONObject
+    value: string | number | boolean | JSONObject,
   ) => {
     let json = await getJson(key);
     if (!json) {
@@ -41,7 +41,7 @@ const useStorage = () => {
     key: string,
     keyObject: string,
     keyItem: string,
-    valueItem: string | number | boolean | JSONObject
+    valueItem: string | number | boolean | JSONObject,
   ) => {
     const json = await getJson(key);
     if (json) {
@@ -51,7 +51,7 @@ const useStorage = () => {
       await saveItemInJson(
         key,
         keyObject,
-        Object.assign(json[keyObject], { [keyItem]: valueItem })
+        Object.assign(json[keyObject], { [keyItem]: valueItem }),
       );
     }
   };

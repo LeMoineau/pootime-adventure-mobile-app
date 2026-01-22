@@ -1,4 +1,4 @@
-import { StructureCost } from "../../types/village/StructureCost";
+import { StructureCost } from "../../../types/village/StructureCost";
 
 export interface StructureProps {
   name: string;

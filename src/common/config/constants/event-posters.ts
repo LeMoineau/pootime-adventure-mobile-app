@@ -1,4 +1,4 @@
-import { EventPoster } from "../../types/event-posters/EventPoster";
+import { EventPoster } from "../../../types/event-posters/EventPoster";
 
 /**
  * Les poster d'events avec leur date d'apparition.

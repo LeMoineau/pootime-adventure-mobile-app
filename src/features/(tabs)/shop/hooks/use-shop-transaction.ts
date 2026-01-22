@@ -2,22 +2,22 @@ import { useState } from "react";
 import {
   FreeTransaction,
   Transaction,
-} from "../../../../common/types/shop/Transaction";
+} from "../../../../types/shop/Transaction";
 import { useItemsUnlockedStore } from "../../../../common/stores/items-unlocked.store";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import {
   isMultiPricesShopItem,
   isSinglePriceShopItem,
-} from "../../../../common/types/shop/ShopItem";
+} from "../../../../types/shop/ShopItem";
 import {
   isResourceItemValue,
   isResourcesItem,
   isStringItemValue,
   isStyleUnlockableItem,
   isUnlockableItem,
-} from "../../../../common/types/shop/UnlockableItems";
-import { convertUnlockedItemToStyleKeys } from "../../../../common/types/poo-creature-style/StyleKeys";
+} from "../../../../types/shop/UnlockableItems";
+import { convertUnlockedItemToStyleKeys } from "../../../../types/poo-creature-style/StyleKeys";
 
 const useShopTransaction = () => {
   const [isTransactioning, setIsTransactioning] = useState(false);
@@ -67,7 +67,7 @@ const useShopTransaction = () => {
     ) {
       await update(
         convertUnlockedItemToStyleKeys(transaction.itemType),
-        transaction.item
+        transaction.item,
       );
     } else if (
       isResourcesItem(transaction.itemType) &&

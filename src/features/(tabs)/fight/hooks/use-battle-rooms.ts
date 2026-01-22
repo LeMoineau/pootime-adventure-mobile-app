@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { ServerTypes } from "../../../../common/types/battle/online-battle/ServerTypes";
+import { ServerTypes } from "../../../../types/battle/online-battle/ServerTypes";
 import { Socket } from "socket.io-client";
-import { SocketEvents } from "../../../../common/types/SocketEvents";
+import { SocketEvents } from "../../../../types/SocketEvents";
 import useModals from "../../../../common/hooks/ui/use-modals";
-import { BattleFinalState } from "../../../../common/types/battle/BattleFinalState";
+import { BattleFinalState } from "../../../../types/battle/BattleFinalState";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import { DateUtils } from "../../../../common/utils/date-utils";
@@ -93,7 +93,7 @@ export default function useBattleRooms(props?: {
 
   const _battleFinish = (
     battleEnding: ServerTypes.BattleEnding,
-    finalRoomState: ServerTypes.Room
+    finalRoomState: ServerTypes.Room,
   ) => {
     resetRoom();
     if (socket && socket.id && props?.onBattleFinish) {

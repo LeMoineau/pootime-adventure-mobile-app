@@ -4,7 +4,7 @@ import { colors } from "../../common/utils/color-utils";
 import PooCreatureBadge from "../misc/poo-creature/PooCreatureBadge";
 import PooCreatureStatsTable from "../misc/poo-creature/PooCreatureStatsTable";
 import UltiItem from "./UltiItem";
-import { BattleFinalState } from "../../common/types/battle/BattleFinalState";
+import { BattleFinalState } from "../../types/battle/BattleFinalState";
 
 export default function PreviousBattleItem({
   battle,

@@ -4,7 +4,7 @@ import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store"
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { useResourcesStore } from "../../stores/resources.store";
 import { useVillageStore } from "../../stores/village.store";
-import UserData from "../../types/firebase/UserData";
+import UserData from "../../../types/firebase/UserData";
 import useStorage from "../use-storage";
 
 export default function useMassiveStoreLoader() {

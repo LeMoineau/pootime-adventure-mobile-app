@@ -3,7 +3,7 @@ import { Resources } from "../../../../common/config/constants/Resources";
 import { StructureName } from "../../../../common/config/constants/Structures";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { useVillageStore } from "../../../../common/stores/village.store";
-import { Structure } from "../../../../common/types/village/Structure";
+import { Structure } from "../../../../types/village/Structure";
 import { VillageUtils } from "../../../../common/utils/village-utils";
 
 const useStructure = () => {
@@ -30,7 +30,7 @@ const useStructure = () => {
     if (!structName) return false;
     const costs = VillageUtils.iterateOnUpgradeCostOf(
       structName,
-      get(structName).level
+      get(structName).level,
     );
     for (let [resource, val] of costs) {
       if (getResource(resource) < val) return false;
@@ -42,7 +42,7 @@ const useStructure = () => {
     if (!structName) return false;
     return (
       VillageUtils.getStructureData(structName).upgradeCosts.find(
-        (c) => c.fromLevel === get(structName).level
+        (c) => c.fromLevel === get(structName).level,
       ) === undefined
     );
   };
@@ -51,7 +51,7 @@ const useStructure = () => {
     if (!structName) return [];
     return VillageUtils.iterateOnUpgradeCostOf(
       structName,
-      get(structName).level
+      get(structName).level,
     );
   };
 

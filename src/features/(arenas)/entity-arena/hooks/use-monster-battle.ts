@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { BattleReward } from "../../../../common/types/battle/BattleReward";
+import { BattleReward } from "../../../../types/battle/BattleReward";
 import { Zone } from "../../../../common/models/zones/Zone";
 import { Monster } from "../../../../common/models/entities/monsters/Monster";
-import { MonsterState } from "../../../../common/types/battle/entities/MonsterState";
-import { PlayerState } from "../../../../common/types/battle/entities/PlayerState";
+import { MonsterState } from "../../../../types/battle/entities/MonsterState";
+import { PlayerState } from "../../../../types/battle/entities/PlayerState";
 import { Player } from "../../../../common/models/entities/players/Player";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import cloneService from "../../../../common/services/clone.service";

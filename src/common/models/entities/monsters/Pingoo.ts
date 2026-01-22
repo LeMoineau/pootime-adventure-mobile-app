@@ -1,4 +1,4 @@
-import { BattleReward } from "../../../types/battle/BattleReward";
+import { BattleReward } from "../../../../types/battle/BattleReward";
 import { Monster, MonsterProps } from "./Monster";
 
 export class Pingoo extends Monster {

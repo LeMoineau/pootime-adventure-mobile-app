@@ -1,6 +1,6 @@
 import { getApp } from "firebase/app";
 import { DefaultValues } from "../../config/DefaultValues";
-import UserData, { IdentifiedUserData } from "../../types/firebase/UserData";
+import UserData, { IdentifiedUserData } from "../../../types/firebase/UserData";
 import {
   collection,
   doc,
@@ -33,7 +33,7 @@ export function useUserDataTable() {
    */
   const get = async (
     uid: string,
-    forceRefresh?: boolean
+    forceRefresh?: boolean,
   ): Promise<IdentifiedUserData | undefined> => {
     const cacheKey = `get:user-data:${uid}`;
     const cachedResponse = getFromCache(cacheKey);
@@ -68,7 +68,7 @@ export function useUserDataTable() {
       }
       if (props.orderBy) {
         constraints.push(
-          orderBy(props.orderBy.fieldPath, props.orderBy.direction)
+          orderBy(props.orderBy.fieldPath, props.orderBy.direction),
         );
       }
     }
@@ -90,7 +90,7 @@ export function useUserDataTable() {
       const snap = await getDocs(q);
       setLoading(false);
       const response = snap.docs.map(
-        (d) => d.exists() && { ...d.data(), uid: d.id }
+        (d) => d.exists() && { ...d.data(), uid: d.id },
       ) as IdentifiedUserData[];
       putInCache(cacheKey, response);
       return response;
@@ -127,7 +127,7 @@ export function useUserDataTable() {
     } else {
       setLoading(true);
       const snap = await getCountFromServer(
-        query(collection(firestore, "user-data"), ...constraints)
+        query(collection(firestore, "user-data"), ...constraints),
       );
       setLoading(false);
       const nb = snap.data().count;

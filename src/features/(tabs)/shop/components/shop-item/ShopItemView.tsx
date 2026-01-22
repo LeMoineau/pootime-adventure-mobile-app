@@ -2,7 +2,7 @@ import { Animated, Pressable, useWindowDimensions, View } from "react-native";
 import {
   isStringItemValue,
   isUnlockableItem,
-} from "../../../../../common/types/shop/UnlockableItems";
+} from "../../../../../types/shop/UnlockableItems";
 import { style } from "../../../../../common/utils/style-utils";
 import { colors } from "../../../../../common/utils/color-utils";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
@@ -11,13 +11,13 @@ import TextWithResourceIcon from "../../../../../components/text/TextWithResourc
 import {
   FreeTransaction,
   Transaction,
-} from "../../../../../common/types/shop/Transaction";
+} from "../../../../../types/shop/Transaction";
 import ShopItemTypeView from "./ShopItemTypeView";
 import useAnimatedValue from "../../../../../common/hooks/ui/use-animated-value";
 import {
   BuyableItem,
   BuyableItemValue,
-} from "../../../../../common/types/shop/BuyableItem";
+} from "../../../../../types/shop/BuyableItem";
 import { Resources } from "../../../../../common/config/constants/Resources";
 
 export default function ShopItemView({
