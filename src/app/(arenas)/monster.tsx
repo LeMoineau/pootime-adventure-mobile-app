@@ -4,7 +4,7 @@ import { colors } from "../../utils/color-utils";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { useResourcesStore } from "../../stores/resources.store";
 import { useLocalSearchParams } from "expo-router";
-import useMonsterBattle from "../../hooks/features/arenas/use-monster-battle";
+import useMonsterBattle from "../../hooks/features/(arenas)/use-monster-battle";
 import * as NavigationBar from "expo-navigation-bar";
 import useModal from "../../hooks/common/ui/use-modal";
 import CustomRewardModal from "../../components/common/modals/primitives/CustomRewardModal";

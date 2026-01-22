@@ -4,8 +4,8 @@ import { colors } from "../../utils/color-utils";
 import { Structures } from "../../config/constants/Structures";
 import { style } from "../../utils/style-utils";
 import { useRouter } from "expo-router";
-import VillageTopBar from "../../components/features/(tabs)/village/components/VillageTopBar";
-import StructureView from "../../components/features/(tabs)/village/components/StructureView";
+import VillageTopBar from "../../components/features/(tabs)/village/VillageTopBar";
+import StructureView from "../../components/features/(tabs)/village/StructureView";
 
 export default function VillageTab() {
   const router = useRouter();

@@ -14,13 +14,13 @@ import ExpoIcon from "../../components/common/icons/ExpoIcon";
 import Gradient, {
   GradientDirection,
 } from "../../components/common/misc/Gradient";
-import usePreviousBattles from "../../components/features/(tabs)/fight/hooks/use-previous-battles";
+import usePreviousBattles from "../../hooks/features/(tabs)/fight/use-previous-battles";
 import NoPreviousBattleItem from "../../components/common/items/NoPreviousBattleItem";
 import PooCreatureTropheeSubHeader from "../../components/common/misc/poo-creature/sub-headers/PooCreatureTropheeSubHeader";
-import useBattleRooms from "../../components/features/(tabs)/fight/hooks/use-battle-rooms";
-import ServerWaitingModal from "../../components/features/(tabs)/fight/components/ServerWaitingModal";
-import WaitForFightModal from "../../components/features/(tabs)/fight/components/WaitForFightModal";
-import PrivateFightModal from "../../components/features/(tabs)/fight/components/PrivateFightModal";
+import useBattleRooms from "../../hooks/features/(tabs)/fight/use-battle-rooms";
+import ServerWaitingModal from "../../components/features/(tabs)/fight/ServerWaitingModal";
+import WaitForFightModal from "../../components/features/(tabs)/fight/WaitForFightModal";
+import PrivateFightModal from "../../components/features/(tabs)/fight/PrivateFightModal";
 import { LegendList } from "@legendapp/list";
 import { DefaultValues } from "../../config/DefaultValues";
 

@@ -1,6 +1,6 @@
 import PooCreature from "../../components/common/misc/poo-creature/PooCreature";
 import Arena from "../../components/common/views/arena/Arena";
-import useOnlineBattle from "../../hooks/features/arenas/use-online-battle";
+import useOnlineBattle from "../../hooks/features/(arenas)/use-online-battle";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import { useResourcesStore } from "../../stores/resources.store";

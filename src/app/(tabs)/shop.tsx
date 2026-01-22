@@ -3,10 +3,10 @@ import { style } from "../../utils/style-utils";
 import PooBodyEditIcon from "../../components/common/icons/ui/pooBodyEdit";
 import CustomPage from "../../components/common/navigation/CustomPage";
 import PooCoinsConverterIcon from "../../components/common/icons/ui/pooCoinsConverter";
-import ShopResourcesTab from "../../components/features/(tabs)/shop/components/tabs/ShopResourcesTab";
-import ShopScrollView from "../../components/features/(tabs)/shop/components/ShopScrollView";
-import ShopStyleTab from "../../components/features/(tabs)/shop/components/tabs/ShopStyleTab";
-import useShopTransaction from "../../components/features/(tabs)/shop/hooks/use-shop-transaction";
+import ShopResourcesTab from "../../components/features/(tabs)/shop/tabs/ShopResourcesTab";
+import ShopScrollView from "../../components/features/(tabs)/shop/ShopScrollView";
+import ShopStyleTab from "../../components/features/(tabs)/shop/tabs/ShopStyleTab";
+import useShopTransaction from "../../hooks/features/(tabs)/shop/use-shop-transaction";
 
 export default function ShopTab() {
   const {

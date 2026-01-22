@@ -13,7 +13,7 @@ import { colors } from "../../utils/color-utils";
 import { style } from "../../utils/style-utils";
 import PooCreatureRankSubHeader from "../../components/common/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
 import RoundedScrollView from "../../components/common/views/rounded-scroll-view/RoundedScrollView";
-import LeaderboardBoard from "../../components/features/leaderboard/components/LeaderboardBoard";
+import LeaderboardBoard from "../../components/features/leaderboard/LeaderboardBoard";
 
 const LEADERBOARD_TAB_INFOS = [
   {

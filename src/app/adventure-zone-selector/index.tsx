@@ -6,8 +6,8 @@ import CustomPage from "../../components/common/navigation/CustomPage";
 import { colors } from "../../utils/color-utils";
 import { style } from "../../utils/style-utils";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
-import AdventureZoneSelectorHeader from "../../components/features/adventure-zone-selector/components/AdventureZoneSelectorHeader";
-import AdventureZoneItem from "../../components/features/adventure-zone-selector/components/AdventureZoneItem";
+import AdventureZoneSelectorHeader from "../../components/features/adventure-zone-selector/AdventureZoneSelectorHeader";
+import AdventureZoneItem from "../../components/features/adventure-zone-selector/AdventureZoneItem";
 import { router } from "expo-router";
 import { zones } from "../../constants/battle/adventure-zones";
 
