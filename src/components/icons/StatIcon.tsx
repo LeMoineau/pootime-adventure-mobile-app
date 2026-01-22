@@ -1,7 +1,7 @@
 import { useAssets, Asset } from "expo-asset";
 import { PooCreatureStats } from "../../types/PooCreatureStats";
 import { Image, ImageStyle } from "expo-image";
-import assets from "../../common/config/assets";
+import assets from "../../config/assets";
 import { StyleProp } from "react-native";
 
 export default function StatIcon({

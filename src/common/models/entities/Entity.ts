@@ -1,4 +1,4 @@
-import { DefaultValues } from "../../config/DefaultValues";
+import { DefaultValues } from "../../../config/DefaultValues";
 import { xpNeededForNextLevel } from "../../constants/stats/level";
 import { ultis } from "../../constants/stats/ultis";
 import { UltiDetails } from "../../../types/Ultis";

@@ -17,8 +17,8 @@ import PooCreatureStatsTable from "../../components/misc/poo-creature/PooCreatur
 import TitleWithDivider from "../../components/text/TitleWithDivider";
 import UltiItem from "../../components/items/UltiItem";
 import InventoryItem from "../../components/items/slot/InventorySlotItem";
-import { Resources } from "../../common/config/constants/Resources";
-import { StructureName } from "../../common/config/constants/Structures";
+import { Resources } from "../../config/constants/Resources";
+import { StructureName } from "../../config/constants/Structures";
 import StructureSlotItem from "../../components/items/slot/StructureSlotItem";
 import ShopItems from "../../common/constants/shop/shop-items";
 import BodyColorSlotItem from "../../components/items/slot/BodyColorSlotItem";

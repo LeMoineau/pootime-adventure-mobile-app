@@ -9,7 +9,7 @@ import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
 import TransferButton from "../../../../components/buttons/TransferButton";
-import { Resources } from "../../../../common/config/constants/Resources";
+import { Resources } from "../../../../config/constants/Resources";
 
 export default function StructureInfosBuildTab() {
   const { selectedStructureName: structName, build } = useVillageStore();

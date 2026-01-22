@@ -13,7 +13,7 @@ import UltiButton from "./elements/UltiButton";
 import { UltiDetails, Ultis } from "../../../types/Ultis";
 import ReadyGoText from "./elements/ReadyGoText";
 import { colors } from "../../../common/utils/color-utils";
-import { DefaultValues } from "../../../common/config/DefaultValues";
+import { DefaultValues } from "../../../config/DefaultValues";
 import { useEffect } from "react";
 import PlayerNode from "./elements/PlayerNode";
 import AdvNode from "./elements/AdvNode";

@@ -4,7 +4,7 @@ import PooCreatureBadge from "../../../components/misc/poo-creature/PooCreatureB
 import { colors } from "../../../common/utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
 import ResourceRank from "../../../components/text/ResourceRank";
-import { Resources } from "../../../common/config/constants/Resources";
+import { Resources } from "../../../config/constants/Resources";
 
 const RESOURCE_LEADERBOARDED: Resources[] = ["pooTrophee", "pooCoins"];
 

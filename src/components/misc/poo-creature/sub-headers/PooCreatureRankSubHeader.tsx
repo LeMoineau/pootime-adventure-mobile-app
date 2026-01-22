@@ -3,7 +3,7 @@ import PooCreatureBadge from "../PooCreatureBadge";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
-import { Resources } from "../../../../common/config/constants/Resources";
+import { Resources } from "../../../../config/constants/Resources";
 import ResourceRank from "../../../text/ResourceRank";
 
 const RESOURCE_RANKED: Resources[] = ["pooTrophee", "pooCoins"];

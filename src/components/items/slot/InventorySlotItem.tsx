@@ -4,7 +4,7 @@ import { style } from "../../../common/utils/style-utils";
 import ResourceIcon from "../../icons/ResourceIcon";
 import { MathUtils } from "../../../common/utils/math-utils";
 import { colors } from "../../../common/utils/color-utils";
-import { Resources } from "../../../common/config/constants/Resources";
+import { Resources } from "../../../config/constants/Resources";
 
 export default function InventorySlotItem({
   resource,

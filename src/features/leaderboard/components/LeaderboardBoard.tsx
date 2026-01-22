@@ -9,7 +9,7 @@ import LeaderboardRow from "./LeaderboardRow";
 import TextWithResourceIcon from "../../../components/text/TextWithResourceIcon";
 import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
 import { MathUtils } from "../../../common/utils/math-utils";
-import { Resources } from "../../../common/config/constants/Resources";
+import { Resources } from "../../../config/constants/Resources";
 
 export default function LeaderboardBoard({
   title,

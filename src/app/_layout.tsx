@@ -1,4 +1,4 @@
-import "../common/config/firebaseConfig";
+import "../config/firebaseConfig";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import CacheProvider from "../common/contexts/CacheProvider";

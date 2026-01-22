@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useModals from "../../common/hooks/ui/use-modals";
 import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store";
 import EventPosterModalMatcher from "../modals/event/EventPosterModalMatcher";
-import { EVENT_POSTERS } from "../../common/config/constants/event-posters";
+import { EVENT_POSTERS } from "../../config/constants/event-posters";
 
 export default function EventPosterOverlay() {
   const { isVisible, hide } = useModals<"eventPosterModal">();

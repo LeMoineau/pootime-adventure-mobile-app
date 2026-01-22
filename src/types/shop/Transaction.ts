@@ -1,4 +1,4 @@
-import { Resources } from "../../common/config/constants/Resources";
+import { Resources } from "../../config/constants/Resources";
 import { BuyableItemValue } from "./BuyableItem";
 import { BuyableItem } from "./UnlockableItems";
 

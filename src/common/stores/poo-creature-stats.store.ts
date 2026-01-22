@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
-import { StorageKeys } from "../config/StorageKeys";
-import { DefaultValues } from "../config/DefaultValues";
+import { StorageKeys } from "../../config/StorageKeys";
+import { DefaultValues } from "../../config/DefaultValues";
 import { StatType } from "../../types/StatType";
 import { MathUtils } from "../utils/math-utils";
 import { ObjectUtils } from "../utils/object-utils";

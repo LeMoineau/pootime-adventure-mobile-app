@@ -20,7 +20,7 @@ import ServerWaitingModal from "../../features/(tabs)/fight/components/ServerWai
 import WaitForFightModal from "../../features/(tabs)/fight/components/WaitForFightModal";
 import PrivateFightModal from "../../features/(tabs)/fight/components/PrivateFightModal";
 import { LegendList } from "@legendapp/list";
-import { DefaultValues } from "../../common/config/DefaultValues";
+import { DefaultValues } from "../../config/DefaultValues";
 
 export default function FightTab() {
   const { width } = useWindowDimensions();

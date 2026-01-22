@@ -18,7 +18,7 @@ import {
   BuyableItem,
   BuyableItemValue,
 } from "../../../../../types/shop/BuyableItem";
-import { Resources } from "../../../../../common/config/constants/Resources";
+import { Resources } from "../../../../../config/constants/Resources";
 
 export default function ShopItemView({
   item,

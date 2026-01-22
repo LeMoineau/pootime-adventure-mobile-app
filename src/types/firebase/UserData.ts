@@ -1,4 +1,4 @@
-import { DataInStorage } from "../../common/config/DataInStorage";
+import { DataInStorage } from "../../config/DataInStorage";
 import { PooCreatureStats } from "../PooCreatureStats";
 import { PooCreatureStyle } from "../PooCreatureStyle";
 import { Inventory } from "../resources/Inventory";

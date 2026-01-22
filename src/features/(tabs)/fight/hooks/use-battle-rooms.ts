@@ -9,7 +9,7 @@ import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature
 import { DateUtils } from "../../../../common/utils/date-utils";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { router } from "expo-router";
-import { globalSocket, refreshSocket } from "../../../../common/config/socket";
+import { globalSocket, refreshSocket } from "../../../../config/socket";
 
 export default function useBattleRooms(props?: {
   onBattleFinish?: (newBattle: BattleFinalState) => void;

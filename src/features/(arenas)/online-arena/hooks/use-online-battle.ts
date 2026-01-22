@@ -6,7 +6,7 @@ import { UltiDetails } from "../../../../types/Ultis";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
-import { getSocket } from "../../../../common/config/socket";
+import { getSocket } from "../../../../config/socket";
 
 const useOnlineBattle = () => {
   const socket = getSocket();

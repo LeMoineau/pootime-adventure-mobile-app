@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { useUserDataTable } from "../firestore/use-user-data-table";
 import useMassiveStoreLoader from "../admin/user-massive-store-loader";
-import { auth } from "../../config/firebaseConfig";
+import { auth } from "../../../config/firebaseConfig";
 
 export function useAuthentication() {
   const [user, setUser] = useState<User>();
@@ -53,7 +53,7 @@ export function useAuthentication() {
       const userCredential = await signInAnonymously(auth);
       await createUserData(
         userCredential.user.uid,
-        generateUserDataFromStores()
+        generateUserDataFromStores(),
       );
       onSuccess && onSuccess(userCredential.user);
     } catch (e) {
@@ -72,7 +72,7 @@ export function useAuthentication() {
     email: string,
     password: string,
     onSuccess?: (userCredential: UserCredential) => void,
-    onFailed?: (err: FirebaseError) => void
+    onFailed?: (err: FirebaseError) => void,
   ) => {
     try {
       if (user && user.isAnonymous) {
@@ -83,11 +83,11 @@ export function useAuthentication() {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           email,
-          password
+          password,
         );
         await createUserData(
           userCredential.user.uid,
-          generateUserDataFromStores()
+          generateUserDataFromStores(),
         );
         onSuccess && onSuccess(userCredential);
       }
@@ -108,13 +108,13 @@ export function useAuthentication() {
     email: string,
     password: string,
     onSuccess?: (userCredential: UserCredential) => void,
-    onFailed?: (e: FirebaseError) => void
+    onFailed?: (e: FirebaseError) => void,
   ) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       );
       const userData = await getUserData(userCredential.user.uid);
       if (userData) {

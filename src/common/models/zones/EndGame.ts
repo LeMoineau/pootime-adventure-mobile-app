@@ -1,4 +1,4 @@
-import assets from "../../config/assets";
+import assets from "../../../config/assets";
 import { monsters } from "../../constants/battle/monsters";
 import { ArrayUtils } from "../../utils/array-utils";
 import { colors } from "../../utils/color-utils";

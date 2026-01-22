@@ -6,8 +6,8 @@ import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { SettingsScrollView } from "../../features/settings/components/SettingsScrollView";
 import { router } from "expo-router";
-import config from "../../common/config/config";
-import { DefaultValues } from "../../common/config/DefaultValues";
+import config from "../../config/config";
+import { DefaultValues } from "../../config/DefaultValues";
 
 export default function DevSettings() {
   const itemsUnlocked = useItemsUnlockedStore();

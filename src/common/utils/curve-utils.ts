@@ -1,4 +1,4 @@
-import { DefaultValues } from "../config/DefaultValues";
+import { DefaultValues } from "../../config/DefaultValues";
 import { BattleReward } from "../../types/battle/BattleReward";
 
 export namespace CurveUtils {

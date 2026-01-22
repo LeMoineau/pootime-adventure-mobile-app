@@ -7,7 +7,7 @@ import useStructure from "../../../(tabs)/village/hooks/use-structure";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
 import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
-import { Resources } from "../../../../common/config/constants/Resources";
+import { Resources } from "../../../../config/constants/Resources";
 
 export default function StructureInfosUpgradeTab() {
   const { selectedStructureName: structName, get, upgrade } = useVillageStore();

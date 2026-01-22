@@ -7,7 +7,7 @@ import { useResourcesStore } from "../../common/stores/resources.store";
 import { View } from "react-native";
 import NodeShadow from "../../components/views/arena/elements/NodeShadow";
 import { useEffect } from "react";
-import { Resources } from "../../common/config/constants/Resources";
+import { Resources } from "../../config/constants/Resources";
 import BattleFinishRewardModal from "../../features/(arenas)/online-arena/components/BattleFinishRewardModal";
 import { router } from "expo-router";
 

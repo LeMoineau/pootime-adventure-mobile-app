@@ -1,10 +1,10 @@
 import { create } from "zustand";
 import useStorage from "../hooks/use-storage";
-import { StorageKeys } from "../config/StorageKeys";
-import { DefaultValues } from "../config/DefaultValues";
+import { StorageKeys } from "../../config/StorageKeys";
+import { DefaultValues } from "../../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
 import { Inventory } from "../../types/resources/Inventory";
-import { Resources } from "../config/constants/Resources";
+import { Resources } from "../../config/constants/Resources";
 
 export type ResourceStore = {
   inventory: Inventory;

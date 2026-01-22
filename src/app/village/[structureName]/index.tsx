@@ -5,7 +5,7 @@ import { style } from "../../../common/utils/style-utils";
 import {
   StructureName,
   Structures,
-} from "../../../common/config/constants/Structures";
+} from "../../../config/constants/Structures";
 import ExpoIcon from "../../../components/icons/ExpoIcon";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ import StructureInfosMainTab from "../../../features/structure-infos/components/
 import StructureInfosUpgradeTab from "../../../features/structure-infos/components/tabs/StructureInfosUpgradeTab";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { NavigationContainer } from "@react-navigation/native";
-import { DataInStorage } from "../../../common/config/DataInStorage";
+import { DataInStorage } from "../../../config/DataInStorage";
 
 const Tab = createMaterialTopTabNavigator();
 

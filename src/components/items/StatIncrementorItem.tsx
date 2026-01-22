@@ -9,7 +9,7 @@ import { colors } from "../../common/utils/color-utils";
 import StandardButton from "../buttons/StandardButton";
 import ExpoIcon from "../icons/ExpoIcon";
 import useAnimatedValue from "../../common/hooks/ui/use-animated-value";
-import { DefaultValues } from "../../common/config/DefaultValues";
+import { DefaultValues } from "../../config/DefaultValues";
 import { useShallow } from "zustand/react/shallow";
 
 export default function StatIncrementorItem({

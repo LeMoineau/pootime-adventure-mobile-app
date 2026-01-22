@@ -1,4 +1,4 @@
-import { StructureName } from "../../../../common/config/constants/Structures";
+import { StructureName } from "../../../../config/constants/Structures";
 import ToiletPower from "./toilet/ToiletPower";
 import YarisPower from "./yaris/YarisPower";
 

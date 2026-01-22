@@ -1,4 +1,4 @@
-import { StorageKeys } from "../../config/StorageKeys";
+import { StorageKeys } from "../../../config/StorageKeys";
 import { useItemsUnlockedStore } from "../../stores/items-unlocked.store";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";

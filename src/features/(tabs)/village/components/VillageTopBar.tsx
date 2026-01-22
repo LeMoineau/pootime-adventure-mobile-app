@@ -3,7 +3,7 @@ import InputField from "../../../../components/fields/InputField";
 import { style } from "../../../../common/utils/style-utils";
 import { useVillageStore } from "../../../../common/stores/village.store";
 import ExpoIcon from "../../../../components/icons/ExpoIcon";
-import { DefaultValues } from "../../../../common/config/DefaultValues";
+import { DefaultValues } from "../../../../config/DefaultValues";
 
 export default function VillageTopBar() {
   const { name, change } = useVillageStore();
