@@ -1,12 +1,12 @@
 import * as React from "react";
 import Svg, { Path, SvgProps } from "react-native-svg";
-import { MathUtils } from "../../../../utils/math-utils";
+import { SvgUtils } from "../../../../utils/svg-utils";
 import { CustomSvgProps } from "../../../../types/CustomSvgProps";
 
 export default function PooTropheeIcon(props: SvgProps & CustomSvgProps) {
   return (
     <Svg
-      {...MathUtils.calculateSvgDimension(52.756, 66.355, props)}
+      {...SvgUtils.calculateSvgDimension(52.756, 66.355, props)}
       viewBox="0 0 13.958 17.556"
       {...props}
     >

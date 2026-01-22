@@ -1,10 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../../utils/math-utils";
+import { SvgUtils } from "../../../../../utils/svg-utils";
 const PingooIcon = (props: SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(429.038, 453.639, props)}
+    {...SvgUtils.calculateSvgDimension(429.038, 453.639, props)}
     viewBox="0 0 113.516 120.025"
     {...props}
   >

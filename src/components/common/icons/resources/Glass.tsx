@@ -1,10 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../utils/math-utils";
+import { SvgUtils } from "../../../../utils/svg-utils";
 const GlassIcon = (props: SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(41.235, 106.809, props)}
+    {...SvgUtils.calculateSvgDimension(41.235, 106.809, props)}
     viewBox="0 0 10.91 28.26"
     {...props}
   >

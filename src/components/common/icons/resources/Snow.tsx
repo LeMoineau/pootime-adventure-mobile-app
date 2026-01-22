@@ -1,10 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, G, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../utils/math-utils";
+import { SvgUtils } from "../../../../utils/svg-utils";
 const SnowIcon = (props: SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(103.655, 91.341, props)}
+    {...SvgUtils.calculateSvgDimension(103.655, 91.341, props)}
     viewBox="0 0 27.425 24.167"
     {...props}
   >

@@ -1,13 +1,13 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../../utils/math-utils";
+import { SvgUtils } from "../../../../../utils/svg-utils";
 const YarisIcon = ({
   gold,
   ...props
 }: { gold?: boolean } & SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(1195.552, 726.963, props)}
+    {...SvgUtils.calculateSvgDimension(1195.552, 726.963, props)}
     viewBox="0 0 316.323 192.342"
     {...props}
   >

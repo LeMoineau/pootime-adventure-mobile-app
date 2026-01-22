@@ -1,10 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, G, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../utils/math-utils";
+import { SvgUtils } from "../../../../utils/svg-utils";
 const MetalIcon = (props: SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(132.621, 109.357, props)}
+    {...SvgUtils.calculateSvgDimension(132.621, 109.357, props)}
     viewBox="0 0 35.089 28.934"
     {...props}
   >

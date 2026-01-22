@@ -1,10 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../../utils/math-utils";
+import { SvgUtils } from "../../../../../utils/svg-utils";
 const GremlinsFaintedIcon = (props: SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(344.824, 384.966, props)}
+    {...SvgUtils.calculateSvgDimension(344.824, 384.966, props)}
     viewBox="0 0 91.235 101.856"
     {...props}
   >

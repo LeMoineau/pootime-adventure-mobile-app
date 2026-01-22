@@ -1,11 +1,12 @@
 import * as React from "react";
 import Svg, { Path, SvgProps } from "react-native-svg";
 import { CustomSvgProps } from "../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../utils/math-utils";
+import { SvgUtils } from "../../../../utils/svg-utils";
+
 export default function LeaderboardIcon(props: SvgProps & CustomSvgProps) {
   return (
     <Svg
-      {...MathUtils.calculateSvgDimension(75.609, 54.695, props)}
+      {...SvgUtils.calculateSvgDimension(75.609, 54.695, props)}
       viewBox="0 0 20.005 14.471"
       {...props}
     >

@@ -1,10 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../utils/math-utils";
+import { SvgUtils } from "../../../../utils/svg-utils";
 const CosmicPowderIcon = (props: SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(150.619, 98.411, props)}
+    {...SvgUtils.calculateSvgDimension(150.619, 98.411, props)}
     viewBox="0 0 39.851 26.038"
     {...props}
   >

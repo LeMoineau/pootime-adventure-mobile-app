@@ -1,10 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../../utils/math-utils";
+import { SvgUtils } from "../../../../../utils/svg-utils";
 const TankFaintedIcon = (props: SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(578.343, 378.14, props)}
+    {...SvgUtils.calculateSvgDimension(578.343, 378.14, props)}
     viewBox="0 0 153.02 100.05"
     {...props}
   >

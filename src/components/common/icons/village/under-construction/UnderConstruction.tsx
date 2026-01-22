@@ -1,10 +1,10 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../../utils/math-utils";
+import { SvgUtils } from "../../../../../utils/svg-utils";
 const UnderConstructionIcon = (props: SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(303.234, 404.42, props)}
+    {...SvgUtils.calculateSvgDimension(303.234, 404.42, props)}
     viewBox="0 0 80.231 107.003"
     {...props}
   >

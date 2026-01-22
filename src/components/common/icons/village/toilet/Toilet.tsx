@@ -1,13 +1,13 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 import { CustomSvgProps } from "../../../../../types/CustomSvgProps";
-import { MathUtils } from "../../../../../utils/math-utils";
+import { SvgUtils } from "../../../../../utils/svg-utils";
 const ToiletIcon = ({
   gold,
   ...props
 }: { gold?: boolean } & SvgProps & CustomSvgProps) => (
   <Svg
-    {...MathUtils.calculateSvgDimension(542.292, 810.446, props)}
+    {...SvgUtils.calculateSvgDimension(542.292, 810.446, props)}
     viewBox="0 0 143.481 214.43"
     {...props}
   >
