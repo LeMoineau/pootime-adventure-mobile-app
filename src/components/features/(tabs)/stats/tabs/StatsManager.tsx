@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import { style } from "../../../../../constants/style/styles";
-import StatsTips from "../components/StatsTips";
 import StatIncrementorItem from "../../../../common/items/StatIncrementorItem";
 import { useState } from "react";
+import StatsTips from "../StatsTips";
 
 export default function StatsManager() {
   const [selectedIndex, setSelectedIndex] = useState<number>();

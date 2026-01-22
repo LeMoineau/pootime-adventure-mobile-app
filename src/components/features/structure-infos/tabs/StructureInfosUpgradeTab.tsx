@@ -1,5 +1,4 @@
 import { ScrollView, Text, View } from "react-native";
-import StructureUpgradeButton from "../components/StructureUpgradeButton";
 import { useEffect } from "react";
 import { useVillageStore } from "../../../../stores/village.store";
 import { useResourcesStore } from "../../../../stores/resources.store";
@@ -8,6 +7,7 @@ import { style } from "../../../../constants/style/styles";
 import { colors } from "../../../../constants/style/colors";
 import TextWithResourceIcon from "../../../common/text/TextWithResourceIcon";
 import { Resources } from "../../../../config/constants/Resources";
+import StructureUpgradeButton from "../StructureUpgradeButton";
 
 export default function StructureInfosUpgradeTab() {
   const { selectedStructureName: structName, get, upgrade } = useVillageStore();

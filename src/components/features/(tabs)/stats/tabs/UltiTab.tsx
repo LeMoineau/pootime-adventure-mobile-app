@@ -1,10 +1,10 @@
 import { View } from "react-native";
 import { style } from "../../../../../constants/style/styles";
 import { ItemInStore } from "../../../../../types/itemInStore";
-import UltiView from "../components/UltiButton";
 import IconFromImage from "../../../../common/icons/IconFromImage";
 import { usePooCreatureStatsStore } from "../../../../../stores/poo-creature-stats.store";
 import { Ultis } from "../../../../../types/Ultis";
+import UltiButton from "../UltiButton";
 
 export default function UltiTab() {
   const { ultiSelected, level, toggleUlti } = usePooCreatureStatsStore();
@@ -14,7 +14,7 @@ export default function UltiTab() {
       {ItemInStore.ultis.map((item, index) => {
         const ulti = Ultis[item.name];
         return (
-          <UltiView
+          <UltiButton
             key={index}
             title={ulti.title}
             desc={ulti.desc}
@@ -28,7 +28,7 @@ export default function UltiTab() {
                 await toggleUlti(item.name);
               }
             }}
-          ></UltiView>
+          ></UltiButton>
         );
       })}
     </View>

@@ -1,7 +1,6 @@
 import { ScrollView, View } from "react-native";
 import PooCreature from "../../../../common/misc/poo-creature/PooCreature";
 import ShopItemView from "../shop-item/ShopItemView";
-import ShopSectionTitle from "../components/ShopSectionTitle";
 import {
   BuyableItem,
   isStyleUnlockableItem,
@@ -17,6 +16,7 @@ import {
   Transaction,
 } from "../../../../../types/shop/Transaction";
 import ShopItems from "../../../../../constants/shop/shop-items";
+import ShopSectionTitle from "../ShopSectionTitle";
 
 export default function ShopStyleTab({
   onUnlockedItemPress,
