@@ -4,9 +4,9 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { EventPoster } from "../../types/event-posters/EventPoster";
 import EventPosterModalMatcher from "../../components/common/modals/event/EventPosterModalMatcher";
-import SettingsPage from "../../components/features/settings/components/SettingsPage";
-import SettingsHeader from "../../components/features/settings/components/SettingsHeader";
-import { SettingsScrollView } from "../../components/features/settings/components/SettingsScrollView";
+import SettingsPage from "../../components/features/settings/SettingsPage";
+import SettingsHeader from "../../components/features/settings/SettingsHeader";
+import { SettingsScrollView } from "../../components/features/settings/SettingsScrollView";
 import { router } from "expo-router";
 
 export default function EventSettingsScreen() {

@@ -1,8 +1,8 @@
 import { Image, Text, View } from "react-native";
 import { style } from "../../utils/style-utils";
-import SettingsPage from "../../components/features/settings/components/SettingsPage";
-import SettingsHeader from "../../components/features/settings/components/SettingsHeader";
-import { SettingsScrollView } from "../../components/features/settings/components/SettingsScrollView";
+import SettingsPage from "../../components/features/settings/SettingsPage";
+import SettingsHeader from "../../components/features/settings/SettingsHeader";
+import { SettingsScrollView } from "../../components/features/settings/SettingsScrollView";
 import { router } from "expo-router";
 import * as Linking from "expo-linking";
 

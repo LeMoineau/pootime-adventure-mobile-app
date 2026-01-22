@@ -1,8 +1,8 @@
 import { Pressable, Text, View } from "react-native";
-import { style } from "../../../../utils/style-utils";
-import RightArrow from "../../../common/icons/rightArrow";
-import ExpoIcon, { AllIconNames } from "../../../common/icons/ExpoIcon";
-import { colors } from "../../../../utils/color-utils";
+import { style } from "../../../utils/style-utils";
+import RightArrow from "../../common/icons/rightArrow";
+import ExpoIcon, { AllIconNames } from "../../common/icons/ExpoIcon";
+import { colors } from "../../../utils/color-utils";
 import { useState } from "react";
 
 export interface SettingsItemProps {

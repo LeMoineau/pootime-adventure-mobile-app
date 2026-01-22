@@ -25,7 +25,7 @@ import BodyColorSlotItem from "../../components/common/items/slot/BodyColorSlotI
 import HeadSlotItem from "../../components/common/items/slot/HeadSlotItem";
 import ExpressionSlotItem from "../../components/common/items/slot/ExpressionSlotItem";
 import { router, useLocalSearchParams } from "expo-router";
-import PlayerInfosSubHeader from "../../components/features/player-infos/components/PlayerInfosSubHeader";
+import PlayerInfosSubHeader from "../../components/features/player-infos/PlayerInfosSubHeader";
 import { isFreeShopItem } from "../../types/shop/ShopItem";
 import useMassiveStoreLoader from "../../hooks/common/admin/user-massive-store-loader";
 import useBackHandler from "../../hooks/common/ui/useBackHandler";

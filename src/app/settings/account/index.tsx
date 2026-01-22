@@ -4,9 +4,9 @@ import useMassiveStoreLoader from "../../../hooks/common/admin/user-massive-stor
 import { useAuthentication } from "../../../hooks/common/firebase/use-authentification";
 import { useUserDataTable } from "../../../hooks/common/firestore/use-user-data-table";
 import { useEffect, useState } from "react";
-import SettingsPage from "../../../components/features/settings/components/SettingsPage";
-import SettingsHeader from "../../../components/features/settings/components/SettingsHeader";
-import { SettingsScrollView } from "../../../components/features/settings/components/SettingsScrollView";
+import SettingsPage from "../../../components/features/settings/SettingsPage";
+import SettingsHeader from "../../../components/features/settings/SettingsHeader";
+import { SettingsScrollView } from "../../../components/features/settings/SettingsScrollView";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import CustomConfirmModal from "../../../components/common/modals/primitives/CustomConfirmModal";
 

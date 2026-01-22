@@ -7,9 +7,9 @@ import { colors } from "../../utils/color-utils";
 import { style } from "../../utils/style-utils";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import * as NavigationBar from "expo-navigation-bar";
-import SettingsHeader from "../../components/features/settings/components/SettingsHeader";
-import { SettingsScrollView } from "../../components/features/settings/components/SettingsScrollView";
-import { SettingsItemProps } from "../../components/features/settings/components/SettingsItem";
+import SettingsHeader from "../../components/features/settings/SettingsHeader";
+import { SettingsScrollView } from "../../components/features/settings/SettingsScrollView";
+import { SettingsItemProps } from "../../components/features/settings/SettingsItem";
 import { useRouter } from "expo-router";
 
 export default function IndexScreen() {

@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
-import { style } from "../../../../utils/style-utils";
-import LoadingText from "../../../common/text/LoadingText";
-import ResourceRank from "../../../common/text/ResourceRank";
-import SkeletonText from "../../../common/text/SkeletonText";
-import { colors } from "../../../../utils/color-utils";
+import { style } from "../../../utils/style-utils";
+import LoadingText from "../../common/text/LoadingText";
+import ResourceRank from "../../common/text/ResourceRank";
+import SkeletonText from "../../common/text/SkeletonText";
+import { colors } from "../../../utils/color-utils";
 
 export default function PlayerInfosSubHeader({
   name,
