@@ -1,4 +1,4 @@
-import useModals from "../../hooks/ui/use-modals";
+import useModals from "../../hooks/common/ui/use-modals";
 import { EVENT_POSTERS } from "../../config/constants/event-posters";
 import moment from "moment";
 import { useEffect, useState } from "react";

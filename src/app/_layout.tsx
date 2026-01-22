@@ -4,9 +4,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CacheProvider from "../contexts/CacheProvider";
 import { StatusBar } from "expo-status-bar";
 import { Stack } from "expo-router";
-import useMassiveStoreLoader from "../hooks/admin/user-massive-store-loader";
-import { useUserDataTable } from "../hooks/firestore/use-user-data-table";
-import { useAuthentication } from "../hooks/firebase/use-authentification";
+import useMassiveStoreLoader from "../hooks/common/admin/user-massive-store-loader";
+import { useUserDataTable } from "../hooks/common/firestore/use-user-data-table";
+import { useAuthentication } from "../hooks/common/firebase/use-authentification";
 import { useEffect } from "react";
 import { AppState } from "react-native";
 

@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { colors } from "../../../utils/color-utils";
 import StandardButton from "../buttons/StandardButton";
 import ExpoIcon from "../icons/ExpoIcon";
-import useAnimatedValue from "../../../hooks/ui/use-animated-value";
+import useAnimatedValue from "../../../hooks/common/ui/use-animated-value";
 import { DefaultValues } from "../../../config/DefaultValues";
 import { useShallow } from "zustand/react/shallow";
 

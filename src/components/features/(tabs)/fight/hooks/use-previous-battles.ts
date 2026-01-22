@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useStorage from "../../../../../hooks/use-storage";
+import useStorage from "../../../../../hooks/common/use-storage";
 import { BattleFinalState } from "../../../../../types/battle/BattleFinalState";
 import { StorageKeys } from "../../../../../constants/storage-keys";
 

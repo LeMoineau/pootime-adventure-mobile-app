@@ -1,7 +1,7 @@
 import { Animated, Pressable, Text, useWindowDimensions } from "react-native";
 import { usePooCreatureStyleStore } from "../../../../../stores/poo-creature-style.store";
 import { style } from "../../../../../utils/style-utils";
-import useAnimatedValue from "../../../../../hooks/ui/use-animated-value";
+import useAnimatedValue from "../../../../../hooks/common/ui/use-animated-value";
 import PooCreature from "../../../../common/misc/poo-creature/PooCreature";
 import LevelProgressBar from "../../../../common/fields/LevelProgressBar";
 

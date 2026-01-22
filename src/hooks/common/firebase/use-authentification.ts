@@ -11,8 +11,8 @@ import {
   UserCredential,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useUserDataTable } from "../common/firestore/use-user-data-table";
-import useMassiveStoreLoader from "../common/admin/user-massive-store-loader";
+import { useUserDataTable } from "../firestore/use-user-data-table";
+import useMassiveStoreLoader from "../admin/user-massive-store-loader";
 import { auth } from "../../../config/firebaseConfig";
 
 export function useAuthentication() {

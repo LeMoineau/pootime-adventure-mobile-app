@@ -4,7 +4,7 @@ import { style } from "../../../../../utils/style-utils";
 import StandardButton from "../../../../common/buttons/StandardButton";
 import ExpoIcon from "../../../../common/icons/ExpoIcon";
 import { useRouter } from "expo-router";
-import { useAuthentication } from "../../../../../hooks/firebase/use-authentification";
+import { useAuthentication } from "../../../../../hooks/common/firebase/use-authentification";
 
 export default function HomeTopBar() {
   const { width } = useWindowDimensions();

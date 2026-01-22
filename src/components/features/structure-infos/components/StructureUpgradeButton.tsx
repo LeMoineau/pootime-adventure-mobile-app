@@ -7,7 +7,7 @@ import { useResourcesStore } from "../../../../stores/resources.store";
 import { useVillageStore } from "../../../../stores/village.store";
 import TextWithResourceIcon from "../../../common/text/TextWithResourceIcon";
 import ExpoIcon from "../../../common/icons/ExpoIcon";
-import useModals from "../../../../hooks/ui/use-modals";
+import useModals from "../../../../hooks/common/ui/use-modals";
 import { UpgradeCost } from "../../../../types/village/StructureCost";
 import { useEffect } from "react";
 import useStructure from "../../(tabs)/village/hooks/use-structure";

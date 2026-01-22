@@ -1,11 +1,9 @@
-import { getApp } from "firebase/app";
 import { DefaultValues } from "../../../config/DefaultValues";
 import UserData, { IdentifiedUserData } from "../../../types/firebase/UserData";
 import {
   collection,
   doc,
   getDoc,
-  getFirestore,
   limit,
   query,
   setDoc,

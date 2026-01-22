@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import useStorage from "../hooks/use-storage";
+import useStorage from "../hooks/common/use-storage";
 import { StorageKeys } from "../config/StorageKeys";
 import { DefaultValues } from "../config/DefaultValues";
 import { ObjectUtils } from "../utils/object-utils";
