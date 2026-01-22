@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import useStorage from "../hooks/use-storage";
+import useStorage from "../../hooks/use-storage";
 import { StorageKeys } from "../../config/StorageKeys";
 import { UnlockableItems } from "../../types/shop/UnlockableItems";
 import { DefaultValues } from "../../config/DefaultValues";

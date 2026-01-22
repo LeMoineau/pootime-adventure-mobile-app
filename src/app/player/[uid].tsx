@@ -10,7 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../utils/color-utils";
 import { useEffect, useState } from "react";
 import * as NavigationBar from "expo-navigation-bar";
-import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
+import { useUserDataTable } from "../../hooks/firestore/use-user-data-table";
 import { IdentifiedUserData } from "../../types/firebase/UserData";
 import PooCreature from "../../components/misc/poo-creature/PooCreature";
 import PooCreatureStatsTable from "../../components/misc/poo-creature/PooCreatureStatsTable";
@@ -27,8 +27,8 @@ import ExpressionSlotItem from "../../components/items/slot/ExpressionSlotItem";
 import { router, useLocalSearchParams } from "expo-router";
 import PlayerInfosSubHeader from "../../features/player-infos/components/PlayerInfosSubHeader";
 import { isFreeShopItem } from "../../types/shop/ShopItem";
-import useMassiveStoreLoader from "../../common/hooks/admin/user-massive-store-loader";
-import useBackHandler from "../../common/hooks/ui/useBackHandler";
+import useMassiveStoreLoader from "../../hooks/admin/user-massive-store-loader";
+import useBackHandler from "../../hooks/ui/useBackHandler";
 
 export default function PlayerInfosPage() {
   const { loading, get } = useUserDataTable();

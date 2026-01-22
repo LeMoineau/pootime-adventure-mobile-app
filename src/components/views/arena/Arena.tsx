@@ -17,7 +17,7 @@ import { DefaultValues } from "../../../config/DefaultValues";
 import { useEffect } from "react";
 import PlayerNode from "./elements/PlayerNode";
 import AdvNode from "./elements/AdvNode";
-import useChangingDetection from "../../../common/hooks/ui/use-changing-detection";
+import useChangingDetection from "../../../hooks/ui/use-changing-detection";
 
 export default function Arena({
   onHit,

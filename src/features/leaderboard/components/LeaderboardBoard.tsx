@@ -7,7 +7,7 @@ import { IdentifiedUserData } from "../../../types/firebase/UserData";
 import { LeaderboardDirection } from "../../../types/leaderboard/LeaderboardDirection";
 import LeaderboardRow from "./LeaderboardRow";
 import TextWithResourceIcon from "../../../components/text/TextWithResourceIcon";
-import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
+import { useAuthentication } from "../../../hooks/firebase/use-authentification";
 import { MathUtils } from "../../../utils/math-utils";
 import { Resources } from "../../../config/constants/Resources";
 

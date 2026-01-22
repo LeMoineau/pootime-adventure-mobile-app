@@ -1,5 +1,5 @@
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-import useTimer from "../../common/hooks/use-timer";
+import useTimer from "../../hooks/use-timer";
 import { useEffect, useRef, useState } from "react";
 import { Easing } from "react-native";
 import { useElapsedTime } from "use-elapsed-time";

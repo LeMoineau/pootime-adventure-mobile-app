@@ -3,9 +3,9 @@ import { style } from "../../utils/style-utils";
 import { colors } from "../../utils/color-utils";
 import { Resources } from "../../config/constants/Resources";
 import { useResourcesStore } from "../../common/stores/resources.store";
-import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
+import { useUserDataTable } from "../../hooks/firestore/use-user-data-table";
 import { useEffect, useState } from "react";
-import { useAuthentication } from "../../common/hooks/firebase/use-authentification";
+import { useAuthentication } from "../../hooks/firebase/use-authentification";
 import ResourceIcon from "../icons/ResourceIcon";
 
 /**

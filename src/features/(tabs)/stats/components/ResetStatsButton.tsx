@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import StandardButton from "../../../../components/buttons/StandardButton";
 import ExpoIcon from "../../../../components/icons/ExpoIcon";
-import useModals from "../../../../common/hooks/ui/use-modals";
+import useModals from "../../../../hooks/ui/use-modals";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { colors } from "../../../../utils/color-utils";
 import { style } from "../../../../utils/style-utils";

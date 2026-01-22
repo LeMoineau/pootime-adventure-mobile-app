@@ -5,7 +5,7 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
+import { useAuthentication } from "../../../hooks/firebase/use-authentification";
 import { colors } from "../../../utils/color-utils";
 import SettingsPage from "../../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../../features/settings/components/SettingsHeader";

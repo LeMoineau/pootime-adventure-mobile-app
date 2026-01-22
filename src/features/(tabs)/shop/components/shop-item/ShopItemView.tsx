@@ -13,7 +13,7 @@ import {
   Transaction,
 } from "../../../../../types/shop/Transaction";
 import ShopItemTypeView from "./ShopItemTypeView";
-import useAnimatedValue from "../../../../../common/hooks/ui/use-animated-value";
+import useAnimatedValue from "../../../../../hooks/ui/use-animated-value";
 import {
   BuyableItem,
   BuyableItemValue,

@@ -1,5 +1,5 @@
 import { Text, TextProps } from "react-native";
-import useTimer from "../../common/hooks/use-timer";
+import useTimer from "../../hooks/use-timer";
 import { useEffect } from "react";
 
 export default function TimerField({

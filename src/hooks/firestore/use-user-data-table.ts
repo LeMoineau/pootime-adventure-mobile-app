@@ -1,6 +1,6 @@
 import { getApp } from "firebase/app";
-import { DefaultValues } from "../../../config/DefaultValues";
-import UserData, { IdentifiedUserData } from "../../../types/firebase/UserData";
+import { DefaultValues } from "../../config/DefaultValues";
+import UserData, { IdentifiedUserData } from "../../types/firebase/UserData";
 import {
   collection,
   doc,
@@ -18,8 +18,8 @@ import {
   getCountFromServer,
 } from "firebase/firestore";
 import { useContext, useState } from "react";
-import { CacheContext } from "../../../contexts/contexts";
-import { firestore } from "../../../config/firebaseConfig";
+import { CacheContext } from "../../contexts/contexts";
+import { firestore } from "../../config/firebaseConfig";
 
 export function useUserDataTable() {
   const { get: getFromCache, put: putInCache } = useContext(CacheContext);

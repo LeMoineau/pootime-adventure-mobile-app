@@ -1,8 +1,8 @@
 import { Text } from "react-native";
-import useModals from "../../../common/hooks/ui/use-modals";
-import useMassiveStoreLoader from "../../../common/hooks/admin/user-massive-store-loader";
-import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
-import { useUserDataTable } from "../../../common/hooks/firestore/use-user-data-table";
+import useModals from "../../../hooks/ui/use-modals";
+import useMassiveStoreLoader from "../../../hooks/admin/user-massive-store-loader";
+import { useAuthentication } from "../../../hooks/firebase/use-authentification";
+import { useUserDataTable } from "../../../hooks/firestore/use-user-data-table";
 import { useEffect, useState } from "react";
 import SettingsPage from "../../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../../features/settings/components/SettingsHeader";

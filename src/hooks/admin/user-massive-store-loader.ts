@@ -1,10 +1,10 @@
-import { StorageKeys } from "../../../config/StorageKeys";
-import { useItemsUnlockedStore } from "../../stores/items-unlocked.store";
-import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
-import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
-import { useResourcesStore } from "../../stores/resources.store";
-import { useVillageStore } from "../../stores/village.store";
-import UserData from "../../../types/firebase/UserData";
+import { StorageKeys } from "../../config/StorageKeys";
+import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store";
+import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
+import { useResourcesStore } from "../../common/stores/resources.store";
+import { useVillageStore } from "../../common/stores/village.store";
+import UserData from "../../types/firebase/UserData";
 import useStorage from "../use-storage";
 
 export default function useMassiveStoreLoader() {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useUserDataTable } from "../../../common/hooks/firestore/use-user-data-table";
+import { useUserDataTable } from "../../../hooks/firestore/use-user-data-table";
 import { LeaderboardDirection } from "../../../types/leaderboard/LeaderboardDirection";
 import { IdentifiedUserData } from "../../../types/firebase/UserData";
 

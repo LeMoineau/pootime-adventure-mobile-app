@@ -6,7 +6,7 @@ import PooTropheeIcon from "../../components/icons/resources/PooTropheeIcon";
 import { ItemsLeaderboardable } from "../../config/constants/Leaderboard";
 import { Resources } from "../../config/constants/Resources";
 import PooCoinIcon from "../../components/icons/resources/pooCoin";
-import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
+import { useUserDataTable } from "../../hooks/firestore/use-user-data-table";
 import { IdentifiedUserData } from "../../types/firebase/UserData";
 import CustomPage from "../../components/navigation/CustomPage";
 import { colors } from "../../utils/color-utils";

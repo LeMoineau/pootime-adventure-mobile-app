@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { useUserDataTable } from "../firestore/use-user-data-table";
 import useMassiveStoreLoader from "../admin/user-massive-store-loader";
-import { auth } from "../../../config/firebaseConfig";
+import { auth } from "../../config/firebaseConfig";
 
 export function useAuthentication() {
   const [user, setUser] = useState<User>();

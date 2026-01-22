@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { style } from "../../utils/style-utils";
 import { colors } from "../../utils/color-utils";
-import useAnimatedValue from "../../common/hooks/ui/use-animated-value";
+import useAnimatedValue from "../../hooks/ui/use-animated-value";
 
 export default function StandardButton({
   children,
