@@ -10,7 +10,7 @@ import useModal from "../../common/hooks/ui/use-modal";
 import CustomRewardModal from "../../components/modals/primitives/CustomRewardModal";
 import LoseAgainstEntityModal from "../../features/(arenas)/entity-arena/components/LoseAgainstEntityModal";
 import WinAgainstEntityModal from "../../features/(arenas)/entity-arena/components/WinAgainstEntityModal";
-import { zones } from "../../common/constants/battle/adventure-zones";
+import { zones } from "../../constants/battle/adventure-zones";
 import MonsterView from "../../features/(arenas)/entity-arena/components/MonsterView";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 

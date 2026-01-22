@@ -1,5 +1,5 @@
 import assets from "../../config/assets";
-import { monsters } from "../../common/constants/battle/monsters";
+import { monsters } from "../../constants/battle/monsters";
 import { ArrayUtils } from "../../utils/array-utils";
 import { colors } from "../../utils/color-utils";
 import { Monster } from "../entities/monsters/Monster";

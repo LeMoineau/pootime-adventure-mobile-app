@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useStorage from "../../../../common/hooks/use-storage";
 import { BattleFinalState } from "../../../../types/battle/BattleFinalState";
-import { StorageKeys } from "../../../../common/constants/storage-keys";
+import { StorageKeys } from "../../../../constants/storage-keys";
 
 export default function usePreviousBattles(props?: {
   maxPreviousBattleSize: number;

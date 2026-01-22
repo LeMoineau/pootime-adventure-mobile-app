@@ -20,7 +20,7 @@ import InventoryItem from "../../components/items/slot/InventorySlotItem";
 import { Resources } from "../../config/constants/Resources";
 import { StructureName } from "../../config/constants/Structures";
 import StructureSlotItem from "../../components/items/slot/StructureSlotItem";
-import ShopItems from "../../common/constants/shop/shop-items";
+import ShopItems from "../../constants/shop/shop-items";
 import BodyColorSlotItem from "../../components/items/slot/BodyColorSlotItem";
 import HeadSlotItem from "../../components/items/slot/HeadSlotItem";
 import ExpressionSlotItem from "../../components/items/slot/ExpressionSlotItem";

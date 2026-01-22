@@ -1,4 +1,4 @@
-import { UltiType } from "../../../types/Ultis";
+import { UltiType } from "../../types/Ultis";
 
 export const ultis: { [key: string]: UltiType } = {
   entrouporte: {

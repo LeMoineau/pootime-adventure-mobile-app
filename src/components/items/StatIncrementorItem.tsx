@@ -1,7 +1,7 @@
 import { Animated, Text, TouchableOpacity, View } from "react-native";
 import StatIcon from "../icons/StatIcon";
 import { PooCreatureStats } from "../../types/PooCreatureStats";
-import { stats } from "../../common/constants/stats/stats";
+import { stats } from "../../constants/stats/stats";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import { useEffect } from "react";

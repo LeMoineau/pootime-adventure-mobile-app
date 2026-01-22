@@ -1,6 +1,6 @@
-import { colors } from "../../../utils/color-utils";
-import { ShopItem } from "../../../types/shop/ShopItem";
-import { BuyableItem } from "../../../types/shop/BuyableItem";
+import { colors } from "../../utils/color-utils";
+import { ShopItem } from "../../types/shop/ShopItem";
+import { BuyableItem } from "../../types/shop/BuyableItem";
 
 const ShopItems: {
   [section in BuyableItem]?: {

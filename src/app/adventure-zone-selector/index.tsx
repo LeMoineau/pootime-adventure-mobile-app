@@ -9,7 +9,7 @@ import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats
 import AdventureZoneSelectorHeader from "../../features/adventure-zone-selector/components/AdventureZoneSelectorHeader";
 import AdventureZoneItem from "../../features/adventure-zone-selector/components/AdventureZoneItem";
 import { router } from "expo-router";
-import { zones } from "../../common/constants/battle/adventure-zones";
+import { zones } from "../../constants/battle/adventure-zones";
 
 export default function LeaderboarAdventureZoneSelectorScreen() {
   const { level } = usePooCreatureStatsStore();
