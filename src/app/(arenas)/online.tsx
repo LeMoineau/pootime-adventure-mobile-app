@@ -1,9 +1,9 @@
 import PooCreature from "../../components/misc/poo-creature/PooCreature";
 import Arena from "../../components/views/arena/Arena";
 import useOnlineBattle from "../../features/(arenas)/online-arena/hooks/use-online-battle";
-import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
-import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
-import { useResourcesStore } from "../../common/stores/resources.store";
+import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
+import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
+import { useResourcesStore } from "../../stores/resources.store";
 import { View } from "react-native";
 import NodeShadow from "../../components/views/arena/elements/NodeShadow";
 import { useEffect } from "react";

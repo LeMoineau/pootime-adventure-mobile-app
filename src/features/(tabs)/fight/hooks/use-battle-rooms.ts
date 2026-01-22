@@ -4,10 +4,10 @@ import { Socket } from "socket.io-client";
 import { SocketEvents } from "../../../../types/SocketEvents";
 import useModals from "../../../../hooks/ui/use-modals";
 import { BattleFinalState } from "../../../../types/battle/BattleFinalState";
-import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
-import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStyleStore } from "../../../../stores/poo-creature-style.store";
+import { usePooCreatureStatsStore } from "../../../../stores/poo-creature-stats.store";
 import { DateUtils } from "../../../../utils/date-utils";
-import { useResourcesStore } from "../../../../common/stores/resources.store";
+import { useResourcesStore } from "../../../../stores/resources.store";
 import { router } from "expo-router";
 import { globalSocket, refreshSocket } from "../../../../config/socket";
 

@@ -3,7 +3,7 @@ import { style } from "../../../../../utils/style-utils";
 import { ItemInStore } from "../../../../../types/itemInStore";
 import UltiView from "../UltiButton";
 import IconFromImage from "../../../../../components/icons/IconFromImage";
-import { usePooCreatureStatsStore } from "../../../../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStatsStore } from "../../../../../stores/poo-creature-stats.store";
 import { Ultis } from "../../../../../types/Ultis";
 
 export default function UltiTab() {

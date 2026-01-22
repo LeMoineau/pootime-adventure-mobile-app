@@ -1,8 +1,8 @@
 import { ScrollView, Text, View } from "react-native";
 import StructureUpgradeButton from "../StructureUpgradeButton";
 import { useEffect } from "react";
-import { useVillageStore } from "../../../../common/stores/village.store";
-import { useResourcesStore } from "../../../../common/stores/resources.store";
+import { useVillageStore } from "../../../../stores/village.store";
+import { useResourcesStore } from "../../../../stores/resources.store";
 import useStructure from "../../../(tabs)/village/hooks/use-structure";
 import { style } from "../../../../utils/style-utils";
 import { colors } from "../../../../utils/color-utils";

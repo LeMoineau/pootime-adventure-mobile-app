@@ -6,7 +6,7 @@ import {
 } from "../../../../../types/shop/UnlockableItems";
 import { style } from "../../../../../utils/style-utils";
 import { CurveUtils } from "../../../../../utils/curve-utils";
-import { usePooCreatureStatsStore } from "../../../../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStatsStore } from "../../../../../stores/poo-creature-stats.store";
 import TextWithResourceIcon from "../../../../../components/text/TextWithResourceIcon";
 import { MathUtils } from "../../../../../utils/math-utils";
 import {

@@ -3,7 +3,7 @@ import { style } from "../../utils/style-utils";
 import NumberField from "../fields/NumberField";
 import StarIcon from "../icons/resources/star";
 import PooCoinIcon from "../icons/resources/pooCoin";
-import { useResourcesStore } from "../../common/stores/resources.store";
+import { useResourcesStore } from "../../stores/resources.store";
 import LevelProgressBar from "../fields/LevelProgressBar";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../../utils/color-utils";

@@ -3,7 +3,7 @@ import { style } from "../../../utils/style-utils";
 import PooCreatureHead from "./PooCreatureHead";
 import { colors } from "../../../utils/color-utils";
 import LevelProgressBar from "../../fields/LevelProgressBar";
-import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
+import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";
 import { PooHeadName } from "../../../types/shop/BuyableItem";
 
 export default function PooCreatureBadge({

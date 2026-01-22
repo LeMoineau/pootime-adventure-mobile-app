@@ -1,5 +1,5 @@
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
-import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import { MathUtils } from "../../utils/math-utils";
 import ProgressBar, { ProgressBarProps } from "./ProgressBar";
 import { CurveUtils } from "../../utils/curve-utils";

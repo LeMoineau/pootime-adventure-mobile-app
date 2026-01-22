@@ -5,8 +5,8 @@ import {
 } from "../../../../../types/shop/UnlockableItems";
 import { style } from "../../../../../utils/style-utils";
 import { colors } from "../../../../../utils/color-utils";
-import { useResourcesStore } from "../../../../../common/stores/resources.store";
-import { useItemsUnlockedStore } from "../../../../../common/stores/items-unlocked.store";
+import { useResourcesStore } from "../../../../../stores/resources.store";
+import { useItemsUnlockedStore } from "../../../../../stores/items-unlocked.store";
 import TextWithResourceIcon from "../../../../../components/text/TextWithResourceIcon";
 import {
   FreeTransaction,

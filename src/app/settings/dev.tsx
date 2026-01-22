@@ -1,5 +1,5 @@
-import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store";
-import { useResourcesStore } from "../../common/stores/resources.store";
+import { useItemsUnlockedStore } from "../../stores/items-unlocked.store";
+import { useResourcesStore } from "../../stores/resources.store";
 import { useContext } from "react";
 import { CacheContext } from "../../contexts/contexts";
 import SettingsPage from "../../features/settings/components/SettingsPage";

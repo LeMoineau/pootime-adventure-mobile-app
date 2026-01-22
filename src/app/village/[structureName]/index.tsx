@@ -9,7 +9,7 @@ import {
 import ExpoIcon from "../../../components/icons/ExpoIcon";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { useEffect, useState } from "react";
-import { useVillageStore } from "../../../common/stores/village.store";
+import { useVillageStore } from "../../../stores/village.store";
 import StructureIcon from "../../../components/icons/StructureIcon";
 import * as NavigationBar from "expo-navigation-bar";
 import StructureInfosTopBar from "../../../features/structure-infos/components/StructureInfosTopBar";

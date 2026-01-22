@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Resources } from "../../../../config/constants/Resources";
 import { StructureName } from "../../../../config/constants/Structures";
-import { useResourcesStore } from "../../../../common/stores/resources.store";
-import { useVillageStore } from "../../../../common/stores/village.store";
+import { useResourcesStore } from "../../../../stores/resources.store";
+import { useVillageStore } from "../../../../stores/village.store";
 import { Structure } from "../../../../types/village/Structure";
 import { VillageUtils } from "../../../../utils/village-utils";
 

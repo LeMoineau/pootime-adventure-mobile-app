@@ -10,9 +10,9 @@ import { useRef, useState } from "react";
 import useModals from "../../../../../hooks/ui/use-modals";
 import PooingRewardModal from "./PooingRewardModal";
 import { BattleReward } from "../../../../../types/battle/BattleReward";
-import { useResourcesStore } from "../../../../../common/stores/resources.store";
+import { useResourcesStore } from "../../../../../stores/resources.store";
 import { VillageUtils } from "../../../../../utils/village-utils";
-import { useVillageStore } from "../../../../../common/stores/village.store";
+import { useVillageStore } from "../../../../../stores/village.store";
 
 export default function ToiletPower({}: { dateNow: number }) {
   const [dateNow, setDateNow] = useState(Date.now());

@@ -1,4 +1,4 @@
-import { usePooCreatureStyleStore } from "../../../../../common/stores/poo-creature-style.store";
+import { usePooCreatureStyleStore } from "../../../../../stores/poo-creature-style.store";
 import { colors } from "../../../../../utils/color-utils";
 import CustomRewardModal, {
   CustomRewardModalProps,

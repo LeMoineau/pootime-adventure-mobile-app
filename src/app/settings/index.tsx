@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store";
+import { useItemsUnlockedStore } from "../../stores/items-unlocked.store";
 import { Pressable, Text, View } from "react-native";
 import PooCreatureBadge from "../../components/misc/poo-creature/PooCreatureBadge";
 import CustomPage from "../../components/navigation/CustomPage";
 import { colors } from "../../utils/color-utils";
 import { style } from "../../utils/style-utils";
-import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
+import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import * as NavigationBar from "expo-navigation-bar";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { SettingsScrollView } from "../../features/settings/components/SettingsScrollView";

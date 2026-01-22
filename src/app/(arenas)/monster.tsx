@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Arena from "../../components/views/arena/Arena";
 import { colors } from "../../utils/color-utils";
-import { usePooCreatureStyleStore } from "../../common/stores/poo-creature-style.store";
-import { useResourcesStore } from "../../common/stores/resources.store";
+import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
+import { useResourcesStore } from "../../stores/resources.store";
 import { useLocalSearchParams } from "expo-router";
 import useMonsterBattle from "../../features/(arenas)/entity-arena/hooks/use-monster-battle";
 import * as NavigationBar from "expo-navigation-bar";
@@ -12,7 +12,7 @@ import LoseAgainstEntityModal from "../../features/(arenas)/entity-arena/compone
 import WinAgainstEntityModal from "../../features/(arenas)/entity-arena/components/WinAgainstEntityModal";
 import { zones } from "../../constants/battle/adventure-zones";
 import MonsterView from "../../features/(arenas)/entity-arena/components/MonsterView";
-import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 
 export default function MonsterArena() {
   const { level, pv } = usePooCreatureStatsStore();

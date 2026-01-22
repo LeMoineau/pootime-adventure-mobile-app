@@ -3,7 +3,7 @@ import Slider from "@react-native-community/slider";
 import { useState } from "react";
 import { SinglePriceShopItem } from "../../../../types/shop/ShopItem";
 import { isResourcesItemValue } from "../../../../types/shop/BuyableItem";
-import { useResourcesStore } from "../../../../common/stores/resources.store";
+import { useResourcesStore } from "../../../../stores/resources.store";
 import { isResourceItemValue } from "../../../../types/shop/UnlockableItems";
 import { style } from "../../../../utils/style-utils";
 import { colors } from "../../../../utils/color-utils";

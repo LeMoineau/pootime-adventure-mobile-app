@@ -3,7 +3,7 @@ import useAnimatedValue from "../../../../hooks/ui/use-animated-value";
 import { style } from "../../../../utils/style-utils";
 import StructureIcon from "../../../../components/icons/StructureIcon";
 import { Structure } from "../../../../types/village/Structure";
-import { useVillageStore } from "../../../../common/stores/village.store";
+import { useVillageStore } from "../../../../stores/village.store";
 import StructureCase from "./StructureCase";
 
 export default function StructureView({

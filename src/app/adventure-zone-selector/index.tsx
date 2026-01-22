@@ -5,7 +5,7 @@ import { ScrollView, View } from "react-native";
 import CustomPage from "../../components/navigation/CustomPage";
 import { colors } from "../../utils/color-utils";
 import { style } from "../../utils/style-utils";
-import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";
+import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import AdventureZoneSelectorHeader from "../../features/adventure-zone-selector/components/AdventureZoneSelectorHeader";
 import AdventureZoneItem from "../../features/adventure-zone-selector/components/AdventureZoneItem";
 import { router } from "expo-router";

@@ -2,7 +2,7 @@ import { ScrollView, Text, View } from "react-native";
 
 import { useEffect } from "react";
 import StructurePower from "../structure-power/StructurePower";
-import { useVillageStore } from "../../../../common/stores/village.store";
+import { useVillageStore } from "../../../../stores/village.store";
 import useStructure from "../../../(tabs)/village/hooks/use-structure";
 import { style } from "../../../../utils/style-utils";
 
