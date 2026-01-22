@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from "react";
-import { CacheMap } from "../../types/contexts/Cache";
-import { DefaultValues } from "../../config/DefaultValues";
+import { CacheMap } from "../types/contexts/Cache";
+import { DefaultValues } from "../config/DefaultValues";
 import { CacheContext } from "./contexts";
 
 export default function CacheProvider({ children }: { children: ReactNode }) {

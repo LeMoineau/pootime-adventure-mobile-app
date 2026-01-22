@@ -1,7 +1,7 @@
 import "../config/firebaseConfig";
 
 import { SafeAreaView } from "react-native-safe-area-context";
-import CacheProvider from "../common/contexts/CacheProvider";
+import CacheProvider from "../contexts/CacheProvider";
 import { StatusBar } from "expo-status-bar";
 import { Stack } from "expo-router";
 import useMassiveStoreLoader from "../common/hooks/admin/user-massive-store-loader";

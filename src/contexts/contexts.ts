@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { CacheMap } from "../../types/contexts/Cache";
+import { CacheMap } from "../types/contexts/Cache";
 
 export const CacheContext = createContext({
   cache: {} as CacheMap,

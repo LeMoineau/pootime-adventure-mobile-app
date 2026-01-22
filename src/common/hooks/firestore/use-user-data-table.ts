@@ -18,7 +18,7 @@ import {
   getCountFromServer,
 } from "firebase/firestore";
 import { useContext, useState } from "react";
-import { CacheContext } from "../../contexts/contexts";
+import { CacheContext } from "../../../contexts/contexts";
 import { firestore } from "../../../config/firebaseConfig";
 
 export function useUserDataTable() {

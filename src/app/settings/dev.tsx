@@ -1,7 +1,7 @@
 import { useItemsUnlockedStore } from "../../common/stores/items-unlocked.store";
 import { useResourcesStore } from "../../common/stores/resources.store";
 import { useContext } from "react";
-import { CacheContext } from "../../common/contexts/contexts";
+import { CacheContext } from "../../contexts/contexts";
 import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { SettingsScrollView } from "../../features/settings/components/SettingsScrollView";
