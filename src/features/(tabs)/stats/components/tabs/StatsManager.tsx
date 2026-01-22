@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { style } from "../../../../../common/utils/style-utils";
 import StatsTips from "../StatsTips";
-import StatIncrementorItem from "../../../../../common/components/items/StatIncrementorItem";
+import StatIncrementorItem from "../../../../../components/items/StatIncrementorItem";
 import { useState } from "react";
 
 export default function StatsManager() {

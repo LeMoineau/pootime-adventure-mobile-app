@@ -6,7 +6,7 @@ import { useResourcesStore } from "../../../../common/stores/resources.store";
 import useStructure from "../../../(tabs)/village/hooks/use-structure";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
-import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
 import { Resources } from "../../../../common/config/constants/Resources";
 
 export default function StructureInfosUpgradeTab() {
@@ -81,7 +81,7 @@ export default function StructureInfosUpgradeTab() {
               Object.values(upgradeCost.cost) as number[],
               async () => {
                 await upgrade(structName, upgradeCost);
-              }
+              },
             );
           }}
         ></StructureUpgradeButton>

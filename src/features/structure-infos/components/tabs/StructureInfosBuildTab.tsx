@@ -7,8 +7,8 @@ import { useResourcesStore } from "../../../../common/stores/resources.store";
 import useStructure from "../../../(tabs)/village/hooks/use-structure";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
-import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
-import TransferButton from "../../../../common/components/buttons/TransferButton";
+import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
+import TransferButton from "../../../../components/buttons/TransferButton";
 import { Resources } from "../../../../common/config/constants/Resources";
 
 export default function StructureInfosBuildTab() {
@@ -82,7 +82,7 @@ export default function StructureInfosBuildTab() {
               Object.values(struct.buildingCost) as number[],
               async () => {
                 await build(structName);
-              }
+              },
             );
           }}
           confirmModalDesc="Êtes-vous sûr de vouloir construire ce bâtiment mystérieux ?"

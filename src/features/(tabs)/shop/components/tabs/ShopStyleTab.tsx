@@ -1,5 +1,5 @@
 import { ScrollView, View } from "react-native";
-import PooCreature from "../../../../../common/components/misc/poo-creature/PooCreature";
+import PooCreature from "../../../../../components/misc/poo-creature/PooCreature";
 import ShopItemView from "../shop-item/ShopItemView";
 import ShopSectionTitle from "../ShopSectionTitle";
 import {
@@ -81,11 +81,11 @@ export default function ShopStyleTab({
                               resource: shopItem.resource,
                             }
                           : isMultiPricesShopItem(shopItem)
-                          ? {
-                              prices: shopItem.prices,
-                              resources: shopItem.resources,
-                            }
-                          : {})}
+                            ? {
+                                prices: shopItem.prices,
+                                resources: shopItem.resources,
+                              }
+                            : {})}
                       ></ShopItemView>
                     );
                   })}

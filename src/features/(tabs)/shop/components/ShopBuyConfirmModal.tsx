@@ -3,15 +3,15 @@ import { colors } from "../../../../common/utils/color-utils";
 import useAnimatedValue from "../../../../common/hooks/ui/use-animated-value";
 import { useEffect, useState } from "react";
 import { style } from "../../../../common/utils/style-utils";
-import StandardButton from "../../../../common/components/buttons/StandardButton";
+import StandardButton from "../../../../components/buttons/StandardButton";
 import ShopItemTypeView from "./shop-item/ShopItemTypeView";
 import {
   isMultiResourcesTransaction,
   isSingleResourceTransaction,
   Transaction,
 } from "../../../../common/types/shop/Transaction";
-import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
-import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
+import ExpoIcon from "../../../../components/icons/ExpoIcon";
+import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
 
 export default function ShopBuyConfirmModal({
   isTransactioning,

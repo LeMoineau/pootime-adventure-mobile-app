@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View } from "react-native";
-import CustomPage from "../../common/components/navigation/CustomPage";
+import CustomPage from "../../components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
 import { style } from "../../common/utils/style-utils";
 import { usePooCreatureStatsStore } from "../../common/stores/poo-creature-stats.store";

@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import LoadingText from "../../../common/components/text/LoadingText";
-import LevelProgressBar from "../../../common/components/fields/LevelProgressBar";
-import ResourceRank from "../../../common/components/text/ResourceRank";
-import SkeletonText from "../../../common/components/text/SkeletonText";
+import LoadingText from "../../../components/text/LoadingText";
+import LevelProgressBar from "../../../components/fields/LevelProgressBar";
+import ResourceRank from "../../../components/text/ResourceRank";
+import SkeletonText from "../../../components/text/SkeletonText";
 import { colors } from "../../../common/utils/color-utils";
 
 export default function PlayerInfosSubHeader({

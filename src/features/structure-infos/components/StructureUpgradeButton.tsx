@@ -1,17 +1,17 @@
 import { Text, View } from "react-native";
-import StandardButton from "../../../common/components/buttons/StandardButton";
+import StandardButton from "../../../components/buttons/StandardButton";
 import { colors } from "../../../common/utils/color-utils";
 import { style } from "../../../common/utils/style-utils";
 import { VillageUtils } from "../../../common/utils/village-utils";
 import { useResourcesStore } from "../../../common/stores/resources.store";
 import { useVillageStore } from "../../../common/stores/village.store";
-import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
-import ExpoIcon from "../../../common/components/icons/ExpoIcon";
+import TextWithResourceIcon from "../../../components/text/TextWithResourceIcon";
+import ExpoIcon from "../../../components/icons/ExpoIcon";
 import useModals from "../../../common/hooks/ui/use-modals";
 import { UpgradeCost } from "../../../common/types/village/StructureCost";
 import { useEffect } from "react";
 import useStructure from "../../(tabs)/village/hooks/use-structure";
-import CustomConfirmModal from "../../../common/components/modals/primitives/CustomConfirmModal";
+import CustomConfirmModal from "../../../components/modals/primitives/CustomConfirmModal";
 
 export default function StructureUpgradeButton({
   onUpgrade,
@@ -28,7 +28,7 @@ export default function StructureUpgradeButton({
     if (!structName) return false;
     const costs = VillageUtils.iterateOnUpgradeCostOf(
       structName,
-      get(structName).level
+      get(structName).level,
     );
     for (let [resource, val] of costs) {
       if (getResource(resource) < val) return false;
@@ -101,7 +101,7 @@ export default function StructureUpgradeButton({
                 `Level ${
                   VillageUtils.getUpgradeCostOf(
                     structName,
-                    get(structName).level
+                    get(structName).level,
                   )?.toLevel
                 }`}
             </Text>
@@ -122,8 +122,8 @@ export default function StructureUpgradeButton({
               onUpgrade(
                 VillageUtils.getUpgradeCostOf(
                   structName,
-                  get(structName).level
-                )!
+                  get(structName).level,
+                )!,
               );
           }}
         ></CustomConfirmModal>

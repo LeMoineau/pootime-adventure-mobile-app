@@ -7,7 +7,7 @@ import {
 import { style } from "../../../../../common/utils/style-utils";
 import { CurveUtils } from "../../../../../common/utils/curve-utils";
 import { usePooCreatureStatsStore } from "../../../../../common/stores/poo-creature-stats.store";
-import TextWithResourceIcon from "../../../../../common/components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../../../components/text/TextWithResourceIcon";
 import { MathUtils } from "../../../../../common/utils/math-utils";
 import {
   BuyableItemValue,

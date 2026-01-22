@@ -2,8 +2,8 @@ import { Animated, Pressable, Text, useWindowDimensions } from "react-native";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
 import { style } from "../../../../common/utils/style-utils";
 import useAnimatedValue from "../../../../common/hooks/ui/use-animated-value";
-import PooCreature from "../../../../common/components/misc/poo-creature/PooCreature";
-import LevelProgressBar from "../../../../common/components/fields/LevelProgressBar";
+import PooCreature from "../../../../components/misc/poo-creature/PooCreature";
+import LevelProgressBar from "../../../../components/fields/LevelProgressBar";
 
 export default function HomePooCreature() {
   const { height } = useWindowDimensions();

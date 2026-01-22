@@ -1,8 +1,8 @@
 import * as NavigationBar from "expo-navigation-bar";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { colors } from "../../common/utils/color-utils";
-import AppTopBar from "../../common/components/layout/AppTopBar";
-import EventPosterOverlay from "../../common/components/layout/EventPosterOverlay";
+import AppTopBar from "../../components/layout/AppTopBar";
+import EventPosterOverlay from "../../components/layout/EventPosterOverlay";
 import { useEffect } from "react";
 import FightTab from "./fight";
 import HomeTab from "./home";
@@ -10,7 +10,7 @@ import VillageTab from "./village";
 import StatsTab from "./stats";
 import ShopTab from "./shop";
 import { NavigationContainer } from "@react-navigation/native";
-import AppBottomBar from "../../common/components/layout/AppBottomBar";
+import AppBottomBar from "../../components/layout/AppBottomBar";
 import { usePathname } from "expo-router";
 
 const Tab = createMaterialTopTabNavigator();

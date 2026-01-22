@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import PooBodyEditIcon from "../../common/components/icons/ui/pooBodyEdit";
-import CustomPage from "../../common/components/navigation/CustomPage";
-import PooCoinsConverterIcon from "../../common/components/icons/ui/pooCoinsConverter";
+import PooBodyEditIcon from "../../components/icons/ui/pooBodyEdit";
+import CustomPage from "../../components/navigation/CustomPage";
+import PooCoinsConverterIcon from "../../components/icons/ui/pooCoinsConverter";
 import ShopResourcesTab from "../../features/(tabs)/shop/components/tabs/ShopResourcesTab";
 import ShopScrollView from "../../features/(tabs)/shop/components/ShopScrollView";
 import ShopStyleTab from "../../features/(tabs)/shop/components/tabs/ShopStyleTab";

@@ -1,9 +1,7 @@
 import { Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import RightArrow from "../../../common/components/icons/rightArrow";
-import ExpoIcon, {
-  AllIconNames,
-} from "../../../common/components/icons/ExpoIcon";
+import RightArrow from "../../../components/icons/rightArrow";
+import ExpoIcon, { AllIconNames } from "../../../components/icons/ExpoIcon";
 import { colors } from "../../../common/utils/color-utils";
 import { useState } from "react";
 
@@ -47,16 +45,16 @@ export default function SettingsItem({
             variant === "error"
               ? colors.red[100]
               : variant === "success"
-              ? colors.green[100]
-              : colors.gray[50],
+                ? colors.green[100]
+                : colors.gray[50],
           borderColor:
             variant === "error"
               ? colors.red[200]
               : variant === "fade"
-              ? colors.gray[50]
-              : variant === "success"
-              ? colors.green[200]
-              : colors.gray[200],
+                ? colors.gray[50]
+                : variant === "success"
+                  ? colors.green[200]
+                  : colors.gray[200],
           borderRadius: 10,
           marginBottom: 15,
           opacity: disabled ? 0.5 : 1,

@@ -4,7 +4,7 @@ import {
   ScrollView,
   View,
 } from "react-native";
-import CustomPage from "../../common/components/navigation/CustomPage";
+import CustomPage from "../../components/navigation/CustomPage";
 import { style } from "../../common/utils/style-utils";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../common/utils/color-utils";
@@ -12,18 +12,18 @@ import { useEffect, useState } from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
 import { IdentifiedUserData } from "../../common/types/firebase/UserData";
-import PooCreature from "../../common/components/misc/poo-creature/PooCreature";
-import PooCreatureStatsTable from "../../common/components/misc/poo-creature/PooCreatureStatsTable";
-import TitleWithDivider from "../../common/components/text/TitleWithDivider";
-import UltiItem from "../../common/components/items/UltiItem";
-import InventoryItem from "../../common/components/items/slot/InventorySlotItem";
+import PooCreature from "../../components/misc/poo-creature/PooCreature";
+import PooCreatureStatsTable from "../../components/misc/poo-creature/PooCreatureStatsTable";
+import TitleWithDivider from "../../components/text/TitleWithDivider";
+import UltiItem from "../../components/items/UltiItem";
+import InventoryItem from "../../components/items/slot/InventorySlotItem";
 import { Resources } from "../../common/config/constants/Resources";
 import { StructureName } from "../../common/config/constants/Structures";
-import StructureSlotItem from "../../common/components/items/slot/StructureSlotItem";
+import StructureSlotItem from "../../components/items/slot/StructureSlotItem";
 import ShopItems from "../../common/constants/shop/shop-items";
-import BodyColorSlotItem from "../../common/components/items/slot/BodyColorSlotItem";
-import HeadSlotItem from "../../common/components/items/slot/HeadSlotItem";
-import ExpressionSlotItem from "../../common/components/items/slot/ExpressionSlotItem";
+import BodyColorSlotItem from "../../components/items/slot/BodyColorSlotItem";
+import HeadSlotItem from "../../components/items/slot/HeadSlotItem";
+import ExpressionSlotItem from "../../components/items/slot/ExpressionSlotItem";
 import { router, useLocalSearchParams } from "expo-router";
 import PlayerInfosSubHeader from "../../features/player-infos/components/PlayerInfosSubHeader";
 import { isFreeShopItem } from "../../common/types/shop/ShopItem";
@@ -183,7 +183,7 @@ export default function PlayerInfosPage() {
                       .sort(
                         (a, b) =>
                           userData.resources[b as Resources] -
-                          userData.resources[a as Resources]
+                          userData.resources[a as Resources],
                       )
                       .map((resource, index) => (
                         <InventoryItem
@@ -218,7 +218,7 @@ export default function PlayerInfosPage() {
                         (a, b) =>
                           userData.village.structures[b as StructureName]
                             .level -
-                          userData.village.structures[a as StructureName].level
+                          userData.village.structures[a as StructureName].level,
                       )
                       .map((structureName, index) => (
                         <StructureSlotItem
@@ -252,8 +252,8 @@ export default function PlayerInfosPage() {
                       .filter(
                         (i) =>
                           userData.itemsUnlocked.bodyColors.includes(
-                            i.item as string
-                          ) || isFreeShopItem(i)
+                            i.item as string,
+                          ) || isFreeShopItem(i),
                       )
                       .map((i, index) => (
                         <BodyColorSlotItem
@@ -282,8 +282,8 @@ export default function PlayerInfosPage() {
                       .filter(
                         (i) =>
                           userData.itemsUnlocked.heads.includes(
-                            i.item as string
-                          ) || isFreeShopItem(i)
+                            i.item as string,
+                          ) || isFreeShopItem(i),
                       )
                       .map((i, index) => (
                         <HeadSlotItem
@@ -312,8 +312,8 @@ export default function PlayerInfosPage() {
                       .filter(
                         (i) =>
                           userData.itemsUnlocked.expressions.includes(
-                            i.item as string
-                          ) || isFreeShopItem(i)
+                            i.item as string,
+                          ) || isFreeShopItem(i),
                       )
                       .map((i, index) => (
                         <ExpressionSlotItem

@@ -1,13 +1,13 @@
 import { Text, View } from "react-native";
-import StandardButton from "../../../../common/components/buttons/StandardButton";
-import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
+import StandardButton from "../../../../components/buttons/StandardButton";
+import ExpoIcon from "../../../../components/icons/ExpoIcon";
 import useModals from "../../../../common/hooks/ui/use-modals";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { colors } from "../../../../common/utils/color-utils";
 import { style } from "../../../../common/utils/style-utils";
-import ResourceIcon from "../../../../common/components/icons/ResourceIcon";
+import ResourceIcon from "../../../../components/icons/ResourceIcon";
 import { usePooCreatureStatsStore } from "../../../../common/stores/poo-creature-stats.store";
-import CustomConfirmModal from "../../../../common/components/modals/primitives/CustomConfirmModal";
+import CustomConfirmModal from "../../../../components/modals/primitives/CustomConfirmModal";
 
 export default function ResetStatsButton() {
   const { earn } = useResourcesStore();

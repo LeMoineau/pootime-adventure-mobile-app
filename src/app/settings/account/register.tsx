@@ -1,6 +1,6 @@
 import { Button, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import FormInputField from "../../../common/components/fields/FormInputField";
+import FormInputField from "../../../components/fields/FormInputField";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -52,7 +52,7 @@ export default function RegisterPage() {
       },
       (e) => {
         console.error(e);
-      }
+      },
     );
   };
 

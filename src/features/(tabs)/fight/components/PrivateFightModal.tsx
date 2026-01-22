@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { ServerTypes } from "../../../../common/types/battle/online-battle/ServerTypes";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
-import PillButton from "../../../../common/components/buttons/PillButton";
-import InputField from "../../../../common/components/fields/InputField";
-import CustomModal from "../../../../common/components/modals/primitives/CustomModal";
+import PillButton from "../../../../components/buttons/PillButton";
+import InputField from "../../../../components/fields/InputField";
+import CustomModal from "../../../../components/modals/primitives/CustomModal";
 
 export default function PrivateFightModal({
   visible,

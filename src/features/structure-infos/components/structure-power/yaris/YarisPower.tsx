@@ -3,23 +3,23 @@ import { style } from "../../../../../common/utils/style-utils";
 import TabTitle from "../../TabTitle";
 import { colors } from "../../../../../common/utils/color-utils";
 import TabText from "../../TabText";
-import Divider from "../../../../../common/components/text/Divider";
-import StandardButton from "../../../../../common/components/buttons/StandardButton";
+import Divider from "../../../../../components/text/Divider";
+import StandardButton from "../../../../../components/buttons/StandardButton";
 import { useState } from "react";
 import { useVillageStore } from "../../../../../common/stores/village.store";
 import useModals from "../../../../../common/hooks/ui/use-modals";
 import { BattleReward } from "../../../../../common/types/battle/BattleReward";
 import { VillageUtils } from "../../../../../common/utils/village-utils";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
-import CustomConfirmModal from "../../../../../common/components/modals/primitives/CustomConfirmModal";
-import CustomRewardModal from "../../../../../common/components/modals/primitives/CustomRewardModal";
-import CustomModal from "../../../../../common/components/modals/primitives/CustomModal";
+import CustomConfirmModal from "../../../../../components/modals/primitives/CustomConfirmModal";
+import CustomRewardModal from "../../../../../components/modals/primitives/CustomRewardModal";
+import CustomModal from "../../../../../components/modals/primitives/CustomModal";
 
 export default function YarisPower() {
   const { get, hasDetail, saveDetail, getDetail, eraseDetail } =
     useVillageStore();
   const [yarisHasLeft, turnOnYaris] = useState(
-    hasDetail("yaris", "yarisLeavingDate")
+    hasDetail("yaris", "yarisLeavingDate"),
   );
   const [yarisReward, setYarisReward] = useState<BattleReward>();
   const { isVisible, show, hide } = useModals<"confirm" | "reward">();
@@ -86,11 +86,11 @@ export default function YarisPower() {
           const elapsedTime =
             Date.now() -
             new Date(
-              getDetail("yaris", "yarisLeavingDate") as string
+              getDetail("yaris", "yarisLeavingDate") as string,
             ).getTime();
           const reward = VillageUtils.calculateYarisRewards(
             elapsedTime,
-            get("yaris").level
+            get("yaris").level,
           );
           setYarisReward(reward);
           turnOnYaris(false);
@@ -108,7 +108,7 @@ export default function YarisPower() {
           rewards={yarisReward}
           onPressEarnBtn={() => {
             earnMany(
-              yarisReward.map(({ resource, number }) => [resource, number])
+              yarisReward.map(({ resource, number }) => [resource, number]),
             );
           }}
         ></CustomRewardModal>

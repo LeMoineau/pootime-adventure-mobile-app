@@ -8,7 +8,7 @@ import SettingsPage from "../../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../../features/settings/components/SettingsHeader";
 import { SettingsScrollView } from "../../../features/settings/components/SettingsScrollView";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import CustomConfirmModal from "../../../common/components/modals/primitives/CustomConfirmModal";
+import CustomConfirmModal from "../../../components/modals/primitives/CustomConfirmModal";
 
 export default function AccountSettings() {
   const { isVisible, show, hide } = useModals<

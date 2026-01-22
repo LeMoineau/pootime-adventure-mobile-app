@@ -7,10 +7,10 @@ import { useResourcesStore } from "../../../../common/stores/resources.store";
 import { isResourceItemValue } from "../../../../common/types/shop/UnlockableItems";
 import { style } from "../../../../common/utils/style-utils";
 import { colors } from "../../../../common/utils/color-utils";
-import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
 import { MathUtils } from "../../../../common/utils/math-utils";
-import StandardButton from "../../../../common/components/buttons/StandardButton";
-import ExpoIcon from "../../../../common/components/icons/ExpoIcon";
+import StandardButton from "../../../../components/buttons/StandardButton";
+import ExpoIcon from "../../../../components/icons/ExpoIcon";
 
 export default function ConverterShopItem({
   shopItem,
@@ -19,7 +19,7 @@ export default function ConverterShopItem({
 }) {
   if (!isResourcesItemValue(shopItem.item)) {
     throw new Error(
-      "cannot create converter shop item for none resources item value"
+      "cannot create converter shop item for none resources item value",
     );
   }
 
@@ -27,7 +27,7 @@ export default function ConverterShopItem({
   const [quantity, setQuantity] = useState(1);
 
   const maxQuantityPossible = Math.floor(
-    get(shopItem.resource) / (shopItem.price === 0 ? 1 : shopItem.price)
+    get(shopItem.resource) / (shopItem.price === 0 ? 1 : shopItem.price),
   );
   const canBuyAtLeastOne = maxQuantityPossible >= 1;
 
@@ -76,7 +76,7 @@ export default function ConverterShopItem({
         <TextWithResourceIcon
           resource={shopItem.item.resource}
           text={`${MathUtils.convertToReduceStrFormat(
-            quantity * shopItem.item.number
+            quantity * shopItem.item.number,
           )}`}
           style={{
             justifyContent: "flex-start",

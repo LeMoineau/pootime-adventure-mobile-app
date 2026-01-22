@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RefreshControl, View } from "react-native";
-import PooTropheeIcon from "../../common/components/icons/resources/PooTropheeIcon";
+import PooTropheeIcon from "../../components/icons/resources/PooTropheeIcon";
 import { ItemsLeaderboardable } from "../../common/config/constants/Leaderboard";
 import { Resources } from "../../common/config/constants/Resources";
-import PooCoinIcon from "../../common/components/icons/resources/pooCoin";
+import PooCoinIcon from "../../components/icons/resources/pooCoin";
 import { useUserDataTable } from "../../common/hooks/firestore/use-user-data-table";
 import { IdentifiedUserData } from "../../common/types/firebase/UserData";
-import CustomPage from "../../common/components/navigation/CustomPage";
+import CustomPage from "../../components/navigation/CustomPage";
 import { colors } from "../../common/utils/color-utils";
 import { style } from "../../common/utils/style-utils";
-import PooCreatureRankSubHeader from "../../common/components/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
-import RoundedScrollView from "../../common/components/views/rounded-scroll-view/RoundedScrollView";
+import PooCreatureRankSubHeader from "../../components/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
+import RoundedScrollView from "../../components/views/rounded-scroll-view/RoundedScrollView";
 import LeaderboardBoard from "../../features/leaderboard/components/LeaderboardBoard";
 
 const LEADERBOARD_TAB_INFOS = [
@@ -125,7 +125,7 @@ export default function LeaderboardScreen() {
                   }}
                 ></RefreshControl>
               ),
-            })
+            }),
           )}
         ></RoundedScrollView>
       </CustomPage>

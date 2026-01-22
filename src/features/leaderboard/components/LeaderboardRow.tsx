@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
-import PooCreatureBadge from "../../../common/components/misc/poo-creature/PooCreatureBadge";
+import PooCreatureBadge from "../../../components/misc/poo-creature/PooCreatureBadge";
 import { IdentifiedUserData } from "../../../common/types/firebase/UserData";
 import { colors } from "../../../common/utils/color-utils";
 import { usePooCreatureStyleStore } from "../../../common/stores/poo-creature-style.store";
@@ -55,10 +55,10 @@ export default function LeaderboardRow({
               rank === 1
                 ? colors.yellow[400]
                 : rank === 2
-                ? colors.yellow[300]
-                : rank === 3
-                ? colors.yellow[200]
-                : colors.transparent,
+                  ? colors.yellow[300]
+                  : rank === 3
+                    ? colors.yellow[200]
+                    : colors.transparent,
             width: 50,
             height: 50,
             borderRadius: 7,

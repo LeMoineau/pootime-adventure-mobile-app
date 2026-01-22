@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { style } from "../../../../common/utils/style-utils";
-import StarIcon from "../../../../common/components/icons/resources/star";
+import StarIcon from "../../../../components/icons/resources/star";
 
 export default function StatsTips() {
   return (

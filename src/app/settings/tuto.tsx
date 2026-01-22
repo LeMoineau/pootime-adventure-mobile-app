@@ -1,6 +1,6 @@
 import { Text } from "react-native";
 import { style } from "../../common/utils/style-utils";
-import PooUltiIcon from "../../common/components/icons/pooUlti";
+import PooUltiIcon from "../../components/icons/pooUlti";
 import SettingsPage from "../../features/settings/components/SettingsPage";
 import SettingsHeader from "../../features/settings/components/SettingsHeader";
 import { router } from "expo-router";

@@ -5,7 +5,7 @@ import useAnimatedValue from "../../../../../common/hooks/ui/use-animated-value"
 import { style } from "../../../../../common/utils/style-utils";
 import { useEffect } from "react";
 import { colors } from "../../../../../common/utils/color-utils";
-import CustomConfirmModal from "../../../../../common/components/modals/primitives/CustomConfirmModal";
+import CustomConfirmModal from "../../../../../components/modals/primitives/CustomConfirmModal";
 
 export default function ToiletTimer({
   isPlaying,

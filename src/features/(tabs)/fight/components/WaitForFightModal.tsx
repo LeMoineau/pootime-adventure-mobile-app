@@ -1,7 +1,7 @@
 import { ActivityIndicator, Modal, ModalProps, Text, View } from "react-native";
 import { style } from "../../../../common/utils/style-utils";
 import React from "react";
-import CustomModal from "../../../../common/components/modals/primitives/CustomModal";
+import CustomModal from "../../../../components/modals/primitives/CustomModal";
 
 export default function WaitForFightModal({
   visible,

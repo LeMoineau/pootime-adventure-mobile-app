@@ -7,7 +7,7 @@ import { style } from "../../../../../common/utils/style-utils";
 import { colors } from "../../../../../common/utils/color-utils";
 import { useResourcesStore } from "../../../../../common/stores/resources.store";
 import { useItemsUnlockedStore } from "../../../../../common/stores/items-unlocked.store";
-import TextWithResourceIcon from "../../../../../common/components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../../../components/text/TextWithResourceIcon";
 import {
   FreeTransaction,
   Transaction,
@@ -125,8 +125,8 @@ export default function ShopItemView({
               backgroundColor: unlocked()
                 ? colors.gray[50]
                 : purchasable()
-                ? colors.green[300]
-                : colors.red[300],
+                  ? colors.green[300]
+                  : colors.red[300],
               borderColor: colors.gray[100],
               borderRadius: 10,
               margin: 5,

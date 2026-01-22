@@ -1,12 +1,12 @@
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import { style } from "../../../common/utils/style-utils";
 import { colors } from "../../../common/utils/color-utils";
-import ExpoIcon from "../../../common/components/icons/ExpoIcon";
+import ExpoIcon from "../../../components/icons/ExpoIcon";
 import React, { useState } from "react";
 import { IdentifiedUserData } from "../../../common/types/firebase/UserData";
 import { LeaderboardDirection } from "../../../common/types/leaderboard/LeaderboardDirection";
 import LeaderboardRow from "./LeaderboardRow";
-import TextWithResourceIcon from "../../../common/components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../components/text/TextWithResourceIcon";
 import { useAuthentication } from "../../../common/hooks/firebase/use-authentification";
 import { MathUtils } from "../../../common/utils/math-utils";
 import { Resources } from "../../../common/config/constants/Resources";
@@ -96,7 +96,7 @@ export default function LeaderboardBoard({
                 key={`trophees-item-${index}`}
                 resource={resourceDescribed}
                 text={MathUtils.convertToReduceStrFormat(
-                  ud.resources[resourceDescribed]
+                  ud.resources[resourceDescribed],
                 )}
                 fontSize={20}
                 textStyle={[

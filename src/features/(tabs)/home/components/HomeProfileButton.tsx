@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
-import StandardButton from "../../../../common/components/buttons/StandardButton";
-import PooCreatureHead from "../../../../common/components/misc/poo-creature/PooCreatureHead";
+import StandardButton from "../../../../components/buttons/StandardButton";
+import PooCreatureHead from "../../../../components/misc/poo-creature/PooCreatureHead";
 import { style } from "../../../../common/utils/style-utils";
 import { usePooCreatureStyleStore } from "../../../../common/stores/poo-creature-style.store";
-import TextWithResourceIcon from "../../../../common/components/text/TextWithResourceIcon";
+import TextWithResourceIcon from "../../../../components/text/TextWithResourceIcon";
 import { useResourcesStore } from "../../../../common/stores/resources.store";
 
 export default function HomeProfileButton({
