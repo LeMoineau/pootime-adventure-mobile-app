@@ -1,4 +1,4 @@
-import { Resources } from "../../common/config/constants/Resources";
+import { Resources } from "../../config/constants/Resources";
 import { BuyableItemValue } from "./BuyableItem";
 import { BuyableItem } from "./UnlockableItems";
 
@@ -23,13 +23,13 @@ export type Transaction =
   | MultiResourcesTransaction;
 
 export function isSingleResourceTransaction(
-  transaction: Transaction
+  transaction: Transaction,
 ): transaction is SingleResourceTransaction {
   return (transaction as any).price !== undefined;
 }
 
 export function isMultiResourcesTransaction(
-  transaction: Transaction
+  transaction: Transaction,
 ): transaction is MultiResourcesTransaction {
   return (transaction as any).prices !== undefined;
 }

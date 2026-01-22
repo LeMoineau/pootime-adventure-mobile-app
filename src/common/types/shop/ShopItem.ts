@@ -1,4 +1,4 @@
-import { Resources } from "../../common/config/constants/Resources";
+import { Resources } from "../../config/constants/Resources";
 import { BuyableItemValue } from "./BuyableItem";
 
 export interface FreeShopItem {
@@ -25,13 +25,13 @@ export function isFreeShopItem(shopItem: ShopItem): shopItem is FreeShopItem {
 }
 
 export function isSinglePriceShopItem(
-  shopItem: ShopItem
+  shopItem: ShopItem,
 ): shopItem is SinglePriceShopItem {
   return (shopItem as any).price !== undefined;
 }
 
 export function isMultiPricesShopItem(
-  shopItem: ShopItem
+  shopItem: ShopItem,
 ): shopItem is MultiPricesShopItem {
   return (shopItem as any).prices !== undefined;
 }

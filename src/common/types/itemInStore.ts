@@ -1,5 +1,5 @@
 import { colors } from "../utils/color-utils";
-import { Resources } from "../common/config/constants/Resources";
+import { Resources } from "../config/constants/Resources";
 
 export namespace ItemInStore {
   export const bodyColors: (string | { color: string; price: number })[] = [
