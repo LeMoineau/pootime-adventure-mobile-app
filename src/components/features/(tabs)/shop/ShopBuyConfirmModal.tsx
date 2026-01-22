@@ -2,7 +2,7 @@ import { Animated, Pressable, View } from "react-native";
 import { colors } from "../../../../constants/style/colors";
 import useAnimatedValue from "../../../../hooks/common/ui/use-animated-value";
 import { useEffect, useState } from "react";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import StandardButton from "../../../common/buttons/StandardButton";
 import ShopItemTypeView from "./shop-item/ShopItemTypeView";
 import {

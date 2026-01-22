@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import StandardButton from "../../../../common/buttons/StandardButton";
-import { style } from "../../../../../utils/style-utils";
+import { style } from "../../../../../constants/style/styles";
 import { colors } from "../../../../../constants/style/colors";
 import TabTitle from "../../TabTitle";
 import TabText from "../../TabText";

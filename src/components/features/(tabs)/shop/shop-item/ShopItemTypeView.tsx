@@ -4,7 +4,7 @@ import {
   isResourceItemValue,
   isStringItemValue,
 } from "../../../../../types/shop/UnlockableItems";
-import { style } from "../../../../../utils/style-utils";
+import { style } from "../../../../../constants/style/styles";
 import { CurveUtils } from "../../../../../utils/curve-utils";
 import { usePooCreatureStatsStore } from "../../../../../stores/poo-creature-stats.store";
 import TextWithResourceIcon from "../../../../common/text/TextWithResourceIcon";

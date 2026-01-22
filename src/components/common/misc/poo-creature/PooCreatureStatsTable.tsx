@@ -1,5 +1,5 @@
 import { StyleProp, Text, View, ViewStyle } from "react-native";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import { PooCreatureStats } from "../../../../types/PooCreatureStats";
 import { colors } from "../../../../constants/style/colors";
 import StatIcon from "../../icons/StatIcon";

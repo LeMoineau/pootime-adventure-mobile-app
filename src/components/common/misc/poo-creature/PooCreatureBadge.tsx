@@ -1,5 +1,5 @@
 import { ColorValue, StyleProp, Text, View, ViewStyle } from "react-native";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import PooCreatureHead from "./PooCreatureHead";
 import { colors } from "../../../../constants/style/colors";
 import LevelProgressBar from "../../fields/LevelProgressBar";

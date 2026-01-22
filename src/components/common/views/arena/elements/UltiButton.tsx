@@ -1,5 +1,5 @@
 import { Image, View } from "react-native";
-import { style } from "../../../../../utils/style-utils";
+import { style } from "../../../../../constants/style/styles";
 import { colors } from "../../../../../constants/style/colors";
 import PillButton from "../../../buttons/PillButton";
 import { UltiType } from "../../../../../types/Ultis";

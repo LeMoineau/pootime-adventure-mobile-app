@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import { colors } from "../../../constants/style/colors";
 import { Resources } from "../../../config/constants/Resources";
 import { useResourcesStore } from "../../../stores/resources.store";

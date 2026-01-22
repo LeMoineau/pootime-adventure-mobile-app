@@ -8,7 +8,7 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import { colors } from "../../../constants/style/colors";
 import useAnimatedValue from "../../../hooks/common/ui/use-animated-value";
 

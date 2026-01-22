@@ -10,7 +10,7 @@ import { useUserDataTable } from "../../hooks/common/firestore/use-user-data-tab
 import { IdentifiedUserData } from "../../types/firebase/UserData";
 import CustomPage from "../../components/common/navigation/CustomPage";
 import { colors } from "../../constants/style/colors";
-import { style } from "../../utils/style-utils";
+import { style } from "../../constants/style/styles";
 import PooCreatureRankSubHeader from "../../components/common/misc/poo-creature/sub-headers/PooCreatureRankSubHeader";
 import RoundedScrollView from "../../components/common/views/rounded-scroll-view/RoundedScrollView";
 import LeaderboardBoard from "../../components/features/leaderboard/LeaderboardBoard";

@@ -4,7 +4,7 @@ import ExpoIcon from "../../../common/icons/ExpoIcon";
 import useModals from "../../../../hooks/common/ui/use-modals";
 import { useResourcesStore } from "../../../../stores/resources.store";
 import { colors } from "../../../../constants/style/colors";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import ResourceIcon from "../../../common/icons/ResourceIcon";
 import { usePooCreatureStatsStore } from "../../../../stores/poo-creature-stats.store";
 import CustomConfirmModal from "../../../common/modals/primitives/CustomConfirmModal";

@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View } from "react-native";
 import CustomPage from "../../components/common/navigation/CustomPage";
 import { colors } from "../../constants/style/colors";
-import { style } from "../../utils/style-utils";
+import { style } from "../../constants/style/styles";
 import { usePooCreatureStatsStore } from "../../stores/poo-creature-stats.store";
 import AdventureZoneSelectorHeader from "../../components/features/adventure-zone-selector/AdventureZoneSelectorHeader";
 import AdventureZoneItem from "../../components/features/adventure-zone-selector/AdventureZoneItem";

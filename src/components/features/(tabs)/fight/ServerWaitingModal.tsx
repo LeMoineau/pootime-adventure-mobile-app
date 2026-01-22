@@ -1,5 +1,5 @@
 import { ActivityIndicator, ModalProps, Text } from "react-native";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import CustomModal from "../../../common/modals/primitives/CustomModal";
 
 export default function ServerWaitingModal({

@@ -1,5 +1,5 @@
 import { Pressable, Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import { colors } from "../../../constants/style/colors";
 import SettingsItem, { SettingsItemProps } from "./SettingsItem";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";

@@ -1,6 +1,6 @@
 import { ScrollView, View } from "react-native";
 import { isSinglePriceShopItem } from "../../../../../types/shop/ShopItem";
-import { style } from "../../../../../utils/style-utils";
+import { style } from "../../../../../constants/style/styles";
 import ConverterShopItem from "../components/ConverterShopItem";
 import ShopItems from "../../../../../constants/shop/shop-items";
 // import RewardedAds from "../../../common/components/ads/RewardedAds";

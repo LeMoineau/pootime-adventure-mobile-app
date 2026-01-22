@@ -6,7 +6,7 @@ import {
   BuyableItem,
   isStyleUnlockableItem,
 } from "../../../../../types/shop/UnlockableItems";
-import { style } from "../../../../../utils/style-utils";
+import { style } from "../../../../../constants/style/styles";
 import {
   isMultiPricesShopItem,
   isSinglePriceShopItem,

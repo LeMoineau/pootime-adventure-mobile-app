@@ -5,7 +5,7 @@ import TabText from "../TabText";
 import { useVillageStore } from "../../../../stores/village.store";
 import { useResourcesStore } from "../../../../stores/resources.store";
 import useStructure from "../../../../hooks/features/structure-infos/use-structure";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import { colors } from "../../../../constants/style/colors";
 import TextWithResourceIcon from "../../../common/text/TextWithResourceIcon";
 import TransferButton from "../../../common/buttons/TransferButton";

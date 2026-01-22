@@ -1,6 +1,6 @@
 import { StyleProp, Text, View, ViewStyle } from "react-native";
 import { useResourcesStore } from "../../../../stores/resources.store";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import ResourceIcon from "../../icons/ResourceIcon";
 import { MathUtils } from "../../../../utils/math-utils";
 import { colors } from "../../../../constants/style/colors";

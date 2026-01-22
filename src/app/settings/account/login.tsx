@@ -1,5 +1,5 @@
 import { Button, Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import FormInputField from "../../../components/common/fields/FormInputField";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

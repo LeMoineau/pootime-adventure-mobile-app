@@ -1,5 +1,5 @@
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import { colors } from "../../../constants/style/colors";
 import ExpoIcon from "../../common/icons/ExpoIcon";
 import React, { useState } from "react";

@@ -1,7 +1,7 @@
 import { Image } from "expo-image";
 import { Pressable, Text, View } from "react-native";
 import TextWithSubShadow from "../../common/text/TextWithSubShadow";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import { colors } from "../../../constants/style/colors";
 import PooCreatureBadge from "../../common/misc/poo-creature/PooCreatureBadge";
 import StandardButton from "../../common/buttons/StandardButton";

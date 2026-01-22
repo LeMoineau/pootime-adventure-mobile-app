@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import { ArrayUtils } from "../../../../utils/array-utils";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 import { colors } from "../../../../constants/style/colors";

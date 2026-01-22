@@ -3,7 +3,7 @@ import {
   isStringItemValue,
   isUnlockableItem,
 } from "../../../../../types/shop/UnlockableItems";
-import { style } from "../../../../../utils/style-utils";
+import { style } from "../../../../../constants/style/styles";
 import { colors } from "../../../../../constants/style/colors";
 import { useResourcesStore } from "../../../../../stores/resources.store";
 import { useItemsUnlockedStore } from "../../../../../stores/items-unlocked.store";

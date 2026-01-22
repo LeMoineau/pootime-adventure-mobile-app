@@ -1,5 +1,5 @@
 import { View, useWindowDimensions } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import NumberField from "../fields/NumberField";
 import StarIcon from "../icons/resources/star";
 import PooCoinIcon from "../icons/resources/pooCoin";

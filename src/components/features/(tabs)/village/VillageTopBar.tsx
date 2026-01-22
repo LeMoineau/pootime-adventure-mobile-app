@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import InputField from "../../../common/fields/InputField";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import { useVillageStore } from "../../../../stores/village.store";
 import ExpoIcon from "../../../common/icons/ExpoIcon";
 import { DefaultValues } from "../../../../config/DefaultValues";

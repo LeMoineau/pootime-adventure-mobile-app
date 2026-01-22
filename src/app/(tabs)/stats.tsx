@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { style } from "../../utils/style-utils";
+import { style } from "../../constants/style/styles";
 import StatsTopBar from "../../components/features/(tabs)/stats/StatsTopBar";
 import RoundedScrollView from "../../components/common/views/rounded-scroll-view/RoundedScrollView";
 import StatsIcons from "../../components/common/icons/stats";

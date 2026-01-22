@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import { colors } from "../../../../constants/style/colors";
 
 export default function BodyColorSlotItem({ color }: { color: string }) {

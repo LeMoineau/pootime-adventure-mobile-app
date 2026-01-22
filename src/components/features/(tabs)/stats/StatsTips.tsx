@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import StarIcon from "../../../common/icons/resources/star";
 
 export default function StatsTips() {

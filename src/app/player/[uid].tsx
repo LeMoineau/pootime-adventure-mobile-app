@@ -5,7 +5,7 @@ import {
   View,
 } from "react-native";
 import CustomPage from "../../components/common/navigation/CustomPage";
-import { style } from "../../utils/style-utils";
+import { style } from "../../constants/style/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../constants/style/colors";
 import { useEffect, useState } from "react";

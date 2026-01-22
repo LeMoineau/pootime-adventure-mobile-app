@@ -1,5 +1,5 @@
 import { StyleProp, Text, View, ViewStyle } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import { colors } from "../../../constants/style/colors";
 import { Image } from "expo-image";
 import { Ultis } from "../../../types/Ultis";

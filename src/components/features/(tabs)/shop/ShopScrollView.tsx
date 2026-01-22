@@ -1,7 +1,7 @@
 import { Pressable, View } from "react-native";
 import { useState } from "react";
 import { Transaction } from "../../../../types/shop/Transaction";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import { colors } from "../../../../constants/style/colors";
 import ShopBuyConfirmModal from "./ShopBuyConfirmModal";
 

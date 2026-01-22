@@ -1,5 +1,5 @@
 import { Animated, Text, useWindowDimensions } from "react-native";
-import { style } from "../../../../../utils/style-utils";
+import { style } from "../../../../../constants/style/styles";
 import { useEffect, useState } from "react";
 import { colors } from "../../../../../constants/style/colors";
 

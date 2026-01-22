@@ -5,7 +5,7 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import CustomPage from "../../navigation/CustomPage";
 import PVPanel from "./elements/PVPanel";
 import { usePooCreatureStatsStore } from "../../../../stores/poo-creature-stats.store";

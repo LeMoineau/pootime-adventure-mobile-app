@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import LoadingText from "../../common/text/LoadingText";
 import ResourceRank from "../../common/text/ResourceRank";
 import SkeletonText from "../../common/text/SkeletonText";

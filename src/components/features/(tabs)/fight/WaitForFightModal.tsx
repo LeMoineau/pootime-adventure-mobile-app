@@ -1,5 +1,5 @@
 import { ActivityIndicator, Modal, ModalProps, Text, View } from "react-native";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import React from "react";
 import CustomModal from "../../../common/modals/primitives/CustomModal";
 

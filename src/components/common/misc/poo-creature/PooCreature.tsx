@@ -2,7 +2,7 @@ import { Image, View, ViewProps } from "react-native";
 import React from "react";
 import PooFace from "../../icons/poo-creature/PooFace";
 import PooBody from "../../icons/poo-creature/PooBody";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import { usePooCreatureStyleStore } from "../../../../stores/poo-creature-style.store";
 import { usePooCreatureStatsStore } from "../../../../stores/poo-creature-stats.store";
 import { PooHeads } from "../../../../types/PooHeads";

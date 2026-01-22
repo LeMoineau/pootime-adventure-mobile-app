@@ -1,5 +1,5 @@
 import { Text } from "react-native";
-import { style } from "../../utils/style-utils";
+import { style } from "../../constants/style/styles";
 import PooUltiIcon from "../../components/common/icons/pooUlti";
 import SettingsPage from "../../components/features/settings/SettingsPage";
 import SettingsHeader from "../../components/features/settings/SettingsHeader";

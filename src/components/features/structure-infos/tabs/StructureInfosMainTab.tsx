@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import StructurePower from "../structure-power/StructurePower";
 import { useVillageStore } from "../../../../stores/village.store";
 import useStructure from "../../../../hooks/features/structure-infos/use-structure";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 
 export default function StructureInfosMainTab() {
   const { selectedStructureName: structName, get } = useVillageStore();

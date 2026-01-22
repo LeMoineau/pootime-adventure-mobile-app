@@ -4,7 +4,7 @@ import { Pressable, Text, View } from "react-native";
 import PooCreatureBadge from "../../components/common/misc/poo-creature/PooCreatureBadge";
 import CustomPage from "../../components/common/navigation/CustomPage";
 import { colors } from "../../constants/style/colors";
-import { style } from "../../utils/style-utils";
+import { style } from "../../constants/style/styles";
 import { usePooCreatureStyleStore } from "../../stores/poo-creature-style.store";
 import * as NavigationBar from "expo-navigation-bar";
 import SettingsHeader from "../../components/features/settings/SettingsHeader";

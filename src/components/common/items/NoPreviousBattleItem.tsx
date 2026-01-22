@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import ExpoIcon from "../icons/ExpoIcon";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 
 export default function NoPreviousBattleItem() {
   return (

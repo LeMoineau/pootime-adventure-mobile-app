@@ -2,7 +2,7 @@ import { View } from "react-native";
 import CustomPage from "../../components/common/navigation/CustomPage";
 import { colors } from "../../constants/style/colors";
 import { Structures } from "../../config/constants/Structures";
-import { style } from "../../utils/style-utils";
+import { style } from "../../constants/style/styles";
 import { useRouter } from "expo-router";
 import VillageTopBar from "../../components/features/(tabs)/village/VillageTopBar";
 import StructureView from "../../components/features/(tabs)/village/StructureView";

@@ -5,7 +5,7 @@ import { SinglePriceShopItem } from "../../../../types/shop/ShopItem";
 import { isResourcesItemValue } from "../../../../types/shop/BuyableItem";
 import { useResourcesStore } from "../../../../stores/resources.store";
 import { isResourceItemValue } from "../../../../types/shop/UnlockableItems";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import { colors } from "../../../../constants/style/colors";
 import TextWithResourceIcon from "../../../common/text/TextWithResourceIcon";
 import { MathUtils } from "../../../../utils/math-utils";

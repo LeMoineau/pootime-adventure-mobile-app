@@ -2,7 +2,7 @@ import { ColorValue, View } from "react-native";
 import CustomModal, { CustomModalProps } from "./CustomModal";
 import { colors } from "../../../../constants/style/colors";
 import { BattleReward } from "../../../../types/battle/BattleReward";
-import { style } from "../../../../utils/style-utils";
+import { style } from "../../../../constants/style/styles";
 import TextWithResourceIcon from "../../text/TextWithResourceIcon";
 
 export interface CustomRewardModalProps extends CustomModalProps {

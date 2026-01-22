@@ -1,5 +1,5 @@
 import { Pressable, Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import RightArrow from "../../common/icons/rightArrow";
 import ExpoIcon, { AllIconNames } from "../../common/icons/ExpoIcon";
 import { colors } from "../../../constants/style/colors";

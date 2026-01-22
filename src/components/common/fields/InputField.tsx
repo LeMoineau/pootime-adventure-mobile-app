@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleProp, TextInput, TextStyle, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import { colors } from "../../../constants/style/colors";
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils";
 

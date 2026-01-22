@@ -1,7 +1,7 @@
 import React from "react";
 import StandardButton from "./StandardButton";
 import { View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import useModals from "../../../hooks/common/ui/use-modals";
 import ExpoIcon from "../icons/ExpoIcon";
 import { colors } from "../../../constants/style/colors";

@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import PooCreatureBadge from "../../common/misc/poo-creature/PooCreatureBadge";
 import { colors } from "../../../constants/style/colors";
 import { usePooCreatureStyleStore } from "../../../stores/poo-creature-style.store";

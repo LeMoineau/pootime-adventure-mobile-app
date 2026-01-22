@@ -1,7 +1,7 @@
 import { Pressable, Text, View } from "react-native";
 import InputField from "./InputField";
 import { colors } from "../../../constants/style/colors";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import ExpoIcon from "../icons/ExpoIcon";
 import { useState } from "react";
 

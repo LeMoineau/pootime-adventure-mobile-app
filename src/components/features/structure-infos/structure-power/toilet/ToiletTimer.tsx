@@ -2,7 +2,7 @@ import { Animated, Easing, Text, View } from "react-native";
 import useTimer from "../../../../../hooks/common/use-timer";
 import TabTitle from "../../TabTitle";
 import useAnimatedValue from "../../../../../hooks/common/ui/use-animated-value";
-import { style } from "../../../../../utils/style-utils";
+import { style } from "../../../../../constants/style/styles";
 import { useEffect } from "react";
 import { colors } from "../../../../../constants/style/colors";
 import CustomConfirmModal from "../../../../common/modals/primitives/CustomConfirmModal";

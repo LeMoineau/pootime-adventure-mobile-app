@@ -1,5 +1,5 @@
 import { GestureResponderEvent, Text, View } from "react-native";
-import { style } from "../../../utils/style-utils";
+import { style } from "../../../constants/style/styles";
 import PillButton from "../../common/buttons/PillButton";
 import RightArrow from "../../common/icons/rightArrow";
 import { colors } from "../../../constants/style/colors";
