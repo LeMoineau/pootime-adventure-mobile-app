@@ -59,13 +59,6 @@ export default function DonationSettings() {
             },
           },
           {
-            label: `🍱  Check my bento !`,
-            hasRightArrow: true,
-            onPress: () => {
-              Linking.openURL("https://bento.me/pierrrot");
-            },
-          },
-          {
             label: `🌳  Check my linktree !`,
             hasRightArrow: true,
             onPress: () => {
