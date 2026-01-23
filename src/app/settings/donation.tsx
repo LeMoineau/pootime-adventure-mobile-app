@@ -52,17 +52,17 @@ export default function DonationSettings() {
       <SettingsScrollView
         items={[
           {
+            label: `🌳  Mes autres projets`,
+            hasRightArrow: true,
+            onPress: () => {
+              Linking.openURL("https://linktr.ee/pierrot_");
+            },
+          },
+          {
             label: `☕  Buy me a coffee !`,
             hasRightArrow: true,
             onPress: () => {
               Linking.openURL("https://ko-fi.com/pierrot_");
-            },
-          },
-          {
-            label: `🌳  Check my linktree !`,
-            hasRightArrow: true,
-            onPress: () => {
-              Linking.openURL("https://linktr.ee/pierrot_");
             },
           },
         ]}
