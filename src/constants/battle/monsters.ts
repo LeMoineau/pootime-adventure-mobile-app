@@ -51,7 +51,7 @@ export const monsters = [
     attaque: 2,
     defense: 2,
     color: colors.yellow[100],
-    freqAttaque: 1000,
+    freqAttaque: 1000 / 5,
   }),
   new Sheep({
     name: "A Sheep",
@@ -59,7 +59,7 @@ export const monsters = [
     attaque: 3,
     defense: 3,
     color: colors.green[300],
-    freqAttaque: 500,
+    freqAttaque: 1000 / 7,
   }),
   new Sheep({
     name: "B Sheep",
@@ -67,7 +67,7 @@ export const monsters = [
     attaque: 3,
     defense: 2,
     color: colors.green[500],
-    freqAttaque: 1500,
+    freqAttaque: 1000 / 5,
   }),
   new Sheep({
     name: "Perdu",
@@ -75,7 +75,7 @@ export const monsters = [
     attaque: 10,
     defense: 2,
     color: colors.gray[50],
-    freqAttaque: 2500,
+    freqAttaque: 1000 / 4,
   }),
   new Sheep({
     name: "Sans Nom",
@@ -83,14 +83,14 @@ export const monsters = [
     attaque: 3,
     defense: 2,
     color: colors.white,
-    freqAttaque: 1000,
+    freqAttaque: 1000 / 4,
   }),
   new Sheep({
     name: "X2000 Cyborg",
     pv: 100,
     attaque: 5,
     color: colors.gray[500],
-    freqAttaque: 200,
+    freqAttaque: 1000 / 6,
     rewards: [
       { resource: "wool", number: 2 },
       { resource: "metal", number: 10 },
@@ -102,7 +102,7 @@ export const monsters = [
     attaque: 5,
     defense: 3,
     color: colors.red[400],
-    freqAttaque: 1000,
+    freqAttaque: 1000 / 6,
   }),
   new GodPoulpe({
     name: "LouisLePoulpe",
@@ -113,14 +113,14 @@ export const monsters = [
     mana: 100,
     recupMana: 40,
     resMana: 50,
-    freqAttaque: 1000,
+    freqAttaque: 1000 / 7,
   }),
   new Pingoo({
     name: "AgentPingoo",
     pv: 500,
     attaque: 50,
     resMana: 50,
-    freqAttaque: 1000,
+    freqAttaque: 1000 / 10,
     rewards: [
       { resource: "snow", number: 500 },
       { resource: "glass", number: 100 },
@@ -130,21 +130,21 @@ export const monsters = [
     name: "RenéDu78",
     pv: 75,
     attaque: 25,
-    freqAttaque: 1500,
+    freqAttaque: 1000 / 7,
   }),
   new Tank({
     name: "B.N.Tank",
     pv: 100,
     attaque: 50,
     defense: 10,
-    freqAttaque: 2000,
+    freqAttaque: 1000 / 2,
   }),
   new Pingoo({
     name: "ClubPinguin",
     pv: 65,
     attaque: 5,
     resMana: 10,
-    freqAttaque: 1250,
+    freqAttaque: 1000 / 6,
   }),
   new Tank({
     name: "Franky",
@@ -152,7 +152,7 @@ export const monsters = [
     attaque: 10,
     defense: 10,
     resMana: 10,
-    freqAttaque: 500,
+    freqAttaque: 1000 / 7,
   }),
   new Pingoo({
     name: "GrosNez!",
@@ -160,7 +160,7 @@ export const monsters = [
     attaque: 25,
     defense: 3,
     resMana: 10,
-    freqAttaque: 1000,
+    freqAttaque: 1000 / 8,
   }),
   new Tank({
     name: "Tankky",
@@ -175,14 +175,14 @@ export const monsters = [
     pv: 200,
     attaque: 10,
     defense: 20,
-    freqAttaque: 500,
+    freqAttaque: 1000 / 5,
   }),
   new Gremlins({
     name: "Gremlins",
     pv: 165,
     attaque: 30,
     resMana: 5,
-    freqAttaque: 750,
+    freqAttaque: 1000 / 10,
   }),
   new HorrorMask({
     name: "Un Masque.",
@@ -196,6 +196,6 @@ export const monsters = [
     pv: 150,
     attaque: 20,
     defense: 10,
-    freqAttaque: 1000,
+    freqAttaque: 1000 / 10,
   }),
 ];

@@ -32,6 +32,7 @@ export default function CustomRewardModal({
           },
         },
       ]}
+      containerStyle={{ gap: 0 }}
       {...props}
     >
       <View
