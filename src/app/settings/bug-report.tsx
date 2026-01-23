@@ -1,4 +1,10 @@
-import { ActivityIndicator, TextInput, View } from "react-native";
+import {
+  ActivityIndicator,
+  Animated,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { style } from "../../constants/style/styles";
 import SettingsPage from "../../components/features/settings/SettingsPage";
 import SettingsHeader from "../../components/features/settings/SettingsHeader";
@@ -8,13 +14,31 @@ import StandardButton from "../../components/common/buttons/StandardButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ExpoIcon from "../../components/common/icons/ExpoIcon";
 import useMailsender from "../../hooks/features/settings/use-mailsender";
-import { useState } from "react";
-import { fa } from "zod/v4/locales";
+import { useEffect, useState } from "react";
+import useAnimatedValue from "../../hooks/common/ui/use-animated-value";
+
+const ALERT_DURATION = 3000;
+const ALERT_SUCCESS_MESSAGE =
+  "Votre message a bien été envoyé ! Merci beaucoup pour votre retour !";
+const ALERT_ERROR_MESSAGE = (err: string) =>
+  `Mince ! Une erreur est survenue : "${err}". Hésitez pas à prévenir le dev directement via ses réseaux !`;
 
 export default function DonationSettings() {
   const { send } = useMailsender();
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const { enable, animValue, setEnabled } = useAnimatedValue({ duration: 500 });
+
+  const [alertMessage, setAlertMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (enable) {
+      setTimeout(() => {
+        setEnabled(false);
+      }, ALERT_DURATION);
+    }
+  }, [enable]);
 
   return (
     <SafeAreaView
@@ -33,7 +57,7 @@ export default function DonationSettings() {
           style={[
             style.flexCol,
             style.justifyBetween,
-            { flex: 1, width: "100%", paddingHorizontal: 10 },
+            { flex: 1, width: "100%", paddingHorizontal: 10, gap: 20 },
           ]}
         >
           <TextInput
@@ -55,6 +79,16 @@ export default function DonationSettings() {
             value={message}
             onChangeText={setMessage}
           ></TextInput>
+          <Animated.View
+            style={{
+              opacity: animValue,
+              backgroundColor: success ? colors.green[300] : colors.red[300],
+              padding: 20,
+              borderRadius: 10,
+            }}
+          >
+            <Text style={{}}>{alertMessage}</Text>
+          </Animated.View>
         </View>
       </SettingsPage>
       <StandardButton
@@ -83,12 +117,17 @@ export default function DonationSettings() {
             send({ message })
               .then(() => {
                 setMessage("");
+                setAlertMessage(ALERT_SUCCESS_MESSAGE);
+                setSuccess(true);
               })
-              .catch((err) => {
+              .catch((err: Error) => {
                 console.error(err);
+                setAlertMessage(ALERT_ERROR_MESSAGE(err.message));
+                setSuccess(false);
               })
               .finally(() => {
                 setLoading(false);
+                setEnabled(true);
               });
           }
         }}
