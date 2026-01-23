@@ -13,10 +13,6 @@
     },
     "android": {
       "icon": "./assets/icon.png",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#ffffff"
-      },
       "package": "fr.pierrot.pootimeadventure",
       "versionCode": 5
     },
@@ -45,6 +41,14 @@
         "expo-asset",
         {
           "assets": ["./assets/icons"]
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#eee",
+          "image": "./assets/icon.png",
+          "imageWidth": 200
         }
       ],
       "expo-router"
