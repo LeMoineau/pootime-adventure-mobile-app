@@ -7,6 +7,9 @@ import ShopResourcesTab from "../../components/features/(tabs)/shop/tabs/ShopRes
 import ShopScrollView from "../../components/features/(tabs)/shop/ShopScrollView";
 import ShopStyleTab from "../../components/features/(tabs)/shop/tabs/ShopStyleTab";
 import useShopTransaction from "../../hooks/features/(tabs)/shop/use-shop-transaction";
+import ExpoIcon from "../../components/common/icons/ExpoIcon";
+import ResourceIcon from "../../components/common/icons/ResourceIcon";
+import ShopAdsTab from "../../components/features/(tabs)/shop/tabs/ShopAdsTab";
 
 export default function ShopTab() {
   const {
@@ -57,6 +60,11 @@ export default function ShopTab() {
                 ></PooCoinsConverterIcon>
               ),
               tab: <ShopResourcesTab></ShopResourcesTab>,
+            },
+
+            {
+              icon: <ResourceIcon resource="stars" size={35}></ResourceIcon>,
+              tab: <ShopAdsTab></ShopAdsTab>,
             },
           ]}
         ></ShopScrollView>
