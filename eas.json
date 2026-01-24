@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 5.9.2"
+    "version": ">= 5.9.2",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
@@ -13,10 +14,12 @@
         "buildType": "apk"
       },
       "env": {
+        "EAS_SKIP_AUTO_FINGERPRINT": "1",
         "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://pootime-adventure-battle-server.onrender.com/"
       }
     },
     "production": {
+      "autoIncrement": true,
       "env": {
         "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://pootime-adventure-battle-server.onrender.com/"
       }

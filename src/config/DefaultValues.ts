@@ -88,5 +88,5 @@ export namespace DefaultValues {
 
   export const CACHE_AVAILABILITY_DURATION_IN_SECOND = 10 * 60;
 
-  export const MAX_PREVIOUS_BATTLE_SAVED = 25;
+  export const MAX_PREVIOUS_BATTLE_SAVED = 10;
 }

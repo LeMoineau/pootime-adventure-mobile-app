@@ -76,6 +76,7 @@ export default function DonationSettings() {
                 height: 160,
               },
             ]}
+            placeholderTextColor={colors.gray[500]}
             value={message}
             onChangeText={setMessage}
           ></TextInput>

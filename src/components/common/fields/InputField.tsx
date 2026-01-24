@@ -55,6 +55,7 @@ export default function InputField({
           onBlur && onBlur(e.nativeEvent.text);
         }}
         placeholder={placeholder}
+        placeholderTextColor={colors.gray[500]}
         value={value}
         textContentType={textContentType ?? "none"}
         secureTextEntry={secureTextEntry}

@@ -16,6 +16,7 @@ export default function WaitForFightModal({
       title={"Chargement..."}
       closeWhenPressingTransparentOverlay
       onRequestClose={onRequestClose}
+      containerStyle={{ gap: 10 }}
     >
       <ActivityIndicator size={"large"} />
       <Text style={[style.textCenter, { marginTop: 10 }]}>
