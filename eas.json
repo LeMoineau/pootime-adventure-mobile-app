@@ -13,7 +13,7 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_BATTLE_SERVER_URL": "http://192.168.4.167:3000"
+        "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://pootime-adventure-battle-server.onrender.com/"
       }
     },
     "production": {
