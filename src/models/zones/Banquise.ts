@@ -11,7 +11,7 @@ export class Banquise extends Zone {
   constructor() {
     super({
       name: "Expédition à la banquise",
-      desc: "Une plaine tranquille et verdoyante",
+      desc: "Un désert gelé contrôlé par de puissantes forces militaires",
       icon: assets.banquiseZone,
       unlockLevel: 5,
       style: {

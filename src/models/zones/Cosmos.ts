@@ -11,7 +11,7 @@ export class Cosmos extends Zone {
   constructor() {
     super({
       name: "Le cosmos Rosé",
-      desc: "Une plaine tranquille et verdoyante",
+      desc: "Dans un univers teinté de rose et de violet, des poulpes et d'autres effroyables créatures y ont établi demeure",
       icon: assets.cosmosZone,
       unlockLevel: 9,
       style: {
