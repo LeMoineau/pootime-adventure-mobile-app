@@ -15,7 +15,7 @@ npm run start
 npm run build:apk
 ```
 
-## Créer release (pour les stores)
+## Créer une release (pour les stores)
 
 Pour mettre sur le store Google Play par exemple.
 
