@@ -1,13 +1,12 @@
-import { Text } from "react-native";
 import useModals from "../../../hooks/common/ui/use-modals";
 import useMassiveStoreLoader from "../../../hooks/common/admin/user-massive-store-loader";
 import { useAuthentication } from "../../../hooks/common/firebase/use-authentification";
 import { useUserDataTable } from "../../../hooks/common/firestore/use-user-data-table";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SettingsPage from "../../../components/features/settings/SettingsPage";
 import SettingsHeader from "../../../components/features/settings/SettingsHeader";
 import { SettingsScrollView } from "../../../components/features/settings/SettingsScrollView";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import CustomConfirmModal from "../../../components/common/modals/primitives/CustomConfirmModal";
 
 export default function AccountSettings() {
@@ -27,12 +26,6 @@ export default function AccountSettings() {
   const { massiveStoreReset, generateUserDataFromStores } =
     useMassiveStoreLoader();
   const [loading, setLoading] = useState(false);
-
-  const { updateUser } = useLocalSearchParams<{ updateUser: string }>();
-
-  useEffect(() => {
-    console.log("update user", updateUser);
-  }, [updateUser]);
 
   return (
     <>
@@ -156,6 +149,7 @@ export default function AccountSettings() {
         desc="Êtes-vous sûr de vouloir vous déconnecter ? (Vos données ne seront plus sauvegardées)"
         containerStyle={{ gap: 20 }}
         onConfirmBtnPress={() => {
+          disconnect();
           massiveStoreReset();
         }}
         onRequestClose={() => hide("confirm-disconnect")}

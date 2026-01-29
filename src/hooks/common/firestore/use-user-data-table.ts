@@ -100,7 +100,6 @@ export function useUserDataTable() {
   };
 
   const create = async (uid: string, userData: UserData) => {
-    console.log("creation new user");
     await update(uid, userData);
   };
 

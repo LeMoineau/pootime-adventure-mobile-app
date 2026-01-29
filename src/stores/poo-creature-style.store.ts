@@ -18,10 +18,15 @@ export const usePooCreatureStyleStore = create<PooCreatureStyleStore>(
     const { getJson, saveItemInJson, saveJson } = useStorage();
 
     getJson(StorageKeys.POO_CREATURE_STYLE).then(async (json) => {
-      const baseValues = {
-        ...DefaultValues.PooCreatureStyle,
-        ...json,
-      };
+      let baseValues;
+      if (json === null) {
+        baseValues = { ...DefaultValues.PooCreatureStyle };
+      } else {
+        baseValues = {
+          ...DefaultValues.PooCreatureStyle,
+          ...json,
+        };
+      }
       set(baseValues);
       if (json === null || !ObjectUtils.equals(json, baseValues)) {
         await saveJson(StorageKeys.POO_CREATURE_STYLE, baseValues);

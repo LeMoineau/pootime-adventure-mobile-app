@@ -16,8 +16,7 @@ type Store = {
 } & DataInStorage.ItemsUnlocked;
 
 export const useItemsUnlockedStore = create<Store>((set, get) => {
-  const { getJson, addItemInObjectInJson, saveJson, saveItemInJson } =
-    useStorage();
+  const { getJson, saveJson, saveItemInJson } = useStorage();
 
   getJson(StorageKeys.ITEMS_UNLOCKED).then(async (json: any) => {
     const baseValues = {
@@ -26,8 +25,7 @@ export const useItemsUnlockedStore = create<Store>((set, get) => {
         ? json
         : DataInStorage.convertOldItemsUnlockedToNewType(json)),
     };
-    set(baseValues);
-    set({ loading: false });
+    set({ ...baseValues, loading: false });
     if (json === null || !ObjectUtils.equals(json, baseValues)) {
       await saveJson(StorageKeys.ITEMS_UNLOCKED, baseValues);
     }

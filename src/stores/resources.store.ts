@@ -30,26 +30,29 @@ export type ResourceStore = {
 export const useResourcesStore = create<ResourceStore>((set, get) => {
   const { getJson, saveJson, saveItemInJson, removeItem } = useStorage();
 
-  getJson(StorageKeys.INVENTORY).then(async (json) => {
-    await restoreOldData();
-    const baseValues = {
-      ...get().inventory,
-      ...json,
-    };
-    set({ inventory: baseValues });
-    if (json === null || !ObjectUtils.equals(json, baseValues)) {
-      saveJson(StorageKeys.INVENTORY, baseValues);
-    }
-  });
-
-  const restoreOldData = async () => {
-    getJson(StorageKeys.RESOURCES).then(async (json) => {
-      if (json !== null) {
-        set({ inventory: { ...get().inventory, ...json } });
+  getJson(StorageKeys.INVENTORY).then((jsonInventory) => {
+    getJson(StorageKeys.RESOURCES).then(async (jsonOldRessources) => {
+      let baseValues;
+      if (jsonOldRessources !== null) {
+        baseValues = { ...DefaultValues.Inventory, ...jsonOldRessources };
         await removeItem(StorageKeys.RESOURCES);
+      } else if (jsonInventory === null) {
+        baseValues = { ...DefaultValues.Inventory };
+      } else {
+        baseValues = {
+          ...DefaultValues.Inventory,
+          ...jsonInventory,
+        };
+      }
+      set({ inventory: baseValues });
+      if (
+        jsonInventory === null ||
+        !ObjectUtils.equals(jsonInventory, baseValues)
+      ) {
+        saveJson(StorageKeys.INVENTORY, baseValues);
       }
     });
-  };
+  });
 
   const earn = async (resource: Resources, val: number) => {
     set((state) => ({

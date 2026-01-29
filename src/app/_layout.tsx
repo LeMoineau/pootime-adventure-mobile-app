@@ -18,7 +18,6 @@ export default function Layout() {
   const handleStateChange = (appState: string) => {
     if (appState.match(/inactive|background/) && user && !__DEV__) {
       updateUserData(user.uid, generateUserDataFromStores());
-      console.log("saved");
     }
   };
 

@@ -44,15 +44,17 @@ type Store = {
 } & DataInStorage.Village;
 
 export const useVillageStore = create<Store>((set, get) => {
-  const { getJson, saveJson } = useStorage();
+  const { getJson, saveJson, removeItem } = useStorage();
 
   getJson(StorageKeys.VILLAGE).then(async (json) => {
-    const baseValues = { ...DefaultValues.Village, ...json };
+    let baseValues;
+    if (json === null) {
+      baseValues = { ...DefaultValues.Village };
+    } else {
+      baseValues = { ...DefaultValues.Village, ...json };
+    }
     set(baseValues);
-    if (
-      json === null ||
-      (json !== null && !ObjectUtils.equals(baseValues, json))
-    ) {
+    if (json === null || !ObjectUtils.equals(baseValues, json)) {
       await saveJson(StorageKeys.VILLAGE, baseValues);
     }
   });

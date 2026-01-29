@@ -1,5 +1,6 @@
 import { PooCreatureStyle as Style } from "./PooCreatureStyle";
 import { PooCreatureStats as Stats } from "./PooCreatureStats";
+import { DefaultValues } from "../config/DefaultValues";
 
 export namespace DataInStorage {
   export interface PooCreatureStyle extends Style {}
@@ -16,19 +17,21 @@ export namespace DataInStorage {
 
   export function isItemsUnlocked(json: any): json is ItemsUnlocked {
     return (
-      json.bodyColors &&
+      !!json &&
+      !!json.bodyColors &&
       Array.isArray(json.bodyColors) &&
-      json.heads &&
+      !!json.heads &&
       Array.isArray(json.heads) &&
-      json.expressions &&
+      !!json.expressions &&
       Array.isArray(json.expressions) &&
-      json.events &&
+      !!json.events &&
       Array.isArray(json.events) &&
-      json.options
+      !!json.options
     );
   }
 
   export function convertOldItemsUnlockedToNewType(json: any): ItemsUnlocked {
+    if (!!!json) return { ...DefaultValues.ItemsUnlocked };
     return {
       bodyColors: [...Object.keys(json.bodyColors)],
       heads: [...Object.keys(json.heads)],
