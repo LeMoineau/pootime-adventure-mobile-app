@@ -1,6 +1,14 @@
 # Changelog
 
-## V5 - Battle Update
+## V5.0.1 - Hot-fix
+
+### Corrections de bugs
+
+- sauvegarde items-unlocked si json vide
+- deconnexion
+- adding pingoo view
+
+## V5.0.0 - Battle Update
 
 ### Ajouts majeurs
 
@@ -22,7 +30,7 @@
 - ajout possibilité déselectionner un ulti
 - ajout possibilité relancer une monster-battle directement après fin de combat
 
-### Corrections bugs
+### Corrections de bugs
 
 - gestion bottom-navigation-bar
 - équilibrage monster stats

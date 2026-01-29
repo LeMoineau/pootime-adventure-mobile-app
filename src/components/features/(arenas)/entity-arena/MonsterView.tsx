@@ -49,16 +49,6 @@ export default function MonsterView({
       <GremlinsIcon ratio={0.5} translateX={-30}></GremlinsIcon>
     );
   }
-  if (monster instanceof HorrorMask) {
-    return fainted ? (
-      <HorrorMaskFaintedIcon
-        ratio={0.22}
-        translateY={-30}
-      ></HorrorMaskFaintedIcon>
-    ) : (
-      <HorrorMaskIcon ratio={0.22} translateY={-30}></HorrorMaskIcon>
-    );
-  }
   if (monster instanceof Pingoo) {
     return (
       monster instanceof Pingoo &&
@@ -83,5 +73,16 @@ export default function MonsterView({
       <TankIcon ratio={0.5} translateY={-30}></TankIcon>
     );
   }
-  return <></>;
+
+  /**
+   * Par défaut, affiche horror-mask
+   */
+  return fainted ? (
+    <HorrorMaskFaintedIcon
+      ratio={0.22}
+      translateY={-30}
+    ></HorrorMaskFaintedIcon>
+  ) : (
+    <HorrorMaskIcon ratio={0.22} translateY={-30}></HorrorMaskIcon>
+  );
 }
