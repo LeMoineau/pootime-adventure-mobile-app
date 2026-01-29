@@ -10,7 +10,7 @@ export class EndGame extends Zone {
   constructor() {
     super({
       name: "The EndGame",
-      desc: "Une plaine tranquille et verdoyante",
+      desc: "Le bout du chemin... Le pire des monstres...",
       icon: assets.godPoulpeZone,
       unlockLevel: 12,
       style: {

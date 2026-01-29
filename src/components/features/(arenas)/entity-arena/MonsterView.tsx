@@ -60,12 +60,14 @@ export default function MonsterView({
     );
   }
   if (monster instanceof Pingoo) {
-    monster instanceof Pingoo &&
+    return (
+      monster instanceof Pingoo &&
       (fainted ? (
         <PingooFaintedIcon ratio={0.45}></PingooFaintedIcon>
       ) : (
         <PingooIcon ratio={0.45}></PingooIcon>
-      ));
+      ))
+    );
   }
   if (monster instanceof Poulpe) {
     return fainted ? (
