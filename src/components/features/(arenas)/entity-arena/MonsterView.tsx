@@ -16,11 +16,16 @@ import { GodPoulpe } from "../../../../models/entities/monsters/GodPoulpe";
 import { Gremlins } from "../../../../models/entities/monsters/Gremlins";
 import { Monster } from "../../../../models/entities/monsters/Monster";
 import { Sheep } from "../../../../models/entities/monsters/Sheep";
-import { HorrorMask } from "../../../../models/entities/monsters/HorrorMask";
 import { Pingoo } from "../../../../models/entities/monsters/Pingoo";
 import { Poulpe } from "../../../../models/entities/monsters/Poulpe";
 import { Tank } from "../../../../models/entities/monsters/Tank";
 
+/**
+ * Display view according to the {monster} gave in props.
+ *
+ * By default or if no matchs are found, HorrorMask is displayed
+ * @returns
+ */
 export default function MonsterView({
   monster,
   fainted,
@@ -74,9 +79,6 @@ export default function MonsterView({
     );
   }
 
-  /**
-   * Par défaut, affiche horror-mask
-   */
   return fainted ? (
     <HorrorMaskFaintedIcon
       ratio={0.22}
