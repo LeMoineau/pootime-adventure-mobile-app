@@ -1,22 +1,24 @@
 import { Text, View } from "react-native";
-import { usePooCreatureStyleStore } from "../../../../../stores/poo-creature-style.store";
-import { style } from "../../../../../constants/style/styles";
-import PooCreatureBadge from "../PooCreatureBadge";
-import { colors } from "../../../../../constants/style/colors";
-import TextWithResourceIcon from "../../../text/TextWithResourceIcon";
-import { useResourcesStore } from "../../../../../stores/resources.store";
+import { usePooCreatureStyleStore } from "../../../../stores/poo-creature-style.store";
+import { style } from "../../../../constants/style/styles";
+import PooCreatureBadge from "../../../common/misc/poo-creature/PooCreatureBadge";
+import { colors } from "../../../../constants/style/colors";
+import TextWithResourceIcon from "../../../common/text/TextWithResourceIcon";
+import { useResourcesStore } from "../../../../stores/resources.store";
+import GradeIcon from "../../../common/icons/grades/GradeIcon";
 
 export default function PooCreatureTropheeSubHeader() {
-  const { name } = usePooCreatureStyleStore();
-  const { get } = useResourcesStore();
+  const name = usePooCreatureStyleStore((state) => state.name);
+  const get = useResourcesStore((state) => state.get);
 
   return (
     <View style={[{ paddingVertical: 20, width: "100%" }]}>
-      <View style={[style.flexRow, style.justifyCenter, { gap: 10 }]}>
-        <PooCreatureBadge
+      <View style={[style.flexRow, style.justifyCenter, { gap: 15 }]}>
+        {/* <PooCreatureBadge
           size={100}
           useBodyColorForBackground
-        ></PooCreatureBadge>
+        ></PooCreatureBadge> */}
+        <GradeIcon pooTrophees={get("pooTrophee")} height={80}></GradeIcon>
         <View style={[style.flexCol, style.justifyCenter]}>
           <Text
             style={[

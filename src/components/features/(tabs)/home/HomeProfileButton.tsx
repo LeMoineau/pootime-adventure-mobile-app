@@ -5,6 +5,7 @@ import { style } from "../../../../constants/style/styles";
 import { usePooCreatureStyleStore } from "../../../../stores/poo-creature-style.store";
 import TextWithResourceIcon from "../../../common/text/TextWithResourceIcon";
 import { useResourcesStore } from "../../../../stores/resources.store";
+import GradeIcon from "../../../common/icons/grades/GradeIcon";
 
 export default function HomeProfileButton({
   onPress,
@@ -31,7 +32,8 @@ export default function HomeProfileButton({
         onPress={onPress}
       >
         <View style={[style.flexRow, style.justifyCenter, style.itemsCenter]}>
-          <PooCreatureHead size={45}></PooCreatureHead>
+          {/* <PooCreatureHead size={45}></PooCreatureHead> */}
+          <GradeIcon pooTrophees={get("pooTrophee")} height={40}></GradeIcon>
           <View style={[{ paddingLeft: 10 }]}>
             <Text style={[style.textBold, { fontSize: 15 }]}>{name}</Text>
             <TextWithResourceIcon

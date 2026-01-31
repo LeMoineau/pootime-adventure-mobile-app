@@ -16,7 +16,7 @@ import Gradient, {
 } from "../../components/common/misc/Gradient";
 import usePreviousBattles from "../../hooks/features/(tabs)/fight/use-previous-battles";
 import NoPreviousBattleItem from "../../components/common/items/NoPreviousBattleItem";
-import PooCreatureTropheeSubHeader from "../../components/common/misc/poo-creature/sub-headers/PooCreatureTropheeSubHeader";
+import PooCreatureTropheeSubHeader from "../../components/features/(tabs)/fight/PooCreatureTropheeSubHeader";
 import useBattleRooms from "../../hooks/features/(tabs)/fight/use-battle-rooms";
 import ServerWaitingModal from "../../components/features/(tabs)/fight/ServerWaitingModal";
 import WaitForFightModal from "../../components/features/(tabs)/fight/WaitForFightModal";

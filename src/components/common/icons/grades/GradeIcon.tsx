@@ -1,17 +1,33 @@
+import gradeService, {
+  GradeColor,
+  GradeTier,
+} from "../../../../services/grade.service";
 import { CustomSvgProps } from "../../../../types/CustomSvgProps";
 import GradeTier1Icon from "./GradeTier1Icon";
 import GradeTier2Icon from "./GradeTier2Icon";
 import GradeTier3Icon from "./GradeTier3Icon";
 import GradeTier4Icon from "./GradeTier4Icon";
+import LoadingGradeIcon from "./LoadingGradeIcon";
 
 export default function GradeIcon({
-  tier,
-  color,
+  pooTrophees,
   ...props
 }: {
-  tier: 1 | 2 | 3 | 4;
-  color: "bronze" | "silver" | "gold";
+  tier?: GradeTier;
+  color?: GradeColor;
+  pooTrophees?: number;
 } & CustomSvgProps) {
+  let tier = props.tier;
+  let color = props.color;
+
+  if (!tier || !color) {
+    if (pooTrophees === undefined) {
+      return <LoadingGradeIcon {...props}></LoadingGradeIcon>;
+    }
+    tier = gradeService.getTier(pooTrophees);
+    color = gradeService.getColor(pooTrophees);
+  }
+
   if (tier === 1) {
     return <GradeTier1Icon color={color} {...props}></GradeTier1Icon>;
   }
@@ -24,5 +40,5 @@ export default function GradeIcon({
   if (tier === 4) {
     return <GradeTier4Icon color={color} {...props}></GradeTier4Icon>;
   }
-  return <></>;
+  return <LoadingGradeIcon {...props}></LoadingGradeIcon>;
 }

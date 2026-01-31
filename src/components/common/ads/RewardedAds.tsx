@@ -50,49 +50,49 @@ export default function RewardedAds() {
       openModal(rewardModal(adsRewardsService.generateNewReward()));
       return;
     }
-    setAdLoading(true);
-    import("react-native-google-mobile-ads").then(
-      ({ RewardedAd, RewardedAdEventType }) => {
-        const adUnitId = Platform.select({
-          android: REWARDED_AD_ID_ANDROID,
-        });
+    // setAdLoading(true);
+    // import("react-native-google-mobile-ads").then(
+    //   ({ RewardedAd, RewardedAdEventType }) => {
+    //     const adUnitId = Platform.select({
+    //       android: REWARDED_AD_ID_ANDROID,
+    //     });
 
-        if (!adUnitId) {
-          setAdLoading(false);
-          openModal(
-            errorModal(
-              "Aucun identifiant de publicité n'a été trouvé pour votre appareil...",
-            ),
-          );
-          return;
-        }
+    //     if (!adUnitId) {
+    //       setAdLoading(false);
+    //       openModal(
+    //         errorModal(
+    //           "Aucun identifiant de publicité n'a été trouvé pour votre appareil...",
+    //         ),
+    //       );
+    //       return;
+    //     }
 
-        const rewarded = RewardedAd.createForAdRequest(adUnitId);
+    //     const rewarded = RewardedAd.createForAdRequest(adUnitId);
 
-        const unsubscribeLoaded = rewarded.addAdEventListener(
-          RewardedAdEventType.LOADED,
-          () => {
-            rewarded.show({ immersiveModeEnabled: true });
-            setAdLoading(false);
-          },
-        );
-        const unsubscribeEarned = rewarded.addAdEventListener(
-          RewardedAdEventType.EARNED_REWARD,
-          () => {
-            openModal(rewardModal(adsRewardsService.generateNewReward()));
-          },
-        );
+    //     const unsubscribeLoaded = rewarded.addAdEventListener(
+    //       RewardedAdEventType.LOADED,
+    //       () => {
+    //         rewarded.show({ immersiveModeEnabled: true });
+    //         setAdLoading(false);
+    //       },
+    //     );
+    //     const unsubscribeEarned = rewarded.addAdEventListener(
+    //       RewardedAdEventType.EARNED_REWARD,
+    //       () => {
+    //         openModal(rewardModal(adsRewardsService.generateNewReward()));
+    //       },
+    //     );
 
-        // Start loading the rewarded ad straight away
-        rewarded.load();
+    //     // Start loading the rewarded ad straight away
+    //     rewarded.load();
 
-        /**
-         * Normalement pas nécessaire puisque {rewarded} est recréé à chaque press
-         */
-        // Unsubscribe from events on unmount
-        // unsubscribeEvents.current = [unsubscribeLoaded, unsubscribeEarned];
-      },
-    );
+    //     /**
+    //      * Normalement pas nécessaire puisque {rewarded} est recréé à chaque press
+    //      */
+    //     // Unsubscribe from events on unmount
+    //     // unsubscribeEvents.current = [unsubscribeLoaded, unsubscribeEarned];
+    //   },
+    // );
   };
 
   return (

@@ -4,6 +4,7 @@ import LoadingText from "../../common/text/LoadingText";
 import ResourceRank from "../../common/text/ResourceRank";
 import SkeletonText from "../../common/text/SkeletonText";
 import { colors } from "../../../constants/style/colors";
+import GradeIcon from "../../common/icons/grades/GradeIcon";
 
 export default function PlayerInfosSubHeader({
   name,
@@ -18,40 +19,37 @@ export default function PlayerInfosSubHeader({
 }) {
   return (
     <View style={[style.flexCol, { gap: 10 }]}>
-      <View style={[style.flexRow, style.itemsCenter, { gap: 10 }]}>
-        {level && (
-          <View
-            style={[
-              style.flexCol,
-              style.justifyCenter,
-              style.itemsCenter,
-              {
-                width: 40,
-                height: 40,
-                backgroundColor: colors.blue[400],
-                borderRadius: 5,
-              },
-            ]}
-          >
-            <Text
-              style={[
-                {
-                  textAlign: "center",
-                  fontWeight: "700",
-                  color: colors.white,
-                },
-              ]}
-            >
-              {level}
-            </Text>
-          </View>
-        )}
+      <View
+        style={[
+          style.flexRow,
+          style.itemsCenter,
+          { flexWrap: "wrap", gap: 10 },
+        ]}
+      >
+        <GradeIcon pooTrophees={pooTrophees} height={45}></GradeIcon>
         <LoadingText
           text={name}
           fontSize={25}
           textStyle={{ fontWeight: "700" }}
           skeletonStyle={{ width: 150 }}
         ></LoadingText>
+        {level && (
+          <Text
+            style={[
+              {
+                textAlign: "center",
+                fontWeight: "700",
+                color: colors.white,
+                backgroundColor: colors.primary,
+                paddingHorizontal: 12,
+                paddingVertical: 5,
+                borderRadius: 20,
+              },
+            ]}
+          >
+            niv. {level}
+          </Text>
+        )}
       </View>
       <View style={[style.flexRow, style.itemsCenter, { gap: 5 }]}>
         {pooTrophees !== undefined && pooCoins !== undefined ? (
